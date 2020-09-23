@@ -1,7 +1,7 @@
 function move() {
 	// Rotate 45 degrees around an arbitrary axis passing through (1,0,-1). The x-axis can be aligned to the arbitrary axis after a rotation of 30 degrees around the z-axis, and then -60 degrees around the y-axis.
 	
-	/*To solve this exercise we used the following composite transformation formula:
+	/*To solve this assignment we used the following composite transformation formula:
 		p' = T(px, py, pz)⋅ Ry(β)⋅ Rz(γ)⋅ Rx(α)⋅ Rz(γ)^−1 ⋅ Ry(β)^−1 ⋅T(px, py, pz)^−1
 		where
 		1) T(px, py, pz) is the translate matrix in (1,0,-1)

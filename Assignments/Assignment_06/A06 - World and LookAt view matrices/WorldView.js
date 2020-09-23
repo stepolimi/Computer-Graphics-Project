@@ -8,25 +8,42 @@ function worldViewProjection(carx, cary, carz, cardir, camx, camy, camz) {
 // LookAt camera matrix procedure, with the correct up-vector.
 
 	
-	// View matrix
+	/* VIEW MATRIX
+	The camera center is positioned in cam (= c), the target is the car (= a) position and the up vector is in uy (=u).
+	Given c, a and u we have:
+		1) Vz = the norm of (c-a)
+		2) Vx = the norm of (u*Vz)
+		3) Vy = the cross vector of Vz and Vx
+
+	The 4th column of view matrix ic given by -V*c
+	*/
 
 	var car = [carx, cary, carz];
 	var cam = [camx, camy, camz];
 	var uy = [0,1,0];
 
-	var cc = [cam[0]-car[0], cam[1]-car[1], cam[2]- car[2]];
-	var vz = utils.normalizeVector3(cc);
-	var vxx = utils.crossVector(uy, vz);
-	var vx = utils.normalizeVector3(vxx);
+	var vz = [cam[0]-car[0], cam[1]-car[1], cam[2]- car[2]];
+	vz = utils.normalizeVector3(vz);
+
+	var vx = utils.crossVector(uy, vz);
+	vx = utils.normalizeVector3(vx);
+
 	var vy = utils.crossVector(vz, vx);
 	
-	var view  =    [vx[0],  vx[1],  vx[2],  -vx[0]*cam[0]-vx[1]*cam[1]-vx[2]*cam[2], 
-			vy[0],  vy[1],  vy[2],  -vy[0]*cam[0]-vy[1]*cam[1]-vy[2]*cam[2], 
-			vz[0],  vz[1],  vz[2],  -vz[0]*cam[0]-vz[1]*cam[1]-vz[2]*cam[2], 
-			0,  	0,  	0,  	1];
+	var view  =[vx[0],  vx[1],  vx[2],  -vx[0]*cam[0]-vx[1]*cam[1]-vx[2]*cam[2], 
+				vy[0],  vy[1],  vy[2],  -vy[0]*cam[0]-vy[1]*cam[1]-vy[2]*cam[2], 
+				vz[0],  vz[1],  vz[2],  -vz[0]*cam[0]-vz[1]*cam[1]-vz[2]*cam[2], 
+					0,  	0,  	0,  	1];
 
 
-	//World matrix
+					
+	/*WORLD MATRIX
+	To solve this part of the assignment we used the following formula:
+		W = T(px, py, pz)⋅ Ry(ψ)
+		where
+		1) T(px, py, pz) is the translate matrix in car position
+		2) Ry(ψ) is the rotation around y-axis
+	*/
 
 	var rot = utils.MakeRotateYMatrix(cardir);
 	var transl = utils.MakeTranslateMatrix(carx,cary,carz);
