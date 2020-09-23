@@ -70,8 +70,8 @@ function buildGeometry() {
 	//////// Upper part
 	for(i = 0; i < 36; i++) {
 		ind2[j++] = 0;
-		ind2[j++] = (i + 1) % 36 + 1;
 		ind2[j++] = i + 1;
+		ind2[j++] = (i +1) % 36 + 1;
 	}
 	
 	//////// Lower part
