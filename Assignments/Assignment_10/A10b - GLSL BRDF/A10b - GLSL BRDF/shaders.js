@@ -93,16 +93,25 @@ var S5 = `
 `;
 
 // Ambient + Oren-Nayar with roughness sigma=0.5 (consider only Light A)
-var S6 = `
+var S6 = `	
+	vec4 ambient = ambientLight * ambColor;
+
+	float theta_i = radians(acos(dot(lightDirA, normalVec)));
+	float theta_r = radians(acos(dot(eyedirVec, normalVec)));
+	float alpha = max(theta_i, theta_r);
+	float beta = min(theta_i, theta_r);
+
 	float A = 1.0 - 0.5*((0.5*0.5)/(0.5*0.5+0.33));
 	float B = 0.45*((0.5*0.5)/(0.5*0.5+0.09));
-	float G = max(0.0, dot(normalize(lightDirA - dot(lightDirA, normalVec) * normalVec), normalize(eyedirVec - dot(eyedirVec, normalVec) * normalVec)));
-	float alpha = max(acos(dot(lightDirA, normalVec)), acos(dot(eyedirVec, normalVec)));
-	float beta = min(acos(dot(lightDirA, normalVec)), acos(dot(eyedirVec, normalVec)));
-	float color = A + B*G*sin(alpha)*tan(beta);
-	float diffuse = color * clamp(dot(lightDirA,normalVec), 0.0, 1.0);
 
-	out_color = clamp(diffuse * diffColor + ambientLight * ambColor, 0.0, 1.0);
+	vec3 v_i = normalize(lightDirA - dot(lightDirA,normalVec)*normalVec);
+	vec3 v_r = normalize(eyedirVec - dot(eyedirVec,normalVec)*normalVec);
+	float G = max(0.0, dot(v_i,v_r));
+	
+	vec4 L = diffColor * clamp(dot(lightDirA,normalVec), 0.0, 1.0);
+	vec4 diffuse = L*(A+B*G*sin(alpha)*tan(beta));
+
+	out_color = clamp(diffuse + ambient, 0.0, 1.0);
 `;
 
 	return [S1, S2, S3, S4, S5, S6];
