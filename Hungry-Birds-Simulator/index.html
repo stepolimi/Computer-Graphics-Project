@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <link rel="icon" href="./resources/icon.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hungry birds</title>
+    
+    <!--Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     
+    <!--Style Sheet-->
+    <link href="index.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="lib/utils.js"></script>
+</head>
+
+<body>
+    <div style="display: none;">
+        <canvas id="c"></canvas>
+    </div>
+    
+    <div id="div-play-game" class="container-fluid row">
+        <div class="col-sm-12" >
+            <h1 id="title">
+                Hungry Birds Simulator
+            </h1>
+        </div>
+        <div class="col-sm-12">
+            <button id="play-button">
+                <p id="play-text">
+                    Play
+                </p>
+            </button>
+        </div>
+        <div class="col-sm-12">
+        </div>
+        <div class="col-sm-12">
+            <iframe src="silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+            <audio autoplay loop>
+                <source type="audio/mp3" src="sounds/start-game-track.mp3">
+                <source type="audio/ogg" src="sounds/start-game-track-ogg.ogg">
+            </audio> 
+            
+        </div>
+    </div>
+</body>
+
+</html>
