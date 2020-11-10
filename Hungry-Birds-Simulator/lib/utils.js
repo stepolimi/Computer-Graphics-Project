@@ -1,5 +1,61 @@
 var utils={
 
+	createAndCompileShaders: function (gl, shaderText) {
+		var vertexShader = utils.createShader(gl, gl.VERTEX_SHADER, shaderText[0]);
+		var fragmentShader = utils.createShader(gl, gl.FRAGMENT_SHADER, shaderText[1]);
+
+		var program = utils.createProgram(gl, vertexShader, fragmentShader);
+
+		return program;
+	},
+
+	createShader: function (gl, type, source) {
+		var shader = gl.createShader(type);
+		gl.shaderSource(shader, source);
+		gl.compileShader(shader);
+		var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+		if (success) {
+			return shader;
+		} else {
+			console.log(gl.getShaderInfoLog(shader));  // eslint-disable-line
+			if (type == gl.VERTEX_SHADER) {
+				alert("ERROR IN VERTEX SHADER : " + gl.getShaderInfoLog(vertexShader));
+			}
+			if (type == gl.FRAGMENT_SHADER) {
+				alert("ERROR IN FRAGMENT SHADER : " + gl.getShaderInfoLog(vertexShader));
+			}
+			gl.deleteShader(shader);
+			throw "could not compile shader:" + gl.getShaderInfoLog(shader);
+		}
+
+	},
+
+	createProgram: function (gl, vertexShader, fragmentShader) {
+		var program = gl.createProgram();
+		gl.attachShader(program, vertexShader);
+		gl.attachShader(program, fragmentShader);
+		gl.linkProgram(program);
+		var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+		if (success) {
+			return program;
+		} else {
+			console.log("program filed to link:" + gl.getProgramInfoLog(program));  // eslint-disable-line
+			gl.deleteProgram(program);
+			return undefined;
+		}
+	},
+
+	resizeCanvasToDisplaySize: function (canvas) {
+		const expandFullScreen = () => {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+			//console.log(canvas.width + " " + window.innerWidth);
+		};
+		expandFullScreen();
+		// Resize screen when the browser has triggered the resize event
+		window.addEventListener('resize', expandFullScreen);
+	},
+
 //**** MODEL UTILS
 	// Function to load a 3D model in JSON format
 	get_json: function(url, func) {
