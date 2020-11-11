@@ -14,11 +14,15 @@
     <link href="index.css" rel="stylesheet"/>
 
     <script type="text/javascript" src="lib/utils.js"></script>
+
+    <script src="scriptCanvas.js"></script>
 </head>
 
 <body>
-    <div style="display: none;">
-        <canvas id="c"></canvas>
+    <div id="div-canvas" style="display: none;" >
+        <canvas id="canvas" width="600" height="400">
+            Your browser does not support canvas!
+        </canvas>
     </div>
     
     <div id="div-play-game" class="container-fluid row">
@@ -28,23 +32,82 @@
             </h1>
         </div>
         <div class="col-sm-12">
-            <button id="play-button">
+            <button id="play-button"  onclick="play()">
                 <p id="play-text">
                     Play
                 </p>
             </button>
         </div>
-        <div class="col-sm-12">
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <ul>
+                    <li>
+                        pull the sling:   left arrow                
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="div-commands" class="col-sm-12">
+            <button id="commands-button"  onclick="displayCommands()">
+                <p id="commands-text">
+                    Commands
+                </p>
+            </button>
         </div>
         <div class="col-sm-12">
-            <iframe src="silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
             <audio autoplay loop>
                 <source type="audio/mp3" src="sounds/start-game-track.mp3">
                 <source type="audio/ogg" src="sounds/start-game-track-ogg.ogg">
             </audio> 
-            
+
         </div>
     </div>
 </body>
+
+<script>
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("commands-button");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function(){
+        modal.style.display = "block";
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function play(){
+        var div_play = document.getElementById("div-play-game");
+        var div_canvas = document.getElementById("div-canvas");
+        div_play.style.display = "none";
+        div_canvas.style.display = "block";
+    }
+</script>
 
 </html>
