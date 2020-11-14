@@ -70,9 +70,6 @@ var worldViewMatrix;
 var projectionMatrix;
 var normalTransformationMatrix;
 
-//objects positions
-var matricesArray;
-
 
 //camera variables
 var cx = 0;
@@ -332,7 +329,7 @@ function addMeshToScene(i) {
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
     for (var i = 0; i < allMeshes.length; i++) {
-       worldViewMatrix = viewMatrix;
+       worldViewMatrix = utils.multiplyMatrices(viewMatrix, worldPositions[i]);
        projectionMatrix = utils.multiplyMatrices(perspectiveMatrix, worldViewMatrix);  
 
        // matrix to transform normals, used by the Vertex Shader
