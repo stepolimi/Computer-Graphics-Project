@@ -1,15 +1,44 @@
 "use strict";
 
 var vertexShaderSource = `#version 300 es
-void main() {
 
+precision mediump float;
+
+in vec3 inPosition;
+in vec3 inNormal;
+in vec2 in_uv;
+
+out vec2 fsUV;
+out vec3 fsNormal;
+out vec4 fs_pos;
+
+uniform mat4 matrix;      //worldViewPrijection matrix to draw objects
+uniform mat4 worldViewMatrix;  //worldView matrix to transform coordinates into Camera Space
+uniform mat4 nMatrix;     //matrix to transform normals
+
+void main() {
+  fsUV = in_uv;
+  fs_pos = worldViewMatrix * vec4(inPosition,1.0); //coordinates in Camera Space
+  fsNormal = mat3(nMatrix) * inNormal; 
+
+  gl_Position = matrix * vec4(inPosition, 1.0);
 }
 `;
 
 var fragmentShaderSource = `#version 300 es
 
-void main() {
 
+precision mediump float;
+
+in vec2 fsUV;
+in vec3 fsNormal;
+in vec4 fs_pos;
+
+out vec4 outColor;
+
+void main() {
+  
+  outColor = vec4(0.0,1.0,0.0,0.5);
 }
 `;
 
@@ -30,6 +59,16 @@ var positionAttributeLocation;
 var normalAttributeLocation;
 var uvAttributeLocation;
 
+var matrixLocation;
+var normalMatrixPositionHandle;
+var worldViewMatrixPositionHandle;
+
+//movement variables
+var perspectiveMatrix;
+var viewMatrix;
+var worldViewMatrix;
+var projectionMatrix;
+var normalTransformationMatrix;
 
 
 function createShader(gl, type, source) {
@@ -106,6 +145,7 @@ async function main() {
   gl.useProgram(program);
   await loadMeshes();
   setUpScene();
+  drawScene();
 }
 
 
@@ -125,12 +165,17 @@ function setUpScene(){
     positionAttributeLocation = gl.getAttribLocation(program, "inPosition");
     normalAttributeLocation = gl.getAttribLocation(program, "inNormal");
     uvAttributeLocation = gl.getAttribLocation(program, "in_uv");
+    matrixLocation = gl.getUniformLocation(program, "matrix");
+    normalMatrixPositionHandle = gl.getUniformLocation(program, 'nMatrix');
+    worldViewMatrixPositionHandle = gl.getUniformLocation(program, 'worldViewMatrix');
+    perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
 
     //add meshes to the scene
     vaos = new Array(allMeshes.length);
     for (let i in allMeshes)
         addMeshToScene(i);
+
 }
 
 
@@ -161,6 +206,26 @@ function addMeshToScene(i) {
     var indexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(mesh.indices), gl.STATIC_DRAW);
+ }
+
+ function drawScene(){
+    viewMatrix = utils.MakeView(0.0, 13.5, -9.5, -30, 180);
+    for (var i = 0; i < allMeshes.length; i++) {
+       worldViewMatrix = viewMatrix;
+       projectionMatrix = utils.multiplyMatrices(perspectiveMatrix, worldViewMatrix);  
+
+       // matrix to transform normals, used by the Vertex Shader
+       normalTransformationMatrix = utils.invertMatrix(utils.transposeMatrix(worldViewMatrix));
+
+       gl.uniformMatrix4fv(matrixLocation, gl.FALSE, utils.transposeMatrix(projectionMatrix));
+       gl.uniformMatrix4fv(normalMatrixPositionHandle, gl.FALSE, utils.transposeMatrix(normalTransformationMatrix));
+      
+       gl.uniformMatrix4fv(worldViewMatrixPositionHandle, gl.FALSE, utils.transposeMatrix(worldViewMatrix));
+       
+       gl.bindVertexArray(vaos[i]);
+       gl.drawElements(gl.TRIANGLES, allMeshes[i].indices.length, gl.UNSIGNED_SHORT, 0);
+     }
+     window.requestAnimationFrame(drawScene);
  }
 
 window.onload = main;
