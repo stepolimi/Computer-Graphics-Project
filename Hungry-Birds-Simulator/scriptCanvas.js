@@ -13,6 +13,12 @@ void main() {
 }
 `;
 
+//Meshes variables
+var allMeshes;
+var birdRed;
+
+
+
 function createShader(gl, type, source) {
   var shader = gl.createShader(type);
   gl.shaderSource(shader, source);
@@ -54,7 +60,7 @@ function autoResizeCanvas(canvas) {
     window.addEventListener('resize', expandFullScreen);
 }
 
-function main() {
+async function main() {
   // Get a WebGL context
   var canvas = document.getElementById("canvas");
   var gl = canvas.getContext("webgl2");
@@ -63,6 +69,7 @@ function main() {
     return;
   }
   autoResizeCanvas(canvas);
+  
   
   // create GLSL shaders, upload the GLSL source, compile the shaders
   var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
@@ -84,8 +91,64 @@ function main() {
 
   // Tell it to use our program (pair of shaders)
   gl.useProgram(program);
-
+  await loadMeshes();
+  setUpScene();
 }
+
+
+
+async function loadMeshes(){
+    birdRed = await utils.loadMesh("/assets/Birds/red.obj");
+
+    allMeshes = [
+        birdRed
+    ];
+}
+  
+
+function setUpScene(){
+
+    //define shader stuff
+    var positionAttributeLocation = gl.getAttribLocation(program, "inPosition");
+    var normalAttributeLocation = gl.getAttribLocation(program, "inNormal");
+    var uvAttributeLocation = gl.getAttribLocation(program, "in_uv");
+
+
+    //add meshes to the scene
+    var vaos = new Array(allMeshes.length);
+    for (let i in allMeshes)
+        addMeshToScene(i);
+}
+
+
+function addMeshToScene(i) {
+    let mesh = allMeshes[i];
+    let vao = gl.createVertexArray();
+    vaos[i] = vao;
+    gl.bindVertexArray(vao);
+    
+    var positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.vertices), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(positionAttributeLocation);
+    gl.vertexAttribPointer(positionAttributeLocation, 3, gl.FLOAT, false, 0, 0);
+    
+    var uvBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.textures), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(uvAttributeLocation);
+    gl.vertexAttribPointer(uvAttributeLocation, 2, gl.FLOAT, false, 0, 0);
+    
+    var normalBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.vertexNormals), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(normalAttributeLocation);
+    gl.vertexAttribPointer(normalAttributeLocation, 3, gl.FLOAT, false, 0, 0);
+    
+    var indexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(mesh.indices), gl.STATIC_DRAW);
+ }
 
 window.onload = main;
 
