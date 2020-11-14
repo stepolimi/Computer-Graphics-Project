@@ -83,7 +83,22 @@ var utils={
 		return hex;
 	},
 	
+	get_objstr: async function (url) {
+		var response = await fetch(url);
+		if (!response.ok) {
+			alert('Network response was not ok');
+			return;
+		}
+		var text = await response.text();
+		return text;
+	},
 	
+	loadMesh: async function (path){
+		let str = await utils.get_objstr(path);
+		let mesh = new OBJ.Mesh(str);
+		
+		return mesh;
+	  },
 	
 	
 	
