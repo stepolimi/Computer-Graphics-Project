@@ -21,10 +21,14 @@ var vertexShader;
 var fragmentShader;
 var vaos;
 
-
 //Meshes variables
 var allMeshes;
 var birdRed;
+
+//shaders variables
+var positionAttributeLocation;
+var normalAttributeLocation;
+var uvAttributeLocation;
 
 
 
@@ -118,9 +122,9 @@ async function loadMeshes(){
 function setUpScene(){
 
     //define shader stuff
-    var positionAttributeLocation = gl.getAttribLocation(program, "inPosition");
-    var normalAttributeLocation = gl.getAttribLocation(program, "inNormal");
-    var uvAttributeLocation = gl.getAttribLocation(program, "in_uv");
+    positionAttributeLocation = gl.getAttribLocation(program, "inPosition");
+    normalAttributeLocation = gl.getAttribLocation(program, "inNormal");
+    uvAttributeLocation = gl.getAttribLocation(program, "in_uv");
 
 
     //add meshes to the scene
