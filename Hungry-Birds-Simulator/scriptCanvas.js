@@ -74,7 +74,7 @@ var normalTransformationMatrix;
 //camera variables
 var cx = 0;
 var cy = 0;
-var cz = 0;
+var cz = -5;
 var elev = 0;
 var ang = 0;
 var vx = 0;
