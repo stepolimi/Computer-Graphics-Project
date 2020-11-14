@@ -19,6 +19,7 @@ var canvas;
 var program;
 var vertexShader;
 var fragmentShader;
+var vaos;
 
 
 //Meshes variables
@@ -123,7 +124,7 @@ function setUpScene(){
 
 
     //add meshes to the scene
-    var vaos = new Array(allMeshes.length);
+    vaos = new Array(allMeshes.length);
     for (let i in allMeshes)
         addMeshToScene(i);
 }
