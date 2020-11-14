@@ -139,7 +139,7 @@ async function main() {
 
   // Clear the canvas
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  
+  gl.enable(gl.DEPTH_TEST); 
 
   // Tell it to use our program (pair of shaders)
   gl.useProgram(program);
