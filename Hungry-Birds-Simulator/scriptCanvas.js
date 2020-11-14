@@ -13,6 +13,10 @@ void main() {
 }
 `;
 
+
+var gl;
+var canvas;
+
 //Meshes variables
 var allMeshes;
 var birdRed;
@@ -62,8 +66,8 @@ function autoResizeCanvas(canvas) {
 
 async function main() {
   // Get a WebGL context
-  var canvas = document.getElementById("canvas");
-  var gl = canvas.getContext("webgl2");
+  canvas = document.getElementById("canvas");
+  gl = canvas.getContext("webgl2");
   if (!gl) {
     alert("GL context not opened");
     return;
