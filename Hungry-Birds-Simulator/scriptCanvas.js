@@ -324,7 +324,14 @@ function addMeshToScene(i) {
     elev += rvx;
     ang += rvy;
 
+    console.log("x: ")
     console.log(cx);
+
+    console.log("y: ")
+    console.log(cy);
+
+    console.log("z: ")
+    console.log(cz);
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
