@@ -70,7 +70,8 @@ var worldViewMatrix;
 var projectionMatrix;
 var normalTransformationMatrix;
 
-
+//objects positions
+var matricesArray;
 
 
 //camera variables
