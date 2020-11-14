@@ -71,6 +71,112 @@ var projectionMatrix;
 var normalTransformationMatrix;
 
 
+
+
+//camera variables
+var cx = 0;
+var cy = 13.5;
+var cz = - 9.5;
+var elev = - 30;
+var ang = 180;
+var vx = 0;
+var vy = 0;
+var vz = 0;
+var rvx = 0;
+var rvy = 0;
+
+window.addEventListener("keydown", keyFunctionDown);
+window.addEventListener("keyup", keyFunctionUp);
+
+//listener to keys pression
+function keyFunctionDown(e) {
+  switch (e.key) {
+    case "a":
+      vx = CAMERA_COORDS_SPEED;
+      break;
+
+    case "d":
+      vx = - CAMERA_COORDS_SPEED;
+      break;
+
+    case "ArrowUp":
+      vy = CAMERA_COORDS_SPEED;
+      break;
+
+    case "ArrowDown":
+      vy = - CAMERA_COORDS_SPEED;
+      break;
+
+    case "w":
+      vz = CAMERA_COORDS_SPEED;
+      break;
+
+    case "s":
+      vz = - CAMERA_COORDS_SPEED;
+      break;
+
+    case "q":
+      rvx = CAMERA_ANGLE_SPEED;
+      break;
+
+    case "e":
+      rvx = - CAMERA_ANGLE_SPEED;
+      break;
+
+    case "ArrowRight":
+      rvy = CAMERA_ANGLE_SPEED;
+      break;
+
+    case "ArrowLeft":
+      rvy = - CAMERA_ANGLE_SPEED;
+      break;
+
+    default:
+      break;
+  }
+}
+
+//listener to keys release
+function keyFunctionUp(e) {
+  switch (e.key) {
+    case "a":
+    case "d":
+      vx = 0;
+      break;
+
+    case "ArrowDown":
+    case "ArrowUp":
+      vy = 0;
+      break;
+
+    case "s":
+    case "w":
+      vz = 0;
+      break;
+
+    case "q":
+    case "e":
+      rvx = 0;
+      break;
+
+    case "ArrowLeft":
+    case "ArrowRight":
+      rvy = 0;
+      break;
+
+    default:
+      break;
+  }
+}
+
+
+
+
+
+
+
+
+
 function createShader(gl, type, source) {
   var shader = gl.createShader(type);
   gl.shaderSource(shader, source);
@@ -209,7 +315,19 @@ function addMeshToScene(i) {
  }
 
  function drawScene(){
-    viewMatrix = utils.MakeView(0.0, 13.5, -9.5, -30, 180);
+    //clear scene
+    gl.clearColor(0.0, 0.0, 0.0, 0.0);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
+
+    //move camera and calculate view matrix
+    cx += vx;
+    cy += vy;
+    cz += vz;
+    elev += rvx;
+    ang += rvy;
+
+    //base view matrix
+    viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
     for (var i = 0; i < allMeshes.length; i++) {
        worldViewMatrix = viewMatrix;
        projectionMatrix = utils.multiplyMatrices(perspectiveMatrix, worldViewMatrix);  
