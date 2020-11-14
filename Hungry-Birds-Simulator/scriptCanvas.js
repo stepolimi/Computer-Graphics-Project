@@ -326,6 +326,8 @@ function addMeshToScene(i) {
     elev += rvx;
     ang += rvy;
 
+    print(cx);
+
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
     for (var i = 0; i < allMeshes.length; i++) {
