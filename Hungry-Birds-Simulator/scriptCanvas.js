@@ -16,6 +16,10 @@ void main() {
 
 var gl;
 var canvas;
+var program;
+var vertexShader;
+var fragmentShader;
+
 
 //Meshes variables
 var allMeshes;
@@ -39,7 +43,7 @@ function createShader(gl, type, source) {
 }
 
 function createProgram(gl, vertexShader, fragmentShader) {
-  var program = gl.createProgram();
+  program = gl.createProgram();
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
   gl.linkProgram(program);
@@ -76,11 +80,11 @@ async function main() {
   
   
   // create GLSL shaders, upload the GLSL source, compile the shaders
-  var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-  var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+  vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+  fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
 
   // Link the two shaders into a program
-  var program = createProgram(gl, vertexShader, fragmentShader);
+  program = createProgram(gl, vertexShader, fragmentShader);
     
   //use this aspect ratio to keep proportions
   var aspect_ratio = gl.canvas.width*1.0/gl.canvas.height;
