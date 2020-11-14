@@ -53,6 +53,7 @@ var vaos;
 //Meshes variables
 var allMeshes;
 var birdRed;
+var sling;
 
 //shaders variables
 var positionAttributeLocation;
@@ -255,9 +256,12 @@ async function main() {
 
 
 async function loadMeshes(){
+    sling = await utils.loadMesh("/assets/Others/sling.obj");
     birdRed = await utils.loadMesh("/assets/Birds/red.obj");
 
+
     allMeshes = [
+    sling,
         birdRed
     ];
 }
