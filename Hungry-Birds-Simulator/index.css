@@ -10,6 +10,7 @@ body {
 }
 #canvas {
     display: block;
+    z-index: 0;
     background-image: url('resources/in-game-background.png');
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
