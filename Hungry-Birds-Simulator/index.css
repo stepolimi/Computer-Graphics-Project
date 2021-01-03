@@ -51,7 +51,26 @@ body {
     padding-bottom: 5vmin;
 }
 
+#menù{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-bottom: 5vmin;
+}
+
 #commands-button {
+    height:10vmin; 
+    width:20vmax; 
+    border-radius: 4vmin;
+    background-color: transparent;
+    border: 1vmin solid #ffa000;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    padding-bottom: 10vmin;
+}
+
+#menù-button {
     height:10vmin; 
     width:20vmax; 
     border-radius: 4vmin;
@@ -79,18 +98,31 @@ body {
     outline-style: none;
 }
 
+#menù-button:hover{
+    background-color: #ffb300;
+}
+
+#menù-button:focus{
+    outline-style: none;
+}
+
 #play-text{
     font-family: AngryBirds;
     font-weight: bolder;
     font-size: 4.5vmax;
 }
 
-#commands-text{
+#menù-text{
     font-family: AngryBirds;
     font-weight: bolder;
     font-size: 3.5vmax;
 }
 
+#menù-text{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 3.5vmax;
+}
 
 .modal {
     position: fixed; /* Stay in place */
@@ -116,7 +148,7 @@ body {
     font-size: 1vmax;
     padding: 0.5vmin;
   }
-  
+
   /* The Close Button */
   .close {
     color: #000000;
@@ -127,6 +159,46 @@ body {
   }
   
   .close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modalInGame {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-contentInGame {
+    background-color: #ffb300;
+    margin-top: 30vmin;
+    padding-bottom: 4vmin;
+    border: 1vmin solid #ffa000;
+  }
+
+  .modal-contentInGame li{
+    font-family: AngryBirds;
+    font-weight: bold;
+    font-size: 1vmax;
+    padding: 0.5vmin;
+  }
+  
+  /* The Close Button */
+  .closeInGame {
+    color: #000000;
+    padding-left: 95vmax;
+    float: inline-end;
+    font-size: 3vmax;
+    font-weight: bold;
+  }
+  
+  .closeInGame:hover, .closeInGame:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

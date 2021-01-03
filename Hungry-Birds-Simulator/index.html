@@ -26,6 +26,40 @@
         <canvas id="canvas" width="600" height="400">
             Your browser does not support canvas!
         </canvas>
+        <!-- menù tab -->
+        <div id="myModalInGame" class="modalInGame" style="display: none;">
+            <div class="modal-contentInGame">
+                <span class="closeMenù">&times;</span>
+                <ul>
+                    <li>
+                        pull the sling:   left arrow                
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                    <li>
+                        second command:     right arrow                    
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="menù" class="col-sm-12">
+            <button id="menù-button"  onclick="displayMenù()">
+                <p id="menù-text">
+                    Commands
+                </p>
+            </button>
+        </div>
     </div>
     
     <div id="div-play-game" class="container-fluid row">
@@ -90,6 +124,9 @@
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("commands-button");
     var span = document.getElementsByClassName("close")[0];
+    var modalInGame = document.getElementById("myModalInGame");
+    var btnInGame = document.getElementById("menù-button");
+    var spanInGame = document.getElementsByClassName("closeMenù")[0];
 
     btn.onclick = function(){
         modal.style.display = "block";
@@ -98,11 +135,19 @@
         modal.style.display = "none";
     }
 
+    spanInGame.onclick = function() {
+        modalInGame.style.display = "none";
+    }
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+
+    function displayMenù(){
+        modalInGame.style.display = "block";
     }
 
     function play(){
