@@ -291,7 +291,7 @@ function setUpScene(){
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
     var image = new Image();
-    image.src = baseDir + "textures/hungryTexture.png";
+    image.src =  "/textures/hungryTexture.png";
     image.onload = function () {
       gl.bindTexture(gl.TEXTURE_2D, texture);
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
