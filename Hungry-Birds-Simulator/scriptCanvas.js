@@ -88,7 +88,7 @@ var ambientLight = [1.0, 1.0, 1.0];
 //camera variables
 var cx = 0;
 var cy = 2;
-var cz = -10;
+var cz = -12;
 var elev = 0;
 var ang = 180;
 var vx = 0;
