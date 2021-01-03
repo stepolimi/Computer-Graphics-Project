@@ -90,7 +90,7 @@ var cx = -11.2;
 var cy = 2.6;
 var cz = 0.3;
 var elev = 0;
-var ang = 180;
+var ang = 270;
 var vx = 0;
 var vy = 0;
 var vz = 0;
@@ -364,7 +364,7 @@ function addMeshToScene(i) {
     cz += vz;
     elev += rvx;
     ang += rvy;
-
+/*
     console.log("x: ")
     console.log(cx);
 
@@ -379,7 +379,7 @@ function addMeshToScene(i) {
 
     console.log("ang: ")
     console.log(ang);
-
+*/
     setupLights();
 
     //base view matrix
