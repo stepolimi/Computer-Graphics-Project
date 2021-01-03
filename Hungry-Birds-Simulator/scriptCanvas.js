@@ -27,7 +27,9 @@ void main() {
 
 var fragmentShaderSource = `#version 300 es
 
-
+//ambient
+uniform vec3 ambientLightCol;
+uniform vec3 ambientMat;
 
 //texture
 uniform sampler2D in_texture;
