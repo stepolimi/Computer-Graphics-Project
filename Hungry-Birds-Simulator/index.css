@@ -71,7 +71,7 @@ body {
 }
 
 #menù-button {
-    height:5vmin; 
+    height:2.5vmin; 
     width:10vmax; 
     border-radius: 2vmin;
     background-color: transparent;
@@ -168,6 +168,8 @@ body {
 
   .modalInGame {
     position: fixed; /* Stay in place */
+    height: 100%;
+    width: 100%;
     z-index: 1; /* Sit on top */
     display: flex;
     align-items: center;
