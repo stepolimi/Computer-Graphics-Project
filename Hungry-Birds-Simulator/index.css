@@ -13,6 +13,7 @@ body {
     background-image: url('resources/in-game-background.png');
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 #title{
     font-family: AngryBirds;
@@ -54,8 +55,8 @@ body {
 #menù{
     position: fixed;
     margin-top: 5%;
-    margin-right: 5%;
-    padding-bottom: 5vmin;
+    margin-left: 90%;
+    z-index: 10;
 }
 
 #commands-button {
@@ -71,9 +72,6 @@ body {
 }
 
 #menù-button {
-    position: fixed;
-    margin-top: 5%;
-    margin-right: 5%;
     height:10vmin; 
     width:20vmax; 
     border-radius: 4vmin;
@@ -83,7 +81,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     text-align: center;
     padding-bottom: 10vmin;
-    z-index: 100;
+    z-index: 10;
 }
 
 #play-button:hover{
