@@ -30,7 +30,7 @@ precision mediump float;
 
 //ambient
 uniform vec3 ambientLightCol;
-uniform vec3 ambientMat;
+//uniform vec3 ambientMat;
 
 //texture
 uniform sampler2D in_texture;
@@ -43,7 +43,8 @@ out vec4 outColor;
 
 void main() {
   //computing ambient color
-  vec3 ambient = ambientLightCol * ambientMat;
+  //vec3 ambient = ambientLightCol * ambientMat;
+  vec3 ambient = ambientLightCol;
 
   outColor = vec4(clamp(ambient,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
 }
@@ -86,7 +87,7 @@ var normalTransformationMatrix;
 
 //lights variables
 var ambientLight = [0.15, 0.9, 0.8];
-var ambientMat = [0.4, 0.2, 0.6];
+//var ambientMat = [0.4, 0.2, 0.6];
 
 //camera variables
 var cx = 0;
@@ -296,7 +297,7 @@ function setUpScene(){
     normalMatrixPositionHandle = gl.getUniformLocation(program, 'nMatrix');
     worldViewMatrixPositionHandle = gl.getUniformLocation(program, 'worldViewMatrix');
     ambientLightColorHandle = gl.getUniformLocation(program, "ambientLightCol");
-    ambientMaterialHandle = gl.getUniformLocation(program, "ambientMat");
+    //ambientMaterialHandle = gl.getUniformLocation(program, "ambientMat");
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
     //add textures
@@ -324,7 +325,7 @@ function setUpScene(){
 function setupLights(){
   //ambient lights
   gl.uniform3fv(ambientLightColorHandle, ambientLight);
-  gl.uniform3fv(ambientMaterialHandle, ambientMat);
+  //gl.uniform3fv(ambientMaterialHandle, ambientMat);
 
 }
 
