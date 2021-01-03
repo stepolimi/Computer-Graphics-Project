@@ -364,7 +364,7 @@ function addMeshToScene(i) {
     cz += vz;
     elev += rvx;
     ang += rvy;
-/*
+
     console.log("x: ")
     console.log(cx);
 
@@ -379,7 +379,7 @@ function addMeshToScene(i) {
 
     console.log("ang: ")
     console.log(ang);
-*/
+
     setupLights();
 
     //base view matrix
