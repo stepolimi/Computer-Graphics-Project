@@ -86,7 +86,7 @@ var projectionMatrix;
 var normalTransformationMatrix;
 
 //lights variables
-var ambientLight = [0.15, 0.9, 0.8];
+var ambientLight = [0.5, 0.5, 0.5];
 //var ambientMat = [0.4, 0.2, 0.6];
 
 //camera variables
