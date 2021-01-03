@@ -71,7 +71,7 @@ body {
 }
 
 #menù-button {
-    height: 3.5vmin; 
+    height: 5vmin; 
     width: 10vmax; 
     border-radius: 2vmin;
     background-color: transparent;
@@ -195,7 +195,7 @@ body {
   /* The Close Button */
   .closeMenù {
     color: #000000;
-    padding-left: 95vmax;
+    margin-left: 95vmax;
     float: inline-end;
     font-size: 3vmax;
     font-weight: bold;
