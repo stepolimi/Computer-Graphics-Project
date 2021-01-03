@@ -86,9 +86,9 @@ var normalTransformationMatrix;
 var ambientLight = [1.0, 1.0, 1.0];
 
 //camera variables
-var cx = 0;
-var cy = 2;
-var cz = -12;
+var cx = -11.2;
+var cy = 2.6;
+var cz = 0.3;
 var elev = 0;
 var ang = 180;
 var vx = 0;
