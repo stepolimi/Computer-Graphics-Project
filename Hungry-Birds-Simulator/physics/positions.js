@@ -1,4 +1,4 @@
-var envMatrix = utils.MakeWorld(4.0, 0.0 , 0.0, 4.0, 0.0, 0.0, 5);
+var envMatrix = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 100);
 var slingMatrix = utils.MakeWorld(-4.0, 0.0 , 0.0, 90.0, 0.0, 0.0, 0.5);
 var redMatrix = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 1);
 
