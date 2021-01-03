@@ -181,7 +181,7 @@ body {
   .modal-contentInGame {
     background-color: #ffb300;
     margin-top: 30vmin;
-    padding-bottom: 4vmin;
+    padding-bottom: 2vmin;
     border: 1vmin solid #ffa000;
   }
 
@@ -190,6 +190,7 @@ body {
     font-weight: bold;
     font-size: 1vmax;
     padding: 0.5vmin;
+    margin-right: 30vmax;
   }
   
   /* The Close Button */
