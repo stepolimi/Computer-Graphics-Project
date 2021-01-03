@@ -26,6 +26,7 @@ void main() {
 `;
 
 var fragmentShaderSource = `#version 300 es
+precision mediump float;
 
 //ambient
 uniform vec3 ambientLightCol;
@@ -34,8 +35,6 @@ uniform vec3 ambientMat;
 //texture
 uniform sampler2D in_texture;
 
-precision mediump float;
-
 in vec2 fsUV;
 in vec3 fsNormal;
 in vec4 fs_pos;
@@ -43,9 +42,10 @@ in vec4 fs_pos;
 out vec4 outColor;
 
 void main() {
+  //computing ambient color
+  vec3 ambient = ambientLightCol * ambientMat;
 
-
-  outColor = vec4(1.0,0.0,0.0,0.5) * texture(in_texture, fsUV);
+  outColor = vec4(clamp(ambient,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
 }
 `;
 
