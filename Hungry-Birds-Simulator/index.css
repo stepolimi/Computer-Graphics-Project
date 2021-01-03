@@ -52,11 +52,14 @@ body {
 }
 
 #menù{
-
+    position: fixed;
+    margin-top: 5%;
+    margin-right: 5%;
     padding-bottom: 5vmin;
 }
 
 #commands-button {
+
     height:10vmin; 
     width:20vmax; 
     border-radius: 4vmin;
@@ -69,6 +72,9 @@ body {
 }
 
 #menù-button {
+    position: fixed;
+    margin-top: 5%;
+    margin-right: 5%;
     height:10vmin; 
     width:20vmax; 
     border-radius: 4vmin;
@@ -110,7 +116,7 @@ body {
     font-size: 4.5vmax;
 }
 
-#menù-text{
+#commands-text{
     font-family: AngryBirds;
     font-weight: bolder;
     font-size: 3.5vmax;
