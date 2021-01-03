@@ -374,6 +374,12 @@ function addMeshToScene(i) {
     console.log("z: ")
     console.log(cz);
 
+    console.log("elev: ")
+    console.log(elev);
+
+    console.log("ang: ")
+    console.log(ang);
+
     setupLights();
 
     //base view matrix
