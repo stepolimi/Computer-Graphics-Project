@@ -137,6 +137,7 @@
 
     spanInGame.onclick = function() {
         modalInGame.style.display = "none";
+        btnInGame.style.display = "block";
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -144,10 +145,15 @@
         if (event.target == modal) {
             modal.style.display = "none";
         }
+        else if (event.target == modalInGame) {
+            modalInGame.style.display = "none";
+            btnInGame.style.display = "block";
+        }
     }
 
     function displayMenù(){
         modalInGame.style.display = "block";
+        btnInGame.style.display = "none";
     }
 
     function play(){

@@ -194,7 +194,7 @@ body {
   }
   
   /* The Close Button */
-  .closeInGame {
+  .closeMenù {
     color: #000000;
     padding-left: 95vmax;
     float: inline-end;
@@ -202,7 +202,7 @@ body {
     font-weight: bold;
   }
   
-  .closeInGame:hover, .closeInGame:focus {
+  .closeMenù:hover, .closeMenù:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
