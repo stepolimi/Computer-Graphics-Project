@@ -53,7 +53,7 @@ body {
 
 #menù{
     position: fixed;
-    margin-top: 2%;
+    margin-top: 1%;
     margin-left: 90%;
     z-index: 1;
 }
@@ -190,7 +190,7 @@ body {
     font-weight: bold;
     font-size: 1vmax;
     padding: 0.5vmin;
-    margin-right: 30vmax;
+    margin-right: 30%;
   }
   
   /* The Close Button */
@@ -200,6 +200,7 @@ body {
     float: inline-end;
     font-size: 3vmax;
     font-weight: bold;
+    margin-top: 0;
   }
   
   .closeMenù:hover, .closeMenù:focus {
