@@ -46,7 +46,7 @@ void main() {
   //computing ambient color
   vec3 ambient = ambientLightCol * ambientMat;
 
-  outColor = vec4(clamp(ambient,0.0,1.0).rgb, 1.0) * texture(in_texture, fsUV);
+  outColor = vec4(ambient, 1.0) * texture(in_texture, fsUV);
 }
 `;
 
@@ -326,7 +326,7 @@ function setupLights(){
   //ambient lights
   gl.uniform3fv(ambientLightColorHandle, ambientLight);
   gl.uniform3fv(ambientMaterialHandle, ambientMat);
-  
+
 }
 
 
