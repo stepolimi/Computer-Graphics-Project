@@ -59,6 +59,12 @@ var vaos;
 //Meshes variables
 var allMeshes;
 var birdRed;
+var birdChuck;
+var birdBomb;
+var birdMatilda;
+var pig;
+var pigHelmet;
+var pigMustache;
 var sling;
 var environment;
 var texture;
@@ -272,12 +278,24 @@ async function loadMeshes(){
     environment = await utils.loadMesh("/assets/Others/environment.obj");
     sling = await utils.loadMesh("/assets/Others/sling.obj");
     birdRed = await utils.loadMesh("/assets/Birds/red.obj");
+    birdChuck = await utils.loadMesh("/assets/Birds/chuck.obj");
+    birdBomb = await utils.loadMesh("/assets/Birds/bomb.obj");
+    birdMatilda = await utils.loadMesh("/assets/Birds/matilda.obj"); 
+    pig = await utils.loadMesh("/assets/Pigs/pig.obj"); 
+    pigHelmet = await utils.loadMesh("/assets/Pigs/pighelment.obj"); 
+    pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
 
 
     allMeshes = [
         environment,
         sling,
-        birdRed
+        birdRed,
+        birdChuck,
+        birdBomb,
+        birdMatilda,
+        pig,
+        pigHelmet,
+        pigMustache
     ];
 }
   
@@ -365,7 +383,7 @@ function addMeshToScene(i) {
     elev += rvx;
     ang += rvy;
 
-    console.log("x: ")
+    /*console.log("x: ")
     console.log(cx);
 
     console.log("y: ")
@@ -378,7 +396,7 @@ function addMeshToScene(i) {
     console.log(elev);
 
     console.log("ang: ")
-    console.log(ang);
+    console.log(ang);*/
 
     setupLights();
 
