@@ -67,6 +67,7 @@ var pigHelmet;
 var pigMustache;
 var sling;
 var environment;
+var tnt;
 var texture;
 
 //shaders variables
@@ -277,6 +278,7 @@ async function main() {
 async function loadMeshes(){
     environment = await utils.loadMesh("/assets/Others/environment.obj");
     sling = await utils.loadMesh("/assets/Others/sling.obj");
+    tnt = await utils.loadMesh("/assets/Others/tnt.obj");
     birdRed = await utils.loadMesh("/assets/Birds/red.obj");
     birdChuck = await utils.loadMesh("/assets/Birds/chuck.obj");
     birdBomb = await utils.loadMesh("/assets/Birds/bomb.obj");
@@ -289,6 +291,7 @@ async function loadMeshes(){
     allMeshes = [
         environment,
         sling,
+        tnt,
         birdRed,
         birdChuck,
         birdBomb,
