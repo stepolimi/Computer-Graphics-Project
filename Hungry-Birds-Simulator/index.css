@@ -52,9 +52,22 @@ body {
 }
 
 #menù{
-    position: fixed;
+    position: absolute;
     margin-top: 1%;
     margin-left: 90%;
+    z-index: 1;
+}
+
+#menù-button {
+    position: absolute;
+    height: 5vmin; 
+    width: 10vmax; 
+    border-radius: 2vmin;
+    background-color: transparent;
+    border: 0.5vmin solid #ffa000;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
     z-index: 1;
 }
 
@@ -70,17 +83,6 @@ body {
     padding-bottom: 10vmin;
 }
 
-#menù-button {
-    height: 5vmin; 
-    width: 10vmax; 
-    border-radius: 2vmin;
-    background-color: transparent;
-    border: 0.5vmin solid #ffa000;
-    transition-duration: 0.4s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    text-align: center;
-    z-index: 1;
-}
 
 #play-button:hover{
     background-color: #ffb300;
