@@ -46,7 +46,7 @@ void main() {
   //computing ambient color
   vec3 ambient = ambientLightCol * ambientMat;
 
-  outColor = vec4(ambient, 1.0) * texture(in_texture, fsUV);
+  outColor = vec4(1.0,0.0,0.0,0.5) * texture(in_texture, fsUV);
 }
 `;
 
