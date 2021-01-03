@@ -27,6 +27,10 @@ void main() {
 
 var fragmentShaderSource = `#version 300 es
 
+//ambient
+uniform vec3 ambientLightCol;
+uniform vec3 ambientMat;
+
 //texture
 uniform sampler2D in_texture;
 
@@ -39,8 +43,10 @@ in vec4 fs_pos;
 out vec4 outColor;
 
 void main() {
-  
-  outColor = vec4(1.0,0.0,0.0,0.5) * texture(in_texture, fsUV);
+  //computing ambient color
+  vec3 ambient = ambientLightCol * ambientMat;
+
+  outColor = vec4(clamp(ambient,0.0,1.0).rgb, 1.0) * texture(in_texture, fsUV);
 }
 `;
 
@@ -69,6 +75,9 @@ var matrixLocation;
 var normalMatrixPositionHandle;
 var worldViewMatrixPositionHandle;
 
+var ambientMaterialHandle;
+var ambientLightColorHandle;
+
 //movement variables
 var perspectiveMatrix;
 var viewMatrix;
@@ -76,6 +85,9 @@ var worldViewMatrix;
 var projectionMatrix;
 var normalTransformationMatrix;
 
+//lights variables
+var ambientLight = [0.15, 0.9, 0.8];
+var ambientMat = [0.4, 0.2, 0.6];
 
 //camera variables
 var cx = 0;
@@ -284,6 +296,8 @@ function setUpScene(){
     textLocation = gl.getUniformLocation(program, "in_texture");
     normalMatrixPositionHandle = gl.getUniformLocation(program, 'nMatrix');
     worldViewMatrixPositionHandle = gl.getUniformLocation(program, 'worldViewMatrix');
+    ambientLightColorHandle = gl.getUniformLocation(program, "ambientLightCol");
+    ambientMaterialHandle = gl.getUniformLocation(program, "ambientMat");
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
     //add textures
@@ -306,6 +320,13 @@ function setUpScene(){
     for (let i in allMeshes)
         addMeshToScene(i);
 
+}
+
+function setupLights(){
+  //ambient lights
+  gl.uniform3fv(ambientLightColorHandle, ambientLight);
+  gl.uniform3fv(ambientMaterialHandle, ambientMat);
+  
 }
 
 
@@ -358,6 +379,8 @@ function addMeshToScene(i) {
 
     console.log("z: ")
     console.log(cz);
+
+    setupLights();
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
