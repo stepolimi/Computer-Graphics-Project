@@ -71,15 +71,14 @@ body {
 }
 
 #menù-button {
-    height:2.5vmin; 
-    width:10vmax; 
+    height: 1.5vmin; 
+    width: 10vmax; 
     border-radius: 2vmin;
     background-color: transparent;
     border: 0.5vmin solid #ffa000;
     transition-duration: 0.4s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     text-align: center;
-    padding-bottom: 10vmin;
     z-index: 1;
 }
 
@@ -170,7 +169,7 @@ body {
     position: fixed; /* Stay in place */
     height: 100%;
     width: 100%;
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     display: flex;
     align-items: center;
     justify-content: center;

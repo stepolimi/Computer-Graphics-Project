@@ -27,7 +27,7 @@
             Your browser does not support canvas!
         </canvas>
         <!-- menù tab -->
-        <div id="myModalInGame" class="modalInGame" style="display: none;">
+        <div id="myModalInGame" class="modalInGame" style="display: none;" class="container-fluid row">
             <div class="modal-contentInGame">
                 <span class="closeMenù">&times;</span>
                 <ul>
@@ -137,7 +137,6 @@
 
     spanInGame.onclick = function() {
         modalInGame.style.display = "none";
-        btnInGame.style.display = "block";
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -147,13 +146,11 @@
         }
         else if (event.target == modalInGame) {
             modalInGame.style.display = "none";
-            btnInGame.style.display = "block";
         }
     }
 
     function displayMenù(){
         modalInGame.style.display = "block";
-        btnInGame.style.display = "none";
     }
 
     function play(){
