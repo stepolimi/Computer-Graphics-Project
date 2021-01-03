@@ -27,6 +27,8 @@ void main() {
 
 var fragmentShaderSource = `#version 300 es
 
+//texture
+uniform sampler2D in_texture;
 
 precision mediump float;
 
@@ -38,7 +40,7 @@ out vec4 outColor;
 
 void main() {
   
-  outColor = vec4(1.0,0.0,0.0,0.5);
+  outColor = vec4(1.0,0.0,0.0,0.5) * texture(in_texture, fsUV);
 }
 `;
 
@@ -55,11 +57,13 @@ var allMeshes;
 var birdRed;
 var sling;
 var environment;
+var texture;
 
 //shaders variables
 var positionAttributeLocation;
 var normalAttributeLocation;
 var uvAttributeLocation;
+var textLocation;
 
 var matrixLocation;
 var normalMatrixPositionHandle;
@@ -277,10 +281,25 @@ function setUpScene(){
     normalAttributeLocation = gl.getAttribLocation(program, "inNormal");
     uvAttributeLocation = gl.getAttribLocation(program, "in_uv");
     matrixLocation = gl.getUniformLocation(program, "matrix");
+    textLocation = gl.getUniformLocation(program, "in_texture");
     normalMatrixPositionHandle = gl.getUniformLocation(program, 'nMatrix');
     worldViewMatrixPositionHandle = gl.getUniformLocation(program, 'worldViewMatrix');
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
+    //add textures
+    texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+
+    var image = new Image();
+    image.src = baseDir + "textures/hungryTexture.png";
+    image.onload = function () {
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.generateMipmap(gl.TEXTURE_2D);
+    };
 
     //add meshes to the scene
     vaos = new Array(allMeshes.length);
@@ -354,6 +373,11 @@ function addMeshToScene(i) {
       
        gl.uniformMatrix4fv(worldViewMatrixPositionHandle, gl.FALSE, utils.transposeMatrix(worldViewMatrix));
        
+       //activate textures
+       gl.activeTexture(gl.TEXTURE0);
+       gl.bindTexture(gl.TEXTURE_2D, texture);
+       gl.uniform1i(textLocation, 0);
+
        gl.bindVertexArray(vaos[i]);
        gl.drawElements(gl.TRIANGLES, allMeshes[i].indices.length, gl.UNSIGNED_SHORT, 0);
      }
