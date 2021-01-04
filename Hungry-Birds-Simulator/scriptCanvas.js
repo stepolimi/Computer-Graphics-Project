@@ -297,7 +297,9 @@ async function loadMeshes(){
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
 
     for(let i=0; i<5; i++){
-      choiche = Math.random() * (4 - 1) + 1;
+      let min = Math.ceil(1);
+      let max = Math.floor(4);
+      choiche = Math.floor(Math.random() * (max - min + 1)) + min;
       console.log(choiche);
 
       switch(choiche){
