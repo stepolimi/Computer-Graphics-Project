@@ -272,9 +272,17 @@ async function main() {
   drawScene();
 }
 
-
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 async function loadMeshes(){
+    let bird1;
+    let bird2;
+    let bird3;
+    let bird4;
+    let bird5;
+
     environment = await utils.loadMesh("/assets/Others/environment.obj");
     sling = await utils.loadMesh("/assets/Others/sling.obj");
     tnt = await utils.loadMesh("/assets/Others/tnt.obj");
@@ -286,16 +294,58 @@ async function loadMeshes(){
     pigHelmet = await utils.loadMesh("/assets/Pigs/pighelment.obj"); 
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
 
+    for(let i=0; i<5; i++){
+      let coiche = Math.random() * (4 - 1) + 1;
+      let bird;
+
+      switch(coiche){
+        case 1:
+          bird = birdRed;
+          break;
+        case 2:
+          bird = birdChuck;
+          break;
+        case 3:
+          bird = birdBomb;
+          break;
+        case 4:
+          bird = birdMatilda;
+          break;
+        default:
+          bird = birdRed;
+      }
+
+      switch(i){
+        case 0:
+          bird1 = bird;
+          break;
+        case 1:
+          bird2 = bird;
+          break;
+        case 2:
+          bird3 = bird;
+          break;
+        case 3:
+          bird4 = bird;
+          break;
+        case 4:
+          bird5 = bird;
+          break;
+        default:
+          break;
+      }
+    }
+
 
     allMeshes = [
         environment,
         sling,
         tnt,
-        birdRed,
-        birdChuck,
-        birdBomb,
-        birdMatilda,
-        birdMatilda,
+        bird1,
+        bird2,
+        bird3,
+        bird4,
+        bird5,
         pig,
         pigHelmet,
         pigMustache
@@ -387,15 +437,15 @@ function addMeshToScene(i) {
     elev += rvx;
     ang += rvy;
 
-    /*console.log("x: ")
+    console.log("x: ")
     console.log(cx);
-
+/*
     console.log("y: ")
     console.log(cy);
-*/
+
     console.log("z: ")
     console.log(cz);
-/*
+
     console.log("elev: ")
     console.log(elev);
 
