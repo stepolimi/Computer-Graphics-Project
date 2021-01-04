@@ -93,7 +93,7 @@ var normalTransformationMatrix;
 var ambientLight = [1.0, 1.0, 1.0];
 
 //camera variables
-var cx = -11.2;
+var cx = -9.7;
 var cy = 2.6;
 var cz = 0.3;
 var elev = 0;
@@ -277,11 +277,13 @@ function getRandomArbitrary(min, max) {
 }
 
 async function loadMeshes(){
+    let bird;
     let bird1;
     let bird2;
     let bird3;
     let bird4;
     let bird5;
+    let choiche;
 
     environment = await utils.loadMesh("/assets/Others/environment.obj");
     sling = await utils.loadMesh("/assets/Others/sling.obj");
@@ -295,8 +297,8 @@ async function loadMeshes(){
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
 
     for(let i=0; i<5; i++){
-      let coiche = Math.random() * (4 - 1) + 1;
-      let bird;
+      coiche = Math.random() * (4 - 1) + 1;
+      console.log(choiche);
 
       switch(coiche){
         case 1:
@@ -436,10 +438,10 @@ function addMeshToScene(i) {
     cz += vz;
     elev += rvx;
     ang += rvy;
-
+/*
     console.log("x: ")
     console.log(cx);
-/*
+
     console.log("y: ")
     console.log(cy);
 
