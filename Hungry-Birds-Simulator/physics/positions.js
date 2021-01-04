@@ -2,37 +2,35 @@
 //world: x:-4 --> x: +4
 var envMatrix = utils.MakeWorld(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0, 4.5);
 var slingMatrix = utils.MakeWorld(0, -0.45 , -7.0, 0.0, 0.0, 0.0, 0.15);
-var tntMatrix = utils.MakeWorld(0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.4);
 var bird1 = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 var bird2 = utils.MakeWorld(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);
 var bird3 = utils.MakeWorld(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
 var bird4 = utils.MakeWorld(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
 var bird5 = utils.MakeWorld(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
-var pigMatrix = utils.MakeWorld(-2.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 1);
-var	pigHelmetmatrix = utils.MakeWorld(-4.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 1);
-var pigMustacheMatrix = utils.MakeWorld(-6.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 1);
+var pig1 = utils.MakeWorld(0.0, 0.0 , 2.0, 0.0, 0.0, 0.0, 1);
+var	pig2 = utils.MakeWorld(0.0, 0.0 , 4.0, 0.0, 0.0, 0.0, 1);
+var pig3 = utils.MakeWorld(0.0, 1.4 , 3.0, 0.0, 0.0, 0.0, 1);
 var tower11 = utils.MakeWorld(0.0, 0.0 , 1.0, 0.0, 0.0, 0.0, 0.2);
-var tower12 = utils.MakeWorld(0.0, 0.6 , 1.0, 0.0, 0.0, 0.0, 0.2);
-var tower13 = utils.MakeWorld(0.0, 1.2 , 1.0, 0.0, 0.0, 0.0, 0.2);
-var tower14 = utils.MakeWorld(0.0, 1.8 , 1.0, 0.0, 0.0, 0.0, 0.2);
+var tower12 = utils.MakeWorld(0.0, 0.7 , 1.0, 0.0, 0.0, 0.0, 0.2);
+var tower13 = utils.MakeWorld(0.0, 1.4 , 1.0, 0.0, 0.0, 0.0, 0.2);
+var tower14 = utils.MakeWorld(0.0, 2.1 , 1.0, 0.0, 0.0, 0.0, 0.2);
 var tower21 = utils.MakeWorld(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, 0.2);
-var tower22 = utils.MakeWorld(0.0, 0.6 , 3.0, 0.0, 0.0, 0.0, 0.2);
+var tower22 = utils.MakeWorld(0.0, 0.7 , 3.0, 0.0, 0.0, 0.0, 0.2);
 var tower31 = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
-var tower32 = utils.MakeWorld(0.0, 0.6 , 5.0, 0.0, 0.0, 0.0, 0.2);
+var tower32 = utils.MakeWorld(0.0, 0.7 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 
 var worldPositions = [
 	envMatrix,
 	slingMatrix,
-	tntMatrix,
 	bird1,
 	bird2,
 	bird3,
 	bird4,
 	bird5,
-	pigMatrix,
-	pigHelmetmatrix,
-	pigMustacheMatrix,
+	pig1,
+	pig2,
+	pig3,
 	tower11,
 	tower12,
 	tower13,

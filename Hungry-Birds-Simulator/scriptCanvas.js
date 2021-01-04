@@ -288,6 +288,10 @@ async function loadMeshes(){
     let piece6;
     let piece7;
     let piece8;
+    let pigChoiche;
+    let pig1;
+    let pig2;
+    let pig3;
     let choiche;
 
     environment = await utils.loadMesh("/assets/Others/environment.obj");
@@ -339,6 +343,41 @@ async function loadMeshes(){
           break;
         case 4:
           bird5 = bird;
+          break;
+        default:
+          break;
+      }
+    }
+
+    //randomize pigs
+    for(let i=0; i<3; i++){
+      let min = Math.ceil(1);
+      let max = Math.floor(3);
+      choiche = Math.floor(Math.random() * (max - min + 1)) + min;
+
+      switch(choiche){
+        case 1:
+          pigChoiche = pig;
+          break;
+        case 2:
+          pigChoiche = pigHelmet;
+          break;
+        case 3:
+          pigChoiche = pigMustache;
+          break;
+        default:
+          pigChoiche = pig;
+      }
+
+      switch(i){
+        case 0:
+          pig1 = pigChoiche;
+          break;
+        case 1:
+          pig2 = pigChoiche;
+          break;
+        case 2:
+          pig3 = pigChoiche;
           break;
         default:
           break;
@@ -419,15 +458,14 @@ async function loadMeshes(){
     allMeshes = [
         environment,
         sling,
-        tnt,
         bird1,
         bird2,
         bird3,
         bird4,
         bird5,
-        pig,
-        pigHelmet,
-        pigMustache,
+        pig1,
+        pig2,
+        pig3,
         piece1,
         piece2,
         piece3,
