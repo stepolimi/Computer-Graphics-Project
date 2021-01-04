@@ -42,7 +42,7 @@ var worldPositions = [
 ];
 
 
-function waitingBirdsAnimation{
+function waitingBirdsAnimation(){
 	birdY += 0.01;
     worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
 	worldPositions[4] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*2.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
