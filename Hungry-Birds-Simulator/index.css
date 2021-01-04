@@ -237,10 +237,9 @@ body {
   .closeMenu {
     color: #000000;
     margin-left: 95vmax;
-    float: inline-end;
+    margin-top: 1vmin;
     font-size: 3vmax;
     font-weight: bold;
-    margin-top: 0;
   }
   
   .closeMenu:hover, .closeMenu:focus {
