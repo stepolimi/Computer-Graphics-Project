@@ -172,6 +172,8 @@ body {
   }
 
   .modalInGame {
+    top: 0px;
+    left: 0px;
     position: absolute; /* Stay in place */
     height: 100%;
     width: 100%;
