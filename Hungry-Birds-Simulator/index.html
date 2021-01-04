@@ -53,7 +53,20 @@
             </div>
         </div>
 
-
+        <div id="menu" >
+            <button id="menu-button"  onclick="displayMenu()">
+                <p id="menu-text">
+                    Commands
+                </p>
+            </button>
+        </div>
+        <div id="exit" >
+            <button id="exit-button"  onclick="exit()">
+                <p id="menu-text">
+                    Exit
+                </p>
+            </button>
+        </div>
     </div>
     
     <div id="div-play-game" class="container-fluid row">
@@ -143,6 +156,7 @@
         var div_canvas = document.getElementById("div-canvas");
         div_play.style.display = "block";
         div_canvas.style.display = "none";
+        location.reload();
     }
 
     // When the user clicks anywhere outside of the modal, close it
