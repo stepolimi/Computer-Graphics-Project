@@ -238,6 +238,9 @@ body {
     color: #000000;
     margin-left: 95vmax;
     margin-top: 1vmin;
+    padding: 0vmin;
+    height: 3vmin;
+    float: inline-end;
     font-size: 3vmax;
     font-weight: bold;
   }
