@@ -3,26 +3,42 @@
 var envMatrix = utils.MakeWorld(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0, 4.5);
 var slingMatrix = utils.MakeWorld(0, -0.45 , -7.0, 0.0, 0.0, 0.0, 0.15);
 var tntMatrix = utils.MakeWorld(0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.4);
-var redMatrix = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);		//bird 1
-var chuckMatrix = utils.MakeWorld(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	//bird 2
-var bombMatrix = utils.MakeWorld(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);		//bird 3
-var matildaMatrix = utils.MakeWorld(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	//bird 4
-var matilda2Matrix = utils.MakeWorld(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	//bird 5
+var bird1 = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
+var bird2 = utils.MakeWorld(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);
+var bird3 = utils.MakeWorld(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
+var bird4 = utils.MakeWorld(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
+var bird5 = utils.MakeWorld(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
 var pigMatrix = utils.MakeWorld(-2.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 1);
 var	pigHelmetmatrix = utils.MakeWorld(-4.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 1);
 var pigMustacheMatrix = utils.MakeWorld(-6.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 1);
+var tower11 = utils.MakeWorld(0.0, 0.0 , 1.0, 0.0, 0.0, 0.0, 0.2);
+var tower12 = utils.MakeWorld(0.0, 0.6 , 1.0, 0.0, 0.0, 0.0, 0.2);
+var tower13 = utils.MakeWorld(0.0, 1.2 , 1.0, 0.0, 0.0, 0.0, 0.2);
+var tower14 = utils.MakeWorld(0.0, 1.8 , 1.0, 0.0, 0.0, 0.0, 0.2);
+var tower21 = utils.MakeWorld(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, 0.2);
+var tower22 = utils.MakeWorld(0.0, 0.6 , 3.0, 0.0, 0.0, 0.0, 0.2);
+var tower31 = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
+var tower32 = utils.MakeWorld(0.0, 0.6 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 
 var worldPositions = [
 	envMatrix,
 	slingMatrix,
 	tntMatrix,
-	redMatrix,
-	chuckMatrix,
-	bombMatrix,
-	matildaMatrix,
-	matilda2Matrix,
+	bird1,
+	bird2,
+	bird3,
+	bird4,
+	bird5,
 	pigMatrix,
 	pigHelmetmatrix,
-	pigMustacheMatrix
+	pigMustacheMatrix,
+	tower11,
+	tower12,
+	tower13,
+	tower14,
+	tower21,
+	tower22,
+	tower31,
+	tower32
 ];

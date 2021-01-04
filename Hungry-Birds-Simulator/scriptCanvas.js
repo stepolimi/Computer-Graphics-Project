@@ -93,7 +93,7 @@ var normalTransformationMatrix;
 var ambientLight = [1.0, 1.0, 1.0];
 
 //camera variables
-var cx = -9.7;
+var cx = -9.8;
 var cy = 2.6;
 var cz = 0.3;
 var elev = 0;
@@ -272,10 +272,6 @@ async function main() {
   drawScene();
 }
 
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
 async function loadMeshes(){
     let bird;
     let bird1;
@@ -283,6 +279,15 @@ async function loadMeshes(){
     let bird3;
     let bird4;
     let bird5;
+    let piece;
+    let piece1;
+    let piece2;
+    let piece3;
+    let piece4;
+    let piece5;
+    let piece6;
+    let piece7;
+    let piece8;
     let choiche;
 
     environment = await utils.loadMesh("/assets/Others/environment.obj");
@@ -296,11 +301,11 @@ async function loadMeshes(){
     pigHelmet = await utils.loadMesh("/assets/Pigs/pighelment.obj"); 
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
 
+    //randomize birds
     for(let i=0; i<5; i++){
       let min = Math.ceil(1);
       let max = Math.floor(4);
       choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-      console.log(choiche);
 
       switch(choiche){
         case 1:
@@ -340,6 +345,76 @@ async function loadMeshes(){
       }
     }
 
+    //pseudo randomize blocks
+    for(let i=0; i<8; i++){
+
+      let min = Math.ceil(1);
+      let max = Math.floor(9);
+      choiche = Math.floor(Math.random() * (max - min + 1)) + min;
+      console.log(choiche);
+
+      switch(choiche){
+        case 1:
+          piece = tnt;
+          break;
+        case 2:
+          piece = tnt;
+          break;
+        case 3:
+          piece = tnt;
+          break;
+        case 4:
+          piece = tnt;
+          break;
+        case 5:
+          piece = tnt;
+          break;
+        case 6:
+          piece = tnt;
+          break;
+        case 7:
+          piece = tnt;
+          break;
+        case 8:
+          piece = tnt;
+          break;
+        case 9:
+          piece = tnt;
+          break;
+        default:
+          piece = tnt;
+      }//same number as the possible different pieces
+
+      switch(i){
+        case 0:
+          piece1 = piece;
+          break;
+        case 1:
+          piece2 = piece;
+          break;
+        case 2:
+          piece3 = piece;
+          break;
+        case 3:
+          piece4 = piece;
+          break;
+        case 4:
+          piece5 = piece;
+          break;
+        case 5:
+          piece6 = piece;
+          break;
+        case 6:
+          piece7 = piece;
+          break;
+        case 7:
+          piece8 = piece;
+          break;       
+        default:
+          break;
+      }//number of total pieces in the scene
+    }
+
 
     allMeshes = [
         environment,
@@ -352,7 +427,15 @@ async function loadMeshes(){
         bird5,
         pig,
         pigHelmet,
-        pigMustache
+        pigMustache,
+        piece1,
+        piece2,
+        piece3,
+        piece4,
+        piece5,
+        piece6,
+        piece7,
+        piece8
     ];
 }
   
