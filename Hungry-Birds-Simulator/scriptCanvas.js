@@ -295,6 +295,7 @@ async function loadMeshes(){
         birdChuck,
         birdBomb,
         birdMatilda,
+        birdMatilda,
         pig,
         pigHelmet,
         pigMustache
