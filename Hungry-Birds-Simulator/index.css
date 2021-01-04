@@ -64,9 +64,32 @@ body {
     top: 0px;
     right: 0px;
     height: 5vmin; 
+    width: 10vmax; 
+    border-radius: 2vmin;
+    margin: 1vmin;
+    background-color: transparent;
+    border: 0.5vmin solid #ffa000;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    z-index: 1;
+}
+
+#exit{
+    position: absolute;
+    top: 10vmin;
+    right: 0px;
+    z-index: 1;
+}
+
+#exit-button {
+    position: absolute;
+    top: 10vmin;
+    right: 0px;
+    height: 5vmin; 
     width: 7vmax; 
     border-radius: 2vmin;
-    padding: 1vmin;
+    margin: 1vmin;
     background-color: transparent;
     border: 0.5vmin solid #ffa000;
     transition-duration: 0.4s;
