@@ -77,7 +77,7 @@ body {
 
 #exit{
     position: absolute;
-    top: 10vmin;
+    top: 4vmin;
     right: 0px;
     z-index: 1;
 }
@@ -220,7 +220,6 @@ body {
   .modal-contentInGame {
     background-color: #ffb300;
     margin-top: 30vmin;
-    margin-left: 30vmax;
     padding-bottom: 2vmin;
     border: 1vmin solid #ffa000;
   }
@@ -230,6 +229,7 @@ body {
     font-weight: bold;
     font-size: 1vmax;
     padding: 0.5vmin;
+    margin-left: 40vmax;
     margin-right: 30%;
   }
   
