@@ -1,5 +1,6 @@
 // JavaScript source code
-function logichandler(){
+
+function logicHandler(){
 	//moove birds up and down
 	birdY += 0.01;
 }
