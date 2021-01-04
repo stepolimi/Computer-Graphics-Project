@@ -50,13 +50,6 @@
                         second command:     right arrow                    
                     </li>
                 </ul>
-                <div id="exit" >
-                    <button id="exit-button"  onclick="displayMenu()">
-                        <p id="menu-text">
-                            Commands
-                        </p>
-                    </button>
-                </div>
             </div>
         </div>
 
@@ -64,6 +57,13 @@
             <button id="menu-button"  onclick="displayMenu()">
                 <p id="menu-text">
                     Menù
+                </p>
+            </button>
+        </div>
+        <div id="exit" >
+            <button id="exit-button"  onclick="exit()">
+                <p id="menu-text">
+                    Commands
                 </p>
             </button>
         </div>
@@ -134,6 +134,7 @@
     var modalInGame = document.getElementById("myModalInGame");
     var btnInGame = document.getElementById("menu-button");
     var spanInGame = document.getElementsByClassName("closeMenu")[0];
+    var btnExit = document.getElementById("exit-button");
 
     btn.onclick = function(){
         modal.style.display = "block";
@@ -148,6 +149,13 @@
 
     spanInGame.onclick = function() {
         modalInGame.style.display = "none";
+    }
+
+    btnExit.onclick = function() {
+        var div_play = document.getElementById("div-play-game");
+        var div_canvas = document.getElementById("div-canvas");
+        div_play.style.display = "block";
+        div_canvas.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
