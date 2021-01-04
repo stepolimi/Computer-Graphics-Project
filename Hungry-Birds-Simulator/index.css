@@ -84,8 +84,8 @@ body {
 
 #exit-button {
     position: absolute;
-    top: 10vmin;
-    right: 0px;
+    top: 4vmin;
+    right: 3vmin;
     height: 5vmin; 
     width: 7vmax; 
     border-radius: 2vmin;
@@ -132,6 +132,14 @@ body {
 }
 
 #menu-button:focus{
+    outline-style: none;
+}
+
+#exit-button:hover{
+    background-color: #ffb300;
+}
+
+#exit-button:focus{
     outline-style: none;
 }
 
@@ -212,6 +220,7 @@ body {
   .modal-contentInGame {
     background-color: #ffb300;
     margin-top: 30vmin;
+    margin-left: 30vmax;
     padding-bottom: 2vmin;
     border: 1vmin solid #ffa000;
   }
