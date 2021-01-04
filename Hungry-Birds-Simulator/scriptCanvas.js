@@ -584,7 +584,7 @@ function addMeshToScene(i) {
 
     setupLights();
 
-    worldPosition[2] = changeBird1Y(birdY); //if it works I will add also the others
+    worldPositions[2] = changeBird1Y(birdY); //if it works I will add also the others
     
 
     //base view matrix
