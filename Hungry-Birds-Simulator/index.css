@@ -54,14 +54,13 @@ body {
 
 #menù{
     position: absolute;
-    margin-top: 1%;
+    margin-bottom: 95%;
     margin-left: 90%;
     z-index: 1;
     border: 0.5vmin solid #ffa000;
 }
 
 #menù-button {
-    position: absolute;
     height: 5vmin; 
     width: 10vmax; 
     border-radius: 2vmin;
