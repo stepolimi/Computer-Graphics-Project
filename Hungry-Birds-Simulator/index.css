@@ -77,14 +77,14 @@ body {
 
 #exit{
     position: absolute;
-    top: 4vmin;
+    top: 3vmin;
     right: 0px;
     z-index: 1;
 }
 
 #exit-button {
     position: absolute;
-    top: 4vmin;
+    top: 3vmin;
     right: 3vmin;
     height: 5vmin; 
     width: 7vmax; 
