@@ -247,7 +247,6 @@ async function main() {
   }
   autoResizeCanvas(canvas);
   
-  
   // create GLSL shaders, upload the GLSL source, compile the shaders
   vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
   fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
@@ -375,6 +374,7 @@ function addMeshToScene(i) {
  }
 
  function drawScene(){
+    autoResizeCanvas(canvas);
     //clear scene
     gl.clearColor(0.0, 0.0, 0.0, 0.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
