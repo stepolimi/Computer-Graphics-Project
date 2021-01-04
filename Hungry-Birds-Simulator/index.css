@@ -52,7 +52,7 @@ body {
     padding-bottom: 5vmin;
 }
 
-#menù{
+#menu{
     position: absolute;
     top: 0px;
     right: 0px;
@@ -60,7 +60,7 @@ body {
     border: 0.5vmin solid #ffa000;
 }
 
-#menù-button {
+#menu-button {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -104,11 +104,11 @@ body {
     outline-style: none;
 }
 
-#menù-button:hover{
+#menu-button:hover{
     background-color: #ffb300;
 }
 
-#menù-button:focus{
+#menu-button:focus{
     outline-style: none;
 }
 
@@ -124,7 +124,7 @@ body {
     font-size: 3.5vmax;
 }
 
-#menù-text{
+#menu-text{
     font-family: AngryBirds;
     font-weight: bolder;
     font-size: 1.5vmax;
@@ -200,7 +200,7 @@ body {
   }
   
   /* The Close Button */
-  .closeMenù {
+  .closeMenu {
     color: #000000;
     margin-left: 95vmax;
     float: inline-end;
@@ -209,7 +209,7 @@ body {
     margin-top: 0;
   }
   
-  .closeMenù:hover, .closeMenù:focus {
+  .closeMenu:hover, .closeMenu:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

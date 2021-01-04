@@ -27,16 +27,16 @@
             Your browser does not support canvas!
         </canvas>
         <div style=" position: absolute; z-index: 1; left: -30px; top: 10px; width: 16%; background-color:transparent; opacity: 1.0; padding: 1px 10px 1px 10px; overflow:auto; justify-content: space-between;">
-            <button id="menù-button"  onclick="displayMenù()">
-                <p id="menù-text">
+            <button id="menu-button"  onclick="displayMenu()">
+                <p id="menu-text">
                     Commands
                 </p>
             </button>
-          </div>
+        </div>
         <!-- menù tab -->
         <div id="myModalInGame" class="modalInGame" style="display: none;">
             <div class="modal-contentInGame">
-                <span class="closeMenù">&times;</span>
+                <span class="closeMenu">&times;</span>
                 <ul>
                     <li>
                         pull the sling:   left arrow                
@@ -60,8 +60,12 @@
             </div>
         </div>
 
-        <div id="menù" >
-
+        <div id="menu" >
+            <button id="menu-button"  onclick="displayMenu()">
+                <p id="menu-text">
+                    Commands
+                </p>
+            </button>
         </div>
     </div>
     
@@ -128,8 +132,8 @@
     var btn = document.getElementById("commands-button");
     var span = document.getElementsByClassName("close")[0];
     var modalInGame = document.getElementById("myModalInGame");
-    var btnInGame = document.getElementById("menù-button");
-    var spanInGame = document.getElementsByClassName("closeMenù")[0];
+    var btnInGame = document.getElementById("menu-button");
+    var spanInGame = document.getElementsByClassName("closeMenu")[0];
 
     btn.onclick = function(){
         modal.style.display = "block";
@@ -152,7 +156,7 @@
         }
     }
 
-    function displayMenù(){
+    function displayMenu(){
         modalInGame.style.display = "block";
     }
 
