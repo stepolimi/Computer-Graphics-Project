@@ -26,13 +26,6 @@
         <canvas id="canvas" width="600" height="400" >
             Your browser does not support canvas!
         </canvas>
-        <div style=" position: absolute; z-index: 1; left: -30px; top: 10px; width: 16%; background-color:transparent; opacity: 1.0; padding: 1px 10px 1px 10px; overflow:auto; justify-content: space-between;">
-            <button id="menu-button"  onclick="displayMenu()">
-                <p id="menu-text">
-                    Commands
-                </p>
-            </button>
-        </div>
         <!-- menù tab -->
         <div id="myModalInGame" class="modalInGame" style="display: none;">
             <div class="modal-contentInGame">
@@ -63,7 +56,7 @@
         <div id="menu" >
             <button id="menu-button"  onclick="displayMenu()">
                 <p id="menu-text">
-                    Commands
+                    Menù
                 </p>
             </button>
         </div>
@@ -142,6 +135,10 @@
         modal.style.display = "none";
     }
 
+    btnInGame.onclick = function(){
+        modalInGame.style.display = "block";
+    }
+
     spanInGame.onclick = function() {
         modalInGame.style.display = "none";
     }
@@ -154,10 +151,6 @@
         else if (event.target == modalInGame) {
             modalInGame.style.display = "none";
         }
-    }
-
-    function displayMenu(){
-        modalInGame.style.display = "block";
     }
 
     function play(){

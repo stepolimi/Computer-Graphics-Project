@@ -57,7 +57,6 @@ body {
     top: 0px;
     right: 0px;
     z-index: 1;
-    border: 0.5vmin solid #ffa000;
 }
 
 #menu-button {
@@ -65,8 +64,9 @@ body {
     top: 0px;
     right: 0px;
     height: 5vmin; 
-    width: 10vmax; 
+    width: 7vmax; 
     border-radius: 2vmin;
+    padding: 1vmin;
     background-color: transparent;
     border: 0.5vmin solid #ffa000;
     transition-duration: 0.4s;
@@ -172,7 +172,7 @@ body {
   }
 
   .modalInGame {
-    position: fixed; /* Stay in place */
+    position: absolute; /* Stay in place */
     height: 100%;
     width: 100%;
     z-index: 2; /* Sit on top */
