@@ -21,9 +21,9 @@ var tower32 = utils.MakeWorld(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 
 var worldPositions = [
-	envMatrix,
-	slingMatrix,
-	bird1,
+	envMatrix,  //0
+	slingMatrix,	//1
+	bird1,			//2
 	bird2,
 	bird3,
 	bird4,
@@ -40,3 +40,8 @@ var worldPositions = [
 	tower31,
 	tower32
 ];
+
+
+function changeBird1Y(y){
+	return utils.MakeWorld(-0.5,  0.1 + Math.sin(y)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
+}

@@ -70,6 +70,9 @@ var environment;
 var tnt;
 var texture;
 
+//
+var birdY = 0;
+
 //shaders variables
 var positionAttributeLocation;
 var normalAttributeLocation;
@@ -555,6 +558,8 @@ function addMeshToScene(i) {
     gl.clearColor(0.0, 0.0, 0.0, 0.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
 
+    logicHandler();  
+
     //move camera and calculate view matrix
     cx += vx;
     cy += vy;
@@ -578,6 +583,9 @@ function addMeshToScene(i) {
     console.log(ang);*/
 
     setupLights();
+
+    worldPosition[2] = changeBird1Y(birdY); //if it works I will add also the others
+    
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
