@@ -392,10 +392,10 @@ function addMeshToScene(i) {
 
     console.log("y: ")
     console.log(cy);
-
+*/
     console.log("z: ")
     console.log(cz);
-
+/*
     console.log("elev: ")
     console.log(elev);
 
