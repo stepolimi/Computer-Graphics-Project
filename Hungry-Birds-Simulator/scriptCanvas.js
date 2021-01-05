@@ -115,7 +115,7 @@ window.addEventListener("keyup", keyFunctionUp);
 //listener to keys pression
 function keyFunctionDown(e) {
     switch (e.key) {
-        case "SpaceBar":
+        case "Spacebar":
             scaleSlingElasticX();
             break;
         case "a":
@@ -166,7 +166,7 @@ function keyFunctionDown(e) {
 //listener to keys release
 function keyFunctionUp(e) {
     switch (e.key) {
-        case "SpaceBar":
+        case "Spacebar":
             break;
 
         case "a":
