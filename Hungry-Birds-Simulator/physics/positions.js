@@ -18,7 +18,7 @@ var tower21 = utils.MakeWorld(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, 0.2);
 var tower22 = utils.MakeWorld(0.0, 0.8 , 3.0, 0.0, 0.0, 0.0, 0.2);
 var tower31 = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
 var tower32 = utils.MakeWorld(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, 0.2);
-var slingElasticmatrix = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.3);
+var slingElasticMatrix = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 1);
 
 
 var worldPositions = [
@@ -40,7 +40,7 @@ var worldPositions = [
 	tower22,
 	tower31,
 	tower32,
-	slingElasticmatrix
+	slingElasticMatrix
 ];
 
 
