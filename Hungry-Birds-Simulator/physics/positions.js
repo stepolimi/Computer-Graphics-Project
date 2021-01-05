@@ -18,6 +18,7 @@ var tower21 = utils.MakeWorld(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, 0.2);
 var tower22 = utils.MakeWorld(0.0, 0.8 , 3.0, 0.0, 0.0, 0.0, 0.2);
 var tower31 = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
 var tower32 = utils.MakeWorld(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, 0.2);
+var slingElasticmatrix = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.3);
 
 
 var worldPositions = [
@@ -38,13 +39,14 @@ var worldPositions = [
 	tower21,
 	tower22,
 	tower31,
-	tower32
+	tower32,
+	slingElasticmatrix
 ];
 
 
 function waitingBirdsAnimation(){
 	birdY += 0.01;
-    worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
+    worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*2.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
 	worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
 	worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
 	worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  

@@ -66,6 +66,7 @@ var pig;
 var pigHelmet;
 var pigMustache;
 var sling;
+var elastic;
 var environment;
 var tnt;
 var texture;
@@ -299,6 +300,7 @@ async function loadMeshes(){
 
     environment = await utils.loadMesh("/assets/Others/environment.obj");
     sling = await utils.loadMesh("/assets/Others/sling.obj");
+    elastic = await utils.loadMesh("/assets/Others/slingElastic.obj");
     tnt = await utils.loadMesh("/assets/Others/tnt.obj");
     birdRed = await utils.loadMesh("/assets/Birds/red.obj");
     birdChuck = await utils.loadMesh("/assets/Birds/chuck.obj");
@@ -476,7 +478,8 @@ async function loadMeshes(){
         piece5,
         piece6,
         piece7,
-        piece8
+        piece8,
+        elastic
     ];
 }
   
