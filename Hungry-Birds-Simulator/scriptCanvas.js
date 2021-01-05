@@ -73,6 +73,7 @@ var texture;
 
 //
 var birdY = 0;
+var elasticSX = 0;
 
 //shaders variables
 var positionAttributeLocation;
@@ -113,83 +114,89 @@ window.addEventListener("keyup", keyFunctionUp);
 
 //listener to keys pression
 function keyFunctionDown(e) {
-  switch (e.key) {
-    case "a":
-      vx = CAMERA_COORDS_SPEED;
-      break;
-
-    case "d":
-      vx = - CAMERA_COORDS_SPEED;
-      break;
-
-    case "ArrowUp":
-      vy = CAMERA_COORDS_SPEED;
-      break;
-
-    case "ArrowDown":
-      vy = - CAMERA_COORDS_SPEED;
-      break;
-
-    case "w":
-      vz = CAMERA_COORDS_SPEED;
-      break;
-
-    case "s":
-      vz = - CAMERA_COORDS_SPEED;
-      break;
-
-    case "q":
-      rvx = CAMERA_ANGLE_SPEED;
-      break;
-
-    case "e":
-      rvx = - CAMERA_ANGLE_SPEED;
-      break;
-
-    case "ArrowRight":
-      rvy = CAMERA_ANGLE_SPEED;
-      break;
-
-    case "ArrowLeft":
-      rvy = - CAMERA_ANGLE_SPEED;
-      break;
-
-    default:
-      break;
-  }
+    switch (e.key) {
+        case "SpaceBar":
+            scaleSlingElasticX();
+            break;
+        case "a":
+          vx = CAMERA_COORDS_SPEED;
+          break;
+        
+        case "d":
+          vx = - CAMERA_COORDS_SPEED;
+          break;
+        
+        case "ArrowUp":
+          vy = CAMERA_COORDS_SPEED;
+          break;
+        
+        case "ArrowDown":
+          vy = - CAMERA_COORDS_SPEED;
+          break;
+        
+        case "w":
+          vz = CAMERA_COORDS_SPEED;
+          break;
+        
+        case "s":
+          vz = - CAMERA_COORDS_SPEED;
+          break;
+        
+        case "q":
+          rvx = CAMERA_ANGLE_SPEED;
+          break;
+        
+        case "e":
+          rvx = - CAMERA_ANGLE_SPEED;
+          break;
+        
+        case "ArrowRight":
+          rvy = CAMERA_ANGLE_SPEED;
+          break;
+        
+        case "ArrowLeft":
+          rvy = - CAMERA_ANGLE_SPEED;
+          break;
+        
+        default:
+          break;
+    }
 }
 
 //listener to keys release
 function keyFunctionUp(e) {
-  switch (e.key) {
-    case "a":
-    case "d":
-      vx = 0;
-      break;
+    switch (e.key) {
+        case "SpaceBar":
+            break;
 
-    case "ArrowDown":
-    case "ArrowUp":
-      vy = 0;
-      break;
-
-    case "s":
-    case "w":
-      vz = 0;
-      break;
-
-    case "q":
-    case "e":
-      rvx = 0;
-      break;
-
-    case "ArrowLeft":
-    case "ArrowRight":
-      rvy = 0;
-      break;
-
-    default:
-      break;
-  }
+        case "a":
+        case "d":
+            vx = 0;
+            break;
+        
+        case "ArrowDown":
+        case "ArrowUp":
+            vy = 0;
+            break;
+        
+        case "s":
+        case "w":
+            vz = 0;
+            break;
+        
+        case "q":
+        case "e":
+            rvx = 0;
+            break;
+        
+        case "ArrowLeft":
+        case "ArrowRight":
+            rvy = 0;
+            break;
+        
+        default:
+            break;
+    }
 }
 
 

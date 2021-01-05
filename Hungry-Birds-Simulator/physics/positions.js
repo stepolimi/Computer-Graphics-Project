@@ -22,32 +22,37 @@ var slingElasticMatrix = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
 
 
 var worldPositions = [
-	envMatrix,  //0
-	slingMatrix,	//1
-	bird1,			//2
-	bird2,
-	bird3,
-	bird4,
-	bird5,
-	pig1,
-	pig2,
-	pig3,
-	tower11,
-	tower12,
-	tower13,
-	tower14,
-	tower21,
-	tower22,
-	tower31,
-	tower32,
-	slingElasticMatrix
+	envMatrix,				//0
+	slingMatrix,			//1
+	bird1,					//2
+	bird2,					//3
+	bird3,					//4
+	bird4,					//5
+	bird5,					//6
+	pig1,					//7
+	pig2,					//8
+	pig3,					//9
+	tower11,				//10
+	tower12,				//11
+	tower13,				//12
+	tower14,				//13
+	tower21,				//14
+	tower22,				//15
+	tower31,				//16
+	tower32,				//17
+	slingElasticMatrix		//18
 ];
 
 
 function waitingBirdsAnimation(){
-	birdY += 0.01;
+	birdY += BIRD_Y;
     worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*2.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
 	worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
 	worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
 	worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
+}
+
+function scaleSlingElasticX(){
+	elasticSX += SLING_ELASTIC_X_SCALING_SPEED;
+	worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, MakeScaleNuMatrix(0.1+elasticSX,0.1,0.1));
 }
