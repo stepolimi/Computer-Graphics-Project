@@ -450,6 +450,23 @@ var utils={
 		return out;
 	},
 
+		MakeWorldScaled: function(tx, ty, tz, rx, ry, rz, sx, sy, sz){
+	//Creates a world matrix for an object.
+
+		var Rx = this.MakeRotateXMatrix(ry);                
+		var Ry = this.MakeRotateYMatrix(rx);
+		var Rz = this.MakeRotateZMatrix(rz);  
+		var S  = this.MakeScaleNuMatrix(sx, sy, sz);
+		var T =  this.MakeTranslateMatrix(tx, ty, tz);         
+		   
+		out = this.multiplyMatrices(Rz, S);
+		out = this.multiplyMatrices(Ry, out);
+		out = this.multiplyMatrices(Rx, out);  
+		out = this.multiplyMatrices(T, out);
+
+		return out;
+	},
+
 	MakeView: function(cx, cy, cz, elev, ang) {
 	// Creates in {out} a view matrix. The camera is centerd in ({cx}, {cy}, {cz}).
 	// It looks {ang} degrees on y axis, and {elev} degrees on the x axis.
