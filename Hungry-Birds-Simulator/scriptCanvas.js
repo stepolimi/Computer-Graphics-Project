@@ -121,6 +121,7 @@ function scaleSlingElastic(e){
 
 function throwBird(e){
     isPressed = false;
+    elasticScalingZ = 0;
     worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
 }
 
