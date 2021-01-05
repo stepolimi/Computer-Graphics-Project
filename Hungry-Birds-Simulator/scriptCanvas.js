@@ -109,8 +109,8 @@ var vz = 0;
 var rvx = 0;
 var rvy = 0;
 
-window.addEventListener("onmousedown", scaleSlingElastic);
-window.addEventListener("onmouseup", throwBird);
+window.addEventListener("mousedown", scaleSlingElastic);
+window.addEventListener("mouseup", throwBird);
 
 
 
