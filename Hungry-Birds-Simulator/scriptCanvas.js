@@ -73,7 +73,8 @@ var texture;
 
 //
 var birdY = 0;
-var elasticSX = 0;
+var elasticScalingZ = 0;
+var elasticScalingY = 0;
 
 //shaders variables
 var positionAttributeLocation;
@@ -111,16 +112,16 @@ var rvy = 0;
 
 window.addEventListener("mousedown", scaleSlingElastic);
 window.addEventListener("mouseup", throwBird);
-
+var isPressed = false;
 
 
 function scaleSlingElastic(e){
-    console.log("sto tirando");
-    scaleSlingElasticX();
+    isPressed = true;
 }
 
 function throwBird(e){
-    console.log("uccello lanciatooo")
+    isPressed = false;
+    worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
 }
 
 window.addEventListener("keydown", keyFunctionDown);
@@ -130,11 +131,11 @@ window.addEventListener("keyup", keyFunctionUp);
 //listener to keys pression
 function keyFunctionDown(e) {
     switch (e.key) {
-        case "a":
+        case "w":
           vx = CAMERA_COORDS_SPEED;
           break;
         
-        case "d":
+        case "s":
           vx = - CAMERA_COORDS_SPEED;
           break;
         
@@ -146,11 +147,11 @@ function keyFunctionDown(e) {
           vy = - CAMERA_COORDS_SPEED;
           break;
         
-        case "w":
+        case "d":
           vz = CAMERA_COORDS_SPEED;
           break;
         
-        case "s":
+        case "a":
           vz = - CAMERA_COORDS_SPEED;
           break;
         
@@ -162,11 +163,11 @@ function keyFunctionDown(e) {
           rvx = - CAMERA_ANGLE_SPEED;
           break;
         
-        case "ArrowRight":
+        case "ArrowLeft":
           rvy = CAMERA_ANGLE_SPEED;
           break;
         
-        case "ArrowLeft":
+        case "ArrowRight":
           rvy = - CAMERA_ANGLE_SPEED;
           break;
         
@@ -178,8 +179,8 @@ function keyFunctionDown(e) {
 //listener to keys release
 function keyFunctionUp(e) {
     switch (e.key) {
-        case "a":
-        case "d":
+        case "w":
+        case "s":
             vx = 0;
             break;
         
@@ -188,8 +189,8 @@ function keyFunctionUp(e) {
             vy = 0;
             break;
         
-        case "s":
-        case "w":
+        case "d":
+        case "a":
             vz = 0;
             break;
         
@@ -603,6 +604,8 @@ function addMeshToScene(i) {
     setupLights();
 
     waitingBirdsAnimation();
+    if(isPressed) 
+        scaleSlingElasticZ();
 
     
 

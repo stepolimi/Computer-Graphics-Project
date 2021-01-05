@@ -52,7 +52,7 @@ function waitingBirdsAnimation(){
 	worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
 }
 
-function scaleSlingElasticX(){
-	elasticSX += SLING_ELASTIC_X_SCALING_SPEED;
-	worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticSX);
+function scaleSlingElasticZ(){
+	elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
+	worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 }
