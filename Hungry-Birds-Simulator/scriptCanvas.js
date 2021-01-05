@@ -109,15 +109,27 @@ var vz = 0;
 var rvx = 0;
 var rvy = 0;
 
+window.addEventListener("onmousedown", scaleSlingElastic);
+window.addEventListener("onmouseup", throwBird);
+
+
+
+function scaleSlingElastic(e){
+    console.log("sto tirando");
+    scaleSlingElasticX();
+}
+
+function throwBird(e){
+    console.log("uccello lanciatooo")
+}
+
 window.addEventListener("keydown", keyFunctionDown);
 window.addEventListener("keyup", keyFunctionUp);
+
 
 //listener to keys pression
 function keyFunctionDown(e) {
     switch (e.key) {
-        case "Spacebar":
-            scaleSlingElasticX();
-            break;
         case "a":
           vx = CAMERA_COORDS_SPEED;
           break;
@@ -166,9 +178,6 @@ function keyFunctionDown(e) {
 //listener to keys release
 function keyFunctionUp(e) {
     switch (e.key) {
-        case "Spacebar":
-            break;
-
         case "a":
         case "d":
             vx = 0;
