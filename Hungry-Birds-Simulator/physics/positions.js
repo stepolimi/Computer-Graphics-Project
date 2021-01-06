@@ -92,11 +92,11 @@ function scaleSlingElasticZ(){
 		else
 			elasticRotationY -= SLING_ELASTIC_Y_SPEED;
 
-		worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0 + elasticRotationY, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
+		worldPositions[18] = utils.MakeWorldScaled(0, 1.0 + elasticRotationY , -7.0 , 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	}
 	else
 		worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	if (counter < 5)
-		worldPositions[2 + counter] = utils.MakeWorld(0.0, 1.1 , -7.2 - elasticScalingZ*5.5, 0.0, 90.0, 0.0, 0.5);
+		worldPositions[2 + counter] = utils.MakeWorld(0.0, 1.1 + elasticRotationY , -7.2 - elasticScalingZ*5.5, 0.0, 90.0, 0.0, 0.5);
 	
 }
