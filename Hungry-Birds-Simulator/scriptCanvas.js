@@ -133,13 +133,6 @@ function throwBird(e){
     counter ++;
 }
 
-function isSlingElasticRotating(e){
-    isRotating = true;
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    console.log("mouseY" + mouseY);
-}
 
 window.addEventListener("keydown", keyFunctionDown);
 window.addEventListener("keyup", keyFunctionUp);
@@ -276,48 +269,57 @@ function autoResizeCanvas(canvas) {
 }
 
 async function main() {
-  // Get a WebGL context
-  canvas = document.getElementById("canvas");
-  gl = canvas.getContext("webgl2");
-  if (!gl) {
-    alert("GL context not opened");
-    return;
-  }
-  autoResizeCanvas(canvas);
-  
-  canvas.addEventListener("mousedown", scaleSlingElastic);
-  canvas.addEventListener("mouseup", throwBird);
-  canvas.addEventListener("mousemove", isSlingElasticRotating)
-
-  
-  if(mouseY < 0)
-    mouseY = 0.0;
-  if(mouseY > canvas.height)
-    mouseY = canvas.height;
-
-  // create GLSL shaders, upload the GLSL source, compile the shaders
-  vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-  fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
-
-  // Link the two shaders into a program
-  program = createProgram(gl, vertexShader, fragmentShader);
+    // Get a WebGL context
+    canvas = document.getElementById("canvas");
+    gl = canvas.getContext("webgl2");
+    if (!gl) {
+      alert("GL context not opened");
+      return;
+    }
+    autoResizeCanvas(canvas);
     
-  //use this aspect ratio to keep proportions
-  var aspect_ratio = gl.canvas.width*1.0/gl.canvas.height;
-
-
-  // Tell WebGL how to convert from clip space to pixels
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-
-  // Clear the canvas
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  gl.enable(gl.DEPTH_TEST); 
-
-  // Tell it to use our program (pair of shaders)
-  gl.useProgram(program);
-  await loadMeshes();
-  setUpScene();
-  drawScene();
+    canvas.addEventListener("mousedown", scaleSlingElastic);
+    canvas.addEventListener("mouseup", throwBird);
+    canvas.addEventListener("mousemove", isSlingElasticRotating)
+    
+    
+    function isSlingElasticRotating(e){
+        isRotating = true;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    
+        console.log("mouseY" + mouseY);
+    }
+    
+    
+    if(mouseY < 0)
+      mouseY = 0.0;
+    if(mouseY > canvas.height)
+      mouseY = canvas.height;
+    
+    // create GLSL shaders, upload the GLSL source, compile the shaders
+    vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+    fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+    
+    // Link the two shaders into a program
+    program = createProgram(gl, vertexShader, fragmentShader);
+      
+    //use this aspect ratio to keep proportions
+    var aspect_ratio = gl.canvas.width*1.0/gl.canvas.height;
+    
+    
+    // Tell WebGL how to convert from clip space to pixels
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+    
+    // Clear the canvas
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.enable(gl.DEPTH_TEST); 
+    
+    // Tell it to use our program (pair of shaders)
+    gl.useProgram(program);
+    await loadMeshes();
+    setUpScene();
+    drawScene();
 }
 
 async function loadMeshes(){

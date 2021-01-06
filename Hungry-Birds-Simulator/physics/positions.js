@@ -95,7 +95,8 @@ function scaleSlingElasticZ(){
 			elasticRotationY == -90.0;
 
 			//elasticRotationY = -(mouseY % 9) * 10;
-			console.log(elasticRotationY)
+		console.log(elasticRotationY);
+		console.log("y " mouseY)
 		worldPositions[18] = utils.MakeWorldScaled(0.0, 1.0 , -7.0 , 0.0, 0.0 + elasticRotationY, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	}
 	else
