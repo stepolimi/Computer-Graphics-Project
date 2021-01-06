@@ -71,10 +71,11 @@ var environment;
 var tnt;
 var texture;
 
-//
+// variables for objects movements
 var birdY = 0;
 var elasticScalingZ = 0;
 var elasticScalingY = 0;
+var elasticRotationY = 0;
 
 //shaders variables
 var positionAttributeLocation;
@@ -113,7 +114,9 @@ var rvy = 0;
 
 var isPressed = false;
 var counter = 0;
-var isPlaying = false;
+var isRotating = false;
+var mouseX = 0.0;
+var mouseY = 0.0;
 
 function scaleSlingElastic(e){ 
     isPressed = true;
@@ -121,15 +124,16 @@ function scaleSlingElastic(e){
 
 function throwBird(e){
     isPressed = false;
-    if(isPlaying){
-        elasticScalingZ = 0;
-        worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
-        counter ++;
-    }
+    isRotating = false;
+    elasticScalingZ = 0;
+    worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
+    counter ++;
 }
 
 function isSlingElasticRotating(e){
-
+    isRotating = true;
+    mouseX = e.clientX;
+    mousey = e.clientY;
 }
 
 window.addEventListener("keydown", keyFunctionDown);
@@ -616,7 +620,7 @@ function addMeshToScene(i) {
     setupLights();
 
     waitingBirdsAnimation();
-    if(isPressed && isPlaying) 
+    if(isPressed) 
         scaleSlingElasticZ();
 
     

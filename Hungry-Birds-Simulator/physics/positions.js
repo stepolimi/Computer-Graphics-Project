@@ -86,7 +86,16 @@ function waitingBirdsAnimation(){
 function scaleSlingElasticZ(){
 	if(elasticScalingZ*5.5 < 0.7)
 		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
-	worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
+	if(isRotating){
+		if(mouseY <= canvas.height/2)
+			elasticRotationY += SLING_ELASTIC_Y_SPEED;
+		else
+			elasticRotationY -= SLING_ELASTIC_Y_SPEED;
+
+		worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0 + elasticRotationY, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
+	}
+	else
+		worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	if (counter < 5)
 		worldPositions[2 + counter] = utils.MakeWorld(0.0, 1.1 , -7.2 - elasticScalingZ*5.5, 0.0, 90.0, 0.0, 0.5);
 	
