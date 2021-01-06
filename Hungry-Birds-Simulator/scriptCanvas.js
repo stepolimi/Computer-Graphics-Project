@@ -135,7 +135,7 @@ function throwBird(e){
 function isSlingElasticRotating(e){
     isRotating = true;
     mouseX = e.clientX;
-    mousey = e.clientY;
+    mouseY = e.clientY;
     console.log("mouseX " + mouseX);
     console.log("mouseY" + mouseY);
 }
