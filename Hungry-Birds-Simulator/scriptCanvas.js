@@ -128,6 +128,10 @@ function throwBird(e){
     }
 }
 
+function isSlingElasticRotating(e){
+
+}
+
 window.addEventListener("keydown", keyFunctionDown);
 window.addEventListener("keyup", keyFunctionUp);
 
@@ -274,6 +278,7 @@ async function main() {
   
   canvas.addEventListener("mousedown", scaleSlingElastic);
   canvas.addEventListener("mouseup", throwBird);
+  canvas.addEventListener("mousemove", isSlingElasticRotating)
 
   // create GLSL shaders, upload the GLSL source, compile the shaders
   vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);

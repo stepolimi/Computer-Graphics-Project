@@ -88,6 +88,6 @@ function scaleSlingElasticZ(){
 		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
 	worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	if (counter < 5)
-		worldPositions[2 + counter] = utils.MakeWorld(0.0, 1.1 , -7.2 - elasticScalingZ*5.5, 0.0, 0.0, 0.0- elasticScalingZ*Math.PI, 0.5);
+		worldPositions[2 + counter] = utils.MakeWorld(0.0, 1.1 , -7.2 - elasticScalingZ*5.5, 30.0, 0.0, 0.0, 0.5);
 	
 }
