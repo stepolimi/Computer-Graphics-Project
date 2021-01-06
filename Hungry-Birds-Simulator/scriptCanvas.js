@@ -126,6 +126,7 @@ function throwBird(e){
     isPressed = false;
     isRotating = false;
     elasticScalingZ = 0;
+    elasticRotationY = 0;
     mouseX = 0.0;
     mouseY = 0.0;
     worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
