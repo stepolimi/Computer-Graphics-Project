@@ -100,16 +100,14 @@ function scaleSlingElasticZ(){
 			normalizedY = (mouseY - midValue) / (canvas.height - midValue);
 			angleY = -(normalizedY*90.0);
 		}
-
-		console.log(elasticRotationY);
-		console.log("y " + mouseY);
 		worldPositions[18] = utils.MakeWorldScaled(0.0, 1.0 , -7.0 , 0.0, angleY , 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	}
 	else
 		worldPositions[18] = utils.MakeWorldScaled(0.0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	if (counter < 5){
-		var z = -7.2 - elasticScalingZ*5.5;
+
+		var variation = elasticScalingZ*5.5;
+		console.log("var " + variation);
+		worldPositions[2 + counter] = utils.MakeWorld(0.0 -z*Math.cos(utils.degToRad(angleY)), 1.1 -z*Math.sin(utils.degToRad(angleY)), -7.2 -variation, 0.0,  angleY, 0.0, 0.5);
 	}
-		worldPositions[2 + counter] = utils.MakeWorld(0.0 -z*Math.cos(utils.degToRad(angleY)), 1.1 -z*Math.sin(utils.degToRad(angleY)), z, 0.0,  angleY, 0.0, 0.5);
-	
 }
