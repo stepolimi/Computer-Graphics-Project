@@ -110,8 +110,7 @@ var vz = 0;
 var rvx = 0;
 var rvy = 0;
 
-canvas.addEventListener("mousedown", scaleSlingElastic);
-canvas.addEventListener("mouseup", throwBird);
+
 var isPressed = false;
 var counter = 0;
 var isPlaying = false;
@@ -273,6 +272,9 @@ async function main() {
   }
   autoResizeCanvas(canvas);
   
+  canvas.addEventListener("mousedown", scaleSlingElastic);
+  canvas.addEventListener("mouseup", throwBird);
+
   // create GLSL shaders, upload the GLSL source, compile the shaders
   vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
   fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
