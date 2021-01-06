@@ -92,10 +92,10 @@ function scaleSlingElasticZ(){
 		else if (mouseY == 0.0)
 			elasticRotationY = 90.0;
 		else if (mouseY ==  canvas.height)
-			elasticROtation == -90.0;
+			elasticRotationY == -90.0;
 
 			//elasticRotationY = -(mouseY % 9) * 10;
-
+			console.log(elasticRotationY)
 		worldPositions[18] = utils.MakeWorldScaled(0.0, 1.0 , -7.0 , 0.0, 0.0 + elasticRotationY, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	}
 	else
