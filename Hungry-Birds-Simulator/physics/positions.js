@@ -84,8 +84,10 @@ function waitingBirdsAnimation(){
 }
 
 function scaleSlingElasticZ(){
-	elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
-	worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
-	if (counter < 5)
-		worldPositions[2 + counter] = utils.MakeWorld(0.0, 1.1 , -7.2 - elasticScalingZ*3.0, 0.0, 0.0, 0.0, 0.5);
+	if(elasticScalingZ < 0.7){
+		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
+		worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
+		if (counter < 5)
+			worldPositions[2 + counter] = utils.MakeWorld(0.0, 1.1 , -7.2 - elasticScalingZ*5.0, 0.0, 0.0, 0.0, 0.5);
+	}
 }
