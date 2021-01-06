@@ -140,7 +140,7 @@ function isSlingElasticRotating(e){
     if(mouseY < 0)
         mouseY = 0.0;
     if(mouseY > canvas.height)
-        mouseY  = 0.0;
+        mouseY  canvas.height;
 
     console.log("mouseY" + mouseY);
 }
