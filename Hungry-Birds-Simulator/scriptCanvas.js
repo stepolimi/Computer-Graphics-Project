@@ -137,11 +137,6 @@ function isSlingElasticRotating(e){
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    if(mouseY < 0)
-        mouseY = 0.0;
-    if(mouseY > canvas.height)
-        mouseY  canvas.height;
-
     console.log("mouseY" + mouseY);
 }
 
@@ -292,6 +287,12 @@ async function main() {
   canvas.addEventListener("mousedown", scaleSlingElastic);
   canvas.addEventListener("mouseup", throwBird);
   canvas.addEventListener("mousemove", isSlingElasticRotating)
+
+  
+    if(mouseY < 0)
+        mouseY = 0.0;
+    if(mouseY > canvas.height)
+        mouseY  canvas.height;
 
   // create GLSL shaders, upload the GLSL source, compile the shaders
   vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
