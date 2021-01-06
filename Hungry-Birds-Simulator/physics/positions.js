@@ -83,16 +83,22 @@ function waitingBirdsAnimation(){
 	}
 }
 
+
 function scaleSlingElasticZ(){
 	var normlizedY;
 	var angleY = 0.0;
+	var midValue = canvas.height / 2;
 	if(elasticScalingZ*5.5 < 0.7)
 		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
+
 	if(isRotating){
-		console.log(canvas.height / 2);
-		if(mouseY <= canvas.height/2){
-			normalizedY = mouseY /  (canvas.height/2);
+		if(mouseY <= midValue){
+			normalizedY = mouseY / midValue;
 			angleY = 90.0 - (normalizedY*90.0);
+		}
+		else{
+			normalizedY = (mouseY - midValue) / (canvas.height - midValue);
+			angleY = -(normalizedY*90.0);
 		}
 
 		console.log(elasticRotationY);
