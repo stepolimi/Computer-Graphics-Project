@@ -55,4 +55,5 @@ function waitingBirdsAnimation(){
 function scaleSlingElasticZ(){
 	elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
 	worldPositions[18] = utils.MakeWorldScaled(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
+	worldPositions[2] = utils.MakeWorld(0.0, 1.1 , -7.2 - elasticScalingZ, 0.0, 0.0, 0.0, 0.5);
 }
