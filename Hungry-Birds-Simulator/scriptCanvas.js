@@ -110,8 +110,8 @@ var vz = 0;
 var rvx = 0;
 var rvy = 0;
 
-window.addEventListener("mousedown", scaleSlingElastic);
-window.addEventListener("mouseup", throwBird);
+canvas.addEventListener("mousedown", scaleSlingElastic);
+canvas.addEventListener("mouseup", throwBird);
 var isPressed = false;
 var counter = 0;
 var isPlaying = false;
