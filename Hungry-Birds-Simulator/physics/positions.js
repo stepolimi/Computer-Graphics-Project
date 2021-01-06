@@ -45,11 +45,42 @@ var worldPositions = [
 
 
 function waitingBirdsAnimation(){
-	birdY += BIRD_Y;
-    worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*2.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
-	worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
-	worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
-	worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
+	birdY += BIRD_Y;       
+	switch(counter){
+		case 0:
+			worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
+			worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
+			worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
+			worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
+			break;
+		case 1:
+			worldPositions[2] = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[3] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[4] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[5] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
+		    worldPositions[6] = utils.MakeWorld(-2.5, 0.1 + Math.sin(birdY*3.5)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
+			break;
+		case 2:
+			worldPositions[3] = utils.MakeWorld(1.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[4] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[5] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[6] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
+			break;
+		case 3:
+			worldPositions[4] = utils.MakeWorld(2.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[5] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[6] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
+			break;
+		case 4:
+			worldPositions[5] = utils.MakeWorld(3.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+		    worldPositions[6] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
+			break;
+		case 5:
+			worldPositions[6] = utils.MakeWorld(4.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+			break;
+		default:
+		    break;
+	}
 }
 
 function scaleSlingElasticZ(){
