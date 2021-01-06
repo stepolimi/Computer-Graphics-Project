@@ -114,28 +114,30 @@ window.addEventListener("mousedown", scaleSlingElastic);
 window.addEventListener("mouseup", throwBird);
 var isPressed = false;
 var counter = 0;
+var isPlaying = false;
 
-
-function scaleSlingElastic(e){
+function scaleSlingElastic(e){ 
     isPressed = true;
 }
 
 function throwBird(e){
-    isPressed = false;
-    elasticScalingZ = 0;
-    worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
-    switch(counter){
-        case 0:
-            worldPositions[2] = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
-            worldPositions[3] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
-            worldPositions[4] = utils.MakeWorld(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);
-            worldPositions[5] = utils.MakeWorld(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
-            worldPositions[6] = utils.MakeWorld(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
-            break;
-        default:
-             break;
+    if(isPlaying){
+        isPressed = false;
+        elasticScalingZ = 0;
+        worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
+        switch(counter){
+            case 0:
+                worldPositions[2] = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+                worldPositions[3] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
+                worldPositions[4] = utils.MakeWorld(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);
+                worldPositions[5] = utils.MakeWorld(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
+                worldPositions[6] = utils.MakeWorld(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
+                break;
+            default:
+                break;
+        }
+        counter ++;
     }
-   counter ++;
 }
 
 window.addEventListener("keydown", keyFunctionDown);
