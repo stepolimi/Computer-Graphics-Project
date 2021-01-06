@@ -108,8 +108,8 @@ function scaleSlingElasticZ(){
 
 		var variation = elasticScalingZ*5.5;
 		console.log("var " + variation);
-		//+ variation*Math.cos(utils.degToRad(angleY))
+		//+ (variation+7.2)*Math.cos(utils.degToRad(angleY))
 		// +variation*Math.sin(utils.degToRad(angleY))
-		worldPositions[2 + counter] = utils.MakeWorld(0.0 , 1.1, -7.2 - variation, 0.0,  angleY, 0.0, 0.5);
+		worldPositions[2 + counter] = utils.MakeWorld(0.0 + (variation+7.2)*Math.cos(utils.degToRad(angleY)) , 1.1, -7.2 - variation, 0.0,  angleY, 0.0, 0.5);
 	}
 }
