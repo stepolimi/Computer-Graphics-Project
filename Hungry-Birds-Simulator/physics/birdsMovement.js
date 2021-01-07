@@ -78,7 +78,7 @@ function activatePower(index){
 				console.log("matildeY " + matildaY);
 			}
 			eggZ = matildaZ;
-			eggY = matildaY + v*t - (g*t*t /2);
+			eggY = matildaY - (g*t*t /2);
 			eggT += 0.1;
 			
 			if(eggY >= 0)
