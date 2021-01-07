@@ -13,12 +13,17 @@ function birdTrajectory(index){
 
 
 
-	var y = v*t*Math.sin(angle) - (g*t*t /2);
-	var z = v*t*Math.cos(angle);
+	var y = v*t*Math.sin(utils.degToRad(angleY)) - (g*t*t /2);
+	var z = v*t*Math.cos(utils.degToRad(angleY));
 
-	worldPositions[index] = utils.MakeWorld(0.0 , y, -z , 0.0,  angleY, 0.0, 0.5);
+	console.log("angle" + angleY);
+	console.log("y " + y);
+	console.log("z " + z);
+	console.log("t "+ t);
+	console.log("------------------------");
+
+	worldPositions[index] = utils.MakeWorld(0.0 , y, z , 0.0,  angleY, 0.0, 0.5);
 	
-    lastUpdateTime = currentTime;  
-	if(y > 0.0)
-		birdTrajectory(index);
+    lastUpdateTime = currentTime; 
+	birdTrajectory(index);
 }
