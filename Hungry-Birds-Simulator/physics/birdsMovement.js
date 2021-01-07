@@ -27,4 +27,19 @@ function birdTrajectory(index){
 	}
 	t += 0.1;
 	
+
+	if(activateBirdPower)
+		activatePower(index);
+}
+
+
+function activatePower(index){
+	var bird = birdsArray[index-2];
+	switch(bird){
+		"red":
+			break;
+		"chuck":
+			BIRD_SPEED  = 0.8;
+			break;
+	}
 }

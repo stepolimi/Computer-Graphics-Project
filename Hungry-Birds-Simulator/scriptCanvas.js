@@ -76,6 +76,9 @@ var birdY = 0;
 var elasticScalingZ = 0;
 var elasticScalingY = 0;
 var elasticRotationY = 0;
+var birdsArray[];
+var birdName;
+var activateBirdPower = false;
 
 //shaders variables
 var positionAttributeLocation;
@@ -141,48 +144,52 @@ window.addEventListener("keyup", keyFunctionUp);
 //listener to keys pression
 function keyFunctionDown(e) {
     switch (e.key) {
+        case " ":
+            activateBirdPower = true;
+            break;
+            
         case "w":
-          vx = CAMERA_COORDS_SPEED;
-          break;
-        
+            vx = CAMERA_COORDS_SPEED;
+            break;
+            
         case "s":
-          vx = - CAMERA_COORDS_SPEED;
-          break;
-        
+            vx = - CAMERA_COORDS_SPEED;
+            break;
+            
         case "ArrowUp":
-          vy = CAMERA_COORDS_SPEED;
-          break;
-        
+            vy = CAMERA_COORDS_SPEED;
+            break;
+            
         case "ArrowDown":
-          vy = - CAMERA_COORDS_SPEED;
-          break;
+            vy = - CAMERA_COORDS_SPEED;
+            break;
         
         case "d":
-          vz = CAMERA_COORDS_SPEED;
-          break;
+            vz = CAMERA_COORDS_SPEED;
+            break;
         
         case "a":
-          vz = - CAMERA_COORDS_SPEED;
-          break;
+            vz = - CAMERA_COORDS_SPEED;
+            break;
         
         case "q":
-          rvx = CAMERA_ANGLE_SPEED;
-          break;
+            rvx = CAMERA_ANGLE_SPEED;
+            break;
         
         case "e":
-          rvx = - CAMERA_ANGLE_SPEED;
-          break;
+            rvx = - CAMERA_ANGLE_SPEED;
+            break;
         
         case "ArrowLeft":
-          rvy = CAMERA_ANGLE_SPEED;
-          break;
+            rvy = CAMERA_ANGLE_SPEED;
+            break;
         
         case "ArrowRight":
-          rvy = - CAMERA_ANGLE_SPEED;
-          break;
+            rvy = - CAMERA_ANGLE_SPEED;
+            break;
         
         default:
-          break;
+            break;
     }
 }
 
@@ -214,6 +221,8 @@ function keyFunctionUp(e) {
             rvy = 0;
             break;
         
+        case " ":
+            activateBirdPower = false;
         default:
             break;
     }
@@ -365,35 +374,46 @@ async function loadMeshes(){
       switch(choiche){
         case 1:
           bird = birdRed;
+          birdName = "red";
           break;
         case 2:
           bird = birdChuck;
+          birdName = "chuck";
           break;
         case 3:
           bird = birdBomb;
+          birdName = "bomb";
           break;
         case 4:
           bird = birdMatilda;
+          birdName = "matilda";
           break;
         default:
           bird = birdRed;
+          birdName = "red";
+          break;
       }
 
       switch(i){
         case 0:
           bird1 = bird;
+          birdsArray[i] = birdName;
           break;
         case 1:
           bird2 = bird;
+          birdsArray[i] = birdName;
           break;
         case 2:
           bird3 = bird;
+          birdsArray[i] = birdName;
           break;
         case 3:
           bird4 = bird;
+          birdsArray[i] = birdName;
           break;
         case 4:
           bird5 = bird;
+          birdsArray[i] = birdName;
           break;
         default:
           break;
