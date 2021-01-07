@@ -43,7 +43,7 @@ function birdTrajectory(index){
 	console.log("------------------------");
 
 	if(y >= 0.0)
-		worldPositions[index] = utils.MakeWorld(0.0 , y, z , 0.0,  angleY, 0.0, 0.5);
+		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
 	t += 0.1;
 }
 
