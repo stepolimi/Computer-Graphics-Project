@@ -71,8 +71,8 @@ function activatePower(index){
 			angle = angle + 30;
 			if (isMatildaActiveFirstTime){
 				isMatildaActiveFirstTime = false;
-				matildaZ = trajectoryZ;
-				matildaY = trajectoryY;
+				matildaZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
+				matildaY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 				eggT = 0;
 				console.log("matildeZ " + matildaZ);
 				console.log("matildeY " + matildaY);
