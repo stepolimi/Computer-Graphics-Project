@@ -1,5 +1,5 @@
 // JavaScript source code
-
+var lastUpdateTime = (new Date).getTime();
 
 function birdTrajectory(index){
 	var angle = Math.abs(angleY);
