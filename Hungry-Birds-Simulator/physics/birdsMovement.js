@@ -42,7 +42,7 @@ function birdTrajectory(index){
 	console.log("t "+ t);
 	console.log("------------------------");
 
-	if(rajectoryY >= 0.0)
+	if(trajectoryY >= 0.0)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
 	t += 0.1;
 }
