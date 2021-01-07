@@ -16,7 +16,7 @@ function birdTrajectory(index){
 
 
 
-	var y = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+	//var y = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	var z = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 
 	console.log("angle" + angle);
