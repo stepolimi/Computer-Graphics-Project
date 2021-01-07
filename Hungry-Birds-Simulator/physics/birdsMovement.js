@@ -73,7 +73,7 @@ function activatePower(index){
 				isMatildaActiveFirstTime = false;
 				matildaZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 				matildaY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-				eggT = 0;
+				eggT = 0.001;
 				console.log("matildeZ " + matildaZ);
 				console.log("matildeY " + matildaY);
 			}
