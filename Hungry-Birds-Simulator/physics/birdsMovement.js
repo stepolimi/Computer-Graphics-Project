@@ -11,7 +11,7 @@ function birdTrajectory(index){
 	//get the time
     var currentTime = (new Date).getTime();
 	if(lastUpdateTime)
-      var t += (30 * (currentTime - lastUpdateTime)) / 1000.0;
+		t += (30 * (currentTime - lastUpdateTime)) / 1000.0;
 
 
 	var y = v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
@@ -24,8 +24,5 @@ function birdTrajectory(index){
 	console.log("------------------------");
 
 	worldPositions[index] = utils.MakeWorld(0.0 , y, z , 0.0,  angleY, 0.0, 0.5);
-	
-	
-    lastUpdateTime = currentTime;     
-	//birdTrajectory(index);
+    lastUpdateTime = currentTime;   
 }
