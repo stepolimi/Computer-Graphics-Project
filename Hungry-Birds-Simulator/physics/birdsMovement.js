@@ -23,6 +23,11 @@ function birdTrajectory(index){
 	console.log("t "+ t);
 	console.log("------------------------");
 
-	worldPositions[index] = utils.MakeWorld(0.0 , y, z , 0.0,  angleY, 0.0, 0.5);
+	if(y >= 0.0){
+
+		worldPositions[index] = utils.MakeWorld(0.0 , y, z , 0.0,  angleY, 0.0, 0.5);
+	}
     lastUpdateTime = currentTime;   
+
+	
 }
