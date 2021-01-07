@@ -89,7 +89,7 @@ function activatePower(index){
 			
 			angle = angle + 40;
 			
-			trajectoryY = matildeY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+			trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 			trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
 
 			break;
