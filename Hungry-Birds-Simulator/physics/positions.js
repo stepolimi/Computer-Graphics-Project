@@ -67,20 +67,17 @@ function waitingBirdsAnimation(){
 		    worldPositions[6] = utils.MakeWorld(-2.5, 0.1 + Math.sin(birdY*3.5)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
 			break;
 		case 2:
-			t = 0;
 			birdTrajectory(3);
 		    worldPositions[4] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[5] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[6] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
 			break;
 		case 3:
-			t = 0;
 			birdTrajectory(4);
 		    worldPositions[5] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[6] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
 			break;
 		case 4:
-			t = 0;
 			birdTrajectory(5);
 		    worldPositions[6] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 			break;
