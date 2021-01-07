@@ -5,7 +5,7 @@ var lastUpdateTime = (new Date).getTime();
 function birdTrajectory(index){
 	var angle = Math.abs(angleY);
 	var v = BIRD_SPEED * variation;
-	var g = -9.8;	
+	var g = 0.8;	
 
 
 	//get the time
@@ -16,7 +16,7 @@ function birdTrajectory(index){
 
 
 
-	//var y = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+	var y = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	var z = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 
 	console.log("angle" + angle);
