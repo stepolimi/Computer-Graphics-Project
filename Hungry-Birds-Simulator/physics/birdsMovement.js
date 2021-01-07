@@ -58,9 +58,11 @@ function birdTrajectory(index){
 */
 function activatePower(index){
 	var bird = birdsArray[index-2];
+	console.log("bird" + bird);
 	switch(bird){
 		case "red":
 		case "bomb":
+		default:
 			break;
 		case "chuck":
 			v  = 0.8 * variation;
@@ -72,6 +74,8 @@ function activatePower(index){
 				matildeZ = trajectoryZ;
 				matildeY = trajectoryY;
 				eggT = 0;
+				console.log("matildeZ " + matildeZ);
+				console.log("matildeY " + matildeY);
 			}
 			eggZ = matildeZ;
 			eggY = matildeY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
@@ -79,6 +83,11 @@ function activatePower(index){
 
 			if(eggY >= 0)
 				worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
+			else{
+				eggT = 0;
+				isMatildeActiveFirstTime = true;
+			}
+
 			break;
 	}
 }
