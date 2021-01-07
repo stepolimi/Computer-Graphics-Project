@@ -36,9 +36,9 @@ function birdTrajectory(index){
 function activatePower(index){
 	var bird = birdsArray[index-2];
 	switch(bird){
-		"red":
+		case "red":
 			break;
-		"chuck":
+		case "chuck":
 			BIRD_SPEED  = 0.8;
 			break;
 	}
