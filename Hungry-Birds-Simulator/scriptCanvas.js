@@ -122,7 +122,10 @@ var mouseX = 0.0;
 var mouseY = 0.0;
 
 function scaleSlingElastic(e){ 
-    isPressed = true;
+    if(!busy){
+        busy = true;
+        isPressed = true;
+    }
 }
 
 function throwBird(e){

@@ -2,6 +2,7 @@
 var t = 0;
 var prec = 0;
 var v;
+var busy = false;
 var g;
 var angle;
 var trajectoryY;
@@ -44,6 +45,8 @@ function birdTrajectory(index){
 
 	if(trajectoryY >= 0.0)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
+	else
+		busy = false;
 	t += 0.1;
 }
 
