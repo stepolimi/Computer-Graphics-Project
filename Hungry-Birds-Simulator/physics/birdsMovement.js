@@ -25,5 +25,5 @@ function birdTrajectory(index){
 	worldPositions[index] = utils.MakeWorld(0.0 , y, z , 0.0,  angleY, 0.0, 0.5);
 	
     lastUpdateTime = currentTime; 
-	birdTrajectory(index);
+	//birdTrajectory(index);
 }
