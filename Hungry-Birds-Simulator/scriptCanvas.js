@@ -76,7 +76,7 @@ var birdY = 0;
 var elasticScalingZ = 0;
 var elasticScalingY = 0;
 var elasticRotationY = 0;
-var birdsArray[];
+var birdsArray;
 var birdName;
 var activateBirdPower = false;
 
