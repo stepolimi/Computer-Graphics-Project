@@ -3,7 +3,7 @@ var t = 0;
 var prec = 0;
 var v;
 var busy = false;
-var g;
+var g = GRAVITY;
 
 var angle;
 
@@ -30,7 +30,6 @@ function birdTrajectory(index){
 		angle = Math.abs(angleY);
 
 	v = BIRD_SPEED * variation;
-	g = 0.8;	
 
 	if(activateBirdPower)
 		activatePower(index);
@@ -73,12 +72,12 @@ function activatePower(index){
 				isMatildaActiveFirstTime = false;
 				matildaZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 				matildaY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-				eggT = 0.001;
+				eggT = 0;
 				console.log("matildeZ " + matildaZ);
 				console.log("matildeY " + matildaY);
 			}
 			eggZ = matildaZ;
-			eggY = matildaY - (g*t*t /2);
+			eggY = matildaY + v*t* - (g*t*t /2);
 			eggT += 0.1;
 			
 			if(eggY >= 0)
@@ -88,7 +87,7 @@ function activatePower(index){
 				//isMatildaActiveFirstTime = true;
 			}
 			
-			angle = angle + 30;
+			angle = angle + 60;
 
 			break;
 	}
