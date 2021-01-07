@@ -13,7 +13,7 @@ function birdTrajectory(index){
 
 
 
-	var y = v*t*Math.sin(angle) - (g*Math.sqrt(t) /2);
+	var y = v*t*Math.sin(angle) - (g*t*t /2);
 	var z = v*t*Math.cos(angle);
 
 	worldPositions[index] = utils.MakeWorld(0.0 , y, -z , 0.0,  angleY, 0.0, 0.5);
