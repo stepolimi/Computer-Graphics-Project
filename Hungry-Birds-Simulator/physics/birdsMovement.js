@@ -1,5 +1,6 @@
 // JavaScript source code
 var t = 0;
+var prec = 0;
 var v;
 var g;
 var angle;
@@ -8,6 +9,10 @@ var trajectoryZ;
 
 
 function birdTrajectory(index){
+	if(index != prec){
+		t = 0;
+		prec = index;
+	}
 
 	if(angleY > 0)
 		angle = -90 + angleY;
@@ -36,11 +41,6 @@ function birdTrajectory(index){
 	trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 
-	console.log("angle" + angle);
-	console.log("y " + trajectoryY);
-	console.log("z " + trajectoryZ);
-	console.log("t "+ t);
-	console.log("------------------------");
 
 	if(trajectoryY >= 0.0)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
@@ -48,13 +48,3 @@ function birdTrajectory(index){
 }
 
 
-function activatePower(index){
-	var bird = birdsArray[index-2];
-	switch(bird){
-		case "red":
-			break;
-		case "chuck":
-			BIRD_SPEED  = 0.8;
-			break;
-	}
-}
