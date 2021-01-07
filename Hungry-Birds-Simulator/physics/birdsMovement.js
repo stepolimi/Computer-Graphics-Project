@@ -6,7 +6,7 @@ function birdTrajectory(index){
 	if(angleY > 0)
 		angle = -90 + angleY;
 	else
-		Math.abs(angleY);
+		angle = Math.abs(angleY);
 
 	var v = BIRD_SPEED * variation;
 	var g = 0.8;	
