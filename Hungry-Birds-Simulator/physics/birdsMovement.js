@@ -38,9 +38,6 @@ function birdTrajectory(index){
 	trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 
-	console.log("y " + trajectoryY);
-	console.log("z " + trajectoryZ);
-
 
 	if(trajectoryY >= 0.0)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
@@ -72,7 +69,6 @@ function activatePower(index){
 			v  = 0.8 * variation;
 			break;
 		case "matilda":
-			angle = angle + 30;
 			if (isMatildaActiveFirstTime){
 				isMatildaActiveFirstTime = false;
 				matildaZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
@@ -82,15 +78,17 @@ function activatePower(index){
 				console.log("matildeY " + matildaY);
 			}
 			eggZ = matildaZ;
-			eggY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+			eggY = matildaY + v*t - (g*t*t /2);
 			eggT += 0.1;
-
+			
 			if(eggY >= 0)
 				worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
 			else{
 				eggT = 0;
 				//isMatildaActiveFirstTime = true;
 			}
+			
+			angle = angle + 30;
 
 			break;
 	}
