@@ -1,6 +1,8 @@
 //world: z:-8 --> z: +8
 //world: x:-4 --> x: +4
 var variation;
+var birdStartingY;
+var birdStartingZ;
 var angleY;
 
 
@@ -113,8 +115,8 @@ function scaleSlingElasticZ(){
 
 		var cos = Math.cos(utils.degToRad(angleY));
 		var sin = Math.sin(utils.degToRad(angleY));
-		var y = (1.95 - 1.1)*sin + 1.1;
-		var z = (variation - 7.0)*cos + 7.0;
-		worldPositions[2 + counter] = utils.MakeWorld(0.0 , y, -z , 0.0,  angleY, 0.0, 0.5);
+		var birdStartingY = (1.95 - 1.1)*sin + 1.1;
+		var birdStartingZ = (variation - 7.0)*cos + 7.0;
+		worldPositions[2 + counter] = utils.MakeWorld(0.0 , birdStartingY, -birdStartingZ , 0.0,  angleY, 0.0, 0.5);
 	}
 }
