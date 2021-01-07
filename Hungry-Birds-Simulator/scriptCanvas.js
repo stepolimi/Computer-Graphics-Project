@@ -300,8 +300,6 @@ async function main() {
         isRotating = true;
         mouseX = e.clientX;
         mouseY = e.clientY;
-    
-        console.log("mouseY" + mouseY);
     }
     
     

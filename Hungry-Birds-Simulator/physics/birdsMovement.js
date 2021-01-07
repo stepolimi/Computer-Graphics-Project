@@ -10,10 +10,10 @@ var angle;
 var trajectoryY;
 var trajectoryZ;
 
-//matilde
-var isMatildeActiveFirstTime = true;
-var matildeY = 0;
-var matildeZ = 0;
+//matilda
+var isMatildaActiveFirstTime = true;
+var matildaY = 0;
+var matildaZ = 0;
 var eggY = 0;
 var eggZ = 0;
 
@@ -51,9 +51,9 @@ function birdTrajectory(index){
 	1. red doesn't have any power so nothing will change in its trajectory
 	2. bomb
 	3. chuck
-	4. matilde will change its trajectory throw the angle change and will eject an egg with a linear trajectory
+	4. matilda will change its trajectory throw the angle change and will eject an egg with a linear trajectory
 	   The egg trajectory will have: 
-		a) z = starting matilde z
+		a) z = starting matilda z
 		b) y = the speed variation over this axis
 */
 function activatePower(index){
@@ -67,25 +67,25 @@ function activatePower(index){
 		case "chuck":
 			v  = 0.8 * variation;
 			break;
-		case "matilde":
+		case "matilda":
 			angle = angle + 30;
-			if (isMatildeActiveFirstTime){
-				isMatildeActiveFirstTime = false;
-				matildeZ = trajectoryZ;
-				matildeY = trajectoryY;
+			if (isMatildaActiveFirstTime){
+				isMatildaActiveFirstTime = false;
+				matildaZ = trajectoryZ;
+				matildaY = trajectoryY;
 				eggT = 0;
-				console.log("matildeZ " + matildeZ);
-				console.log("matildeY " + matildeY);
+				console.log("matildeZ " + matildaZ);
+				console.log("matildeY " + matildaY);
 			}
-			eggZ = matildeZ;
-			eggY = matildeY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+			eggZ = matildaZ;
+			eggY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 			eggT += 0.1;
 
 			if(eggY >= 0)
 				worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
 			else{
 				eggT = 0;
-				isMatildeActiveFirstTime = true;
+				isMatildaActiveFirstTime = true;
 			}
 
 			break;
