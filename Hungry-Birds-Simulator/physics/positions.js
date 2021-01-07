@@ -1,5 +1,9 @@
 //world: z:-8 --> z: +8
 //world: x:-4 --> x: +4
+var variation;
+var angleY;
+
+
 var envMatrix = utils.MakeWorld(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0, 4.5);
 var slingMatrix = utils.MakeWorld(0, -0.45 , -7.0, 0.0, 0.0, 0.0, 0.15);
 var bird1 = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
@@ -54,7 +58,7 @@ function waitingBirdsAnimation(){
 			worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
 			break;
 		case 1:
-			worldPositions[2] = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+			birdTrajectory(2);
 		    worldPositions[3] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[4] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[5] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
@@ -86,7 +90,7 @@ function waitingBirdsAnimation(){
 
 function scaleSlingElasticZ(){
 	var normlizedY;
-	var angleY = 0.0;
+	angleY = 0.0;
 	var midValue = canvas.height / 2;
 	if(elasticScalingZ*5.5 < 0.7)
 		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
@@ -105,7 +109,7 @@ function scaleSlingElasticZ(){
 	else
 		worldPositions[18] = utils.MakeWorldScaled(0.0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	if (counter < 5){
-		var variation = 7.2 + elasticScalingZ*5.5;
+		variation = 7.2 + elasticScalingZ*5.5;
 
 		var cos = Math.cos(utils.degToRad(angleY));
 		var sin = Math.sin(utils.degToRad(angleY));
