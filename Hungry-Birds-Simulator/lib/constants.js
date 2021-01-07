@@ -4,3 +4,6 @@ const BIRD_Y = 0.01;
 const BIRD_SPEED = 0.5;
 const SLING_ELASTIC_Z_SCALING_SPEED = 0.001;
 const SLING_ELASTIC_Y_SPEED = 0.05;
+
+
+const CHUCK_SPEED = 0.8;

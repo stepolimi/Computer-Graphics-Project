@@ -221,8 +221,6 @@ function keyFunctionUp(e) {
             rvy = 0;
             break;
         
-        case " ":
-            activateBirdPower = false;
         default:
             break;
     }
