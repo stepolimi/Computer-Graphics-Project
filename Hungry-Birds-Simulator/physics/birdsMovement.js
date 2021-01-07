@@ -38,6 +38,10 @@ function birdTrajectory(index){
 	trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 
+	console.log("y " + trajectoryY);
+	console.log("z " + trajectoryZ);
+
+
 	if(trajectoryY >= 0.0)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
 	else
@@ -80,6 +84,10 @@ function activatePower(index){
 			eggZ = matildaZ;
 			eggY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 			eggT += 0.1;
+			console.log("eggZ "+ eggZ);
+			console.log("eggY "+ eggY);
+			console.log("bool " + isMatildaActiveFirstTime);
+			console.log("--------------------------------------")
 
 			if(eggY >= 0)
 				worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
