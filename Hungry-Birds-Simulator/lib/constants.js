@@ -6,7 +6,7 @@ const SLING_ELASTIC_Z_SCALING_SPEED = 0.002;
 const SLING_ELASTIC_Y_SPEED = 0.05;
 
 
-const GRAVITY = 0.8;
+const GRAVITY = 0.656;
 
 const CHUCK_SPEED = 0.8;
 
