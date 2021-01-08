@@ -70,30 +70,39 @@ function activatePower(index){
 			v  = 0.8 * variation;
 			break;
 		case "matilda":
-			if (isMatildaActiveFirstTime){
-				isMatildaActiveFirstTime = false;
-				matildaZ = trajectoryZ;
-				matildaY = trajectoryY;
-				eggT = 0;
-				console.log("matildeZ " + matildaZ);
-				console.log("matildeY " + matildaY);
-			}
-			eggZ = matildaZ;
-			eggY = matildaY - (g*t*t /2);
-			eggT += 0.1;
-			
-			if(eggY >= 0)
-				worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
-			else{
-				eggT = 0;
-				//isMatildaActiveFirstTime = true;
-			}
-			
-			angle = angle + 40;
-			
-			trajectoryY = matildaY + SPEED*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-			trajectoryZ = matildaZ + SPEED*t*Math.cos(utils.degToRad(angle));
+			activateMatildaPower();
+
 
 			break;
 	}
+}
+
+
+function activateMatildaPower(){
+	//at first round the new starting coord must be set
+	if (isMatildaActiveFirstTime){
+		isMatildaActiveFirstTime = false;
+		matildaZ = trajectoryZ;
+		matildaY = trajectoryY;
+		eggT = 0;
+		console.log("matildeZ " + matildaZ);
+		console.log("matildeY " + matildaY);
+	}
+	eggZ = matildaZ;
+	eggY = matildaY - (g*t*t /2);
+	eggT += 0.1;
+	
+	if(eggY >= -5.0)
+		worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
+	else{
+		eggT = 0;
+		isMatildaActiveFirstTime = true;
+	}
+	
+	angle = angle + 30;
+	v = v+2;
+
+	
+	trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+	trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
 }
