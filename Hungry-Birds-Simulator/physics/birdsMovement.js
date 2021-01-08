@@ -68,7 +68,7 @@ function activatePower(index){
 			break;
 
 		case "chuck":
-			v = v * 4;
+			v = CHUCK_SPEED * elasticForce;  
 			trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 			trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
 			if(trajectoryY >= -5.0)
