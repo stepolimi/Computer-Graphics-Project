@@ -657,8 +657,10 @@ function addMeshToScene(i) {
     setupLights();
 
     waitingBirdsAnimation();
-    if(isPressed) 
+    if(isPressed) {
+        console.log("ciao");
         scaleSlingElasticZ();
+    }
 
     
 
