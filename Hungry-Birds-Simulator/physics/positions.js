@@ -98,7 +98,6 @@ function scaleSlingElasticZ(){
 	var midValue = canvas.height / 2;
 	
 	elasticForce = elasticScalingZ*5.5;
-	console.log("elastic " + elasticForce);
 	if(elasticForce < 0.7)
 		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
 
@@ -115,13 +114,19 @@ function scaleSlingElasticZ(){
 	}
 	else
 		worldPositions[18] = utils.MakeWorldScaled(0.0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
-	if (counter < 5){
-		var variation = 7.2 + elasticForce;
 
-		var cos = Math.cos(utils.degToRad(angleY));
-		var sin = Math.sin(utils.degToRad(angleY));
-		birdStartingY = (1.95 - 1.1)*sin + 1.1;
-		birdStartingZ = (variation - 7.0)*cos + 7.0;
-		worldPositions[2 + counter] = utils.MakeWorld(0.0 , birdStartingY, -birdStartingZ , 0.0,  angleY, 0.0, 0.5);
-	}
+	if (counter < 5)
+		moveBirdWithSling();
+	
+}
+
+function moveBirdWithSling(){
+	var variation = 7.2 + elasticForce;
+
+	var cos = Math.cos(utils.degToRad(angleY));
+	var sin = Math.sin(utils.degToRad(angleY));
+	birdStartingY = (1.95 - 1.1)*sin + 1.1;
+	birdStartingZ = (variation - 7.0)*cos + 7.0;
+	worldPositions[2 + counter] = utils.MakeWorld(0.0 , birdStartingY, -birdStartingZ , 0.0,  angleY, 0.0, 0.5);
+
 }
