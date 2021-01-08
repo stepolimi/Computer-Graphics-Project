@@ -1,6 +1,6 @@
 //world: z:-8 --> z: +8
 //world: x:-4 --> x: +4
-var variation;
+var elasticForce;
 var birdStartingY;
 var birdStartingZ;
 var angleY;
@@ -96,7 +96,10 @@ function scaleSlingElasticZ(){
 	var normlizedY;
 	angleY = 0.0;
 	var midValue = canvas.height / 2;
-	if(elasticScalingZ*5.5 < 0.7)
+	
+	elasticForce = elasticScalingZ*5.5;
+	console.log("elastic " + elasticForce);
+	if(elasticForce < 0.7)
 		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
 
 	if(isRotating){
@@ -113,7 +116,7 @@ function scaleSlingElasticZ(){
 	else
 		worldPositions[18] = utils.MakeWorldScaled(0.0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1+ elasticScalingZ);
 	if (counter < 5){
-		variation = 7.2 + elasticScalingZ*5.5;
+		var variation = 7.2 + elasticForce;
 
 		var cos = Math.cos(utils.degToRad(angleY));
 		var sin = Math.sin(utils.degToRad(angleY));

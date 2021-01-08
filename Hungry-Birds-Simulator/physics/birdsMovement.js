@@ -1,9 +1,7 @@
 // JavaScript source code
 var t = 0;
 var prec = 0;
-var v;
 var busy = false;
-var g = GRAVITY;
 
 var angle;
 
@@ -29,11 +27,9 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 
-	v = BIRD_SPEED * variation;
 
-
-	trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-	trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
+	trajectoryY = birdStartingY + SPEED*t*Math.sin(utils.degToRad(angle)) - (GRAVITY*t*t /2);
+	trajectoryZ = -birdStartingZ + SPEED*t*Math.cos(utils.degToRad(angle));
 	
 	if(activateBirdPower)
 		activatePower(index);
@@ -89,8 +85,8 @@ function activatePower(index){
 			
 			angle = angle + 40;
 			
-			trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-			trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
+			trajectoryY = matildaY + SPEED*t*Math.sin(utils.degToRad(angle)) - (GRAVITY*t*t /2);
+			trajectoryZ = matildaZ + SPEED*t*Math.cos(utils.degToRad(angle));
 
 			break;
 	}
