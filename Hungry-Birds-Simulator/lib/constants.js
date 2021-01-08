@@ -1,12 +1,12 @@
 const CAMERA_COORDS_SPEED = 0.1;
 const CAMERA_ANGLE_SPEED = 1;
 const BIRD_Y = 0.01;
-const BIRD_SPEED = 0.3;
+const BIRD_SPEED = 8;
 const SLING_ELASTIC_Z_SCALING_SPEED = 0.002;
 const SLING_ELASTIC_Y_SPEED = 0.05;
 
 
-const GRAVITY = 0.656;
+const GRAVITY = 0.9;
 
 const CHUCK_SPEED = 0.8;
 
