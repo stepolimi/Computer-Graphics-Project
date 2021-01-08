@@ -67,12 +67,9 @@ function activatePower(index){
 		default:
 			break;
 		case "chuck":
-			v  = 0.8 * variation;
 			break;
 		case "matilda":
 			activateMatildaPower();
-
-
 			break;
 	}
 }
@@ -97,6 +94,7 @@ function activateMatildaPower(){
 	else{
 		eggT = 0;
 		isMatildaActiveFirstTime = true;
+		activateBirdPower = false;
 	}
 	
 	angle = angle + 30;
