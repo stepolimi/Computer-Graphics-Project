@@ -68,9 +68,9 @@ function activatePower(index){
 			break;
 
 		case "chuck":
-			v = CHUCK_SPEED * elasticForce;  
-			trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-			trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
+			
+			trajectoryY = birdStartingY + vMath.sin(utils.degToRad(angle));
+			trajectoryZ = - birdStartingZ + vMath.cos(utils.degToRad(angle));
 			if(trajectoryY >= -5.0)
 				activateBirdPower = false;
 			break;
@@ -105,6 +105,7 @@ function activateMatildaPower(){
 	}
 	
 	angle = angle + 30;
+	
 	
 	trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
