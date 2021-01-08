@@ -5,7 +5,7 @@ var busy = false;
 
 var angle;
 var g = GRAVITY;
-var v = SPEED;
+var v = BIRD_SPEED * elasticForce; 
 
 var trajectoryY;
 var trajectoryZ;

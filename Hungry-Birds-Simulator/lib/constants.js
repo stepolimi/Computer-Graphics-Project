@@ -7,7 +7,6 @@ const SLING_ELASTIC_Y_SPEED = 0.05;
 
 
 const GRAVITY = 0.8;
-const SPEED = BIRD_SPEED * elasticForce; 
 
 const CHUCK_SPEED = 0.8;
 
