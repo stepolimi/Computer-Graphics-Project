@@ -656,6 +656,7 @@ function addMeshToScene(i) {
 
     setupLights();
 
+    console.log("bla"),
     waitingBirdsAnimation();
     if(isPressed) {
         console.log("ciao");
