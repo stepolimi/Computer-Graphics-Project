@@ -17,6 +17,8 @@ var matildaZ = 0;
 var eggY = 0;
 var eggZ = 0;
 
+var c = 0;
+
 
 function birdTrajectory(index){
 	if(index != prec){
@@ -40,8 +42,10 @@ function birdTrajectory(index){
 	if(activateBirdPower)
 		activatePower(index);
 
-	if(trajectoryY >= -5.0)
+	if(trajectoryY >= -5.0){
+		console.log("ciao");
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
+	}
 	else
 		busy = false;
 	t += 0.1;
@@ -84,11 +88,13 @@ function activatePower(index){
 
 function activateMatildaPower(){
 	//at first round the new starting coord must be set
+	c += 1;
 	if (isMatildaActiveFirstTime){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		eggT = 0;
+		console.log("c " + c);
 	}
 	eggZ = matildaZ;
 	eggY = matildaY - (0.1*t*t /2);
