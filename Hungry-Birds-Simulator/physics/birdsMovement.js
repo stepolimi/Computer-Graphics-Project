@@ -89,7 +89,7 @@ function activateMatildaPower(){
 		console.log("matildeY " + matildaY);
 	}
 	eggZ = matildaZ;
-	eggY = matildaY - (g*t*t /2);
+	eggY = matildaY - (0.1*t*t /2);
 	eggT += 0.1;
 	
 	if(eggY >= -5.0)
@@ -100,8 +100,6 @@ function activateMatildaPower(){
 	}
 	
 	angle = angle + 30;
-	v = v+2;
-
 	
 	trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
