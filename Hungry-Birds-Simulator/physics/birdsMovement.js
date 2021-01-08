@@ -5,7 +5,7 @@ var busy = false;
 
 var angle;
 var g = GRAVITY;
-var v = BIRD_SPEED * elasticForce; 
+var v = 0; 
 
 var trajectoryY;
 var trajectoryZ;
@@ -23,6 +23,8 @@ function birdTrajectory(index){
 		t = 0;
 		prec = index;
 	}
+
+	v = BIRD_SPEED * elasticForce; 
 
 	if(angleY > 0)
 		angle = -90 + angleY;
