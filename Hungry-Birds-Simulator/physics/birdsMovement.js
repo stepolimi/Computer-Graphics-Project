@@ -69,8 +69,8 @@ function activatePower(index){
 
 		case "chuck":
 			
-			trajectoryY = birdStartingY + vMath.sin(utils.degToRad(angle));
-			trajectoryZ = - birdStartingZ + vMath.cos(utils.degToRad(angle));
+			trajectoryY = birdStartingY + v*Math.sin(utils.degToRad(angle));
+			trajectoryZ = - birdStartingZ + v*Math.cos(utils.degToRad(angle));
 			if(trajectoryY >= -5.0)
 				activateBirdPower = false;
 			break;
