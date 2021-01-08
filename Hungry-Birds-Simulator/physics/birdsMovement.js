@@ -40,8 +40,10 @@ function birdTrajectory(index){
 	if(activateBirdPower)
 		activatePower(index);
 
-	if(trajectoryY >= -5.0)
+	if(trajectoryY >= -5.0){
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
+		activateBirdPower = false;
+	}
 	else
 		busy = false;
 	t += 0.1;
@@ -67,6 +69,8 @@ function activatePower(index){
 		default:
 			break;
 		case "chuck":
+			v = v * 4;
+
 			break;
 		case "matilda":
 			activateMatildaPower();
