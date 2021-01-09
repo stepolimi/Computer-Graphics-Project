@@ -48,7 +48,7 @@ function birdTrajectory(index){
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
 	else
 		busy = false;
-	t += 0.1;
+	t += 0.05;
 }
 
 
@@ -106,7 +106,7 @@ function activateMatildaPower(){
 	}
 	eggZ = matildaZ;
 	eggY = matildaY - (0.1*t*t /2);
-	eggT += 0.05;
+	eggT += 0.1;
 	
 	if(eggY >= -5.0)
 		worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
