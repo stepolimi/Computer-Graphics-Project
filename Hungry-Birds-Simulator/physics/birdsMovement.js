@@ -118,6 +118,6 @@ function activateMatildaPower(){
 	}
 	
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
-	trajectoryY = chuckY + v*t*tan;
-	trajectoryZ = chuckZ + v*t*tan;
+	trajectoryY = matildaY + v*t*tan;
+	trajectoryZ = matildaZ + v*t*tan;
 }
