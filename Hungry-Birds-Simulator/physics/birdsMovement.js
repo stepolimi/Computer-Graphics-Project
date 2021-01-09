@@ -17,8 +17,10 @@ var matildaZ = 0;
 var eggY = 0;
 var eggZ = 0;
 
-var c = 0;
-
+//chuck
+var isChuckActiveFirstTime = true;
+var chuckY = 0;
+var chuckZ = 0;
 
 function birdTrajectory(index){
 	if(index != prec){
@@ -70,10 +72,18 @@ function activatePower(index){
 			break;
 
 		case "chuck":
-			trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle));
-			trajectoryZ = - birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
-			if(trajectoryY >= -5.0)
+			if (isChuckActiveFirstTime){
+				isChuckActiveFirstTime = false;
+				chuckZ = trajectoryZ;
+				chuckY = trajectoryY;
+			}
+
+			trajectoryY = chuckY + v*t*Math.sin(utils.degToRad(angle));
+			trajectoryZ = chuckZ + v*t*Math.cos(utils.degToRad(angle));
+			if(trajectoryY <= -5.0){
+				isChuckActiveFirstTime = true;
 				activateBirdPower = false;
+			}
 
 			console.log("traY " + trajectoryY);
 			console.log("traZ " + trajectoryZ);
