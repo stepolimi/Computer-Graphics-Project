@@ -99,7 +99,6 @@ function activatePower(index){
 
 function activateMatildaPower(){
 	//at first round the new starting coord must be set
-	c += 1;
 	if (isMatildaActiveFirstTime){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
