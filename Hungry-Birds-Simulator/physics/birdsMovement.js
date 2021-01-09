@@ -44,7 +44,7 @@ function birdTrajectory(index){
 	if(activateBirdPower)
 		activatePower(index);
 
-	if(trajectoryY >= -5.0 && trajectoryY <= 20.0)
+	if(trajectoryY >= -5.0 && trajectoryY >= 20.00)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
 	else
 		busy = false;
@@ -80,9 +80,11 @@ function activatePower(index){
 			}
 			var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 
-			trajectoryY = chuckY + v*t*tan;
-			trajectoryZ = chuckZ + v*t*tan;
-			if(trajectoryY <= -5.0){
+			v =  v*2;
+			
+			trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+			trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
+			if(trajectoryY >= 20.0){
 				isChuckActiveFirstTime = true;
 				activateBirdPower = false;
 			}
@@ -117,6 +119,7 @@ function activateMatildaPower(){
 		activateBirdPower = false;
 	}
 	
+	v = v*1.2;
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	trajectoryY = matildaY + v*t*tan;
 	trajectoryZ = matildaZ + v*t*tan;
