@@ -4,7 +4,7 @@ var prec = 0;
 var busy = false;
 
 var angle;
-var angleX = 0.0;
+var rotation = 0.0;
 var g = GRAVITY;
 var v = 0; 
 
@@ -46,7 +46,7 @@ function birdTrajectory(index){
 		activatePower(index);
 
 	if(trajectoryY >= -5.0 && trajectoryY <= 20.00)
-		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, angleX,  angle, 0.0, 0.5);
+		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, 0.5);
 	else{
 		angleY = 0.0;
 		busy = false;
@@ -130,7 +130,7 @@ function activateMatildaPower(){
     var currentTime = (new Date).getTime();
 	if(lastUpdateTime){
 		var deltaC = (90 * (currentTime - lastUpdateTime)) / 1000.0;
-		angleX += deltaC;
+		rotation += deltaC;
 	}
 	lastUpdateTime = currentTime;
 	  
