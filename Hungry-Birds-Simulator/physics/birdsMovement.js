@@ -4,6 +4,7 @@ var prec = 0;
 var busy = false;
 
 var angle;
+var angleX = 0.0;
 var g = GRAVITY;
 var v = 0; 
 
@@ -45,9 +46,11 @@ function birdTrajectory(index){
 		activatePower(index);
 
 	if(trajectoryY >= -5.0 && trajectoryY <= 20.00)
-		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
-	else
+		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, angleX,  angle, 0.0, 0.5);
+	else{
+		angleY = 0.0;
 		busy = false;
+	}
 	t += 0.05;
 }
 
@@ -123,4 +126,12 @@ function activateMatildaPower(){
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	trajectoryY = matildaY + v*t*tan;
 	trajectoryZ = matildaZ + v*t*tan;
+	
+    var currentTime = (new Date).getTime();
+	if(lastUpdateTime){
+		var deltaC = (30 * (currentTime - lastUpdateTime)) / 1000.0;
+		angleX += deltaC;
+	}
+	lastUpdateTime = currentTime;
+	  
 }
