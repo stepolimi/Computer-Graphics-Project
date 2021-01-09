@@ -125,12 +125,17 @@ var mouseY = 0.0;
 
 function scaleSlingElastic(e){ 
     if(!busy){
+        
+	    var sound = document.getElementById("pullSlingSound");
+        sound.Play();
         isPressed = true;
     }
 }
 
 function throwBird(e){
     if(!busy){
+        var sound = document.getElementById("releaseSlingSound");
+        sound.Play();
         busy = true;
         isPressed = false;
         isRotating = false;

@@ -82,24 +82,7 @@ function activatePower(index){
 			break;
 		
 		case "bomb":
-			scaling = 0.0;
-			if(isBombActiveFirstTime){
-				isBombActiveFirstTime = false;
-				bombZ = trajectoryZ;
-				bombY = trajectoryY;
-				explosionScaling = 0.0;
-
-			}
-
-			explosionScaling += 0.02;
-			if(explosionScaling <= 1.0)
-				worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
-			else{
-				explosionScaling = 0.0;
-				isBombActiveFirstTime = true;
-				activateBirdPower = false;
-				setTimeout(function(){worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
-			}
+			activateBombPower();
 			break;
 
 		case "chuck":
@@ -112,6 +95,26 @@ function activatePower(index){
 	}
 }
 
+function activateBombPower(){
+	scaling = 0.0;
+	if(isBombActiveFirstTime){
+		isBombActiveFirstTime = false;
+		bombZ = trajectoryZ;
+		bombY = trajectoryY;
+		explosionScaling = 0.0;
+	
+	}
+	
+	explosionScaling += 0.02;
+	if(explosionScaling <= 1.0)
+		worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
+	else{
+		explosionScaling = 0.0;
+		isBombActiveFirstTime = true;
+		activateBirdPower = false;
+		setTimeout(function(){worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
+	}
+}
 
 function activateChuckPower(){
 	if (isChuckActiveFirstTime){

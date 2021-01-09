@@ -67,6 +67,7 @@ function waitingBirdsAnimation(){
 	else
 		roundZ = 0.0;
 
+	setTimeout(function(){},1000);
 	switch(counter){
 		case 0:
 			worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, roundZ, 0.5); 
@@ -106,6 +107,7 @@ function waitingBirdsAnimation(){
 
 
 function scaleSlingElasticZ(){
+	var pullSlingSound = document.getElementById("pullSlingSound");
 	var normlizedY;
 	angleY = 0.0;
 	var midValue = canvas.height / 2;
