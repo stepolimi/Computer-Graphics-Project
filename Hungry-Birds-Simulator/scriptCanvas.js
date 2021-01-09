@@ -127,7 +127,7 @@ function scaleSlingElastic(e){
     if(!busy){
         
 	    var sound = document.getElementById("pullSlingSound");
-        sound.Play();
+        sound.play();
         isPressed = true;
     }
 }
@@ -135,7 +135,7 @@ function scaleSlingElastic(e){
 function throwBird(e){
     if(!busy){
         var sound = document.getElementById("releaseSlingSound");
-        sound.Play();
+        sound.play();
         busy = true;
         isPressed = false;
         isRotating = false;
