@@ -76,6 +76,7 @@ function activatePower(index){
 				isChuckActiveFirstTime = false;
 				chuckZ = trajectoryZ;
 				chuckY = trajectoryY;
+				t = 0;
 			}
 
 			trajectoryY = chuckY + v*t*Math.sin(utils.degToRad(angle));
@@ -118,7 +119,7 @@ function activateMatildaPower(){
 	}
 	
 	angle = angle + 30;
-	g = 4.0;
+	g = 1.5;
 	trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
 	
