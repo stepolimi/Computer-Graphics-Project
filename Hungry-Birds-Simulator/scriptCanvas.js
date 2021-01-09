@@ -368,7 +368,7 @@ async function loadMeshes(){
     pigHelmet = await utils.loadMesh("/assets/Pigs/pighelment.obj"); 
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
     egg = await utils.loadMesh("/assets/Others/egg.obj");
-    plumeExplosion = await utils.loadMesh("/assets/Others/explosion.obj");
+    plumeExplosion = await utils.loadMesh("/assets/Others/plume.obj");
 
     //randomize birds
     for(let i=0; i<5; i++){
