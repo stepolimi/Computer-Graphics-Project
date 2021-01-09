@@ -106,7 +106,7 @@ function activateMatildaPower(){
 	}
 	eggZ = matildaZ;
 	eggY = matildaY - (0.1*t*t /2);
-	eggT += 0.1;
+	eggT += 0.05;
 	
 	if(eggY >= -5.0)
 		worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
