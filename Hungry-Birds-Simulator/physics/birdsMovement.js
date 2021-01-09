@@ -78,17 +78,15 @@ function activatePower(index){
 				chuckY = trajectoryY;
 				t = 0;
 			}
+			var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 
-			trajectoryY = chuckY + v*t*Math.sin(utils.degToRad(angle));
-			trajectoryZ = chuckZ + v*t*Math.cos(utils.degToRad(angle));
+			trajectoryY = chuckY + v*t*tan;
+			trajectoryZ = chuckZ + v*t*tan;
 			if(trajectoryY <= -5.0){
 				isChuckActiveFirstTime = true;
 				activateBirdPower = false;
 			}
 
-			console.log("traY " + trajectoryY);
-			console.log("traZ " + trajectoryZ);
-			console.log("------------------------");
 			break;
 
 		case "matilda":
@@ -122,11 +120,4 @@ function activateMatildaPower(){
 	g = 1.5;
 	trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
-	
-	console.log("Y " + matildaY);
-	console.log("Z " + matildaZ);
-	
-	console.log("traY " + trajectoryY);
-	console.log("traZ " + trajectoryZ);
-	console.log("------------------------");
 }
