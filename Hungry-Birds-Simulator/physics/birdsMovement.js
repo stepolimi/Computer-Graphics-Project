@@ -44,7 +44,7 @@ function birdTrajectory(index){
 	if(activateBirdPower)
 		activatePower(index);
 
-	if(trajectoryY >= -5.0 && trajectoryY >= 20.00)
+	if(trajectoryY >= -5.0 && trajectoryY <= 20.00)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angleY, 0.0, 0.5);
 	else
 		busy = false;
