@@ -91,8 +91,8 @@ function activatePower(index){
 
 			}
 
-			explosionScaling += 0.1;
-			if(explosionScaling <= 0.5)
+			explosionScaling += 0.01;
+			if(explosionScaling <= 0.05)
 				worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 			else{
 				explosionScaling = 0.0;
