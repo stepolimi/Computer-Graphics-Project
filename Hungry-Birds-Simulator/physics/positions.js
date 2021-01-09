@@ -28,6 +28,10 @@ var slingElasticMatrix = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
 var eggMatrix = utils.MakeWorld(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
 
 
+//birds rotation
+var lastUpdateTime = (new Date).getTime();
+
+
 var worldPositions = [
 	envMatrix,				//0
 	slingMatrix,			//1
@@ -53,13 +57,19 @@ var worldPositions = [
 
 
 function waitingBirdsAnimation(){
-	birdY += BIRD_Y;       
+	birdY += BIRD_Y; 
+	var currentTime = (new Date).getTime();
+	var roundZ = 0.0;
+    if(lastUpdateTime - currentTime >= 1700 &&  lastUpdateTime - currentTime <= 2100)
+		roundZ = 360;
+		
+
 	switch(counter){
 		case 0:
-			worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
-			worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5); 
-			worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
-			worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);  
+			worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, roundZ, 0.5); 
+			worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, 0.0, 0.0, roundZ, 0.5); 
+			worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, 0.0, 0.0, roundZ, 0.5);  
+			worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, 0.0, roundZ, 0.5);  
 			break;
 		case 1:
 			birdTrajectory(2);
