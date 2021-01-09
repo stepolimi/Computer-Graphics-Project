@@ -71,6 +71,7 @@ var environment;
 var tnt;
 var texture;
 var egg;
+var plumeExplosion;
 
 // variables for objects movements
 var birdY = 0;
@@ -367,6 +368,7 @@ async function loadMeshes(){
     pigHelmet = await utils.loadMesh("/assets/Pigs/pighelment.obj"); 
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
     egg = await utils.loadMesh("/assets/Others/egg.obj");
+    plumeExplosion = await utils.loadMesh("/assets/Others/explosion.obj");
 
     //randomize birds
     for(let i=0; i<5; i++){
@@ -549,7 +551,8 @@ async function loadMeshes(){
         piece7,
         piece8,
         elastic,
-        egg
+        egg,
+        plumeExplosion
     ];
 }
   

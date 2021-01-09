@@ -23,6 +23,13 @@ var isChuckActiveFirstTime = true;
 var chuckY = 0;
 var chuckZ = 0;
 
+
+//bomb
+var scaling = 0.5;
+var isBombActiveFirstTime = true;
+var bombZ = 0;
+var bombY = 0;
+
 function birdTrajectory(index){
 	if(index != prec){
 		t = 0;
@@ -46,9 +53,10 @@ function birdTrajectory(index){
 		activatePower(index);
 
 	if(trajectoryY >= -5.0 && trajectoryY <= 20.00)
-		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, 0.5);
+		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
 	else{
 		rotation = 0.0;
+		scaling = 0.5;
 		busy = false;
 	}
 	t += 0.05;
@@ -70,32 +78,55 @@ function activatePower(index){
 	console.log("bird" + bird);
 	switch(bird){
 		case "red":
-		case "bomb":
 		default:
+			break;
+		
+		case "bomb":
+			scaling = 0.0;
+			if(isBombActiveFirstTime){
+				isBombActiveFirstTime = false;
+				bombZ = trajectoryZ;
+				bombY = trajectoryY;
+				explosionScaling = 0.0;
+
+			}
+
+			explosionScaling += 0.1;
+			if(explosionScaling <= 0.5)
+				worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
+			else{
+				explosionScaling = 0.0;
+				isBombActiveFirstTime = true;
+				activateBirdPower = false;
+			}
 			break;
 
 		case "chuck":
-			if (isChuckActiveFirstTime){
-				isChuckActiveFirstTime = false;
-				chuckZ = trajectoryZ;
-				chuckY = trajectoryY;
-				t = 0;
-			}
-			var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
-
-			v =  v*2;
-			trajectoryY = chuckY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-			trajectoryZ = chuckZ + v*t*Math.cos(utils.degToRad(angle));
-			if(trajectoryY >= 20.0){
-				isChuckActiveFirstTime = true;
-				activateBirdPower = false;
-			}
-
+			activateChuckPower();
 			break;
 
 		case "matilda":
 			activateMatildaPower();
 			break;
+	}
+}
+
+
+function activateChuckPower(){
+	if (isChuckActiveFirstTime){
+		isChuckActiveFirstTime = false;
+		chuckZ = trajectoryZ;
+		chuckY = trajectoryY;
+		t = 0;
+	}
+	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
+	
+	v =  v*2;
+	trajectoryY = chuckY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+	trajectoryZ = chuckZ + v*t*Math.cos(utils.degToRad(angle));
+	if(trajectoryY >= 20.0){
+		isChuckActiveFirstTime = true;
+		activateBirdPower = false;
 	}
 }
 
