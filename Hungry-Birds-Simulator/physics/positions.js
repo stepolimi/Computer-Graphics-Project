@@ -61,8 +61,9 @@ function waitingBirdsAnimation(){
 	var currentTime = (new Date).getTime();
 	var roundZ = 0.0;
     if(lastUpdateTime - currentTime >= 1700 &&  lastUpdateTime - currentTime <= 2100)
-		roundZ = 360;
-		
+		roundZ = 75.0;
+	else
+		roundZ = 0.0;
 
 	switch(counter){
 		case 0:
