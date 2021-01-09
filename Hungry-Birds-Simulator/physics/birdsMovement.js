@@ -103,6 +103,7 @@ function activateMatildaPower(){
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		eggT = 0;
+		t = 0;
 	}
 	eggZ = matildaZ;
 	eggY = matildaY - (0.1*t*t /2);
@@ -119,6 +120,4 @@ function activateMatildaPower(){
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	trajectoryY = chuckY + v*t*tan;
 	trajectoryZ = chuckZ + v*t*tan;
-	//trajectoryY = matildaY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-	//trajectoryZ = matildaZ + v*t*Math.cos(utils.degToRad(angle));
 }
