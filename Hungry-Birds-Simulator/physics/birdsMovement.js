@@ -129,7 +129,7 @@ function activateMatildaPower(){
 	
     var currentTime = (new Date).getTime();
 	if(lastUpdateTime){
-		var deltaC = (90 * (currentTime - lastUpdateTime)) / 1000.0;
+		var deltaC = (120 * (currentTime - lastUpdateTime)) / 1000.0;
 		rotation += deltaC;
 	}
 	lastUpdateTime = currentTime;
