@@ -48,7 +48,7 @@ function birdTrajectory(index){
 	if(trajectoryY >= -5.0 && trajectoryY <= 20.00)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, 0.5);
 	else{
-		angleY = 0.0;
+		rotation = 0.0;
 		busy = false;
 	}
 	t += 0.05;
@@ -84,7 +84,6 @@ function activatePower(index){
 			var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 
 			v =  v*2;
-			
 			trajectoryY = chuckY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 			trajectoryZ = chuckZ + v*t*Math.cos(utils.degToRad(angle));
 			if(trajectoryY >= 20.0){
@@ -126,12 +125,6 @@ function activateMatildaPower(){
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	trajectoryY = matildaY + v*t*tan;
 	trajectoryZ = matildaZ + v*t*tan;
-	
-    var currentTime = (new Date).getTime();
-	if(lastUpdateTime){
-		var deltaC = (120 * (currentTime - lastUpdateTime)) / 1000.0;
-		rotation += deltaC;
-	}
-	lastUpdateTime = currentTime;
+	rotation += 20.0;
 	  
 }
