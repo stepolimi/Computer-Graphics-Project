@@ -82,8 +82,8 @@ function activatePower(index){
 
 			v =  v*2;
 			
-			trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-			trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
+			trajectoryY = chuckY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
+			trajectoryZ = chuckZ + v*t*Math.cos(utils.degToRad(angle));
 			if(trajectoryY >= 20.0){
 				isChuckActiveFirstTime = true;
 				activateBirdPower = false;
@@ -108,7 +108,7 @@ function activateMatildaPower(){
 		t = 0;
 	}
 	eggZ = matildaZ;
-	eggY = matildaY - (0.1*t*t /2);
+	eggY = matildaY - (0.3*t*t /2);
 	eggT += 0.1;
 	
 	if(eggY >= -5.0)
