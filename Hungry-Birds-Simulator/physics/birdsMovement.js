@@ -47,8 +47,6 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 
-	console.log("angle " + angle);
-
 
 	trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
 	trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
@@ -143,17 +141,25 @@ function activateChuckPower(){
 	var parabolicB = (g*chuckZ)/(v*v*cosSquared) + tan ;
 	var parabolicC = (g*chuckZ*chuckZ) / (2*v*v*cosSquared) - tan*chuckZ; 
 
+	console.log("parabolicA " +parabolicA);
+	console.log("parabolicB " +parabolicB);
+	console.log("parabolicC " +parabolicC);
 	var mB = 2*parabolicB + 4*parabolicA*chuckZ;
 	var mC = parabolicB*parabolicB - 4*parabolicA*parabolicC;
 	//value mA = 1 so useless
 
 	var m = (- mB + Math.sqrt(mB*mB - 4*mC)) / 2;
 	var q = chuckZ + chuckY;
+	console.log("m: " + m);
+	console.log("q: " + q);
 	//var m2 = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 	
 	trajectoryZ += 0.1;
 	trajectoryY = m*trajectoryZ + q;
 
+	console.log("Z: "trajectoryZ);
+	console.log("Y: "trajectoryY);
+	console.log("-----------------------");
 	if(trajectoryY >= 20.0){
 		isChuckActiveFirstTime = true;
 		activateBirdPower = false;
