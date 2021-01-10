@@ -164,7 +164,7 @@ function activateChuckPower(){
 	console.log("Z: " + trajectoryZ);
 	console.log("Y: " + trajectoryY);
 	console.log("-----------------------");
-	if(trajectoryY >= 20.0 || <= 0.0){
+	if(trajectoryY >= 20.0 | trajectoryY <= 0.0){
 		isChuckActiveFirstTime = true;
 		activateBirdPower = false;
 	}
