@@ -136,8 +136,12 @@ function activateChuckPower(){
 	var sin = Math.sin(angleInRad);
 	var tan = Math.sin(angleInRad) / Math.cos(angleInRad);
 	var cosSquared = Math.pow(cos,2);
+	console.log("tan " + tan);
+	console.log("cosSquare " + cosSquared);
+	console.log("chuckZ " + chuckZ);
+	console.log("chuckY " + chuckY);
 	
-	var parabolicA = - g/(2*v*v*cosSquared) 
+	var parabolicA = - (g)/(2*v*v*cosSquared) ;
 	var parabolicB = (g*chuckZ)/(v*v*cosSquared) + tan ;
 	var parabolicC = (g*chuckZ*chuckZ) / (2*v*v*cosSquared) - tan*chuckZ; 
 
