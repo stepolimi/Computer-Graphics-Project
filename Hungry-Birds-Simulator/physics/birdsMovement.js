@@ -11,6 +11,9 @@ var v = 0;
 var trajectoryY;
 var trajectoryZ;
 
+//sound
+var firstTimeSound = true;
+
 //matilda
 var isMatildaActiveFirstTime = true;
 var matildaY = 0;
@@ -66,7 +69,10 @@ function birdTrajectory(index){
 
 function activateSound(index){
 	var sound = document.getElementById( birdsArray[index-2]);
-	sound.play();
+	if(firstTimeSound){
+		firstTimeSound = false;
+		sound.play();
+	}
 }
 
 /*If the user has pressed the spacebar the specific bird power will be activate throw this function:

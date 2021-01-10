@@ -77,7 +77,7 @@
             </h1>
         </div>
         <div class="col-sm-12">
-            <button id="play-button"  onclick="play()">
+            <button id="play-button">
                 <p id="play-text">
                     Play
                 </p>
@@ -143,6 +143,14 @@
     var btnInGame = document.getElementById("menu-button");
     var spanInGame = document.getElementsByClassName("closeMenu")[0];
     var btnExit = document.getElementById("exit-button");
+    var playButton = document.getElementById("play-button");
+
+
+    playButton.onclick = function (){
+        play();
+        var sound = document.getElementById("start-game-track");
+        sound.stop();
+    }
 
     btn.onclick = function(){
         modal.style.display = "block";
