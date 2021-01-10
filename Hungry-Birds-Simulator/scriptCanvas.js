@@ -118,6 +118,7 @@ var rvy = 0;
 
 
 var isPressed = false;
+var isReleased = false;
 var counter = 0;
 var isRotating = false;
 var mouseX = 0.0;
@@ -133,12 +134,14 @@ function scaleSlingElastic(e){
 }
 
 function throwBird(e){
+    isReleased = true;
     if(!busy){
         var sound = document.getElementById("releaseSlingSound");
         sound.play();
         busy = true;
         isPressed = false;
         isRotating = false;
+        isReleased = false;
         firstTimeSound = true;
         elasticScalingZ = 0;
         elasticRotationY = 0;

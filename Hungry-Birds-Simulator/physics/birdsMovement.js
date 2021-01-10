@@ -129,37 +129,43 @@ function activateChuckPower(){
 		isChuckActiveFirstTime = false;
 		chuckZ = trajectoryZ;
 		chuckY = trajectoryY;
-		t = 0;
+		t = 0;	
+		
+		var angleInRad = utils.degToRad(angle);
+		var cos = Math.cos(angleInRad);
+		var sin = Math.sin(angleInRad);
+		var tan = Math.sin(angleInRad) / Math.cos(angleInRad);
+		var cosSquared = Math.pow(cos,2);
+		console.log("tan " + tan);
+		console.log("cosSquare " + cosSquared);
+		console.log("chuckZ " + chuckZ);
+		console.log("chuckY " + chuckY);
+		
+		var parabolicA = - (g)/(2*v*v*cosSquared) ;
+		var parabolicB = (g*chuckZ)/(v*v*cosSquared) + tan ;
+		var parabolicC = (g*chuckZ*chuckZ) / (2*v*v*cosSquared) - tan*chuckZ; 
+
+		console.log("parabolicA " +parabolicA);
+		console.log("parabolicB " +parabolicB);
+		console.log("parabolicC " +parabolicC);
+		var mB = 2*parabolicB + 4*parabolicA*chuckZ;
+		var mC = parabolicB*parabolicB - 4*parabolicA*parabolicC;
+		//value mA = 1 so useless
+
+		var m = 0;
+		if(mB*mB - 4*mC < 0)
+			m = - mB*0.5;
+		else
+			m = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
+		var q = chuckZ + chuckY;
 	}
-	var angleInRad = utils.degToRad(angle);
-	var cos = Math.cos(angleInRad);
-	var sin = Math.sin(angleInRad);
-	var tan = Math.sin(angleInRad) / Math.cos(angleInRad);
-	var cosSquared = Math.pow(cos,2);
-	console.log("tan " + tan);
-	console.log("cosSquare " + cosSquared);
-	console.log("chuckZ " + chuckZ);
-	console.log("chuckY " + chuckY);
-	
-	var parabolicA = - (g)/(2*v*v*cosSquared) ;
-	var parabolicB = (g*chuckZ)/(v*v*cosSquared) + tan ;
-	var parabolicC = (g*chuckZ*chuckZ) / (2*v*v*cosSquared) - tan*chuckZ; 
 
-	console.log("parabolicA " +parabolicA);
-	console.log("parabolicB " +parabolicB);
-	console.log("parabolicC " +parabolicC);
-	var mB = 2*parabolicB + 4*parabolicA*chuckZ;
-	var mC = parabolicB*parabolicB - 4*parabolicA*parabolicC;
-	//value mA = 1 so useless
-
-	var m = (- mB + Math.sqrt(mB*mB - 4*mC)) / 2;
-	var q = chuckZ + chuckY;
 	console.log("m: " + m);
 	console.log("q: " + q);
 	//var m2 = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 	
-	trajectoryZ += 0.1;
-	trajectoryY = m*trajectoryZ + q;
+	trajectoryZ = chuckZ + v*t;
+	trajectoryY = chuckY + v*t + q;
 
 	console.log("Z: " + trajectoryZ);
 	console.log("Y: " + trajectoryY);

@@ -114,8 +114,8 @@ function scaleSlingElasticZ(){
 	
 	elasticForce = elasticScalingZ*5.5;
 	console.log("elasticForce " + elasticForce);
-	if(elasticForce < 0.7)
-		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;
+	if(elasticForce < 0.7 && !isReleased)     
+		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;	
 
 	if(isRotating){
 		if(mouseY <= midValue){
