@@ -157,8 +157,8 @@ function activateChuckPower(){
 	trajectoryZ += 0.1;
 	trajectoryY = m*trajectoryZ + q;
 
-	console.log("Z: "trajectoryZ);
-	console.log("Y: "trajectoryY);
+	console.log("Z: " + trajectoryZ);
+	console.log("Y: " + trajectoryY);
 	console.log("-----------------------");
 	if(trajectoryY >= 20.0){
 		isChuckActiveFirstTime = true;
