@@ -65,7 +65,7 @@ function birdTrajectory(index){
 
 
 function activateSound(index){
-	var sound = var sound = document.getElementById( birdsArray[index-2]);
+	var sound = document.getElementById( birdsArray[index-2]);
 	sound.play();
 }
 
