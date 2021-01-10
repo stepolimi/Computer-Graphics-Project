@@ -125,6 +125,8 @@ function activateBombPower(){
 }
 
 function activateChuckPower(){
+	var m = 0;
+	var q = 0;
 	if (isChuckActiveFirstTime){
 		isChuckActiveFirstTime = false;
 		chuckZ = trajectoryZ;
@@ -152,12 +154,11 @@ function activateChuckPower(){
 		var mC = parabolicB*parabolicB - 4*parabolicA*parabolicC;
 		//value mA = 1 so useless
 
-		var m = 0;
 		if(mB*mB - 4*mC < 0)
 			m = - mB*0.5;
 		else
 			m = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
-		var q = chuckZ + chuckY;
+		q = chuckZ + chuckY;
 	}
 
 	console.log("m: " + m);
@@ -165,7 +166,7 @@ function activateChuckPower(){
 	//var m2 = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 	
 	trajectoryZ = chuckZ + v*t;
-	trajectoryY = chuckY + v*t + q;
+	trajectoryY = m*chuckY + v*t + q;
 
 	console.log("Z: " + trajectoryZ);
 	console.log("Y: " + trajectoryY);
