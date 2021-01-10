@@ -158,13 +158,13 @@ function activateChuckPower(){
 	console.log("q: " + q);
 	//var m2 = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 	
-	trajectoryZ = chuckZ + t;
-	trajectoryY = m*trajectoryZ + q;
+	trajectoryZ = chuckZ +t*v*v;
+	trajectoryY = m*trajectoryZ + t*v*v + q;
 
 	console.log("Z: " + trajectoryZ);
 	console.log("Y: " + trajectoryY);
 	console.log("-----------------------");
-	if(trajectoryY >= 20.0){
+	if(trajectoryY >= 20.0 || <= 0.0){
 		isChuckActiveFirstTime = true;
 		activateBirdPower = false;
 	}
