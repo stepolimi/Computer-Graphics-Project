@@ -25,6 +25,8 @@ var eggZ = 0;
 var isChuckActiveFirstTime = true;
 var chuckY = 0;
 var chuckZ = 0;
+var m = 0;
+var q = 0;
 
 
 //bomb
@@ -125,8 +127,6 @@ function activateBombPower(){
 }
 
 function activateChuckPower(){
-	var m = 0;
-	var q = 0;
 	if (isChuckActiveFirstTime){
 		isChuckActiveFirstTime = false;
 		chuckZ = trajectoryZ;
