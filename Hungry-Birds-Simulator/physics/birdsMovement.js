@@ -148,7 +148,7 @@ function activateChuckPower(){
 	//value mA = 1 so useless
 
 	var m = (- mB + Math.sqrt(mB*mB - 4*mC)) / 2;
-	var q = chuckZ + chuckQ;
+	var q = chuckZ + chuckY;
 	//var m2 = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 	
 	trajectoryZ += 0.1;
