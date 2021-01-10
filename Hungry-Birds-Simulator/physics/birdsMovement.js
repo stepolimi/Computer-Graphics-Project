@@ -165,8 +165,8 @@ function activateChuckPower(){
 	console.log("q: " + q);
 	//var m2 = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 	
-	trajectoryZ = chuckZ + v*t;
-	trajectoryY = m*chuckY + v*t + q;
+	trajectoryZ = chuckZ + t;
+	trajectoryY = m*trajectoryZ + q;
 
 	console.log("Z: " + trajectoryZ);
 	console.log("Y: " + trajectoryY);
