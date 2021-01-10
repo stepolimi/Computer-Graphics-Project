@@ -107,7 +107,7 @@ function waitingBirdsAnimation(){
 
 
 function scaleSlingElasticZ(){
-	var pullSlingSound = document.getElementById("pullSlingSound");
+
 	var normlizedY;
 	angleY = 0.0;
 	var midValue = canvas.height / 2;

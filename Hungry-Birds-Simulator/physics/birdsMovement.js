@@ -31,6 +31,7 @@ var bombZ = 0;
 var bombY = 0;
 
 function birdTrajectory(index){
+	activateSound(index);
 	if(index != prec){
 		t = 0;
 		prec = index;
@@ -63,6 +64,10 @@ function birdTrajectory(index){
 }
 
 
+function activateSound(index){
+	var sound = var sound = document.getElementById( birdsArray[index-2]);
+	sound.play();
+}
 
 /*If the user has pressed the spacebar the specific bird power will be activate throw this function:
 	1. red doesn't have any power so nothing will change in its trajectory
@@ -75,7 +80,6 @@ function birdTrajectory(index){
 */
 function activatePower(index){
 	var bird = birdsArray[index-2];
-	console.log("bird" + bird);
 	switch(bird){
 		case "red":
 		default:
