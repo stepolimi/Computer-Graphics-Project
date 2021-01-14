@@ -466,7 +466,7 @@ async function loadMeshes(){
       switch(i){
         case 0:
           pig1 = pigChoiche;
-          caste.push(new castlePiece(), name);
+          castle.push(new castlePiece(), name);
           console.log(caste[0].position);
           break;
         case 1:
