@@ -466,8 +466,10 @@ async function loadMeshes(){
       switch(i){
         case 0:
           pig1 = pigChoiche;
-          castle.push(new castlePiece(pig1, name));
-          console.log(castle[0].position);
+          castle.push(new castlePiece(pig1, worldPositions[7], name));
+          console.log("position" + castle[0].position);
+          console.log("name" + castle[0].type);
+          console.log("collision" + castle[0].isColliding);
           break;
         case 1:
           pig2 = pigChoiche;
