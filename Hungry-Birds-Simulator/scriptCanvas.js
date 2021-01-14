@@ -116,13 +116,16 @@ var vz = 0;
 var rvx = 0;
 var rvy = 0;
 
-
+//birds launch main management variables
 var isPressed = false;
 var isReleased = false;
 var counter = 0;
 var isRotating = false;
 var mouseX = 0.0;
 var mouseY = 0.0;
+
+//castle variables
+var castle = [];
 
 function scaleSlingElastic(e){ 
     if(!busy){
@@ -438,25 +441,33 @@ async function loadMeshes(){
     for(let i=0; i<3; i++){
       let min = Math.ceil(1);
       let max = Math.floor(3);
+      let name;
       choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 
       switch(choiche){
         case 1:
           pigChoiche = pig;
+          name = "pig";
           break;
         case 2:
           pigChoiche = pigHelmet;
+          name = "pigHelmet";
           break;
         case 3:
           pigChoiche = pigMustache;
+          name = "pigMustache";
           break;
         default:
           pigChoiche = pig;
+          name = "pig";
+          break;
       }
 
       switch(i){
         case 0:
           pig1 = pigChoiche;
+          caste.push(new castlePiece(), name);
+          console.log(caste[0].position);
           break;
         case 1:
           pig2 = pigChoiche;
