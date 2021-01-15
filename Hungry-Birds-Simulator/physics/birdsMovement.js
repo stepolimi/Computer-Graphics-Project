@@ -76,14 +76,14 @@ function isColliding(index){
 	let birdZ = worldPositions[index][2];
 	console.log("birdY" + birdY);
 	console.log("birdZ" + birdZ);
-	for(let i = 0; i <= structureObjects.length; i++ ){
-		let objY = structureObjects[i].position[1];
-		let objZ = structureObjects[i].position[2];
+	for(let i = 0; i <= structureObjs.length; i++ ){
+		let objY = structureObjs[i].position[1];
+		let objZ = structureObjs[i].position[2];
 
 		if(objY > birdY + BIRD_RADIUS || birdY > objY + STRUCTURE_OBJ_RADIUS || objZ > birdZ + BIRD_RADIUS || birdZ > objZ + STRUCTURE_OBJ_RADIUS )
 			console.log("non collidono");
 		else{
-			console.log("oggetto con cui bird collide" + structureObjects[i].type);
+			console.log("oggetto con cui bird collide" + structureObjs[i].type);
 			console.log("collidono");
 		}
 	}
