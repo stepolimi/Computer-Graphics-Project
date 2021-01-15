@@ -489,6 +489,7 @@ async function loadMeshes(){
                 break;
         }
 
+    }
     //pseudo randomize blocks
     for(let i=0; i<8; i++){
         let min = Math.ceil(1);
