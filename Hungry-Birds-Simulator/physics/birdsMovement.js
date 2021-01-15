@@ -36,7 +36,9 @@ var bombZ = 0;
 var bombY = 0;
 
 
-
+//
+var birdCollides = false;
+var birdPosition;
 
 function birdTrajectory(index){
 	activateSound(index);
@@ -59,7 +61,7 @@ function birdTrajectory(index){
 	if(activateBirdPower)
 		activatePower(index);
 
-	if(trajectoryY >= -5.0 && trajectoryY <= 20.00)
+	if((trajectoryY >= -5.0 && trajectoryY <= 20.00) || !birdCollides)
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
 	else{
 		rotation = 0.0;
@@ -72,18 +74,20 @@ function birdTrajectory(index){
 
 
 function isColliding(index){
-	let birdY = worldPositions[index][1];
-	let birdZ = worldPositions[index][2];
+	birdPosition = worldPositions[index];
+	let birdY = birdPosition[1];
+	let birdZ = birdPositions[2];
 	console.log("birdY" + birdY);
 	console.log("birdZ" + birdZ);
-	for(let i = 0; i <= structureObjs.length; i++ ){
+	for(let i = 0; i < structureObjs.length; i++ ){
 		let objY = structureObjs[i].position[1];
 		let objZ = structureObjs[i].position[2];
 
 		if(objY > birdY + BIRD_RADIUS || birdY > objY + STRUCTURE_OBJ_RADIUS || objZ > birdZ + BIRD_RADIUS || birdZ > objZ + STRUCTURE_OBJ_RADIUS )
 			console.log("non collidono");
 		else{
-			console.log("oggetto con cui bird collide" + structureObjs[i].type);
+			birdCollides = true;
+			console.log("oggetto con cui bird collide " + structureObjs[i].type);
 			console.log("collidono");
 		}
 	}

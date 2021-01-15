@@ -488,9 +488,6 @@ async function loadMeshes(){
             default:
                 break;
         }
-        for(let i = 0; i < structureObjs.length; i++)
-            console.log("positions" + structureObjs[i].position[0]);
-    }
 
     //pseudo randomize blocks
     for(let i=0; i<8; i++){
