@@ -125,7 +125,7 @@ var mouseX = 0.0;
 var mouseY = 0.0;
 
 //castle variables
-var castle = [];
+var structureObjects = [];
 
 
 /*function called at the touchpad or mouse press, it works iff the previous bird ended the flight 
@@ -389,174 +389,192 @@ async function loadMeshes(){
     egg = await utils.loadMesh("/assets/Others/egg.obj");
     plumeExplosion = await utils.loadMesh("/assets/Others/plume.obj");
 
+    
+    let objType;
     //randomize birds
     for(let i=0; i<5; i++){
-      let min = Math.ceil(1);
-      let max = Math.floor(4);
-      choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-
-      switch(choiche){
-        case 1:
-          bird = birdRed;
-          birdName = "red";
-          break;
-        case 2:
-          bird = birdChuck;
-          birdName = "chuck";
-          break;
-        case 3:
-          bird = birdBomb;
-          birdName = "bomb";
-          break;
-        case 4:
-          bird = birdMatilda;
-          birdName = "matilda";
-          break;
-        default:
-          bird = birdRed;
-          birdName = "red";
-          break;
-      }
-
-      switch(i){
-        case 0:
-          bird1 = bird;
-          birdsArray[i] = birdName;
-          break;
-        case 1:
-          bird2 = bird;
-          birdsArray[i] = birdName;
-          break;
-        case 2:
-          bird3 = bird;
-          birdsArray[i] = birdName;
-          break;
-        case 3:
-          bird4 = bird;
-          birdsArray[i] = birdName;
-          break;
-        case 4:
-          bird5 = bird;
-          birdsArray[i] = birdName;
-          break;
-        default:
-          break;
-      }
+        let min = Math.ceil(1);
+        let max = Math.floor(4);
+        choiche = Math.floor(Math.random() * (max - min + 1)) + min;
+        
+        switch(choiche){
+            case 1:
+                bird = birdRed;
+                birdName = "red";
+                break;
+            case 2:
+                bird = birdChuck;
+                birdName = "chuck";
+                break;
+            case 3:
+                bird = birdBomb;
+                birdName = "bomb";
+                break;
+            case 4:
+                bird = birdMatilda;
+                birdName = "matilda";
+                break;
+            default:
+                bird = birdRed;
+                birdName = "red";
+                break;
+        }
+        
+        switch(i){
+          case 0:
+                bird1 = bird;
+                birdsArray[i] = birdName;
+                break;
+          case 1:
+                bird2 = bird;
+                birdsArray[i] = birdName;
+                break;
+          case 2:
+                bird3 = bird;
+                birdsArray[i] = birdName;
+                break;
+          case 3:
+                bird4 = bird;
+                birdsArray[i] = birdName;
+                break;
+          case 4:
+                bird5 = bird;
+                birdsArray[i] = birdName;
+                break;
+          default:
+                break;
+        }
     }
+
 
     //randomize pigs
     for(let i=0; i<3; i++){
-      let min = Math.ceil(1);
-      let max = Math.floor(3);
-      let name;
-      choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-
-      switch(choiche){
-        case 1:
-          pigChoiche = pig;
-          name = "pig";
-          break;
-        case 2:
-          pigChoiche = pigHelmet;
-          name = "pigHelmet";
-          break;
-        case 3:
-          pigChoiche = pigMustache;
-          name = "pigMustache";
-          break;
-        default:
-          pigChoiche = pig;
-          name = "pig";
-          break;
-      }
-
-      switch(i){
-        case 0:
-          pig1 = pigChoiche;
-          castle.push(new castlePiece(worldPositions[7], name));
-          console.log("position" + castle[0].position[0]);
-          console.log("name" + castle[0].type);
-          console.log("collision" + castle[0].isColliding);
-          break;
-        case 1:
-          pig2 = pigChoiche;
-          break;
-        case 2:
-          pig3 = pigChoiche;
-          break;
-        default:
-          break;
-      }
+        let min = Math.ceil(1);
+        let max = Math.floor(3);
+        choiche = Math.floor(Math.random() * (max - min + 1)) + min;
+        
+        switch(choiche){
+            case 1:
+                pigChoiche = pig;
+                objType = "pig";
+                break;
+            case 2:
+                pigChoiche = pigHelmet;
+                objType = "pigHelmet";
+                break;
+            case 3:
+                pigChoiche = pigMustache;
+                objType = "pigMustache";
+                break;
+            default:
+                pigChoiche = pig;
+                objType = "pig";
+                break;
+        }
+        
+        switch(i){
+            case 0:
+                pig1 = pigChoiche;
+                structureObjects.push(new structureObjects(worldPositions[7], objType ));
+                break;
+            case 1:
+                pig2 = pigChoiche;
+                structureObjects.push(new structureObjects(worldPositions[8], objType ));
+                break;
+            case 2:
+                pig3 = pigChoiche;
+                structureObjects.push(new structureObjects(worldPositions[9], objType ));
+                break;
+            default:
+                break;
+        }
     }
 
     //pseudo randomize blocks
     for(let i=0; i<8; i++){
-
-      let min = Math.ceil(1);
-      let max = Math.floor(9);
-      choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-      console.log(choiche);
-
-      switch(choiche){
-        case 1:
-          piece = tnt;
-          break;
-        case 2:
-          piece = tnt;
-          break;
-        case 3:
-          piece = tnt;
-          break;
-        case 4:
-          piece = tnt;
-          break;
-        case 5:
-          piece = tnt;
-          break;
-        case 6:
-          piece = tnt;
-          break;
-        case 7:
-          piece = tnt;
-          break;
-        case 8:
-          piece = tnt;
-          break;
-        case 9:
-          piece = tnt;
-          break;
-        default:
-          piece = tnt;
-      }//same number as the possible different pieces
-
-      switch(i){
-        case 0:
-          piece1 = piece;
-          break;
-        case 1:
-          piece2 = piece;
-          break;
-        case 2:
-          piece3 = piece;
-          break;
-        case 3:
-          piece4 = piece;
-          break;
-        case 4:
-          piece5 = piece;
-          break;
-        case 5:
-          piece6 = piece;
-          break;
-        case 6:
-          piece7 = piece;
-          break;
-        case 7:
-          piece8 = piece;
-          break;       
-        default:
-          break;
-      }//number of total pieces in the scene
+        let min = Math.ceil(1);
+        let max = Math.floor(9);
+        choiche = Math.floor(Math.random() * (max - min + 1)) + min;
+        console.log(choiche);
+        
+        switch(choiche){
+            case 1:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 2:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 3:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 4:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 5:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 6:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 7:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 8:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            case 9:
+                piece = tnt;
+                objType = "tnt";
+                break;
+            default:
+                piece = tnt;
+                objType = "tnt";
+        }//same number as the possible different pieces
+        
+        switch(i){
+            case 0:
+                piece1 = piece;
+                structureObjects.push(new structureObjects(worldPositions[10], objType ));
+                break;
+            case 1:
+                piece2 = piece;
+                structureObjects.push(new structureObjects(worldPositions[11], objType ));
+                break;
+            case 2:
+                piece3 = piece;
+                structureObjects.push(new structureObjects(worldPositions[12], objType ));
+                break;
+            case 3:
+                piece4 = piece;
+                structureObjects.push(new structureObjects(worldPositions[13], objType ));
+                break;
+            case 4:
+                piece5 = piece;
+                structureObjects.push(new structureObjects(worldPositions[14], objType ));
+                break;
+            case 5:
+                piece6 = piece;
+                structureObjects.push(new structureObjects(worldPositions[15], objType ));
+                break;
+            case 6:
+                piece7 = piece;
+                structureObjects.push(new structureObjects(worldPositions[16], objType ));
+                break;
+            case 7:
+                piece8 = piece;
+                structureObjects.push(new structureObjects(worldPositions[17], objType ));
+                break;       
+            default:
+                break;
+        }//number of total pieces in the scene
     }
 
 

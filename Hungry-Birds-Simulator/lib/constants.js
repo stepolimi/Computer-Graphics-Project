@@ -10,3 +10,5 @@ const GRAVITY = 0.9;
 
 const CHUCK_SPEED = 8;
 
+const BIRD_RADIUS = 0.2;
+CONST STRUCTURE_OBJ_RADIUS = 0.3;

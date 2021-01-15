@@ -1,5 +1,5 @@
 // JavaScript source code
-class castlePiece {
+class structureObjects {
 	constructor(position, type){
 		this.position = position;
 		this.type = type;

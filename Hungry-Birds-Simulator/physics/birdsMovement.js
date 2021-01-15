@@ -35,6 +35,9 @@ var isBombActiveFirstTime = true;
 var bombZ = 0;
 var bombY = 0;
 
+
+
+
 function birdTrajectory(index){
 	activateSound(index);
 	if(index != prec){
@@ -64,8 +67,28 @@ function birdTrajectory(index){
 		busy = false;
 	}
 	t += 0.05;
+	isColliding(index);
 }
 
+
+function isColliding(index){
+	let birdY = worldPositions[index][1];
+	let birdZ = worldPositions[index][2];
+	console.log("birdY" + birdY);
+	console.log("birdZ" + birdZ);
+	for(let i = 0; i <= structureObjects.length; i++ ){
+		let objY = structureObjects[i].position[1];
+		let objZ = structureObjects[i].position[2];
+
+		if(objY > birdY + BIRD_RADIUS || birdY > objY + STRUCTURE_OBJ_RADIUS || objZ > birdZ + BIRD_RADIUS || birdZ > objZ + STRUCTURE_OBJ_RADIUS )
+			console.log("non collidono");
+		else{
+			console.log("oggetto con cui bird collide" + structureObjects[i].type);
+			console.log("collidono");
+		}
+	}
+		
+}
 
 function activateSound(index){
 	var sound = document.getElementById( birdsArray[index-2]);
