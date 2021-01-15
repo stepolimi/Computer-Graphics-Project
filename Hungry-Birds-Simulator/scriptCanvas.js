@@ -127,6 +127,9 @@ var mouseY = 0.0;
 //castle variables
 var castle = [];
 
+
+/*function called at the touchpad or mouse press, it works iff the previous bird ended the flight 
+*/
 function scaleSlingElastic(e){ 
     if(!busy){
         
@@ -136,6 +139,10 @@ function scaleSlingElastic(e){
     }
 }
 
+
+/*function called at the touchpad or mouse release, it brings all variables related to birds launch back to the origin status
+  NB. worldPositions[18] is the original sling elastic position 
+*/
 function throwBird(e){
     isReleased = true;
     if(!busy){
@@ -466,8 +473,8 @@ async function loadMeshes(){
       switch(i){
         case 0:
           pig1 = pigChoiche;
-          castle.push(new castlePiece(pig1, worldPositions[7], name));
-          console.log("position" + castle[0].position);
+          castle.push(new castlePiece(worldPositions[7], name));
+          console.log("position" + castle[0].position.x);
           console.log("name" + castle[0].type);
           console.log("collision" + castle[0].isColliding);
           break;
