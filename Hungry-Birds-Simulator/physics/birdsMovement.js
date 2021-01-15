@@ -76,7 +76,7 @@ function birdTrajectory(index){
 function isColliding(index){
 	birdPosition = worldPositions[index];
 	let birdY = birdPosition[1];
-	let birdZ = birdPositions[2];
+	let birdZ = birdPosition[2];
 	console.log("birdY" + birdY);
 	console.log("birdZ" + birdZ);
 	for(let i = 0; i < structureObjs.length; i++ ){
