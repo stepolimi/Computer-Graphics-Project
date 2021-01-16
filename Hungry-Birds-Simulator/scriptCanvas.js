@@ -132,10 +132,10 @@ var structureObjs = [];
 */
 function scaleSlingElastic(e){ 
     if(!busy){
-        
 	    var sound = document.getElementById("pullSlingSound");
         sound.play();
         isPressed = true;
+        birdCollides = false;
     }
 }
 
@@ -152,7 +152,6 @@ function throwBird(e){
         isPressed = false;
         isRotating = false;
         isReleased = false;
-        birdCollides = false;
         firstTimeSound = true;
         elasticScalingZ = 0;
         elasticRotationY = 0;

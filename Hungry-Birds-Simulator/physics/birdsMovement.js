@@ -78,7 +78,7 @@ function birdTrajectory(index){
 }
 
 
-function isColliding(index){
+function isColliding(){
 	for(let i = 0; i < structureObjs.length; i++ ){
 		let objY = structureObjs[i].ty;
 		let objZ = structureObjs[i].tz;
