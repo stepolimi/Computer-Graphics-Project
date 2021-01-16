@@ -152,6 +152,7 @@ function throwBird(e){
         isPressed = false;
         isRotating = false;
         isReleased = false;
+        birdCollides = false;
         firstTimeSound = true;
         elasticScalingZ = 0;
         elasticRotationY = 0;
