@@ -95,7 +95,7 @@ function isColliding(index){
 }
 
 function activateSound(index){
-	var sound = document.getElementById( birdsArray[index-2]);
+	var sound = document.getElementById( birdsArray[index-2].type);
 	if(firstTimeSound){
 		firstTimeSound = false;
 		sound.play();
