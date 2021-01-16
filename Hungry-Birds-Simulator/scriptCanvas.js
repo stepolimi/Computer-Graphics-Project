@@ -72,9 +72,9 @@ var tnt;
 var texture;
 var egg;
 var plumeExplosion;
-var woodCube;
-var glassCube;
-var stoneCube;
+var woodBox;
+var glassBox;
+var stoneBox;
 
 // variables for objects movements
 var birdY = 0;
@@ -392,9 +392,9 @@ async function loadMeshes(){
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
     egg = await utils.loadMesh("/assets/Others/egg.obj");
     plumeExplosion = await utils.loadMesh("/assets/Others/plume.obj");
-    woodCube = await utils.loadMesh("/assets/Others/woodBox.obj");
-    glassCube = await utils.loadMesh("/assets/Others/glassBox.obj");
-    stoneCube = await utils.loadMesh("/assets/Others/stoneBox.obj");
+    woodBox = await utils.loadMesh("/assets/Others/woodBox.obj");
+    glassBox = await utils.loadMesh("/assets/Others/glassBox.obj");
+    stoneBox = await utils.loadMesh("/assets/Others/stoneBox.obj");
 
     
     let objType;
@@ -510,7 +510,7 @@ async function loadMeshes(){
                 objType = "tnt";
                 break;
             case 2:
-                piece = glassCube;
+                piece = glassBox;
                 objType = "glassBox";
                 break;
             case 3:
