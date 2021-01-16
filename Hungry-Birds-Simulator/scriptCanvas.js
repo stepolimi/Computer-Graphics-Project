@@ -72,6 +72,9 @@ var tnt;
 var texture;
 var egg;
 var plumeExplosion;
+var woodCube;
+var glassCube;
+var stoneCube;
 
 // variables for objects movements
 var birdY = 0;
@@ -369,6 +372,7 @@ async function loadMeshes(){
     let piece6;
     let piece7;
     let piece8;
+    let piece9;
     let pigChoiche;
     let pig1;
     let pig2;
@@ -388,6 +392,9 @@ async function loadMeshes(){
     pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
     egg = await utils.loadMesh("/assets/Others/egg.obj");
     plumeExplosion = await utils.loadMesh("/assets/Others/plume.obj");
+    woodCube = await utils.loadMesh("/assets/Others/woodBox.obj");
+    glassCube = await utils.loadMesh("/assets/Others/glassBox.obj");
+    stoneCube = await utils.loadMesh("/assets/Others/stoneBox.obj");
 
     
     let objType;
@@ -491,9 +498,9 @@ async function loadMeshes(){
 
     }
     //pseudo randomize blocks
-    for(let i=0; i<8; i++){
+    for(let i=0; i<10; i++){
         let min = Math.ceil(1);
-        let max = Math.floor(9);
+        let max = Math.floor(10);
         choiche = Math.floor(Math.random() * (max - min + 1)) + min;
         console.log(choiche);
         
@@ -503,16 +510,16 @@ async function loadMeshes(){
                 objType = "tnt";
                 break;
             case 2:
-                piece = tnt;
-                objType = "tnt";
+                piece = glassCube;
+                objType = "glassBox";
                 break;
             case 3:
-                piece = tnt;
-                objType = "tnt";
+                piece = woodBox;
+                objType = "woodBox";
                 break;
             case 4:
-                piece = tnt;
-                objType = "tnt";
+                piece = stoneBox;
+                objType = "stoneBox";
                 break;
             case 5:
                 piece = tnt;
@@ -571,7 +578,10 @@ async function loadMeshes(){
             case 7:
                 piece8 = piece;
                 structureObjs.push(new structureObjects(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, objType ));
-                break;       
+                break; 
+            case 8:
+                piece9 = piece;
+                structureObjs.push(new structureObjects(0.0, 0.0 , -1.0, 0.0, 0.0, 0.0, objType ));
             default:
                 break;
         }//number of total pieces in the scene
@@ -599,7 +609,8 @@ async function loadMeshes(){
         piece8,
         elastic,
         egg,
-        plumeExplosion
+        plumeExplosion,
+        piece9
     ];
 }
   

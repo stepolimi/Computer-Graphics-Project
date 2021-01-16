@@ -16,7 +16,7 @@ var bird5 = utils.MakeWorld(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);
 var pig1 = utils.MakeWorld(0.0, 0.0 , 2.0, 270.0, 0.0, 0.0, 1);
 var	pig2 = utils.MakeWorld(0.0, 0.0 , 4.0, 270.0, 0.0, 0.0, 1);
 var pig3 = utils.MakeWorld(0.0, 1.6 , 3.0, 270.0, 0.0, 0.0, 1);
-var tower11 = utils.MakeWorld(0.0, 0.0 , 1.0, 0.0, 0.0, 0.0, 0.17);
+var tower11 = utils.MakeWorld(0.0, 0.0 , 1.0, 0.0, 0.0, 0.0, 0.2);
 var tower12 = utils.MakeWorld(0.0, 0.8 , 1.0, 0.0, 0.0, 0.0, 0.2);
 var tower13 = utils.MakeWorld(0.0, 1.6 , 1.0, 0.0, 0.0, 0.0, 0.2);
 var tower14 = utils.MakeWorld(0.0, 2.4 , 1.0, 0.0, 0.0, 0.0, 0.2);
@@ -27,6 +27,8 @@ var tower32 = utils.MakeWorld(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, 0.2);
 var slingElasticMatrix = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
 var eggMatrix = utils.MakeWorld(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
 var plumeExplosionMatrix = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0);
+var structure0  = utils.MakeWorld(0.0, 0.0 , -1.0, 0.0, 0.0, 0.0, 0.2);
+
 
 
 //birds rotation
@@ -54,7 +56,8 @@ var worldPositions = [
 	tower32,				//17
 	slingElasticMatrix,		//18
 	eggMatrix,				//19
-	plumeExplosionMatrix	//20
+	plumeExplosionMatrix,	//20
+	structure0				//21
 ];
 
 
