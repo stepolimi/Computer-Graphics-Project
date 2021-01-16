@@ -73,6 +73,9 @@ function birdTrajectory(index){
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
+
+		if(counter == 5)
+			window.location.replace("./endGame.html");
 	}
 	t += 0.05;
 }
