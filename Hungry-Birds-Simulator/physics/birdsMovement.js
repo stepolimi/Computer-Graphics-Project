@@ -62,10 +62,10 @@ function birdTrajectory(index){
 		activatePower(index);
 
 	if(trajectoryY >= -5.0 && trajectoryY <= 20.00 && !birdCollides){
-		birdsArray[index].ty = trajectoryY;
-		birdsArray[index].tz = trajectoryZ;
-		birdsArray[index].ry = angle;
-		birdsArray[index].rz = rotation;
+		birdsArray[index-2].ty = trajectoryY;
+		birdsArray[index-2].tz = trajectoryZ;
+		birdsArray[index-2].ry = angle;
+		birdsArray[index-2].rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
 		isColliding(index);
 	}
