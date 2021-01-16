@@ -423,23 +423,23 @@ async function loadMeshes(){
         switch(i){
           case 0:
                 bird1 = bird;
-                birdsArray[i] = birdName;
+                birdsArray[i] = new bird(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, birdName);
                 break;
           case 1:
                 bird2 = bird;
-                birdsArray[i] = birdName;
+                birdsArray[i] = new bird(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           case 2:
                 bird3 = bird;
-                birdsArray[i] = birdName;
+                birdsArray[i] = new bird(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           case 3:
                 bird4 = bird;
-                birdsArray[i] = birdName;
+                birdsArray[i] = new bird(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           case 4:
                 bird5 = bird;
-                birdsArray[i] = birdName;
+                birdsArray[i] = new bird(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           default:
                 break;
@@ -475,15 +475,15 @@ async function loadMeshes(){
         switch(i){
             case 0:
                 pig1 = pigChoiche;
-                structureObjs.push(new structureObjects(worldPositions[7], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 2.0, 270.0, 0.0, 0.0, objType ));
                 break;
             case 1:
                 pig2 = pigChoiche;
-                structureObjs.push(new structureObjects(worldPositions[8], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 4.0, 270.0, 0.0, 0.0, objType ));
                 break;
             case 2:
                 pig3 = pigChoiche;
-                structureObjs.push(new structureObjects(worldPositions[9], objType ));
+                structureObjs.push(new structureObjects(0.0, 1.6 , 3.0, 270.0, 0.0, 0.0, objType ));
                 break;
             default:
                 break;
@@ -542,35 +542,35 @@ async function loadMeshes(){
         switch(i){
             case 0:
                 piece1 = piece;
-                structureObjs.push(new structureObjects(worldPositions[10], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 1.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 1:
                 piece2 = piece;
-                structureObjs.push(new structureObjects(worldPositions[11], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.8 , 1.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 2:
                 piece3 = piece;
-                structureObjs.push(new structureObjects(worldPositions[12], objType ));
+                structureObjs.push(new structureObjects(0.0, 1.6 , 1.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 3:
                 piece4 = piece;
-                structureObjs.push(new structureObjects(worldPositions[13], objType ));
+                structureObjs.push(new structureObjects(0.0, 2.4 , 1.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 4:
                 piece5 = piece;
-                structureObjs.push(new structureObjects(worldPositions[14], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 5:
                 piece6 = piece;
-                structureObjs.push(new structureObjects(worldPositions[15], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.8 , 3.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 6:
                 piece7 = piece;
-                structureObjs.push(new structureObjects(worldPositions[16], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 7:
                 piece8 = piece;
-                structureObjs.push(new structureObjects(worldPositions[17], objType ));
+                structureObjs.push(new structureObjects(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, objType ));
                 break;       
             default:
                 break;

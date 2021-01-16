@@ -1,8 +1,12 @@
 // JavaScript source code
-class castlePiece {
-	constructor(coords, angles, type){
-		this.coords = coords;
-		this.angles= angles;
+class bird {
+	constructor(tx, ty, tz, rx, ry, rz, type){
+		this.tx = tx;
+		this.ty = ty;
+		this.tz = tz;
+		this.rx = rx;
+		this.ry = ry;
+		this.rz = rz;
 		this.type = type;
 		this.isColliding = false;
 	}

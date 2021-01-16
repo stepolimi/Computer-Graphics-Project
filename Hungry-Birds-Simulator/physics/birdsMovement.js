@@ -61,29 +61,29 @@ function birdTrajectory(index){
 	if(activateBirdPower)
 		activatePower(index);
 
-	if(trajectoryY >= -5.0 && trajectoryY <= 20.00 && !birdCollides)
+	if(trajectoryY >= -5.0 && trajectoryY <= 20.00 && !birdCollides){
+		birdsArray[index].ty = trajectoryY;
+		birdsArray[index].tz = trajectoryZ;
+		birdsArray[index].ry = angle;
+		birdsArray[index].rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
+		isColliding(index);
+	}
 	else{
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
 	}
 	t += 0.05;
-	isColliding(index);
 }
 
 
 function isColliding(index){
-	birdPosition = worldPositions[index];
-	let birdY = birdPosition[1];
-	let birdZ = birdPosition[2];
-	console.log("birdY" + birdY);
-	console.log("birdZ" + birdZ);
 	for(let i = 0; i < structureObjs.length; i++ ){
-		let objY = structureObjs[i].position[1];
-		let objZ = structureObjs[i].position[2];
+		let objY = structureObjs[i].ty;
+		let objZ = structureObjs[i].tz;
 
-		if(objY > birdY + BIRD_RADIUS || birdY > objY + STRUCTURE_OBJ_RADIUS || objZ > birdZ + BIRD_RADIUS || birdZ > objZ + STRUCTURE_OBJ_RADIUS )
+		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + STRUCTURE_OBJ_RADIUS || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + STRUCTURE_OBJ_RADIUS )
 			console.log("non collidono");
 		else{
 			birdCollides = true;
