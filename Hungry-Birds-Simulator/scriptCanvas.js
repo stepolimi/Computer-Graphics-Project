@@ -423,23 +423,23 @@ async function loadMeshes(){
         switch(i){
           case 0:
                 bird1 = bird;
-                birdsArray[i] = new bird(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, birdName);
+                birdsArray[i] = new birdObject(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, birdName);
                 break;
           case 1:
                 bird2 = bird;
-                birdsArray[i] = new bird(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
+                birdsArray[i] = new birdObject(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           case 2:
                 bird3 = bird;
-                birdsArray[i] = new bird(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
+                birdsArray[i] = new birdObject(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           case 3:
                 bird4 = bird;
-                birdsArray[i] = new bird(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
+                birdsArray[i] = new birdObject(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           case 4:
                 bird5 = bird;
-                birdsArray[i] = new bird(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
+                birdsArray[i] = new birdObject(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                 break;
           default:
                 break;

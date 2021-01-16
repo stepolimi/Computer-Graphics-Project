@@ -1,5 +1,5 @@
 // JavaScript source code
-class bird {
+class birdObject {
 	constructor(tx, ty, tz, rx, ry, rz, type){
 		this.tx = tx;
 		this.ty = ty;
