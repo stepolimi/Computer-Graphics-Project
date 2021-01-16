@@ -67,7 +67,6 @@ function waitingBirdsAnimation(){
 	else
 		roundZ = 0.0;
 
-	setTimeout(function(){},1000);
 	switch(counter){
 		case 0:
 			worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, roundZ, 0.5); 
@@ -77,6 +76,7 @@ function waitingBirdsAnimation(){
 			break;
 		case 1:
 			birdTrajectory(2);
+			setTimeout(function(){},1000);
 		    worldPositions[3] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[4] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[5] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
@@ -84,21 +84,27 @@ function waitingBirdsAnimation(){
 			break;
 		case 2:
 			birdTrajectory(3);
+			setTimeout(function(){},1000);
 		    worldPositions[4] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[5] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[6] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, 0.0, 0.0, 0.5);	
 			break;
 		case 3:
 			birdTrajectory(4);
+			setTimeout(function(){},1000);
 		    worldPositions[5] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 		    worldPositions[6] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, 0.0, 0.0, 0.5);
 			break;
 		case 4:
 			birdTrajectory(5);
+			setTimeout(function(){},1000);
 		    worldPositions[6] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
 			break;
 		case 5:
 			birdTrajectory(6);
+			break;
+		case 6:
+			window.location.replace("endGame.html?score="+currentScore);
 			break;
 		default:
 		    break;
