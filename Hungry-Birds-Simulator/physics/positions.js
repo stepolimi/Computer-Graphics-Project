@@ -104,6 +104,7 @@ function waitingBirdsAnimation(){
 			birdTrajectory(6);
 			break;
 		case 6:
+			console.log("ciao");
 			window.location.replace("./endGame.html");
 			break;
 		default:
