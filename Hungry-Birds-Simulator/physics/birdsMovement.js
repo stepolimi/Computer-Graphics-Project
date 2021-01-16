@@ -112,7 +112,7 @@ function activateSound(index){
 		b) y = the speed variation over this axis
 */
 function activatePower(index){
-	var bird = birdsArray[index-2];
+	var bird = birdsArray[index-2].type;
 	switch(bird){
 		case "red":
 		default:
