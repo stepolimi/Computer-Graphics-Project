@@ -31,12 +31,20 @@
             </h1>
         </div>
         <div class="col-sm-12">
-            <button id="play-button">
+            <button id="close-button">
                 <p id="play-text">
-                    Play
+                    Close
                 </p>
             </button>
         </div>
 
 </body>
+
+<script>
+    var closeButton = document.getElementById("close-button");
+
+    closeButton.onclick = function (){
+        window.location.replace("./index.html");
+    }
+</script>
 </html>
