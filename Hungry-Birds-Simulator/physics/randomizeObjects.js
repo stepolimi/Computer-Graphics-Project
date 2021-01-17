@@ -181,6 +181,7 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
                 piece = glassHorizontalPlane;
                 objType = "glassHorizontalPlane";
                 break;
+        }
 
         switch(i){
             case 0:
