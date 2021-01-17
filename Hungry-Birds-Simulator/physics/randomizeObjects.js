@@ -216,7 +216,7 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, wood
     structureObjs.push(new structureObjects(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0,  "tnt" ));
 
     tower31 = tnt;
-    structureObjs.push(new structureObjects(0.0, 1.5 , 7.2, 0.0, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 1.5 , 7.0, 0.0, 0.0, 0.0,  "tnt" ));
 
     tower32 = tnt;
     structureObjs.push(new structureObjects(0.0, 1.5 , 7.8, 0.0, 0.0, 0.0,  "tnt" ));
