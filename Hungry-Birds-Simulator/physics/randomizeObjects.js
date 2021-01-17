@@ -250,11 +250,11 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
                 break;
             case 4:
                 tower212 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.8, 5.0, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.7, 5.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 5:
                 tower220 = piece;
-                structureObjs.push(new structureObjects(0.0, 6.4 , 5.0, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 6.3 , 5.0, 0.0, 0.0, 0.0, objType ));
                 break;
         }
     }
@@ -441,8 +441,8 @@ function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
                 structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType ));
                 break;
             case 5:
-                tower119 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, objType ));
+                tower119 = woodBox;
+                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "woodBox" ));
                 break;
             case 6:
                 tower21 = piece;
