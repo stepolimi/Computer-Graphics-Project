@@ -216,13 +216,13 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, wood
     structureObjs.push(new structureObjects(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0,  "tnt" ));
 
     tower31 = tnt;
-    structureObjs.push(new structureObjects(0.0, 1.6 , 7.2, 0.0, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 1.5 , 7.2, 0.0, 0.0, 0.0,  "tnt" ));
 
     tower32 = tnt;
-    structureObjs.push(new structureObjects(0.0, 1.6 , 7.8, 0.0, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 1.5 , 7.8, 0.0, 0.0, 0.0,  "tnt" ));
     
     tower33 = tnt;
-    structureObjs.push(new structureObjects(0.0, 1.6 , 8.6, 0.0, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 1.5 , 8.6, 0.0, 0.0, 0.0,  "tnt" ));
 
 
     randomizeCube(glassBox, woodBox, stoneBox, stoneSquare);
@@ -281,7 +281,7 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
                 break;
             case 6:
                 tower36 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.9 , 7.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.8 , 7.8, 0.0, 0.0, 0.0, objType ));
                 break;
         }
     }
@@ -410,15 +410,15 @@ function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
                 break;
             case 5:
                 tower34 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.4 , 7.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.3 , 7.2, 0.0, 0.0, 0.0, objType ));
                 break;
             case 6:
                 tower35 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.4 , 8.6, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.3 , 8.6, 0.0, 0.0, 0.0, objType ));
                 break;
             case 7:
                 tower37 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.4 , 7.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.3 , 7.8, 0.0, 0.0, 0.0, objType ));
                 break;
         }
     }

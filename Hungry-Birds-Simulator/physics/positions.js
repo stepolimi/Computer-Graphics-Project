@@ -76,19 +76,19 @@ var tower219Matrix = utils.MakeWorld(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cub
 var tower220Matrix = utils.MakeWorld(0.0, 6.3 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
 
 
-var rock2Matrix = utils.MakeWorld(0.0, 0.0 , 7.8, 0.0, 0.0, 0.0, 0.2);
+var rock2Matrix = utils.MakeWorld(0.0, 0.0 , 8.0, 0.0, 0.0, 0.0, 0.2);
 
 //Tower 3
 var pig31Matrix = utils.MakeWorld(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, 0.6);		//pig1 of tower 3
 
 
-var tower31Matrix = utils.MakeWorld(0.0, 1.6 , 7.2, 0.0, 0.0, 0.0, 0.2);		//tnt
-var tower32Matrix = utils.MakeWorld(0.0, 1.6 , 7.8, 0.0, 0.0, 0.0, 0.2);		//tnt
-var tower33Matrix = utils.MakeWorld(0.0, 1.6 , 8.6, 0.0, 0.0, 0.0, 0.2);		//tnt
-var tower34Matrix = utils.MakeWorld(0.0, 2.4 , 7.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
-var tower35Matrix = utils.MakeWorld(0.0, 2.4 , 8.6, 0.0, 0.0, 0.0, 0.2);		//pyramid
-var tower36Matrix = utils.MakeWorld(0.0, 2.9 , 7.8, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
-var tower37Matrix = utils.MakeWorld(0.0, 3.4 , 7.8, 0.0, 0.0, 0.0, 0.2);		//pyramid
+var tower31Matrix = utils.MakeWorld(0.0, 1.5 , 7.2, 0.0, 0.0, 0.0, 0.2);		//tnt
+var tower32Matrix = utils.MakeWorld(0.0, 1.5 , 7.8, 0.0, 0.0, 0.0, 0.2);		//tnt
+var tower33Matrix = utils.MakeWorld(0.0, 1.5 , 8.6, 0.0, 0.0, 0.0, 0.2);		//tnt
+var tower34Matrix = utils.MakeWorld(0.0, 2.3 , 7.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
+var tower35Matrix = utils.MakeWorld(0.0, 2.3 , 8.6, 0.0, 0.0, 0.0, 0.2);		//pyramid
+var tower36Matrix = utils.MakeWorld(0.0, 2.8 , 7.8, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
+var tower37Matrix = utils.MakeWorld(0.0, 3.3 , 7.8, 0.0, 0.0, 0.0, 0.2);		//pyramid
 
 //birds rotation
 var lastUpdateTime = (new Date).getTime();
