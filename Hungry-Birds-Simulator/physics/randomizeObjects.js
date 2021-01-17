@@ -198,7 +198,7 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, wood
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.75,0.2, 0.4, 0.0, 0.0,  "tnt" ));
 
-    tower 210 = tnt;
+    tower210 = tnt;
     structureObjs.push(new structureObjects(0.0, 3.4, 5.0 , 0.4, 0.0, 0.0,  "tnt" ));
 
     randomizeCube(glassBox, woodBox, stoneBox, stoneSquare);
