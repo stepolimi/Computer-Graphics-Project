@@ -172,11 +172,11 @@ function randomizePigs(pig, pigHelmet, pigMustache){
                 break;
             case 4:
                 pig22 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.4 , 5.8, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, objType ));
                 break;
             case 5:
                 pig23 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 2.2 , 4.8, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, objType ));
                 break;
             case 6:
                 pig24 = pigChoiche;
@@ -184,7 +184,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
                 break;
             case 7:
                 pig25 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 6.4 , 5.0, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 6.6 , 5.0, 270.0, 0.0, 0.0, objType ));
                 break;
         }
     }

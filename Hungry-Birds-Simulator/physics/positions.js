@@ -49,10 +49,10 @@ var rockMatrix = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 //Tower 2 pigs
 var pig21Matrix = utils.MakeWorld(0.0, 0.6 , 5.0, 270.0, 0.0, 0.0, 0.75);		//pig1 of tower 2
-var	pig22Matrix = utils.MakeWorld(0.0, 1.4 , 5.8, 270.0, 0.0, 0.0, 0.4);		//pig2 of tower 2
-var pig23Matrix = utils.MakeWorld(0.0, 2.2 , 4.8, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 2
-var pig24Matrix = utils.MakeWorld(0.0, 3.8 , 5.0, 270.0, 0.0, 0.0, 0.7);		//pig1 of tower 2
-var pig25Matrix = utils.MakeWorld(0.0, 6.4 , 5.0, 270.0, 0.0, 0.0, 1.0);		//pig3 of tower 2
+var	pig22Matrix = utils.MakeWorld(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, 0.4);		//pig2 of tower 2
+var pig23Matrix = utils.MakeWorld(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 2
+var pig24Matrix = utils.MakeWorld(0.0, 3.8 , 5.0, 270.0, 0.0, 0.0, 0.6);		//pig1 of tower 2
+var pig25Matrix = utils.MakeWorld(0.0, 6.6 , 5.0, 270.0, 0.0, 0.0, 1.0);		//pig3 of tower 2
 
 var tower21Matrix = utils.MakeWorld(0.0, 0.8 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower22Matrix = utils.MakeWorld(0.0, 0.8 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
