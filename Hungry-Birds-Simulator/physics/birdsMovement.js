@@ -91,8 +91,10 @@ function isColliding(){
 			console.log("non collidono");
 		else{
 			birdCollides = true;
-			console.log("oggetto con cui bird collide " + structureObjs[i].type);
-			console.log("collidono");
+			console.log("objY " + objY);
+			console.log("objZ " + objZ);
+			console.log("trajectoryY " + trajectoryY);
+			console.log("trajectoryZ " + trajectoryZ);
 		}
 	}
 		

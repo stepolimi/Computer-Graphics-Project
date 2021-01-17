@@ -20,8 +20,8 @@ var plumeExplosionMatrix = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0);
 
 //Tower 1 pigs
 var pig11Matrix = utils.MakeWorld(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, 0.7);		//pig1 of tower 1
-var	pig12Matrix = utils.MakeWorld(0.0, 1.8 , 0.2, 270.0, 0.0, 0.0, 0.7);		//pig2 of tower 1
-var pig13Matrix = utils.MakeWorld(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 1
+var	pig12Matrix = utils.MakeWorld(0.0, 1.6 , 0.2, 270.0, 0.0, 0.0, 0.7);		//pig2 of tower 1
+var pig13Matrix = utils.MakeWorld(0.0, 3.6 , 0.2, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 1
 
 //Tower 1 pieces
 var tower11Matrix = utils.MakeWorld(0.0, 0.0 , -1.0, 0.0, 0.0, 0.0, 0.2);		//pyramid
