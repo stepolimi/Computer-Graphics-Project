@@ -435,7 +435,7 @@ async function loadMeshes(){
         tower118,               //30
         tower119,               //31
         tower120,               //32
-        rock1
+        rock1                   //33
     ];
 
 }

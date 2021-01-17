@@ -45,7 +45,7 @@ var tower118Matrix = utils.MakeWorld(0.0, 3.3 , 0.2, 0.0, 0.0, 0.0, 0.2);		//hor
 var tower119Matrix = utils.MakeWorld(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower120Matrix = utils.MakeWorld(0.0, 4.6 , 0.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
 
-var rockMatrix = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.7);
+var rockMatrix = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 
 //Tower 2 pigs
