@@ -32,7 +32,7 @@ var pig13;
 
 
 
-function randomizeBirds(){
+function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
     for(let i=0; i<5; i++) {
         let min = Math.ceil(1);
         let max = Math.floor(4);

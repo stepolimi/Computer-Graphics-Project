@@ -397,8 +397,7 @@ async function loadMeshes(){
     woodHorizontalPlane = await utils.loadMesh("/assets/Others/woodHorizontalPlane.obj");
     
     //randomize birds
-    randomizeBirds();
-
+    randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda);
 
     //randomize pigs
     randomizePigs();
