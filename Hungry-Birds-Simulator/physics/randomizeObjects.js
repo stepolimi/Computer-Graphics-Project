@@ -162,7 +162,7 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glas
 
 
 //randomize type of horizontal pieces between glass and wood
-function randomizeHorizontalPlane(){
+function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
     for(let i=0; i<3; i++){
         let min = Math.ceil(1);
         let max = Math.floor(2);
@@ -181,8 +181,6 @@ function randomizeHorizontalPlane(){
                 piece = glassHorizontalPlane;
                 objType = "glassHorizontalPlane";
                 break;
-        }//same number as the possible different pieces
-
 
         switch(i){
             case 0:
@@ -207,7 +205,7 @@ function randomizeHorizontalPlane(){
 
 
 //randomize type of vertical pieces between glass or wood
-function randomizeVerticalPlane(){
+function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
     for(let i=0; i<6; i++){
         let min = Math.ceil(1);
         let max = Math.floor(2);
@@ -260,7 +258,7 @@ function randomizeVerticalPlane(){
 
 
 //randomize type of pyramid between stone, glass or wood
-function randomizePyramid(){
+function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
     for(let i=0; i<3; i++){
         let min = Math.ceil(1);
         let max = Math.floor(3);
@@ -305,7 +303,7 @@ function randomizePyramid(){
 
 
 //randomize type of cube between ston, glass or wood
-function randomizeCube(){
+function randomizeCube(glassBox, woodBox, stoneBox){
     for(let i=0; i<6; i++){
         let min = Math.ceil(1);
         let max = Math.floor(3);
@@ -359,4 +357,4 @@ function randomizeCube(){
 
         }
     }
-}
+}*/
