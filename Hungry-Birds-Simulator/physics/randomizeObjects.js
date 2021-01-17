@@ -4,7 +4,7 @@ let pigChoiche;
 let choiche;
 let tower;
 let piece;
-let objType
+let objType;
 
 //meshes for random birds
 var bird1;
@@ -156,7 +156,7 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glas
 
     //randomizeCube(glassBox, woodBox, stoneBox);
     //randomizePyramid(woodPyramid, glassPyramid, stonePyramid);
-    //randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane);
+    randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane);
     randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane);
 }
 
@@ -183,6 +183,9 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
                 break;
         }
 
+        
+        console.log("birdName " + objType );
+
         switch(i){
             case 0:
                 tower16 = piece;
@@ -204,7 +207,7 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
     }
 }
 
-/*
+
 //randomize type of vertical pieces between glass or wood
 function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
     for(let i=0; i<6; i++){
@@ -225,8 +228,10 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
                 piece = glassVerticalPlane;
                 objType = "glassVerticalPlane";
                 break;
-        }//same number as the possible different pieces
+        }
 
+        
+        console.log("birdName " + objType );
 
         switch(i){
             case 0:
@@ -253,11 +258,11 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
                 tower116 = piece;
                 structureObjs.push(new structureObjects(0.0, 3.3 , 2.0, 0.0, 0.0, 0.0, objType ));
                 break;
+
         }
     }
 }
-
-
+/*
 //randomize type of pyramid between stone, glass or wood
 function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
     for(let i=0; i<3; i++){
