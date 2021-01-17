@@ -166,7 +166,7 @@ function throwBird(e){
         elasticRotationY = 0;
         mouseX = 0.0;
         mouseY = 0.0;
-        worldPositions[10] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
+        worldPositions[7] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
         counter ++;
     }
 }
@@ -522,21 +522,6 @@ function addMeshToScene(i) {
     cz += vz;
     elev += rvx;
     ang += rvy;
-/*
-    console.log("x: ")
-    console.log(cx);
-
-    console.log("y: ")
-    console.log(cy);
-
-    console.log("z: ")
-    console.log(cz);
-
-    console.log("elev: ")
-    console.log(elev);
-
-    console.log("ang: ")
-    console.log(ang);*/
 
     setupLights();
 
