@@ -66,9 +66,9 @@ var tower28Matrix = utils.MakeWorld(0.0, 1.6 ,  4.2, 0.0, 0.0, 0.0, 0.2);		//cub
 var tower29Matrix = utils.MakeWorld(0.0, 3.4 ,  4.2, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower210Matrix = utils.MakeWorld(0.0, 3.4, 5.0 , 0.4, 0.0, 0.0, 0.2);		//tnt
 var tower211Matrix = utils.MakeWorld(0.0, 3.4 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
-var tower212Matrix = utils.MakeWorld(0.0, 3.6 , 5.0 , 0.0, 0.0, 0.0,0.2);		//horizontal plane
+var tower212Matrix = utils.MakeWorld(0.0, 3.6 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
 var tower213Matrix = utils.MakeWorld(0.0, 4.2 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
-var tower214Matrix = utils.MakeWorld(0.0, 5.0,  5.8, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower214Matrix = utils.MakeWorld(0.0, 5.0 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower215Matrix = utils.MakeWorld(0.0, 5.8 , 5.8, 0.0, 0.0, 0.0, 0.2);		//pyramid
 var tower216Matrix = utils.MakeWorld(0.0, 5.8 , 5.0, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower217Matrix = utils.MakeWorld(0.0, 5.8 , 4.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
@@ -117,31 +117,31 @@ var worldPositions = [
 	tower119Matrix,				//31
 	tower120Matrix,				//32
 	rockMatrix,					//33
-	pig21Matrix,
-	pig22Matrix,
-	pig23Matrix,
-	pig24Matrix,
-	pig25Matrix,
-	tower21Matrix,
-	tower22Matrix,
-	tower23Matrix,
-	tower24Matrix,
-	tower25Matrix,
-	tower26Matrix,
-	tower27Matrix,
-	tower28Matrix,
-	tower29Matrix,
-	tower210Matrix,
-	tower211Matrix,
-	tower212Matrix,
-	tower213Matrix,
-	tower214Matrix,
-	tower215Matrix,
-	tower216Matrix,
-	tower217Matrix,
-	tower218Matrix,
-	tower219Matrix,
-	tower220Matrix
+	pig21Matrix,				//34
+	pig22Matrix,				//35
+	pig23Matrix,				//36
+	pig24Matrix,				//37
+	pig25Matrix,				//38
+	tower21Matrix,				//39
+	tower22Matrix,				//40
+	tower23Matrix,				//41
+	tower24Matrix,				//42
+	tower25Matrix,				//43
+	tower26Matrix,				//44
+	tower27Matrix,				//45
+	tower28Matrix,				//46
+	tower29Matrix,				//47
+	tower210Matrix,				//48
+	tower211Matrix,				//49
+	tower212Matrix,				//50
+	tower213Matrix,				//51
+	tower214Matrix,				//52
+	tower215Matrix,				//53
+	tower216Matrix,				//54
+	tower217Matrix,				//55
+	tower218Matrix,				//56
+	tower219Matrix,				//57
+	tower220Matrix				//58
 ];
 
 

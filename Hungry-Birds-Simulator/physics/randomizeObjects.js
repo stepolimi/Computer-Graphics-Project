@@ -185,9 +185,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
             case 7:
                 pig25 = pigChoiche;
                 structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, objType ));
-                break;
-            default:
-                break;
+                break;ù
         }
     }
 }
@@ -250,11 +248,11 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
                 tower118 = piece;
                 structureObjs.push(new structureObjects(0.0, 3.3 , 0.2, 0.0, 0.0, 0.0, objType ));
                 break;
-            case 3:
+            case 4:
                 tower212 = piece;
                 structureObjs.push(new structureObjects(0.0, 3.6, 5.0, 0.0, 0.0, 0.0, objType ));
                 break;
-            case 3:
+            case 5:
                 tower220 = piece;
                 structureObjs.push(new structureObjects(0.0, 6.0 , 5.0, 0.0, 0.0, 0.0, objType ));
                 break;

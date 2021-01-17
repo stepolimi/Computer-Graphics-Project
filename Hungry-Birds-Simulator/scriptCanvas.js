@@ -436,31 +436,31 @@ async function loadMeshes(){
         tower119,               //31
         tower120,               //32
         rock1,                  //33
-        pig21,
-        pig22,
-        pig23,
-        pig24,
-        pig25,
-        tower21,
-        tower22,
-        tower23,
-        tower24,
-        tower25,
-        tower26,
-        tower27,
-        tower28,
-        tower29,
-        tower210,
-        tower211,
-        tower212,
-        tower213,
-        tower214,
-        tower215,
-        tower216,
-        tower217,
-        tower218,
-        tower219,
-        tower220
+        pig21,                  //34
+        pig22,                  //35
+        pig23,                  //36
+        pig24,                  //37
+        pig25,                  //38
+        tower21,                //39
+        tower22,                //40
+        tower23,                //41
+        tower24,                //42
+        tower25,                //43
+        tower26,                //44
+        tower27,                //45
+        tower28,                //46
+        tower29,                //47
+        tower210,               //48
+        tower211,               //49
+        tower212,               //50
+        tower213,               //51
+        tower214,               //52
+        tower215,               //53
+        tower216,               //54
+        tower217,               //55
+        tower218,               //56
+        tower219,               //57
+        tower220                //58
     ];
 
 }
