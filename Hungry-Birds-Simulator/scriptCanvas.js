@@ -74,7 +74,46 @@ var egg;
 var plumeExplosion;
 var woodBox;
 var glassBox;
-var stoneBox;
+var stoneBox;  
+var woodPyramid;
+var glassPyramid;
+var stonePyramid;    
+var glassVerticalPlane;
+var woodVerticalPlane;
+var glassHorizontalPlane;
+var woodHorizontalPlane;
+
+//meshes for random birds
+var bird1;
+var bird2;
+var bird3;
+var bird4;
+var bird5;
+
+//meshes fot tower 1
+var tower11;
+var tower12;
+var tower13;
+var tower14;
+var tower15;
+var tower16;
+var tower17;
+var tower18;
+var tower19;
+var tower110;
+var tower111;
+var tower112;
+var tower113;
+var tower114;
+var tower115;
+var tower116;
+var tower117;
+var tower118;
+var tower119;
+var tower120;
+var pig11;
+var pig12;
+var pig13;
 
 // variables for objects movements
 var birdY = 0;
@@ -82,7 +121,6 @@ var elasticScalingZ = 0;
 var elasticScalingY = 0;
 var elasticRotationY = 0;
 var birdsArray = [];
-var birdName;
 var activateBirdPower = false;
 
 //shaders variables
@@ -144,7 +182,7 @@ function scaleSlingElastic(e){
 
 
 /*function called at the touchpad or mouse release, it brings all variables related to birds launch back to the origin status
-  NB. worldPositions[18] is the original sling elastic position 
+  NB. worldPositions[10] is the original sling elastic position 
 */
 function throwBird(e){
     isReleased = true;
@@ -160,7 +198,7 @@ function throwBird(e){
         elasticRotationY = 0;
         mouseX = 0.0;
         mouseY = 0.0;
-        worldPositions[18] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
+        worldPositions[10] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
         counter ++;
     }
 }
@@ -357,28 +395,7 @@ async function main() {
 }
 
 async function loadMeshes(){
-    let bird;
-    let bird1;
-    let bird2;
-    let bird3;
-    let bird4;
-    let bird5;
-    let piece;
-    let piece1;
-    let piece2;
-    let piece3;
-    let piece4;
-    let piece5;
-    let piece6;
-    let piece7;
-    let piece8;
-    let piece9;
-    let pigChoiche;
-    let pig1;
-    let pig2;
-    let pig3;
-    let choiche;
-
+    
     environment = await utils.loadMesh("/assets/Others/environment.obj");
     sling = await utils.loadMesh("/assets/Others/sling.obj");
     elastic = await utils.loadMesh("/assets/Others/slingElastic.obj");
@@ -395,222 +412,59 @@ async function loadMeshes(){
     woodBox = await utils.loadMesh("/assets/Others/woodBox.obj");
     glassBox = await utils.loadMesh("/assets/Others/glassBox.obj");
     stoneBox = await utils.loadMesh("/assets/Others/stoneBox.obj");
-
+    woodPyramid = await utils.loadMesh("/assets/Others/woodPyramid.obj");
+    glassPyramid = await utils.loadMesh("/assets/Others/glassPyramid.obj");
+    stonePyramid = await utils.loadMesh("/assets/Others/stonePyramid.obj");
+    glassVerticalPlane = await utils.loadMesh("/assets/Others/glassVerticalPlane.obj");
+    woodVerticalPlane = await utils.loadMesh("/assets/Others/woodVerticalPlane.obj");
+    glassHorizontalPlane = await utils.loadMesh("/assets/Others/glassHorizontalPlane.obj");
+    woodHorizontalPlane = await utils.loadMesh("/assets/Others/woodHorizontalPlane.obj");
     
-    let objType;
     //randomize birds
-    for(let i=0; i<5; i++){
-        let min = Math.ceil(1);
-        let max = Math.floor(4);
-        choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-        
-        switch(choiche){
-            case 1:
-                bird = birdRed;
-                birdName = "red";
-                break;
-            case 2:
-                bird = birdChuck;
-                birdName = "chuck";
-                break;
-            case 3:
-                bird = birdBomb;
-                birdName = "bomb";
-                break;
-            case 4:
-                bird = birdMatilda;
-                birdName = "matilda";
-                break;
-            default:
-                bird = birdRed;
-                birdName = "red";
-                break;
-        }
-        
-        switch(i){
-          case 0:
-                bird1 = bird;
-                birdsArray[i] = new birdObject(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, birdName);
-                break;
-          case 1:
-                bird2 = bird;
-                birdsArray[i] = new birdObject(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
-                break;
-          case 2:
-                bird3 = bird;
-                birdsArray[i] = new birdObject(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
-                break;
-          case 3:
-                bird4 = bird;
-                birdsArray[i] = new birdObject(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
-                break;
-          case 4:
-                bird5 = bird;
-                birdsArray[i] = new birdObject(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
-                break;
-          default:
-                break;
-        }
-    }
+    randomizeBirds();
 
 
     //randomize pigs
-    for(let i=0; i<3; i++){
-        let min = Math.ceil(1);
-        let max = Math.floor(3);
-        choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-        
-        switch(choiche){
-            case 1:
-                pigChoiche = pig;
-                objType = "pig";
-                break;
-            case 2:
-                pigChoiche = pigHelmet;
-                objType = "pigHelmet";
-                break;
-            case 3:
-                pigChoiche = pigMustache;
-                objType = "pigMustache";
-                break;
-            default:
-                pigChoiche = pig;
-                objType = "pig";
-                break;
-        }
-        
-        switch(i){
-            case 0:
-                pig1 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 2.0, 270.0, 0.0, 0.0, objType ));
-                break;
-            case 1:
-                pig2 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 4.0, 270.0, 0.0, 0.0, objType ));
-                break;
-            case 2:
-                pig3 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.6 , 3.0, 270.0, 0.0, 0.0, objType ));
-                break;
-            default:
-                break;
-        }
-
-    }
+    randomizePigs();
+    
     //pseudo randomize blocks
-    for(let i=0; i<10; i++){
-        let min = Math.ceil(1);
-        let max = Math.floor(10);
-        choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-        console.log(choiche);
-        
-        switch(choiche){
-            case 1:
-                piece = tnt;
-                objType = "tnt";
-                break;
-            case 2:
-                piece = glassBox;
-                objType = "glassBox";
-                break;
-            case 3:
-                piece = woodBox;
-                objType = "woodBox";
-                break;
-            case 4:
-                piece = stoneBox;
-                objType = "stoneBox";
-                break;
-            case 5:
-                piece = tnt;
-                objType = "tnt";
-                break;
-            case 6:
-                piece = tnt;
-                objType = "tnt";
-                break;
-            case 7:
-                piece = tnt;
-                objType = "tnt";
-                break;
-            case 8:
-                piece = tnt;
-                objType = "tnt";
-                break;
-            case 9:
-                piece = tnt;
-                objType = "tnt";
-                break;
-            default:
-                piece = tnt;
-                objType = "tnt";
-        }//same number as the possible different pieces
-        
-        switch(i){
-            case 0:
-                piece1 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 1.0, 0.0, 0.0, 0.0, objType ));
-                break;
-            case 1:
-                piece2 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.8 , 1.0, 0.0, 0.0, 0.0, objType ));
-                break;
-            case 2:
-                piece3 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.6 , 1.0, 0.0, 0.0, 0.0, objType ));
-                break;
-            case 3:
-                piece4 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.4 , 1.0, 0.0, 0.0, 0.0, objType ));
-                break;
-            case 4:
-                piece5 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, objType ));
-                break;
-            case 5:
-                piece6 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.8 , 3.0, 0.0, 0.0, 0.0, objType ));
-                break;
-            case 6:
-                piece7 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, objType ));
-                break;
-            case 7:
-                piece8 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, objType ));
-                break; 
-            case 8:
-                piece9 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , -1.0, 0.0, 0.0, 0.0, objType ));
-            default:
-                break;
-        }//number of total pieces in the scene
-    }
+    defineStructureObjs();
 
 
     allMeshes = [
-        environment,
-        sling,
-        bird1,
-        bird2,
-        bird3,
-        bird4,
-        bird5,
-        pig1,
-        pig2,
-        pig3,
-        piece1,
-        piece2,
-        piece3,
-        piece4,
-        piece5,
-        piece6,
-        piece7,
-        piece8,
-        elastic,
-        egg,
-        plumeExplosion,
-        piece9
+        environment,            //0
+        sling,                  //1
+        bird1,                  //2
+        bird2,                  //3
+        bird3,                  //4
+        bird4,                  //5
+        bird5,                  //6
+        elastic,                //7
+        egg,                    //8
+        plumeExplosion,         //9
+        pig11,                  //10
+        pig12,                  //11
+        pig13,                  //12
+        tower11,
+        tower12,
+        tower13,
+        tower14,
+        tower15,
+        tower16,
+        tower17,
+        tower18,
+        tower19,
+        tower110,
+        tower111,
+        tower112,
+        tower113,
+        tower114,
+        tower115,
+        tower116,
+        tower117,
+        tower118,
+        tower119,
+        tower120
     ];
 }
   

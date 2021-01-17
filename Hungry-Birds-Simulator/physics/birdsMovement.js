@@ -86,6 +86,7 @@ function isColliding(){
 		let objY = structureObjs[i].ty;
 		let objZ = structureObjs[i].tz;
 
+
 		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + STRUCTURE_OBJ_RADIUS || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + STRUCTURE_OBJ_RADIUS )
 			console.log("non collidono");
 		else{
@@ -147,12 +148,12 @@ function activateBombPower(){
 	
 	explosionScaling += 0.02;
 	if(explosionScaling <= 1.0)
-		worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
+		worldPositions[12] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 	else{
 		explosionScaling = 0.0;
 		isBombActiveFirstTime = true;
 		activateBirdPower = false;
-		setTimeout(function(){worldPositions[20] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
+		setTimeout(function(){worldPositions[12] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
 	}
 }
 
@@ -213,7 +214,7 @@ function activateMatildaPower(){
 	eggT += 0.1;
 	
 	if(eggY >= -5.0)
-		worldPositions[19] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
+		worldPositions[11] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
 	else{
 		eggT = 0;
 		isMatildaActiveFirstTime = true;
