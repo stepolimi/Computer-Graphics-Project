@@ -38,12 +38,12 @@ var structureObjs = [];
 
 
 function randomizeBirds(birdC, birdR, birdB, birdM){
-    for(let i=0; i<5; i++) {
+    for(let i=0; i<5; i++){
         let min = Math.ceil(1);
         let max = Math.floor(4);
         choiche = Math.floor(Math.random() * (max - min + 1)) + min;
         let birdName;
-        
+
         switch(choiche){
             case 1:
                 bird = birdR;
@@ -66,7 +66,7 @@ function randomizeBirds(birdC, birdR, birdB, birdM){
                 birdName = "red";
                 break;
         }
-        
+
         switch(i){
             case 0:
                   bird1 = bird;
@@ -88,13 +88,11 @@ function randomizeBirds(birdC, birdR, birdB, birdM){
                   bird5 = bird;
                   birdsArray[i] = new birdObject(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName);
                   break;
-            default:
-                  break;
         }
     }
 }
-
-
+    
+/*
 function randomizePigs(pig, pigHelmet, pigMustache){
 	for(let i=0; i<3; i++){
         let min = Math.ceil(1);
@@ -349,4 +347,4 @@ function randomizeCube(){
 
         }
     }
-}
+}*/
