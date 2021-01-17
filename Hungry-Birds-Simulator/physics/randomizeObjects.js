@@ -163,7 +163,7 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glas
 
 //randomize type of horizontal pieces between glass and wood
 function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
-    for(let i=0; i<3; i++){
+    for(let i=0; i<4; i++){
         let min = Math.ceil(1);
         let max = Math.floor(2);
         choiche = Math.floor(Math.random() * (max - min + 1)) + min;

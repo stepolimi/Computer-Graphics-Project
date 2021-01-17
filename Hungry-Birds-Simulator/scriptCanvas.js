@@ -411,27 +411,28 @@ async function loadMeshes(){
         pig11,                  //10
         pig12,                  //11
         pig13,                  //12
-        tower11,
-        tower12,
-        tower13,
-        tower14,
-        tower15,
-        tower16,
-        tower17,
-        tower18,
-        tower19,
-        tower110,
-        tower111,
-        tower112,
-        tower113,
-        tower114,
-        tower115,
-        tower116,
-        tower117,
-        tower118,
-        tower119,
-        tower120
+        tower11,                //13
+        tower12,                //14
+        tower13,                //15
+        tower14,                //16
+        tower15,                //17
+        tower16,                //18
+        tower17,                //19
+        tower18,                //20
+        tower19,                //21
+        tower110,               //22
+        tower111,               //23
+        tower112,               //24
+        tower113,               //25
+        tower114,               //26
+        tower115,               //27
+        tower116,               //28
+        tower117,               //29
+        tower118,               //30
+        tower119,               //31
+        tower120                //32
     ];
+
 }
   
 
