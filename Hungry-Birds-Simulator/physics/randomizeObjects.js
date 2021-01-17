@@ -69,7 +69,7 @@ var tower220;
 
 
 //Tower 3
-var pig31,
+var pig31;
 var tower31;
 var tower32;
 var tower33;
