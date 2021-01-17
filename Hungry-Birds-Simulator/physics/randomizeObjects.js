@@ -251,11 +251,11 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
                 structureObjs.push(new structureObjects(0.0, 0.8 , 3.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 4:
-                tower115 = piece;
+                tower114 = piece;
                 structureObjs.push(new structureObjects(0.0, 2.8 , 3.0, 0.0, 0.0, 0.0, objType ));
                 break;
             case 5:
-                tower116 = piece;
+                tower115 = piece;
                 structureObjs.push(new structureObjects(0.0, 3.3 , 2.0, 0.0, 0.0, 0.0, objType ));
                 break;
 
