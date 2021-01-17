@@ -90,7 +90,7 @@ function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
 }
 
 
-function randomizePigs(){
+function randomizePigs(pig, pigHelmet, pigMustache){
 	for(let i=0; i<3; i++){
         let min = Math.ceil(1);
         let max = Math.floor(3);
@@ -137,14 +137,14 @@ function randomizePigs(){
 }
 
 
-function defineStructureObjs(){
+function defineStructureObjs(glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.7 , 2.0, 0.0, 0.0, 0.0,  "tnt" ));
 
-    randomizeCube();
-    randomizePyramid();
-    randomizeVerticalPlane();
-    randomizeHorizontalPlane();
+    randomizeCube(glassBox, woodBox, stoneBox);
+    randomizePyramid(woodPyramid, glassPyramid, stonePyramid);
+    randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane);
+    randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane);
 }
 
 //randomize type of horizontal pieces between glass and wood
