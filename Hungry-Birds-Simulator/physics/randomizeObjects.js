@@ -5,6 +5,32 @@ let choiche;
 let tower;
 let piece;
 
+//meshes fot tower 1
+var tower11;
+var tower12;
+var tower13;
+var tower14;
+var tower15;
+var tower16;
+var tower17;
+var tower18;
+var tower19;
+var tower110;
+var tower111;
+var tower112;
+var tower113;
+var tower114;
+var tower115;
+var tower116;
+var tower117;
+var tower118;
+var tower119;
+var tower120;
+var pig11;
+var pig12;
+var pig13;
+
+
 
 function randomizeBirds(){
     for(let i=0; i<5; i++) {
