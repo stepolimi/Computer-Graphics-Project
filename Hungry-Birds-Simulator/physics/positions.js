@@ -78,6 +78,18 @@ var tower220Matrix = utils.MakeWorld(0.0, 6.3 , 5.0, 0.0, 0.0, 0.0, 0.2);		//hor
 
 var rock2Matrix = utils.MakeWorld(0.0, 0.0 , 7.8, 0.0, 0.0, 0.0, 0.2);
 
+//Tower 3
+var pig31Matrix = utils.MakeWorld(0.0, 1.9 , 7.8, 270.0, 0.0, 0.0, 0.75);		//pig1 of tower 3
+
+
+var tower31Matrix = utils.MakeWorld(0.0, 1.3 , 7.2, 0.0, 0.0, 0.0, 0.2);		//tnt
+var tower32Matrix = utils.MakeWorld(0.0, 1.3 , 7.8, 0.0, 0.0, 0.0, 0.2);		//tnt
+var tower33Matrix = utils.MakeWorld(0.0, 1.3 , 8.6, 0.0, 0.0, 0.0, 0.2);		//tnt
+var tower34Matrix = utils.MakeWorld(0.0, 2.1 , 7.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
+var tower35Matrix = utils.MakeWorld(0.0, 2.1 , 8.6, 0.0, 0.0, 0.0, 0.2);		//pyramid
+var tower36Matrix = utils.MakeWorld(0.0, 2.6 , 7.8, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
+var tower37Matrix = utils.MakeWorld(0.0, 3.4 , 7.8, 0.0, 0.0, 0.0, 0.2);		//pyramid
+
 //birds rotation
 var lastUpdateTime = (new Date).getTime();
 
@@ -142,7 +154,15 @@ var worldPositions = [
 	tower218Matrix,				//56
 	tower219Matrix,				//57
 	tower220Matrix,				//58
-	rock2Matrix					//59
+	rock2Matrix,				//59
+	pig31Matrix,				//60
+	tower31Matrix,				//61
+	tower32Matrix,				//62
+	tower33Matrix,				//63
+	tower34Matrix,				//64
+	tower35Matrix,				//65
+	tower36Matrix,				//66
+	tower37Matrix				//67
 ];
 
 

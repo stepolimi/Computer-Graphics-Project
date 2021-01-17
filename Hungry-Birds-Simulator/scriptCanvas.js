@@ -463,7 +463,15 @@ async function loadMeshes(){
         tower218,               //56
         tower219,               //57
         tower220,               //58
-        rock2                   //59
+        rock2,                  //59
+        pig31,				    //60
+        tower31,				//61
+        tower32,				//62
+        tower33,				//63
+        tower34,				//64
+        tower35,				//65
+        tower36,				//66
+        tower37				    //67
     ];
 
 }
