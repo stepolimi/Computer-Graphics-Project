@@ -31,6 +31,11 @@ var pig12;
 var pig13;
 
 
+//arrays
+var birdsArray = [];
+var structureObjs = [];
+
+
 
 function randomizeBirds(birdC, birdR, birdB, birdM){
     for(let i=0; i<5; i++) {

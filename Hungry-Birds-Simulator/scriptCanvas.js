@@ -96,7 +96,6 @@ var birdY = 0;
 var elasticScalingZ = 0;
 var elasticScalingY = 0;
 var elasticRotationY = 0;
-var birdsArray = [];
 var activateBirdPower = false;
 
 //shaders variables
@@ -141,8 +140,6 @@ var isRotating = false;
 var mouseX = 0.0;
 var mouseY = 0.0;
 
-//castle variables
-var structureObjs = [];
 
 
 /*function called at the touchpad or mouse press, it works iff the previous bird ended the flight 
