@@ -76,7 +76,7 @@ var tower219Matrix = utils.MakeWorld(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cub
 var tower220Matrix = utils.MakeWorld(0.0, 6.3 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
 
 
-var rock2Matrix = utils.MakeWorld(0.0, 0.0 , 7.6, 0.0, 0.0, 0.0, 0.2);
+var rock2Matrix = utils.MakeWorld(0.0, 0.0 , 7.8, 0.0, 0.0, 0.0, 0.2);
 
 //birds rotation
 var lastUpdateTime = (new Date).getTime();
