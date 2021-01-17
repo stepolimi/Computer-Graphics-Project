@@ -147,11 +147,11 @@ function randomizePigs(pig, pigHelmet, pigMustache){
 
 
 
-function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
+function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.7 , 2.0, 0.0, 0.0, 0.0,  "tnt" ));
 
-    randomizeCube(glassBox, woodBox, stoneBox);
+    randomizeCube(glassBox, woodBox, stoneBox, stoneSquare);
     randomizePyramid(woodPyramid, glassPyramid, stonePyramid);
     randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane);
     randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane);
@@ -309,10 +309,10 @@ function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
 
 
 //randomize type of cube between ston, glass or wood
-function randomizeCube(glassBox, woodBox, stoneBox){
+function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
     for(let i=0; i<6; i++){
         let min = Math.ceil(1);
-        let max = Math.floor(3);
+        let max = Math.floor(4);
         choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 
         switch(choiche){
@@ -327,6 +327,10 @@ function randomizeCube(glassBox, woodBox, stoneBox){
             case 3:
                 piece = stoneBox;
                 objType = "stoneBox";
+                break;
+            case 4:
+                piece = stoneSquare;
+                objType = "stoneSquare";
                 break;
             default:
                 piece = glassBox;
