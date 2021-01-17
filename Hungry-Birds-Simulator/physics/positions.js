@@ -63,9 +63,9 @@ var tower25Matrix = utils.MakeWorld(0.0, 1.6 , 6.15, 0.0, 0.0, 0.0, 0.2);		//ver
 var tower26Matrix = utils.MakeWorld(0.0, 2.4 , 5.45, 0.0, 0.0, 0.0, 0.2);		//vertical plane
 var tower27Matrix = utils.MakeWorld(0.0, 2.4 , 6.15, 0.0, 0.0, 0.0, 0.2);		//vertical plane
 var tower28Matrix = utils.MakeWorld(0.0, 2.4 ,  4.2, 0.0, 0.0, 0.0, 0.2);		//cube
-var tower29Matrix = utils.MakeWorld(0.0, 3.4 ,  4.2, 0.0, 0.0, 0.0, 0.2);		//cube
-var tower210Matrix = utils.MakeWorld(0.0, 3.4, 5.0 , 0.4, 0.0, 0.0, 0.2);		//tnt
-var tower211Matrix = utils.MakeWorld(0.0, 3.4 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower29Matrix = utils.MakeWorld(0.0, 3.2 ,  4.2, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower210Matrix = utils.MakeWorld(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0, 0.2);		//tnt
+var tower211Matrix = utils.MakeWorld(0.0, 3.2 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower212Matrix = utils.MakeWorld(0.0, 3.6 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
 var tower213Matrix = utils.MakeWorld(0.0, 4.2 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower214Matrix = utils.MakeWorld(0.0, 5.0 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
@@ -74,7 +74,7 @@ var tower216Matrix = utils.MakeWorld(0.0, 5.8 , 5.0, 0.0, 0.0, 0.0, 0.2);		//cub
 var tower217Matrix = utils.MakeWorld(0.0, 5.8 , 4.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
 var tower218Matrix = utils.MakeWorld(0.0, 5.0 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower219Matrix = utils.MakeWorld(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cube
-var tower220Matrix = utils.MakeWorld(0.0, 6.0 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
+var tower220Matrix = utils.MakeWorld(0.0, 6.2 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
 
 
 
