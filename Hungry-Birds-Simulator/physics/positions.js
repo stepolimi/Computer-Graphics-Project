@@ -45,6 +45,14 @@ var tower118Matrix = utils.MakeWorld(0.0, 3.3 , 0.2, 0.0, 0.0, 0.0, 0.2);		//hor
 var tower119Matrix = utils.MakeWorld(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower120Matrix = utils.MakeWorld(0.0, 4.6 , 0.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
 
+var rockMatrix = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.7);
+
+
+//Tower 2 pigs
+var pig21Matrix = utils.MakeWorld(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, 0.7);		//pig1 of tower 1
+var	pig22Matrix = utils.MakeWorld(0.0, 1.6 , 0.2, 270.0, 0.0, 0.0, 0.7);		//pig2 of tower 1
+var pig23Matrix = utils.MakeWorld(0.0, 3.6 , 0.2, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 1
+
 
 //var tower21Matrix = utils.MakeWorld(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, 0.2);
 //var tower22Matrix = utils.MakeWorld(0.0, 0.8 , 3.0, 0.0, 0.0, 0.0, 0.2);
@@ -89,7 +97,8 @@ var worldPositions = [
 	tower117Matrix,				//29
 	tower118Matrix,				//30
 	tower119Matrix,				//31
-	tower120Matrix				//32
+	tower120Matrix,				//32
+	rockMatrix					//33
 ];
 
 

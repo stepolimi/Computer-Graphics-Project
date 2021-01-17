@@ -83,6 +83,7 @@ var woodVerticalPlane;
 var glassHorizontalPlane;
 var woodHorizontalPlane;
 var stoneSquare;
+var rock1;
 
 
 // variables for objects movements
@@ -388,6 +389,7 @@ async function loadMeshes(){
     glassHorizontalPlane = await utils.loadMesh("/assets/Others/glassHorizontalPlane.obj");
     woodHorizontalPlane = await utils.loadMesh("/assets/Others/woodHorizontalPlane.obj");
     stoneSquare = await utils.loadMesh("/assets/Others/stoneSquare.obj");
+    rock1 = await utils.loadMesh("/assets/Others/rock1.obj");
     
     //randomize birds
     randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda);
@@ -432,7 +434,8 @@ async function loadMeshes(){
         tower117,               //29
         tower118,               //30
         tower119,               //31
-        tower120                //32
+        tower120,               //32
+        rock1
     ];
 
 }
