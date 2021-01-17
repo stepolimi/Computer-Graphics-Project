@@ -49,15 +49,33 @@ var rockMatrix = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 
 //Tower 2 pigs
-var pig21Matrix = utils.MakeWorld(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, 0.7);		//pig1 of tower 1
-var	pig22Matrix = utils.MakeWorld(0.0, 1.6 , 0.2, 270.0, 0.0, 0.0, 0.7);		//pig2 of tower 1
-var pig23Matrix = utils.MakeWorld(0.0, 3.6 , 0.2, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 1
+var pig21Matrix = utils.MakeWorld(0.0, 0.0 , 5.0, 270.0, 0.0, 0.0, 0.7);		//pig1 of tower 2
+var	pig22Matrix = utils.MakeWorld(0.0, 1.6 , 0.2, 270.0, 0.0, 0.0, 0.7);		//pig2 of tower 2
+var pig23Matrix = utils.MakeWorld(0.0, 3.6 , 0.2, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 2
+var pig24Matrix = utils.MakeWorld(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, 0.7);		//pig1 of tower 2
+var pig25Matrix = utils.MakeWorld(0.0, 3.6 , 0.2, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 2
 
+var tower21Matrix = utils.MakeWorld(0.0, 0.0 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower22Matrix = utils.MakeWorld(0.0, 0.0 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower23Matrix = utils.MakeWorld(0.0, 0.8 , 4.6, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower24Matrix = utils.MakeWorld(0.0, 0.8 , 5.45, 0.0, 0.0, 0.0, 0.2);		//vertical plane
+var tower25Matrix = utils.MakeWorld(0.0, 0.8 , 6.15, 0.0, 0.0, 0.0, 0.2);		//vertical plane
+var tower26Matrix = utils.MakeWorld(0.0, 1.6 , 5.45, 0.0, 0.0, 0.0, 0.2);		//vertical plane
+var tower27Matrix = utils.MakeWorld(0.0, 1.6 , 6.15, 0.0, 0.0, 0.0, 0.2);		//vertical plane
+var tower28Matrix = utils.MakeWorld(0.0, 1.6 ,  4.2, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower29Matrix = utils.MakeWorld(0.0, 3.4 ,  4.2, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower210Matrix = utils.MakeWorld(0.0, 3.4, 5.0 , 0.4, 0.0, 0.0, 0.2);		//tnt
+var tower211Matrix = utils.MakeWorld(0.0, 3.4 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower212Matrix = utils.MakeWorld(0.0, 3.6 , 5.0 , 0.0, 0.0, 0.0,0.2);		//horizontal plane
+var tower213Matrix = utils.MakeWorld(0.0, 4.2 , 5.8, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower214Matrix = utils.MakeWorld(0.0, 5.0,  5.8, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower215Matrix = utils.MakeWorld(0.0, 5.8 , 5.8, 0.0, 0.0, 0.0, 0.2);		//pyramid
+var tower216Matrix = utils.MakeWorld(0.0, 5.8 , 5.0, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower217Matrix = utils.MakeWorld(0.0, 5.8 , 4.2, 0.0, 0.0, 0.0, 0.2);		//pyramid
+var tower218Matrix = utils.MakeWorld(0.0, 5.0 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower219Matrix = utils.MakeWorld(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower220Matrix = utils.MakeWorld(0.0, 6.0 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
 
-//var tower21Matrix = utils.MakeWorld(0.0, 0.0 , 3.0, 0.0, 0.0, 0.0, 0.2);
-//var tower22Matrix = utils.MakeWorld(0.0, 0.8 , 3.0, 0.0, 0.0, 0.0, 0.2);
-//var tower31Matrix = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
-//var tower32Matrix = utils.MakeWorld(0.0, 0.8 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 
 //birds rotation
@@ -98,7 +116,32 @@ var worldPositions = [
 	tower118Matrix,				//30
 	tower119Matrix,				//31
 	tower120Matrix,				//32
-	rockMatrix					//33
+	rockMatrix,					//33
+	pig21Matrix,
+	pig22Matrix,
+	pig23Matrix,
+	pig24Matrix,
+	pig25Matrix,
+	tower21Matrix,
+	tower22Matrix,
+	tower23Matrix,
+	tower24Matrix,
+	tower25Matrix,
+	tower26Matrix,
+	tower27Matrix,
+	tower28Matrix,
+	tower29Matrix,
+	tower210Matrix,
+	tower211Matrix,
+	tower212Matrix,
+	tower213Matrix,
+	tower214Matrix,
+	tower215Matrix,
+	tower216Matrix,
+	tower217Matrix,
+	tower218Matrix,
+	tower219Matrix,
+	tower220Matrix
 ];
 
 
