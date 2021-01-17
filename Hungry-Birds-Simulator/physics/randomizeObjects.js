@@ -32,7 +32,7 @@ var pig13;
 
 
 
-function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
+function randomizeBirds(birdC, birdR, birdB, birdM){
     for(let i=0; i<5; i++) {
         let min = Math.ceil(1);
         let max = Math.floor(4);
@@ -41,23 +41,23 @@ function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
         
         switch(choiche){
             case 1:
-                bird = birdRed;
+                bird = birdR;
                 birdName = "red";
                 break;
             case 2:
-                bird = birdChuck;
+                bird = birdC;
                 birdName = "chuck";
                 break;
             case 3:
-                bird = birdBomb;
+                bird = birdB;
                 birdName = "bomb";
                 break;
             case 4:
-                bird = birdMatilda;
+                bird = birdM;
                 birdName = "matilda";
                 break;
             default:
-                bird = birdRed;
+                bird = birdR;
                 birdName = "red";
                 break;
         }
