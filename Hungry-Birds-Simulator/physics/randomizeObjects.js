@@ -132,7 +132,6 @@ function randomizePigs(pig, pigHelmet, pigMustache){
             default:
                 break;
         }
-
     }
 }
 
