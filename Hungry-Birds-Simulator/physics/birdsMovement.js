@@ -82,12 +82,27 @@ function birdTrajectory(index){
 
 
 function isColliding(){
+	let radiusY;
+	let radiusZ;
 	for(let i = 0; i < structureObjs.length; i++ ){
 		let objY = structureObjs[i].ty;
 		let objZ = structureObjs[i].tz;
 
+		if(structureObjs[i].type == "glassVerticalPlane" ||  structureObjs[i].type == "woodVerticalPlane"){
+			radiusY = STRUCTURE_OBJ_RADIUS;
+			radiusZ = SMALLER_OBJ_RADIUS;
+		}
+		else if(structureObjs[i].type == "glassHorizontalPlane" ||  structureObjs[i].type == "woodHorizontalPlane"){
+			radiusY = SMALLER_OBJ_RADIUS;
+			radiusZ = STRUCTURE_OBJ_RADIUS;
+		}
+		else{
+			radiusY = STRUCTURE_OBJ_RADIUS;
+			radiusZ = SMALLER_OBJ_RADIUS;
+		}
+			
 
-		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + STRUCTURE_OBJ_RADIUS || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + STRUCTURE_OBJ_RADIUS )
+		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ )
 			console.log("non collidono");
 		else{
 			birdCollides = true;
