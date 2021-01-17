@@ -403,7 +403,7 @@ async function loadMeshes(){
     randomizePigs(pig, pigHelmet, pigMustache);
     
     //pseudo randomize blocks
-    defineStructureObjs(glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane);
+    defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane);
 
 
     allMeshes = [
