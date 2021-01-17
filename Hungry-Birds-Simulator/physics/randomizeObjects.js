@@ -43,7 +43,6 @@ function randomizeBirds(birdC, birdR, birdB, birdM){
         let max = Math.floor(4);
         choiche = Math.floor(Math.random() * (max - min + 1)) + min;
         let birdName;
-        console.log("birdName " + birdName );
 
         switch(choiche){
             case 1:
@@ -67,6 +66,7 @@ function randomizeBirds(birdC, birdR, birdB, birdM){
                 birdName = "red";
                 break;
         }
+        console.log("birdName " + birdName );
 
         switch(i){
             case 0:
