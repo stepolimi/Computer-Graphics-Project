@@ -43,6 +43,7 @@ function randomizeBirds(birdC, birdR, birdB, birdM){
         let max = Math.floor(4);
         choiche = Math.floor(Math.random() * (max - min + 1)) + min;
         let birdName;
+        console.log("birdName " + birdName );
 
         switch(choiche){
             case 1:
@@ -92,7 +93,7 @@ function randomizeBirds(birdC, birdR, birdB, birdM){
     }
 }
     
-/*
+
 function randomizePigs(pig, pigHelmet, pigMustache){
 	for(let i=0; i<3; i++){
         let min = Math.ceil(1);
@@ -138,7 +139,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
     }
 }
 
-
+/*
 function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.7 , 2.0, 0.0, 0.0, 0.0,  "tnt" ));
