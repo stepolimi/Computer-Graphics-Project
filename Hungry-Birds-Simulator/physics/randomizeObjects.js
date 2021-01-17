@@ -137,7 +137,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
 }
 
 
-function defineStructureObjs(glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
+function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.7 , 2.0, 0.0, 0.0, 0.0,  "tnt" ));
 
@@ -240,7 +240,6 @@ function randomizeVerticalPlane(){
                 tower116 = piece;
                 structureObjs.push(new structureObjects(0.0, 3.3 , 2.0, 0.0, 0.0, 0.0, objType ));
                 break;
-
         }
     }
 }
