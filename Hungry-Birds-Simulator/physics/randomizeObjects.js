@@ -357,4 +357,4 @@ function randomizeCube(glassBox, woodBox, stoneBox){
 
         }
     }
-}*/
+}
