@@ -83,13 +83,6 @@ var woodVerticalPlane;
 var glassHorizontalPlane;
 var woodHorizontalPlane;
 
-//meshes for random birds
-var bird1;
-var bird2;
-var bird3;
-var bird4;
-var bird5;
-
 
 // variables for objects movements
 var birdY = 0;
@@ -401,7 +394,7 @@ async function loadMeshes(){
     randomizePigs(pig, pigHelmet, pigMustache);
     
     //pseudo randomize blocks
-    //defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane);
+    defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane);
 
 
     allMeshes = [

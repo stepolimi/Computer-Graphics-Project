@@ -6,6 +6,13 @@ let tower;
 let piece;
 let objType
 
+//meshes for random birds
+var bird1;
+var bird2;
+var bird3;
+var bird4;
+var bird5;
+
 //meshes fot tower 1
 var tower11;
 var tower12;
@@ -141,7 +148,8 @@ function randomizePigs(pig, pigHelmet, pigMustache){
     }
 }
 
-/*
+
+
 function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.7 , 2.0, 0.0, 0.0, 0.0,  "tnt" ));
@@ -151,6 +159,7 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glas
     randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane);
     randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane);
 }
+
 
 //randomize type of horizontal pieces between glass and wood
 function randomizeHorizontalPlane(){
@@ -350,4 +359,4 @@ function randomizeCube(){
 
         }
     }
-}*/
+}
