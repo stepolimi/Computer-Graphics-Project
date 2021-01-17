@@ -148,12 +148,12 @@ function activateBombPower(){
 	
 	explosionScaling += 0.02;
 	if(explosionScaling <= 1.0)
-		worldPositions[12] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
+		worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 	else{
 		explosionScaling = 0.0;
 		isBombActiveFirstTime = true;
 		activateBirdPower = false;
-		setTimeout(function(){worldPositions[12] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
+		setTimeout(function(){worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
 	}
 }
 
@@ -214,7 +214,7 @@ function activateMatildaPower(){
 	eggT += 0.1;
 	
 	if(eggY >= -5.0)
-		worldPositions[11] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
+		worldPositions[8] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
 	else{
 		eggT = 0;
 		isMatildaActiveFirstTime = true;
