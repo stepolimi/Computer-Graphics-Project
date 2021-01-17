@@ -4,6 +4,7 @@ let pigChoiche;
 let choiche;
 let tower;
 let piece;
+let objType
 
 //meshes fot tower 1
 var tower11;
@@ -99,7 +100,6 @@ function randomizePigs(pig, pigHelmet, pigMustache){
         let min = Math.ceil(1);
         let max = Math.floor(3);
         choiche = Math.floor(Math.random() * (max - min + 1)) + min;
-        var objType;
         
         switch(choiche){
             case 1:
@@ -119,6 +119,8 @@ function randomizePigs(pig, pigHelmet, pigMustache){
                 objType = "pig";
                 break;
         }
+        
+        console.log("birdName " + objType );
         
         switch(i){
             case 0:
