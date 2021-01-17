@@ -154,8 +154,8 @@ function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, woodPyramid, glas
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.7 , 2.0, 0.0, 0.0, 0.0,  "tnt" ));
 
-    //randomizeCube(glassBox, woodBox, stoneBox);
-    //randomizePyramid(woodPyramid, glassPyramid, stonePyramid);
+    randomizeCube(glassBox, woodBox, stoneBox);
+    randomizePyramid(woodPyramid, glassPyramid, stonePyramid);
     randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane);
     randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane);
 }
@@ -262,7 +262,7 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
         }
     }
 }
-/*
+
 //randomize type of pyramid between stone, glass or wood
 function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
     for(let i=0; i<3; i++){
@@ -305,7 +305,10 @@ function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
                 break;
             default:
                 break;
+        }
+    }
 }
+
 
 
 //randomize type of cube between ston, glass or wood
@@ -363,4 +366,4 @@ function randomizeCube(glassBox, woodBox, stoneBox){
 
         }
     }
-}*/
+}
