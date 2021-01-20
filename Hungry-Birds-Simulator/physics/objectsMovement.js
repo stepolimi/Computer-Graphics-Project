@@ -1,14 +1,14 @@
 //applies gravity to objects
 function checkStability(){
     structureObjs.forEach(function(objTocheck) {
-        const objY = objTocheck.ty - objTocheck.rady;
-        const objZ = objTocheck.tz;
-        const objZStart = objTocheck.tz - objTocheck.radz;
-        const objZEnd = objTocheck.tz + objTocheck.radz;
-        const stable = false;
-        const precStable = false;
-        const nextStable = false;
-        const tollerance = 0.05;
+        let objY = objTocheck.ty - objTocheck.rady;
+        let objZ = objTocheck.tz;
+        let objZStart = objTocheck.tz - objTocheck.radz;
+        let objZEnd = objTocheck.tz + objTocheck.radz;
+        let stable = false;
+        let precStable = false;
+        let nextStable = false;
+        let tollerance = 0.05;
         structureObjs.forEach(function(obj) {
             if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
                 if((obj.tz + obj.radz >= objZ) || (obj.tz - obj.radz <= objZ))
