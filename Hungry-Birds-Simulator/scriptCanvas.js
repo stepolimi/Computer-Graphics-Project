@@ -611,8 +611,7 @@ function checkStability(){
         let stable = false;
         let precStable = false;
         let sucStable = false;
-        let tollerance = 0.05;
-        let isGrounded = false;
+        let tollerance = 0.1;
         let ground = -0.4;
         let i =0;
 
@@ -640,7 +639,11 @@ function checkStability(){
             });
             if(!stable || !(precStable && sucStable))
                 objTocheck.isStable = false;
+            else
+                objTocheck.isStable = true;
         }
+        else
+            objTocheck.isStable = true;
     });
 }
 
