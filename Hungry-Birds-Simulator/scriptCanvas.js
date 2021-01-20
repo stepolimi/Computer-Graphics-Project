@@ -613,15 +613,18 @@ function checkStability(){
         let sucStable = false;
         let tollerance = 0.05;
         let isGrounded = false;
-        let ground = 0;
+        let ground = -0.4;
+        let i =0;
 
         if(objZ >= 4.2 && objZ <= 6.15)
-            ground = 0.8;
+            ground = 0.4;
         else if(objZ >= 7 && objZ <= 9)
-            ground = 1.5;
+            ground = 1.1;
         else{
-            console.log(objY);
-            ground = 0;
+            if(i<20)
+                console.log(objY);
+            i++;
+            ground = -0.4;
         }
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
