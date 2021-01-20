@@ -610,20 +610,32 @@ function checkStability(){
         let objZEnd = objTocheck.tz + objTocheck.radz;
         let stable = false;
         let precStable = false;
-        let nextStable = false;
+        let sucStable = false;
         let tollerance = 0.05;
-        structureObjs.forEach(function(obj) {
-            if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
-                if((obj.tz + obj.radz >= objZ) || (obj.tz - obj.radz <= objZ))
-                    stable = true;
-                else if(obj.tz + obj.radz >= objZStart)
-                    precStable = true;
-                else if(obj.tz - obj.radz <= objZEnd)
-                    nextStable = true;
-            }
-        });
-        if(stable || (precStable && nextStable))
-            objTocheck.isStable = false;
+        let isGrounded = false;
+        let ground = 0;
+
+        if(objZ >= 4.2 && objZ <= 6.15)
+            ground = 0.8;
+        else if(objZ >= 7 && objZ <= 9)
+            ground = 1.5;
+        else
+            ground = 0;
+
+        if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
+            structureObjs.forEach(function(obj) {
+                if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
+                    if((obj.tz + obj.radz >= objZ) || (obj.tz - obj.radz <= objZ))
+                        stable = true;
+                    else if(obj.tz + obj.radz >= objZStart)
+                        precStable = true;
+                    else if(obj.tz - obj.radz <= objZEnd)
+                        sucStable = true;
+                }
+            });
+            if(!stable || !(precStable && sucStable))
+                objTocheck.isStable = false;
+        }
     });
 }
 
