@@ -624,6 +624,14 @@ function checkStability(){
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
+                if(objTocheck.index == 14){
+                    console.log("ty " + obj.ty);
+                    console.log("rady " + obj.rady);
+                    console.log("objY " + objY);
+                    console.log(obj.tz);
+                    console.log(obj.radz);
+                    console.log(objZ);
+                }
                 if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
                     if((obj.tz + obj.radz >= objZ) || (obj.tz - obj.radz <= objZ))
                         stable = true;
