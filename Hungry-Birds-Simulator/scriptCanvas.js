@@ -619,8 +619,10 @@ function checkStability(){
             ground = 0.8;
         else if(objZ >= 7 && objZ <= 9)
             ground = 1.5;
-        else
+        else{
+            console.log(objY);
             ground = 0;
+        }
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
