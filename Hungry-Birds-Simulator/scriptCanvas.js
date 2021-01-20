@@ -603,8 +603,7 @@ window.onload = main;
 
 //applies gravity to objects
 function checkStability(){
-    let tollerance = 0.05;
-    let i =0;
+    let tollerance = 0.01;
 
     structureObjs.forEach(function(objTocheck) {
         let objY = objTocheck.ty - objTocheck.rady;
@@ -620,22 +619,18 @@ function checkStability(){
             ground = 0.4;
         else if(objZ >= 7 && objZ <= 9)
             ground = 1.1;
-        else{
-            if(i<20)
-                console.log(objY);
-            i++;
+        else
             ground = -0.4;
-        }
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
                 if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
                     if((obj.tz + obj.radz >= objZ) || (obj.tz - obj.radz <= objZ))
                         stable = true;
-                    else if(obj.tz + obj.radz >= objZStart)
-                        precStable = true;
-                    else if(obj.tz - obj.radz <= objZEnd)
-                        sucStable = true;
+                    //else if(obj.tz + obj.radz >= objZStart)
+                    //    precStable = true;
+                    //else if(obj.tz - obj.radz <= objZEnd)
+                    //    sucStable = true;
                 }
             });
             if(!stable && !(precStable && sucStable))
