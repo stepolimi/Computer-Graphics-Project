@@ -567,7 +567,11 @@ function addMeshToScene(i) {
     waitingBirdsAnimation();
     if(isPressed)
         scaleSlingElasticZ();
-    
+
+    //todo: to be moved somewhere else
+    //applies gravity to objects
+    checkStability();
+    objectFall();
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);

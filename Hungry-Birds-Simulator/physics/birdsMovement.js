@@ -67,7 +67,7 @@ function birdTrajectory(index){
 		birdsArray[index-2].ry = angle;
 		birdsArray[index-2].rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
-		isColliding(index);
+		isColliding();
 	}
 	else{
 		rotation = 0.0;
@@ -77,7 +77,7 @@ function birdTrajectory(index){
 		if(counter == 5)
 			window.location.replace("./endGame.html");
 	}
-	t += 0.05;
+	t += TICK;
 }
 
 
@@ -88,6 +88,7 @@ function isColliding(){
 		let objY = structureObjs[i].ty;
 		let objZ = structureObjs[i].tz;
 
+		//todo: eliminate this and use the ones in the object
 		if(structureObjs[i].type == "glassVerticalPlane" ||  structureObjs[i].type == "woodVerticalPlane"){
 			radiusY = STRUCTURE_OBJ_RADIUS;
 			radiusZ = SMALLER_OBJ_RADIUS;

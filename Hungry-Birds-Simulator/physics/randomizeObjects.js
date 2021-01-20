@@ -167,39 +167,39 @@ function randomizePigs(pig, pigHelmet, pigMustache){
         switch(i){
             case 0:
                 pig11 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, objType, 10 ));
                 break;
             case 1:
                 pig12 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.8 , 0.2, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.8 , 0.2, 270.0, 0.0, 0.0, objType, 11 ));
                 break;
             case 2:
                 pig13 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, objType, 12 ));
                 break;
              case 3:
                 pig21 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.6 , 5.0, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.6 , 5.0, 270.0, 0.0, 0.0, objType, 34 ));
                 break;
             case 4:
                 pig22 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, objType, 35 ));
                 break;
             case 5:
                 pig23 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, objType, 36 ));
                 break;
             case 6:
                 pig24 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 4.0 , 5.0, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 4.0 , 5.0, 270.0, 0.0, 0.0, objType, 37 ));
                 break;
             case 7:
                 pig25 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 6.8 , 5.0, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 6.8 , 5.0, 270.0, 0.0, 0.0, objType, 38 ));
                 break;
             case 8:
                 pig31 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, objType, 60 ));
                 break;
                 
         }
@@ -210,19 +210,19 @@ function randomizePigs(pig, pigHelmet, pigMustache){
 
 function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
     tower112 = tnt;
-    structureObjs.push(new structureObjects(0.0, 0.75,0.2, 0.4, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 0.75,0.2, 0.4, 0.0, 0.0,  "tnt", 24 ));
 
     tower210 = tnt;
-    structureObjs.push(new structureObjects(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0,  "tnt", 48 ));
 
     tower31 = tnt;
-    structureObjs.push(new structureObjects(0.0, 1.5 , 7.0, 0.0, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 1.5 , 7.0, 0.0, 0.0, 0.0,  "tnt", 61 ));
 
     tower32 = tnt;
-    structureObjs.push(new structureObjects(0.0, 1.5 , 7.8, 0.0, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 1.5 , 7.8, 0.0, 0.0, 0.0,  "tnt", 62 ));
     
     tower33 = tnt;
-    structureObjs.push(new structureObjects(0.0, 1.5 , 8.6, 0.0, 0.0, 0.0,  "tnt" ));
+    structureObjs.push(new structureObjects(0.0, 1.5 , 8.6, 0.0, 0.0, 0.0,  "tnt", 63 ));
 
 
     randomizeCube(glassBox, woodBox, stoneBox, stoneSquare);
@@ -257,31 +257,31 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
         switch(i){
             case 0:
                 tower16 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.5 ,  1.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.5 ,  1.8, 0.0, 0.0, 0.0, objType, 18 ));
                 break;
             case 1:
                 tower113 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.3 , 0.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.3 , 0.2, 0.0, 0.0, 0.0, objType, 25 ));
                 break;
             case 2:
                 tower116 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.3 , 0.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.3 , 0.2, 0.0, 0.0, 0.0, objType, 28 ));
                 break;
             case 3:
                 tower118 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.3 , 0.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.3 , 0.2, 0.0, 0.0, 0.0, objType, 30 ));
                 break;
             case 4:
                 tower212 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.7, 5.0, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.7, 5.0, 0.0, 0.0, 0.0, objType, 50 ));
                 break;
             case 5:
                 tower220 = piece;
-                structureObjs.push(new structureObjects(0.0, 6.3 , 5.0, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 6.3 , 5.0, 0.0, 0.0, 0.0, objType, 58 ));
                 break;
             case 6:
                 tower36 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.8 , 7.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.8 , 7.8, 0.0, 0.0, 0.0, objType, 66 ));
                 break;
         }
     }
@@ -316,43 +316,43 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
         switch(i){
             case 0:
                 tower14 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 1.05, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 1.05, 0.0, 0.0, 0.0, objType, 16 ));
                 break;
             case 1:
                 tower15 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 2.55, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 2.55, 0.0, 0.0, 0.0, objType, 17 ));
                 break;
             case 2:
                 tower110 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.8,-0.55, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.8,-0.55, 0.0, 0.0, 0.0, objType, 22 ));
                 break;
             case 3:
                 tower111 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.8 ,0.95, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.8 ,0.95, 0.0, 0.0, 0.0, objType, 23 ));
                 break;
             case 4:
                 tower114 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.8,-0.55, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.8,-0.55, 0.0, 0.0, 0.0, objType, 26 ));
                 break;
             case 5:
                 tower115 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.8 ,0.95, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.8 ,0.95, 0.0, 0.0, 0.0, objType, 27 ));
                 break;
             case 6:
                 tower24 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.6 , 5.45, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.6 , 5.45, 0.0, 0.0, 0.0, objType, 42 ));
                 break;
             case 7:
                 tower25 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.6 , 6.15, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.6 , 6.15, 0.0, 0.0, 0.0, objType, 43 ));
                 break;
             case 8:
                 tower26 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.4 , 5.45, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.4 , 5.45, 0.0, 0.0, 0.0, objType, 44 ));
                 break;
             case 9:
                 tower27 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.4 , 6.15, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.4 , 6.15, 0.0, 0.0, 0.0, objType, 45 ));
                 break;
 
         }
@@ -390,35 +390,35 @@ function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
         switch(i){
             case 0:
                 tower11 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , -1.0, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , -1.0, 0.0, 0.0, 0.0, objType, 13 ));
                 break;
             case 1:
                 tower19 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.6 ,  1.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.6 ,  1.8, 0.0, 0.0, 0.0, objType, 21 ));
                 break;
             case 2:
                 tower120 = piece;
-                structureObjs.push(new structureObjects(0.0, 4.6 , 0.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 4.6 , 0.2, 0.0, 0.0, 0.0, objType, 32 ));
                 break;
             case 3:
                 tower215 = piece;
-                structureObjs.push(new structureObjects(0.0, 5.8 , 5.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 5.8 , 5.8, 0.0, 0.0, 0.0, objType, 53 ));
                 break;
             case 4:
                 tower217 = piece;
-                structureObjs.push(new structureObjects(0.0, 5.8 , 4.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 5.8 , 4.2, 0.0, 0.0, 0.0, objType, 55 ));
                 break;
             case 5:
                 tower34 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.3 , 7.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.3 , 7.2, 0.0, 0.0, 0.0, objType, 64 ));
                 break;
             case 6:
                 tower35 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.3 , 8.6, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.3 , 8.6, 0.0, 0.0, 0.0, objType, 65 ));
                 break;
             case 7:
                 tower37 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.3 , 7.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.3 , 7.8, 0.0, 0.0, 0.0, objType, 67 ));
                 break;
         }
     }
@@ -459,71 +459,71 @@ function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
         switch(i){
             case 0:
                 tower12 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , -0.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , -0.2, 0.0, 0.0, 0.0, objType, 14 ));
                 break;
             case 1:
                 tower13 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 ,  0.6, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.0 ,  0.6, 0.0, 0.0, 0.0, objType, 15 ));
                 break;
             case 2:
                 tower17 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.0 ,  1.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.0 ,  1.8, 0.0, 0.0, 0.0, objType, 19 ));
                 break;
             case 3:
                 tower18 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.8 ,  1.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.8 ,  1.8, 0.0, 0.0, 0.0, objType, 20 ));
                 break;
             case 4:
                 tower117 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType, 29 ));
                 break;
             case 5:
                 tower119 = woodBox;
-                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "woodBox" ));
+                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "woodBox", 31 ));
                 break;
             case 6:
                 tower21 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.8 , 4.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.8 , 4.2, 0.0, 0.0, 0.0, objType, 39 ));
                 break;
             case 7:
                 tower22 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.8 , 5.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 0.8 , 5.8, 0.0, 0.0, 0.0, objType, 40 ));
                 break;
             case 8:
                 tower23 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.6 , 4.6, 0.0, 0.0, 0.0, 0.2, objType ));
+                structureObjs.push(new structureObjects(0.0, 1.6 , 4.6, 0.0, 0.0, 0.0, 0.2, objType, 41 ));
                 break;
             case 9:
                 tower28 = piece;
-                structureObjs.push(new structureObjects(0.0, 2.4 ,  4.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 2.4 ,  4.2, 0.0, 0.0, 0.0, objType, 46 ));
                 break;
             case 10:
                 tower29 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.2 ,  4.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.2 ,  4.2, 0.0, 0.0, 0.0, objType, 47 ));
                 break;
             case 11:
                 tower211 = piece;
-                structureObjs.push(new structureObjects(0.0, 3.2 , 5.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 3.2 , 5.8, 0.0, 0.0, 0.0, objType, 49 ));
                 break;
             case 12:
                 tower213 = piece;
-                structureObjs.push(new structureObjects(0.0, 4.2 , 5.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 4.2 , 5.8, 0.0, 0.0, 0.0, objType, 51 ));
                 break;
             case 13:
                 tower214 = piece;
-                structureObjs.push(new structureObjects(0.0, 5.0 , 5.8, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 5.0 , 5.8, 0.0, 0.0, 0.0, objType, 52 ));
                 break;
             case 14:
                 tower216 = piece;
-                structureObjs.push(new structureObjects(0.0, 5.8 , 5.0, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 5.8 , 5.0, 0.0, 0.0, 0.0, objType, 54 ));
                 break;
             case 15:
                 tower218 = piece;
-                structureObjs.push(new structureObjects(0.0, 5.0 , 4.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 5.0 , 4.2, 0.0, 0.0, 0.0, objType, 56 ));
                 break;
             case 16:
                 tower219 = piece;
-                structureObjs.push(new structureObjects(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, objType ));
+                structureObjs.push(new structureObjects(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, objType, 57 ));
                 break;
 
         }

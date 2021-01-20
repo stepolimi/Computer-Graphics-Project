@@ -8,6 +8,8 @@ const SLING_ELASTIC_Y_SPEED = 0.05;
 
 const GRAVITY = 0.9;
 
+const TICK = 0.05;
+
 const CHUCK_SPEED = 8;
 
 const BIRD_RADIUS = 0.5;
