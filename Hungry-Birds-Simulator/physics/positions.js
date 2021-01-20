@@ -25,7 +25,7 @@ var pig13Matrix = utils.MakeWorld(0.0, 3.6 , 0.2, 270.0, 0.0, 0.0, 0.4);		//pig3
 
 //Tower 1 pieces  
 var tower11Matrix = utils.MakeWorld(0.0, 0.0 , -1.0, 0.0, 0.0, 0.0, 0.2);		//pyramid
-var tower12Matrix = utils.MakeWorld(0.0, 0.0 , -0.2, 0.0, 0.0, 0.0, 0.2);		//cube
+var tower12Matrix = utils.MakeWorld(0.0, 6.0 , -0.2, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower13Matrix = utils.MakeWorld(0.0, 0.0 ,  0.6, 0.0, 0.0, 0.0, 0.2);		//cube
 var tower14Matrix = utils.MakeWorld(0.0, 0.0 , 1.05, 0.0, 0.0, 0.0, 0.2);		//vertical plane
 var tower15Matrix = utils.MakeWorld(0.0, 0.0 , 2.55, 0.0, 0.0, 0.0, 0.2);		//vertical plane

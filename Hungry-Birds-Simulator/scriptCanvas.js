@@ -627,10 +627,10 @@ function checkStability(){
                 if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
                     if((obj.tz + obj.radz >= objZ) || (obj.tz - obj.radz <= objZ))
                         stable = true;
-                    //else if(obj.tz + obj.radz >= objZStart)
-                    //    precStable = true;
-                    //else if(obj.tz - obj.radz <= objZEnd)
-                    //    sucStable = true;
+                    /*else if(obj.tz + obj.radz > objZStart)
+                        precStable = true;
+                    else if(obj.tz - obj.radz < objZEnd)
+                        sucStable = true;*/
                 }
             });
             if(!stable && !(precStable && sucStable))

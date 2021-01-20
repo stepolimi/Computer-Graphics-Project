@@ -459,7 +459,7 @@ function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
         switch(i){
             case 0:
                 tower12 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , -0.2, 0.0, 0.0, 0.0, objType, 14 ));
+                structureObjs.push(new structureObjects(0.0, 6.0 , -0.2, 0.0, 0.0, 0.0, objType, 14 ));
                 break;
             case 1:
                 tower13 = piece;
