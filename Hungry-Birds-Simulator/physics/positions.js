@@ -165,10 +165,10 @@ var worldPositions = [
 	tower37Matrix				//67
 ];
 
-var roundY1 = 0;
-var roundY2 = 0;
-var roundY3 = 0;
-var roundY4 = 0;
+var roundY1 = 360;
+var roundY2 = 360;
+var roundY3 = 360;
+var roundY4 = 360;
 var count1 = 0;
 var count2 = 0;
 var count3 = 0;
@@ -236,7 +236,7 @@ function birdFlip(){
 			roundY1 = 0;
 		}
 	} else
-		roundY1 += 10;
+		roundY1 += 8;
 
 	if(roundY2 == 360){
 		let min = Math.ceil(1);
@@ -248,7 +248,7 @@ function birdFlip(){
 			roundY2 = 0;
 		}
 	} else
-		roundY2 += 10;
+		roundY2 += 8;
 	
 	if(roundY3 == 360){
 		let min = Math.ceil(1);
@@ -260,7 +260,7 @@ function birdFlip(){
 			roundY3 = 0;
 		}
 	} else
-		roundY3 += 10;
+		roundY3 += 8;
 
 	if(roundY4 == 360){
 		let min = Math.ceil(1);
@@ -272,7 +272,7 @@ function birdFlip(){
 			roundY4 = 0;
 		}
 	} else
-		roundY4 += 10;
+		roundY4 += 8;
 }
 
 
