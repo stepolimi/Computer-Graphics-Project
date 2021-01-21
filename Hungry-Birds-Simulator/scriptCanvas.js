@@ -656,11 +656,10 @@ function objectFall(){
                 if(supObj.tz + supObj.radz > maxZ)
                     maxZ = supObj.tz + supObj.radz;
             });
-            obj.rz = 20 / obj.radz * (obj.radz - maxZ);
+            obj.ry += 20 / obj.radz * (obj.radz - maxZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
-            console.log("obj vy " + obj.vy);
-            obj.vz = obj.vy;
+            obj.vz = 0.1;
         }
         else if(obj.supRightPieces.length != 0){
             let minZ = 100;
@@ -668,10 +667,10 @@ function objectFall(){
                 if(supObj.tz - supObj.radz < minZ)
                     minZ = supObj.tz - supObj.radz;
             });
-            obj.rz = 20 / obj.radz * (obj.radz - minZ);
+            obj.ry += 20 / obj.radz * (obj.radz - minZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
-            obj.vz = obj.vy;
+            obj.vz = 0.1;
         }
         else{
             obj.vy = obj.vy - (g*TICK*TICK /2);

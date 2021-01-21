@@ -320,7 +320,7 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
                 break;
             case 1:
                 tower15 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 2.55, 0.0, 0.0, 0.0, objType, 17 ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, objType, 17 )); //2.55
                 break;
             case 2:
                 tower110 = piece;
