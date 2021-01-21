@@ -642,7 +642,7 @@ function checkStability(){
                             console.log("right")
                     }
                     if(objTocheck.type == "tnt" && objZ == 0.2)
-                        console.log("????????????")
+                        console.log(obj.type)
                 }
             });
             if(!stable && !(precStable && sucStable))
