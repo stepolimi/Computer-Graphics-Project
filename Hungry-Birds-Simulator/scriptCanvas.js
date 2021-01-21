@@ -629,7 +629,7 @@ function checkStability(){
                         stable = true;
                         if((objTocheck.type == "glassBox" || objTocheck.type == "woodBox") && objZ == 5.8)
                             console.log("full " + obj.type)
-                    }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd){
+                    }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd && obj.tz < objZ){
                         precStable = true;
                         objTocheck.supLeftPieces.push(obj);
                         if((objTocheck.type == "glassBox" || objTocheck.type == "woodBox") && objZ == 5.8)
