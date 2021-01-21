@@ -624,8 +624,8 @@ function checkStability(){
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
-                if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
-                    if((obj.tz + obj.radz >= objZ -0.1 && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ + 0.1 && obj.tz + obj.radz >= objZStart))
+                if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
+                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZStart))
                         stable = true;
                     else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd){
                         precStable = true;

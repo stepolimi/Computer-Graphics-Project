@@ -25,12 +25,12 @@ class structureObjects {
 			this.radz =  HORIZONTAL_PANE_BIG_RADIUS;
 		} else if(type == "pig" ||  type == "pigHelmet"){  
 			this.scale = scale;
-			this.rady = scale/2;
+			this.rady = scale/3;
 			this.radz = this.rady;
 		} else if(type == "pigMustache"){
 			this.scale = scale;
-			this.rady = scale/2;
-			this.radz = scale/2;	
+			this.rady = scale/3;
+			this.radz = scale/3;	
 		}else{
 			this.rady = STRUCTURE_OBJ_RADIUS;
 			this.radz = STRUCTURE_OBJ_RADIUS;
