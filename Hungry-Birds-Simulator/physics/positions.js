@@ -165,15 +165,17 @@ var worldPositions = [
 	tower37Matrix				//67
 ];
 
+var roundZ = 0;
 
 function waitingBirdsAnimation(){
 	birdY += BIRD_Y; 
 	var currentTime = (new Date).getTime();
-	var roundZ = 0.0;
+	/*var roundZ = 0.0;
     if(lastUpdateTime - currentTime >= 1700 &&  lastUpdateTime - currentTime <= 2100)
 		roundZ = 75.0;
 	else
-		roundZ = 0.0;
+		roundZ = 0.0;*/
+	roundZ += 2;
 
 	switch(counter){
 		case 0:
