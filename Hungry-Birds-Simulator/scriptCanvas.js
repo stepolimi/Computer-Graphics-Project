@@ -635,7 +635,7 @@ function checkStability(){
                         if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
                             console.log("left " + obj.type)
                     }
-                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
+                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZEnd){
                         sucStable = true;
                         objTocheck.supRightPieces.push(obj);
                         if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
