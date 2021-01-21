@@ -167,7 +167,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
         switch(i){
             case 0:
                 pig11 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, objType, 10, 0.7 ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , -3.0, 270.0, 0.0, 0.0, objType, 10, 0.7 ));  //z=1.8
                 break;
             case 1:
                 pig12 = pigChoiche;
@@ -320,7 +320,7 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
                 break;
             case 1:
                 tower15 = piece;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, objType, 17 )); //2.55
+                structureObjs.push(new structureObjects(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, objType, 17 )); //z=2.55
                 break;
             case 2:
                 tower110 = piece;
