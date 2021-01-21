@@ -236,7 +236,7 @@ function birdFlip(){
 			roundY1 = 0;
 		}
 	} else
-		roundY1 += 6;
+		roundY1 += 10;
 
 	if(roundY2 == 360){
 		let min = Math.ceil(1);
@@ -248,7 +248,7 @@ function birdFlip(){
 			roundY2 = 0;
 		}
 	} else
-		roundY2 += 6;
+		roundY2 += 10;
 	
 	if(roundY3 == 360){
 		let min = Math.ceil(1);
@@ -260,7 +260,7 @@ function birdFlip(){
 			roundY3 = 0;
 		}
 	} else
-		roundY3 += 6;
+		roundY3 += 10;
 
 	if(roundY4 == 360){
 		let min = Math.ceil(1);
@@ -272,7 +272,7 @@ function birdFlip(){
 			roundY4 = 0;
 		}
 	} else
-		roundY4 += 6;
+		roundY4 += 10;
 }
 
 
