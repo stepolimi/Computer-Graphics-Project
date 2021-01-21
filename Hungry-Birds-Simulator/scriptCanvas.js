@@ -627,18 +627,18 @@ function checkStability(){
                 if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
                     if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZEnd)){
                         stable = true;
-                        if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
+                        if((objTocheck.type == "glassBox" || objTocheck.type == "woodBox") && objZ == 5.8)
                             console.log("full " + obj.type)
                     }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd){
                         precStable = true;
                         objTocheck.supLeftPieces.push(obj);
-                        if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
+                        if((objTocheck.type == "glassBox" || objTocheck.type == "woodBox") && objZ == 5.8)
                             console.log("left " + obj.type)
                     }
                     else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZEnd){
                         sucStable = true;
                         objTocheck.supRightPieces.push(obj);
-                        if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
+                        if((objTocheck.type == "glassBox" || objTocheck.type == "woodBox") && objZ == 5.8)
                             console.log("right " + obj.type)
                     }
                 }
@@ -662,7 +662,7 @@ function objectFall(){
                 if(supObj.tz + supObj.radz > maxZ)
                     maxZ = supObj.tz + supObj.radz;
             });
-            obj.ry -= 0.5 / obj.radz * (obj.radz - maxZ);
+            obj.ry -= 0.1 / obj.radz * (obj.radz - maxZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
             obj.vz = 0.1;
@@ -674,7 +674,7 @@ function objectFall(){
                 if(supObj.tz - supObj.radz < minZ)
                     minZ = supObj.tz - supObj.radz;
             });
-            obj.ry += 0.5 / obj.radz * (obj.radz - minZ);
+            obj.ry += 0.1 / obj.radz * (obj.radz - minZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
             obj.vz = 0.1;
