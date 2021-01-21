@@ -603,7 +603,7 @@ window.onload = main;
 
 //applies gravity to objects
 function checkStability(){
-    let tollerance = 0.01;
+    let tollerance = 0.001;
 
     structureObjs.forEach(function(objTocheck) {
         let objY = objTocheck.ty - objTocheck.rady;
