@@ -165,10 +165,10 @@ var worldPositions = [
 	tower37Matrix				//67
 ];
 
-var roundX1 = 0;
-var roundX2 = 0;
-var roundX3 = 0;
-var roundX4 = 0;
+var roundY1 = 0;
+var roundY2 = 0;
+var roundY3 = 0;
+var roundY4 = 0;
 var count1 = 0;
 var count2 = 0;
 var count3 = 0;
@@ -186,31 +186,31 @@ function waitingBirdsAnimation(){
 
 	switch(counter){
 		case 0:
-			worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*8.0)/10 , -7.5, roundX1, 0.0, roundZ, 0.5); 
-			worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, roundX2, 0.0, roundZ, 0.5); 
-			worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, roundX3, 0.0, roundZ, 0.5);  
-			worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, roundX4, 0.0, roundZ, 0.5);  
+			worldPositions[3] = utils.MakeWorld(-0.5,  0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, roundY1, roundZ, 0.5); 
+			worldPositions[4] = utils.MakeWorld(-1.5,  0.1 + Math.sin(birdY*4.0)/10 , -7.5, 0.0, roundY2, roundZ, 0.5); 
+			worldPositions[5] = utils.MakeWorld(-2.5,  0.1 + Math.sin(birdY*3.5)/10 , -7.5, 0.0, roundY3, roundZ, 0.5);  
+			worldPositions[6] = utils.MakeWorld(-3.5,  0.1 + Math.sin(birdY*5.0)/10 , -7.5, 0.0, roundY4, roundZ, 0.5);  
 			break;
 		case 1:
 			birdTrajectory(2);
 			setTimeout(function(){},1000);
 		    worldPositions[3] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
-		    worldPositions[4] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, roundX1, 0.0, 0.0, 0.5);
-		    worldPositions[5] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, roundX2, 0.0, 0.0, 0.5);	
-		    worldPositions[6] = utils.MakeWorld(-2.5, 0.1 + Math.sin(birdY*3.5)/10  , -7.5, roundX3, 0.0, 0.0, 0.5);	
+		    worldPositions[4] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, roundY1, 0.0, 0.5);
+		    worldPositions[5] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, roundY2, 0.0, 0.5);	
+		    worldPositions[6] = utils.MakeWorld(-2.5, 0.1 + Math.sin(birdY*3.5)/10  , -7.5, 0.0, roundY3, 0.0, 0.5);	
 			break;
 		case 2:
 			birdTrajectory(3);
 			setTimeout(function(){},1000);
 		    worldPositions[4] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
-		    worldPositions[5] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, roundX1, 0.0, 0.0, 0.5);
-		    worldPositions[6] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, roundX2, 0.0, 0.0, 0.5);	
+		    worldPositions[5] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, roundY1, 0.0, 0.5);
+		    worldPositions[6] = utils.MakeWorld(-1.5, 0.1 + Math.sin(birdY*4.0)/10  , -7.5, 0.0, roundY2, 0.0, 0.5);	
 			break;
 		case 3:
 			birdTrajectory(4);
 			setTimeout(function(){},1000);
 		    worldPositions[5] = utils.MakeWorld(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, 0.5);
-		    worldPositions[6] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, roundX1, 0.0, 0.0, 0.5);
+		    worldPositions[6] = utils.MakeWorld(-0.5, 0.1 + Math.sin(birdY*8.0)/10 , -7.5, 0.0, roundY1, 0.0, 0.5);
 			break;
 		case 4:
 			birdTrajectory(5);
@@ -226,53 +226,53 @@ function waitingBirdsAnimation(){
 }
 
 function birdFlip(){
-	if(roundX1 == 360){
+	if(roundY1 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(5);
+		let max = Math.floor(10);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count1 += choiche;
-		if(count1 >= 500 ){
+		if(count1 >= 2000 ){
 			count1 = 0;
-			roundX1 = 0;
+			roundY1 = 0;
 		}
 	} else
-		roundX1 += 2;
+		roundY1 += 2;
 
-	if(roundX2 == 360){
+	if(roundY2 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(5);
+		let max = Math.floor(10);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count2 += choiche;
-		if(count2 >= 500 ){
+		if(count2 >= 2000 ){
 			count2 = 0;
-			roundX2 = 0;
+			roundY2 = 0;
 		}
 	} else
-		roundX2 += 2;
+		roundY2 += 2;
 	
-	if(roundX3 == 360){
+	if(roundY3 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(5);
+		let max = Math.floor(10);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count3 += choiche;
-		if(count3 >= 500 ){
+		if(count3 >= 2000 ){
 			count3 = 0;
-			roundX3 = 0;
+			roundY3 = 0;
 		}
 	} else
-		roundX3 += 2;
+		roundY3 += 2;
 
-	if(roundX4 == 360){
+	if(roundY4 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(5);
+		let max = Math.floor(10);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count4 += choiche;
-		if(count4 >= 500 ){
+		if(count4 >= 2000 ){
 			count4 = 0;
-			roundX4 = 0;
+			roundY4 = 0;
 		}
 	} else
-		roundX4 += 2;
+		roundY4 += 2;
 }
 
 
