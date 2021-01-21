@@ -167,39 +167,39 @@ function randomizePigs(pig, pigHelmet, pigMustache){
         switch(i){
             case 0:
                 pig11 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, objType, 10 ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, objType, 10, 0.7 ));
                 break;
             case 1:
                 pig12 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.8 , 0.2, 270.0, 0.0, 0.0, objType, 11 ));
+                structureObjs.push(new structureObjects(0.0, 1.8 , 0.2, 270.0, 0.0, 0.0, objType, 11, 0.7 ));
                 break;
             case 2:
                 pig13 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, objType, 12 ));
+                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, objType, 12, 0.4 ));
                 break;
              case 3:
                 pig21 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.6 , 5.0, 270.0, 0.0, 0.0, objType, 34 ));
+                structureObjs.push(new structureObjects(0.0, 0.6 , 5.0, 270.0, 0.0, 0.0, objType, 34, 0.75 ));
                 break;
             case 4:
                 pig22 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, objType, 35 ));
+                structureObjs.push(new structureObjects(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, objType, 35, 0.4 ));
                 break;
             case 5:
                 pig23 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, objType, 36 ));
+                structureObjs.push(new structureObjects(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, objType, 36, 0.4 ));
                 break;
             case 6:
                 pig24 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 4.0 , 5.0, 270.0, 0.0, 0.0, objType, 37 ));
+                structureObjs.push(new structureObjects(0.0, 4.0 , 5.0, 270.0, 0.0, 0.0, objType, 37, 0.6 ));
                 break;
             case 7:
                 pig25 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 6.8 , 5.0, 270.0, 0.0, 0.0, objType, 38 ));
+                structureObjs.push(new structureObjects(0.0, 6.8 , 5.0, 270.0, 0.0, 0.0, objType, 38, 1.0 ));
                 break;
             case 8:
                 pig31 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, objType, 60 ));
+                structureObjs.push(new structureObjects(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, objType, 60, 0.6 ));
                 break;
                 
         }

@@ -656,7 +656,7 @@ function objectFall(){
                 if(supObj.tz + supObj.radz > maxZ)
                     maxZ = supObj.tz + supObj.radz;
             });
-            obj.ry += 20 / obj.radz * (obj.radz - maxZ);
+            obj.ry -= 2 / obj.radz * (obj.radz - maxZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
             obj.vz = 0.1;
@@ -667,7 +667,7 @@ function objectFall(){
                 if(supObj.tz - supObj.radz < minZ)
                     minZ = supObj.tz - supObj.radz;
             });
-            obj.ry += 20 / obj.radz * (obj.radz - minZ);
+            obj.ry += 2 / obj.radz * (obj.radz - minZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
             obj.vz = 0.1;
@@ -676,11 +676,8 @@ function objectFall(){
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
         }
-        //todo: scaling
-        if(!obj.type.includes("pig"))
-            worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, 0.2);
-        else
-            worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, 0.4);
-       }
+
+        worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+     }
     });
 }
