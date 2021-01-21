@@ -210,7 +210,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
 
 function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
     tower112 = tnt;
-    structureObjs.push(new structureObjects(0.0, 0.75,0.2, 0.4, 0.0, 0.0,  "tnt", 24 ));
+    structureObjs.push(new structureObjects(0.0, 0.8,0.2, 0.4, 0.0, 0.0,  "tnt", 24 ));
 
     tower210 = tnt;
     structureObjs.push(new structureObjects(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0,  "tnt", 48 ));
