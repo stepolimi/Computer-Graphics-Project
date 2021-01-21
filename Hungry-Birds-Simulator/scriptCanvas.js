@@ -625,7 +625,7 @@ function checkStability(){
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
                 if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
-                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZEnd)){
+                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
                         stable = true;
                         if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 0.2)
                             console.log("full " + obj.type + objY)
