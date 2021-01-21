@@ -627,22 +627,20 @@ function checkStability(){
                 if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
                     if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZStart)){
                         stable = true;
-                        if(objTocheck.type == "tnt" && objZ == 0.2)
-                            console.log("ao")
+                        if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
+                            console.log("full " + obj.type)
                     }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd){
                         precStable = true;
                         objTocheck.supLeftPieces.push(obj);
-                        if(objTocheck.type == "tnt" && objZ == 0.2)
-                            console.log("left")
+                        if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
+                            console.log("left " + obj.type)
                     }
                     else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
                         sucStable = true;
                         objTocheck.supRightPieces.push(obj);
-                        if(objTocheck.type == "tnt" && objZ == 0.2)
-                            console.log("right")
+                        if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objZ == 1.8)
+                            console.log("right " + obj.type)
                     }
-                    if(objTocheck.type == "tnt" && objZ == 0.2)
-                        console.log(obj.type)
                 }
             });
             if(!stable && !(precStable && sucStable))
