@@ -13,6 +13,8 @@ class structureObjects {
 		this.type = type;
 		this.isColliding = false;
 		this.isStable = true;
+		this.supLeftPieces = [];
+		this.supRightPieces = [];
 
 		if(type == "glassVerticalPlane" ||  type == "woodVerticalPlane"){
 			this.rady = VERTICAL_PANE_BIG_RADIUS;
