@@ -23,7 +23,7 @@ class structureObjects {
 		} else if(type == "glassHorizontalPlane" ||  type == "woodHorizontalPlane"){
 			this.rady = HORIZONTAL_PANE_SMALL_RADIUS;
 			this.radz =  HORIZONTAL_PANE_BIG_RADIUS;
-		} else if(type.includes("pig")){
+		} else if(type == "pig" ||  type == "pigHelmet"||  type == "pigMustache"){
 			this.scale = scale;
 			this.rady = scale / 2;
 			this.radz = this.rady;
