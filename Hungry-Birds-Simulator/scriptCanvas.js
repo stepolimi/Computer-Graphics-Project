@@ -644,6 +644,8 @@ function checkStability(){
                     if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objY == 3.2)
                         console.log("?????????? ")
                 }
+                if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objY == 3.2)
+                    console.log("?????????????????????????????????? ")
             });
             if(!stable && !(precStable && sucStable))
                 objTocheck.isStable = false;
@@ -660,6 +662,7 @@ function objectFall(){
        if(!obj.isStable){
         if(obj.supLeftPieces.length != 0){
             let maxZ = -100;
+            let g = 3;
             obj.supLeftPieces.forEach(function(supObj) {
                 if(supObj.tz + supObj.radz > maxZ)
                     maxZ = supObj.tz + supObj.radz;
