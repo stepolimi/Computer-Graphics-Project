@@ -179,7 +179,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
                 break;
              case 3:
                 pig21 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.6 , 5.0, 270.0, 0.0, 0.0, objType, 34, 0.75 ));
+                structureObjs.push(new structureObjects(0.0, 0.8 , 5.0, 270.0, 0.0, 0.0, objType, 34, 0.75 ));
                 break;
             case 4:
                 pig22 = pigChoiche;

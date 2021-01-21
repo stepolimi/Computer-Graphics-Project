@@ -625,15 +625,21 @@ function checkStability(){
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
                 if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
-                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZStart))
+                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZStart)){
                         stable = true;
-                    else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd){
+                        if(objTocheck.type == "tnt" && objZ == 0.2)
+                            console.log("ao")
+                    }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd){
                         precStable = true;
                         objTocheck.supLeftPieces.push(obj);
+                        if(objTocheck.type == "tnt" && objZ == 0.2)
+                            console.log("left")
                     }
                     else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
                         sucStable = true;
                         objTocheck.supRightPieces.push(obj);
+                        if(objTocheck.type == "tnt" && objZ == 0.2)
+                            console.log("right")
                     }
                 }
             });

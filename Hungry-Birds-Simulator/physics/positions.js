@@ -48,7 +48,7 @@ var tower120Matrix = utils.MakeWorld(0.0, 4.6 , 0.2, 0.0, 0.0, 0.0, 0.2);		//pyr
 var rockMatrix = utils.MakeWorld(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0, 0.2);
 
 //Tower 2     4.2 < z < 6.15 
-var pig21Matrix = utils.MakeWorld(0.0, 0.6 , 5.0, 270.0, 0.0, 0.0, 0.75);		//pig1 of tower 2
+var pig21Matrix = utils.MakeWorld(0.0, 0.8 , 5.0, 270.0, 0.0, 0.0, 0.75);		//pig1 of tower 2
 var	pig22Matrix = utils.MakeWorld(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, 0.4);		//pig2 of tower 2
 var pig23Matrix = utils.MakeWorld(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, 0.4);		//pig3 of tower 2
 var pig24Matrix = utils.MakeWorld(0.0, 4.0 , 5.0, 270.0, 0.0, 0.0, 0.6);		//pig1 of tower 2
