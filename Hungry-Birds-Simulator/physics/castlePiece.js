@@ -15,16 +15,16 @@ class structureObjects {
 		this.isStable = true;
 
 		if(type == "glassVerticalPlane" ||  type == "woodVerticalPlane"){
-			this.rady = STRUCTURE_OBJ_RADIUS;
-			this.radz = SMALLER_OBJ_RADIUS;
+			this.rady = VERTICAL_PANE_BIG_RADIUS;
+			this.radz = VERTICAL_PANE_SMALL_RADIUS;
 		}
 		else if(type == "glassHorizontalPlane" ||  type == "woodHorizontalPlane"){
-			this.rady = SMALLER_OBJ_RADIUS;
-			this.radz =  STRUCTURE_OBJ_RADIUS;
+			this.rady = HORIZONTAL_PANE_SMALL_RADIUS;
+			this.radz =  HORIZONTAL_PANE_BIG_RADIUS;
 		}
 		else{
 			this.rady = STRUCTURE_OBJ_RADIUS;
-			this.radz = SMALLER_OBJ_RADIUS;
+			this.radz = STRUCTURE_OBJ_RADIUS;
 		}
 	}
 }
