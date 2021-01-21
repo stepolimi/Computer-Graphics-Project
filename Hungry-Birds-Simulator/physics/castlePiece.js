@@ -29,7 +29,7 @@ class structureObjects {
 			this.radz = this.rady;
 		} else if(type == "pigMustache"){
 			this.scale = scale;
-			this.rady = scale/2 + 0.1;
+			this.rady = scale/2;
 			this.radz = scale/2;	
 		}else{
 			this.rady = STRUCTURE_OBJ_RADIUS;
