@@ -625,7 +625,7 @@ function checkStability(){
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
                 if((obj.ty + obj.rady > objY - tollerance) && (obj.ty + obj.rady < objY + tollerance)){
-                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZStart))
+                    if((obj.tz + obj.radz >= objZ -tollerance && obj.tz - obj.radz <= objZStart) || (obj.tz - obj.radz <= objZ + tollerance && obj.tz + obj.radz >= objZStart))
                         stable = true;
                     else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd){
                         precStable = true;
@@ -656,10 +656,11 @@ function objectFall(){
                 if(supObj.tz + supObj.radz > maxZ)
                     maxZ = supObj.tz + supObj.radz;
             });
-            obj.ry -= 2 / obj.radz * (obj.radz - maxZ);
+            obj.ry -= 0.5 / obj.radz * (obj.radz - maxZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
             obj.vz = 0.1;
+            obj.tz = obj.tz + obj.vz * TICK
         }
         else if(obj.supRightPieces.length != 0){
             let minZ = 100;
@@ -667,10 +668,11 @@ function objectFall(){
                 if(supObj.tz - supObj.radz < minZ)
                     minZ = supObj.tz - supObj.radz;
             });
-            obj.ry += 2 / obj.radz * (obj.radz - minZ);
+            obj.ry += 0.5 / obj.radz * (obj.radz - minZ);
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
             obj.vz = 0.1;
+            obj.tz = obj.tz + obj.vz * TICK
         }
         else{
             obj.vy = obj.vy - (g*TICK*TICK /2);
