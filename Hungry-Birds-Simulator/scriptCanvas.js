@@ -641,6 +641,8 @@ function checkStability(){
                         if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objY == 3.2)
                             console.log("right " + obj.type)
                     }
+                    if((objTocheck.type == "glassHorizontalPlane" || objTocheck.type == "woodHorizontalPlane") && objY == 3.2)
+                        console.log("?????????? ")
                 }
             });
             if(!stable && !(precStable && sucStable))
