@@ -23,12 +23,15 @@ class structureObjects {
 		} else if(type == "glassHorizontalPlane" ||  type == "woodHorizontalPlane"){
 			this.rady = HORIZONTAL_PANE_SMALL_RADIUS;
 			this.radz =  HORIZONTAL_PANE_BIG_RADIUS;
-		} else if(type == "pig" ||  type == "pigHelmet"||  type == "pigMustache"){
+		} else if(type == "pig" ||  type == "pigHelmet"){  
 			this.scale = scale;
-			this.rady = 0.6 * scale;
+			this.rady = 0.4 * scale;
 			this.radz = this.rady;
-		} 
-		else{
+		} else if(type == "pigMustache"){
+			this.scale = scale;
+			this.rady = 0.9 * scale;
+			this.radz = 0.6 * scale;	
+		}else{
 			this.rady = STRUCTURE_OBJ_RADIUS;
 			this.radz = STRUCTURE_OBJ_RADIUS;
 		}
