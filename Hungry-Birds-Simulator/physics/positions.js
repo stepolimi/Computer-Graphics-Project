@@ -228,7 +228,7 @@ function waitingBirdsAnimation(){
 function birdFlip(){
 	if(roundY1 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(10);
+		let max = Math.floor(20);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count1 += choiche;
 		if(count1 >= 2000 ){
@@ -236,11 +236,11 @@ function birdFlip(){
 			roundY1 = 0;
 		}
 	} else
-		roundY1 += 2;
+		roundY1 += 6;
 
 	if(roundY2 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(10);
+		let max = Math.floor(20);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count2 += choiche;
 		if(count2 >= 2000 ){
@@ -248,11 +248,11 @@ function birdFlip(){
 			roundY2 = 0;
 		}
 	} else
-		roundY2 += 2;
+		roundY2 += 6;
 	
 	if(roundY3 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(10);
+		let max = Math.floor(20);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count3 += choiche;
 		if(count3 >= 2000 ){
@@ -260,11 +260,11 @@ function birdFlip(){
 			roundY3 = 0;
 		}
 	} else
-		roundY3 += 2;
+		roundY3 += 6;
 
 	if(roundY4 == 360){
 		let min = Math.ceil(1);
-		let max = Math.floor(10);
+		let max = Math.floor(20);
 		choiche = Math.floor(Math.random() * (max - min + 1)) + min;
 		count4 += choiche;
 		if(count4 >= 2000 ){
@@ -272,7 +272,7 @@ function birdFlip(){
 			roundY4 = 0;
 		}
 	} else
-		roundY4 += 2;
+		roundY4 += 6;
 }
 
 
