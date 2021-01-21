@@ -26,7 +26,7 @@ class structureObjects {
 		} else if(type.includes("pig")){
 			this.scale = scale;
 			this.rady = scale / 2;
-			this.radz = rady;
+			this.radz = this.rady;
 		} 
 		else{
 			this.rady = STRUCTURE_OBJ_RADIUS;
