@@ -55,19 +55,11 @@ class structureObjects {
 				this.vz = thisVzFinal;
 				this.vy = thisVyFinal;
 				obj.startMovement();
-		}
-	});
+			}
+		});
 	}
 
 	startMovement(){
-		while(this.vx >= 0.001 || this.vy >= 0.001){
-			this.vy = this.vy - (g*TICK*TICK /2);
-			this.ty = this.ty + this.vy * TICK;
-			this.tz = this.vz * TICK;
-			worldPositions[this.index] = utils.MakeWorld(this.tx , this.ty, this.tz, this.rx, this.ry, this.rz, this.scale);
-			this.collides();
-		}
-		this.vx = 0;
-		this.vy = 0;
+		console.log("ciao");
 	}
 }
