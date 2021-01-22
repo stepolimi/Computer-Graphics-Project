@@ -139,8 +139,7 @@ function birdCollision(bird, obj){
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
-	if(!structureObjs[i].isMoving)
-		startMovement(obj);
+	structureObjs[i].isMoving = true;
 }
 
 //functions to manage objects collisions
@@ -170,26 +169,24 @@ function collides(objMoving){
 }
 
 function startMovement(obj){
-	obj.isMoving = true;
-	while((obj.vz >= 0.0001 || obj.vy <= 0.0001) && obj.ty > -0.4){
+	if(obj.isMoving || !obj.isStable){
 		let delT = globalTime - obj.startTime;
-		console.log("vz: " + obj.vz);
+		/*console.log("vz: " + obj.vz);
 		console.log("vy: " + obj.vy);
 		console.log("delta: " + delT);
 		console.log("g: " + g)
 		console.log("ty: " + obj.ty);
 		console.log("tz: " + obj.tz);
-		console.log("-------------------------------");
+		console.log("-------------------------------");*/
 
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 		obj.tz = obj.tz + obj.vz * delT;
 		obj.vy = obj.vy - g*delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		//collides(obj);
+		if((obj.vz >= 0.0001 || obj.vy <= 0.0001) && obj.ty > -0.4)
+			obj.isMoving = false;
 	}
-	obj.vz = 0;
-	obj.vy = 0;
-	obj.isMoving = false;
 }
 
 function activateSound(index){

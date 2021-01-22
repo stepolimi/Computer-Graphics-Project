@@ -574,6 +574,10 @@ function addMeshToScene(i) {
     checkStability();
     objectFall();
 
+    structureObjs.forEach(function(obj) {
+        startMovement(obj);
+    });
+
     globalTime ++;
 
     //base view matrix
@@ -643,15 +647,19 @@ function checkStability(){
             if(!stable && !(precStable && sucStable))
                 objTocheck.isStable = false;
             else{
-                objTocheck.vy = 0;
-                objTocheck.vz = 0;
                 objTocheck.isStable = true;
+                if(!obj.isMoving){
+                    objTocheck.vy = 0;
+                    objTocheck.vz = 0;
+                }
             }
         }
         else{
             objTocheck.isStable = true;
-            objTocheck.vy = 0;
-            objTocheck.vz = 0;
+            if(!obj.isMoving){
+                objTocheck.vy = 0;
+                objTocheck.vz = 0;
+            }
         }
     });
 }
@@ -691,10 +699,8 @@ function objectFall(){
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
         }
-        if(!obj.isMoving){
-            obj.startTime = globalTime;
-            startMovement(obj);
-        }
+        
+        obj.isMoving = true;
      }
     });
 }
