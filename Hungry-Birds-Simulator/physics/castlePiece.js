@@ -14,6 +14,7 @@ class structureObjects {
 		this.durability = 3;
 		this.index = index;
 		this.type = type;
+		this.startTime = 0;
 		this.isColliding = false;
 		this.isStable = true;
 		this.supLeftPieces = [];

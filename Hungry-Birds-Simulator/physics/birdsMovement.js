@@ -168,10 +168,9 @@ function collides(objMoving){
 }
 
 function startMovement(obj){
-	let colT = t;
 
 	//while(obj.vz >= 0.0001 || obj.vy <= 0.0001){
-		let delT = t - colT;
+		let delT = t - obj.startTime;
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 		obj.tz = obj.tz + obj.vz * delT;
 		obj.vy = obj.vy - g*delT;
