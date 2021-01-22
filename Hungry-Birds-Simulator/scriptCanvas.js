@@ -642,8 +642,11 @@ function checkStability(){
             });
             if(!stable && !(precStable && sucStable))
                 objTocheck.isStable = false;
-            else
+            else{
+                objTocheck.vy = 0;
+                objTocheck.vz = 0;
                 objTocheck.isStable = true;
+            }
         }
         else{
             objTocheck.isStable = true;
