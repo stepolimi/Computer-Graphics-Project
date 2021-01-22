@@ -176,10 +176,10 @@ function startMovement(obj){
 		obj.tz = obj.tz + obj.vz * delT;
 		obj.vy = obj.vy - g*delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
-		collides(obj);
+		//collides(obj);
 	//}
-	obj.vz = 0;
-	obj.vy = 0;
+	//obj.vz = 0;
+	//obj.vy = 0;
 }
 
 function activateSound(index){
