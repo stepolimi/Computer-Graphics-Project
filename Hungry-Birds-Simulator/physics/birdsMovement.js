@@ -158,7 +158,7 @@ function collides(objMoving){
 		
 			objMoving.vz = thisVzFinal;
 			objMoving.vy = thisVyFinal;
-			startMovement(obj);
+			//startMovement(obj);
 		}
 	});
 }
