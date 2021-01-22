@@ -137,11 +137,6 @@ function birdCollision(bird, obj){
 	obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 	obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
 
-	console.log("bird vz: " + birdVzFinal);
-	console.log("bird vy: " + birdVyFinal);
-	console.log("obj vz: " + obj.vz);
-	console.log("obj vy: " + obj.vy);
-
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
@@ -173,6 +168,11 @@ function collides(objMoving){
 function startMovement(obj){
 	let colT = t;
 	while(obj.vx >= 0.0001 || obj.vy >= 0.0001){
+		console.log("bird vz: " + birdVzFinal);
+		console.log("bird vy: " + birdVyFinal);
+		console.log("obj vz: " + obj.vz);
+		console.log("obj vy: " + obj.vy);
+		
 		let delT = t - colT;
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 		obj.tz = obj.tz + obj.vz * delT;
