@@ -165,12 +165,8 @@ function collides(objMoving){
 
 function startMovement(obj){
 	let colT = t;
-	console.log("bird vz: " + velz);
-	console.log("bird vy: " + vely);
-	console.log("obj vz: " + obj.vz);
-	console.log("obj vy: " + obj.vy);
-	while(obj.vx >= 0.0001 || obj.vy >= 0.0001){
-		console.log("???????????");
+
+	while(obj.vz >= 0.0001 || obj.vy <= 0.0001){
 		let delT = t - colT;
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 		obj.tz = obj.tz + obj.vz * delT;
@@ -178,7 +174,7 @@ function startMovement(obj){
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		collides(obj);
 	}
-	obj.vx = 0;
+	obj.vz = 0;
 	obj.vy = 0;
 }
 
