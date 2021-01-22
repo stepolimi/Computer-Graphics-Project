@@ -70,8 +70,8 @@ function birdTrajectory(index){
 		trajectoryZ = -birdStartingZ + velz*t;
 	}else{
 		let deltaT = t - collisionT;
-		trajectoryY = collisionY + vely - (g*deltaT*deltaT /2);
-		trajectoryZ = collisionZ + velz;
+		trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
+		trajectoryZ = collisionZ + velz*deltaT;
 
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
 		isColliding(birdsArray[index-2]);
