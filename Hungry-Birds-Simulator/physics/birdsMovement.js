@@ -135,6 +135,9 @@ function birdCollision(bird, obj){
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
+	console.log("bird " + velz);
+	console.log(obj.vz);
+
 	startMovement(obj);
 }
 
