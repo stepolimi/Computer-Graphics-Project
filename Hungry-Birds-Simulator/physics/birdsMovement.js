@@ -170,14 +170,14 @@ function collides(objMoving){
 function startMovement(obj){
 	let colT = t;
 
-	while(obj.vz >= 0.0001 || obj.vy <= 0.0001){
+	//while(obj.vz >= 0.0001 || obj.vy <= 0.0001){
 		let delT = t - colT;
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 		obj.tz = obj.tz + obj.vz * delT;
 		obj.vy = obj.vy - g*delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		collides(obj);
-	}
+	//}
 	obj.vz = 0;
 	obj.vy = 0;
 }
