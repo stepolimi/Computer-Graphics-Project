@@ -7,6 +7,8 @@ var angle;
 var rotation = 0.0;
 var g = GRAVITY;
 var v = 0; 
+var vx = 0;
+var vy = 0;
 
 var trajectoryY;
 var trajectoryZ;
@@ -45,18 +47,19 @@ function birdTrajectory(index){
 	if(index != prec){
 		t = 0;
 		prec = index;
+		v = BIRD_SPEED * elasticForce;
 	}
-
-	v = BIRD_SPEED * elasticForce; 
 
 	if(angleY > 0)
 		angle = -90 + angleY;
 	else
 		angle = Math.abs(angleY);
+	
+	vy = v*t*Math.sin(utils.degToRad(angle));
+	vz = v*t*Math.cos(utils.degToRad(angle));
 
-
-	trajectoryY = birdStartingY + v*t*Math.sin(utils.degToRad(angle)) - (g*t*t /2);
-	trajectoryZ = -birdStartingZ + v*t*Math.cos(utils.degToRad(angle));
+	trajectoryY = birdStartingY + vy - (g*t*t /2);
+	trajectoryZ = -birdStartingZ + vz;
 	
 	if(activateBirdPower)
 		activatePower(index);
@@ -67,9 +70,10 @@ function birdTrajectory(index){
 		birdsArray[index-2].ry = angle;
 		birdsArray[index-2].rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
-		isColliding();
+		isColliding(birdsArray[index-2]);
 	}
 	else{
+		//if vx ==0
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
@@ -81,9 +85,10 @@ function birdTrajectory(index){
 }
 
 
-function isColliding(){
+function isColliding(bird){
 	let radiusY;
 	let radiusZ;
+	let useless;
 	for(let i = 0; i < structureObjs.length; i++ ){
 		let objY = structureObjs[i].ty;
 		let objZ = structureObjs[i].tz;
@@ -91,16 +96,31 @@ function isColliding(){
 		radiusZ = structureObjs[i].radz;
 
 		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ )
-			console.log("non collidono");
+			useless = 0;
 		else{
 			birdCollides = true;
+			birdCollision(bird, structureObjs[i]);
 			console.log("objY " + objY);
 			console.log("objZ " + objZ);
 			console.log("trajectoryY " + trajectoryY);
 			console.log("trajectoryZ " + trajectoryZ);
+
 		}
-	}
-		
+	}	
+}
+
+function birdCollision(obj){
+	let elasticCoefficient = 0.5;
+	let birdVzFinal = vz * elasticCoefficient;
+	let birdVyFinal = vy * elasticCoefficient;
+
+	obj.vz = (bird.m * vz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
+	obj.vy = (bird.m * vy + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
+
+	vz = birdVzFinal;
+	vy = birdVyFinal;
+
+	obj.startMovement();
 }
 
 function activateSound(index){

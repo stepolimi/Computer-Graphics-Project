@@ -642,8 +642,10 @@ function checkStability(){
             else
                 objTocheck.isStable = true;
         }
-        else
+        else{
             objTocheck.isStable = true;
+            objTocheck.vy = 0;
+        }
     });
 }
 
@@ -680,7 +682,7 @@ function objectFall(){
             obj.ty = obj.ty + obj.vy * TICK;
         }
 
-        worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+        obj.startMovement();
      }
     });
 }
