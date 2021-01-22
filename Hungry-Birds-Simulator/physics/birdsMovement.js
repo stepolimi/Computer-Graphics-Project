@@ -7,8 +7,8 @@ var angle;
 var rotation = 0.0;
 var g = GRAVITY;
 var v = 0; 
-var vx = 0;
-var vy = 0;
+var vely = 0;
+var velz = 0;
 
 var trajectoryY;
 var trajectoryZ;
@@ -55,11 +55,11 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
-	vy = v*t*Math.sin(utils.degToRad(angle));
-	vz = v*t*Math.cos(utils.degToRad(angle));
+	vely = v*t*Math.sin(utils.degToRad(angle));
+	velz = v*t*Math.cos(utils.degToRad(angle));
 
-	trajectoryY = birdStartingY + vy - (g*t*t /2);
-	trajectoryZ = -birdStartingZ + vz;
+	trajectoryY = birdStartingY + vely - (g*t*t /2);
+	trajectoryZ = -birdStartingZ + velz;
 	
 	if(activateBirdPower)
 		activatePower(index);
@@ -73,7 +73,7 @@ function birdTrajectory(index){
 		isColliding(birdsArray[index-2]);
 	}
 	else{
-		//if vx ==0
+		//if velx ==0
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
@@ -111,14 +111,14 @@ function isColliding(bird){
 
 function birdCollision(obj){
 	let elasticCoefficient = 0.5;
-	let birdVzFinal = vz * elasticCoefficient;
-	let birdVyFinal = vy * elasticCoefficient;
+	let birdVzFinal = velz * elasticCoefficient;
+	let birdVyFinal = vely * elasticCoefficient;
 
-	obj.vz = (bird.m * vz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
-	obj.vy = (bird.m * vy + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
+	obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
+	obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
 
-	vz = birdVzFinal;
-	vy = birdVyFinal;
+	velz = birdVzFinal;
+	vely = birdVyFinal;
 
 	startMovement(obj);
 }
