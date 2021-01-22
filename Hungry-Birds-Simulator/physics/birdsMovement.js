@@ -114,7 +114,7 @@ function isColliding(bird){
 		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
 			useless = 0;
 		else{
-			if((vely <= 0.0001 || vely >= 0.0001) && trajectoryY >= 0.4){
+			if((vely <= 0.0001 || vely >= 0.0001) && trajectoryY >= -0.4){
 				birdCollides = true;
 				collisionY = trajectoryY;
 				collisionZ = trajectoryZ;
@@ -139,7 +139,7 @@ function birdCollision(bird, obj){
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
-	structureObjs[i].isMoving = true;
+	obj.isMoving = true;
 }
 
 //functions to manage objects collisions

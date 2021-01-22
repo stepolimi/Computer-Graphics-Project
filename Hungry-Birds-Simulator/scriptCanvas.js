@@ -648,7 +648,7 @@ function checkStability(){
                 objTocheck.isStable = false;
             else{
                 objTocheck.isStable = true;
-                if(!obj.isMoving){
+                if(!objTocheck.isMoving){
                     objTocheck.vy = 0;
                     objTocheck.vz = 0;
                 }
@@ -656,7 +656,7 @@ function checkStability(){
         }
         else{
             objTocheck.isStable = true;
-            if(!obj.isMoving){
+            if(!objTocheck.isMoving){
                 objTocheck.vy = 0;
                 objTocheck.vz = 0;
             }
