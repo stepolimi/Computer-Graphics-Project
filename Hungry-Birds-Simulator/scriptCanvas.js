@@ -682,7 +682,7 @@ function objectFall(){
             obj.ty = obj.ty + obj.vy * TICK;
         }
 
-        obj.startMovement();
+        startMovement(obj);
      }
     });
 }

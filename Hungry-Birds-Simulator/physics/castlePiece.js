@@ -38,28 +38,4 @@ class structureObjects {
 			this.radz = STRUCTURE_OBJ_RADIUS;
 		}
 	}
-
-	collides(){
-		let useless;
-		structureObjs.forEach(function(obj) {
-			if(obj.ty > this.ty + this.rady || this.vy > obj.ty + obj.rady || obj.tz > this.tz + this.radz || this.tz > obj.tz + obj.radz )
-				useless = 0;
-			else{
-				let elasticCoefficient = 0.4;
-				let thisVzFinal = this.vz * elasticCoefficient;
-				let thisVyFinal = this.vy * elasticCoefficient;
-			
-				obj.vz = (this.m * this.vz + obj.m * obj.vz - this.m * thisVzFinal) / obj.m;
-				obj.vy = (this.m * this.vy + obj.m * obj.vy - this.m * thisVyFinal) / obj.m;
-			
-				this.vz = thisVzFinal;
-				this.vy = thisVyFinal;
-				obj.startMovement();
-			}
-		});
-	}
-
-	startMovement(){
-		console.log("ciao");
-	}
 }
