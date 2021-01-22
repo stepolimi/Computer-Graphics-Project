@@ -277,7 +277,7 @@ function collides(objMoving){
 }
 
 function startMovement(obj){
-	while(obj.vx >= 0.001 || obj.vy >= 0.001){
+	while(true){ //obj.vx >= 0.001 || obj.vy >= 0.001){
 		obj.vy = obj.vy - (g*TICK*TICK /2);
 		obj.ty = obj.ty + obj.vy * TICK;
 		obj.tz = obj.vz * TICK;
