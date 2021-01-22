@@ -109,7 +109,7 @@ function isColliding(bird){
 	}	
 }
 
-function birdCollision(obj){
+function birdCollision(bird, obj){
 	let elasticCoefficient = 0.5;
 	let birdVzFinal = velz * elasticCoefficient;
 	let birdVyFinal = vely * elasticCoefficient;
