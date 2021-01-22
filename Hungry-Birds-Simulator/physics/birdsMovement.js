@@ -135,9 +135,6 @@ function birdCollision(bird, obj){
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
-	console.log("bird " + velz);
-	console.log(obj.vz);
-
 	startMovement(obj);
 }
 
@@ -174,6 +171,8 @@ function startMovement(obj){
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 		obj.tz = obj.tz + obj.vz * delT;
 		obj.vy = obj.vy - g*delT;
+		console.log("tz: " + obj.tz);
+		console.log("tz: " + obj.tz);
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		//collides(obj);
 	//}
