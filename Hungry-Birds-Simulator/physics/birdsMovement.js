@@ -149,16 +149,20 @@ function collides(objMoving){
 		if(obj.ty > objMoving.ty + objMoving.rady || objMoving.vy > obj.ty + obj.rady || obj.tz > objMoving.tz + objMoving.radz || objMoving.tz > obj.tz + obj.radz )
 			useless = 0;
 		else{
-			let elasticCoefficient = 0.4;
-			let thisVzFinal = objMoving.vz * elasticCoefficient;
-			let thisVyFinal = objMoving.vy * elasticCoefficient;
-		
-			obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
-			obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
-		
-			objMoving.vz = thisVzFinal;
-			objMoving.vy = thisVyFinal;
-			//startMovement(obj);
+			if(!obj.isStable){
+				let elasticCoefficient = 0.4;
+				let thisVzFinal = objMoving.vz * elasticCoefficient;
+				let thisVyFinal = objMoving.vy * elasticCoefficient;
+			
+				obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+				obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
+			
+				objMoving.vz = thisVzFinal;
+				objMoving.vy = thisVyFinal;
+				//startMovement(obj);
+			}else{
+				objMoving.vy = 0;
+			}
 		}
 	});
 }
