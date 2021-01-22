@@ -651,6 +651,7 @@ function checkStability(){
         else{
             objTocheck.isStable = true;
             objTocheck.vy = 0;
+            objTocheck.vz = 0;
         }
     });
 }
