@@ -93,9 +93,9 @@ function birdTrajectory(index){
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
-
+/*
 		if(counter == 5)
-			window.location.replace("./endGame.html");
+			window.location.replace("./endGame.html");*/
 	}
 	t += TICK;
 }
@@ -130,7 +130,7 @@ function isColliding(bird){
 }
 
 function birdCollision(bird, obj){
-	let elasticCoefficient = 0.5;
+	let elasticCoefficient = 0.1;
 	let birdVzFinal = velz * elasticCoefficient;
 	let birdVyFinal = vely * elasticCoefficient;
 
@@ -146,6 +146,40 @@ function birdCollision(bird, obj){
 	vely = birdVyFinal;
 
 	startMovement(obj);
+}
+
+//functions to manage objects collisions
+
+function collides(objMoving){
+	let useless;
+	structureObjs.forEach(function(obj) {
+		if(obj.ty > objMoving.ty + objMoving.rady || objMoving.vy > obj.ty + obj.rady || obj.tz > objMoving.tz + objMoving.radz || objMoving.tz > obj.tz + obj.radz )
+			useless = 0;
+		else{
+			let elasticCoefficient = 0.1;
+			let thisVzFinal = objMoving.vz * elasticCoefficient;
+			let thisVyFinal = objMoving.vy * elasticCoefficient;
+		
+			obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+			obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
+		
+			objMoving.vz = thisVzFinal;
+			objMoving.vy = thisVyFinal;
+			startMovement(obj);
+		}
+	});
+}
+
+function startMovement(obj){
+	while(obj.vx >= 0.0001 || obj.vy >= 0.0001){
+		obj.vy = obj.vy - (g*TICK*TICK /2);
+		obj.ty = obj.ty + obj.vy * TICK;
+		obj.tz = obj.vz * TICK;
+		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+		collides(obj);
+	}
+	obj.vx = 0;
+	obj.vy = 0;
 }
 
 function activateSound(index){
@@ -277,38 +311,4 @@ function activateMatildaPower(){
 	trajectoryZ = matildaZ + v*t*tan;
 	rotation += 20.0;
 	  
-}
-
-//functions to manage objects collisions
-
-function collides(objMoving){
-	let useless;
-	structureObjs.forEach(function(obj) {
-		if(obj.ty > objMoving.ty + objMoving.rady || objMoving.vy > obj.ty + obj.rady || obj.tz > objMoving.tz + objMoving.radz || objMoving.tz > obj.tz + obj.radz )
-			useless = 0;
-		else{
-			let elasticCoefficient = 0.4;
-			let thisVzFinal = objMoving.vz * elasticCoefficient;
-			let thisVyFinal = objMoving.vy * elasticCoefficient;
-		
-			obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
-			obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
-		
-			objMoving.vz = thisVzFinal;
-			objMoving.vy = thisVyFinal;
-			startMovement(obj);
-		}
-	});
-}
-
-function startMovement(obj){
-	while(obj.vx >= 0.0001 || obj.vy >= 0.0001){
-		obj.vy = obj.vy - (g*TICK*TICK /2);
-		obj.ty = obj.ty + obj.vy * TICK;
-		obj.tz = obj.vz * TICK;
-		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
-		collides(obj);
-	}
-	obj.vx = 0;
-	obj.vy = 0;
 }

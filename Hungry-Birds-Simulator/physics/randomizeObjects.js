@@ -155,22 +155,22 @@ function randomizePigs(pig, pigHelmet, pigMustache){
             case 1:
                 pigChoiche = pig;
                 objType = "pig";
-                mass = 0.1;
+                mass = 1;
                 break;
             case 2:
                 pigChoiche = pigHelmet;
                 objType = "pigHelmet";
-                mass = 0.15;
+                mass = 1.5;
                 break;
             case 3:
                 pigChoiche = pigMustache;
                 objType = "pigMustache";
-                mass = 0.2;
+                mass = 2;
                 break;
             default:
                 pigChoiche = pig;
                 objType = "pig";
-                mass = 0.1;
+                mass = 1;
                 break;
         }
         
@@ -219,7 +219,7 @@ function randomizePigs(pig, pigHelmet, pigMustache){
 
 
 function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
-    mass = 0.1;
+    mass = 1;
     tower112 = tnt;
     structureObjs.push(new structureObjects(0.0, 0.8,0.2, 0.4, 0.0, 0.0,  "tnt", 24, mass ));
 
@@ -254,17 +254,17 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
             case 1:
                 piece = glassHorizontalPlane;
                 objType = "glassHorizontalPlane";
-                mass = 0.1;
+                mass = 1;
                 break;
             case 2:
                 piece = woodHorizontalPlane;
                 objType = "woodHorizontalPlane";
-                mass = 0.2;
+                mass = 2;
                 break;
             default:
                 piece = glassHorizontalPlane;
                 objType = "glassHorizontalPlane";
-                mass = 0.1;
+                mass = 1;
                 break;
         }
 
@@ -313,17 +313,17 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
             case 1:
                 piece = glassVerticalPlane;
                 objType = "glassVerticalPlane";
-                mass = 0.1;
+                mass = 1;
                 break;
             case 2:
                 piece = woodVerticalPlane;
                 objType = "woodVerticalPlane";
-                mass = 0.2;
+                mass = 2;
                 break;
             default:
                 piece = glassVerticalPlane;
                 objType = "glassVerticalPlane";
-                mass = 0.1;
+                mass = 1;
                 break;
         }
 
@@ -385,22 +385,22 @@ function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
             case 1:
                 piece = glassPyramid;
                 objType = "glassPyramid";
-                mass = 0.1;
+                mass = 1;
                 break;
             case 2:
                 piece = woodPyramid;
                 objType = "woodPyramid";
-                mass = 0.2;
+                mass = 2;
                 break;
             case 3:
                 piece = stonePyramid;
                 objType = "stonePyramid";
-                mass = 0.3;
+                mass = 3;
                 break;
             default:
                 piece = glassPyramid;
                 objType = "glassPyramid";
-                mass = 0.1;
+                mass = 1;
                 break;
         }//same number as the possible different pieces
 
@@ -454,27 +454,27 @@ function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
             case 1:
                 piece = glassBox;
                 objType = "glassBox";
-                mass = 0.1;
+                mass = 1;
                 break;
             case 2:
                 piece = woodBox;
                 objType = "woodBox";
-                mass = 0.2;
+                mass = 2;
                 break;
             case 3:
                 piece = stoneBox;
                 objType = "stoneBox";
-                mass = 0.3;
+                mass = 3;
                 break;
             case 4:
                 piece = stoneSquare;
                 objType = "stoneSquare";
-                mass = 0.25;
+                mass = 2.5;
                 break;
             default:
                 piece = glassBox;
                 objType = "glassBox";
-                mass = 0.1;
+                mass = 1;
                 break;
         }//same number as the possible different pieces
 
