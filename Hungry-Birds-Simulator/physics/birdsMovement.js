@@ -111,15 +111,19 @@ function isColliding(bird){
 		radiusY = structureObjs[i].rady;
 		radiusZ = structureObjs[i].radz;
 
-		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ )
+		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
 			useless = 0;
 		else{
-			birdCollides = true;
-			collisionY = trajectoryY;
-			collisionZ = trajectoryZ;
-			collisionT = t;
-
-			birdCollision(bird, structureObjs[i]);
+			if((vely <= 0.0001 || vely >= 0.0001) && trajectoryY >= 0.4){
+				birdCollides = true;
+				collisionY = trajectoryY;
+				collisionZ = trajectoryZ;
+				collisionT = t;
+				
+				birdCollision(bird, structureObjs[i]);
+			}else{
+				//bird done
+			}
 		}
 	}	
 }
@@ -135,7 +139,8 @@ function birdCollision(bird, obj){
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
-	startMovement(obj);
+	if(!structureObjs[i].isMoving)
+		startMovement(obj);
 }
 
 //functions to manage objects collisions
@@ -165,8 +170,8 @@ function collides(objMoving){
 }
 
 function startMovement(obj){
-
-	//while(obj.vz >= 0.0001 || obj.vy <= 0.0001){
+	obj.isMoving = true;
+	while((obj.vz >= 0.0001 || obj.vy <= 0.0001) && obj.ty > -0.4){
 		let delT = globalTime - obj.startTime;
 		console.log("vz: " + obj.vz);
 		console.log("vy: " + obj.vy);
@@ -174,16 +179,17 @@ function startMovement(obj){
 		console.log("g: " + g)
 		console.log("ty: " + obj.ty);
 		console.log("tz: " + obj.tz);
-		console.log("-------------------------------")
+		console.log("-------------------------------");
 
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 		obj.tz = obj.tz + obj.vz * delT;
 		obj.vy = obj.vy - g*delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		//collides(obj);
-	//}
-	//obj.vz = 0;
-	//obj.vy = 0;
+	}
+	obj.vz = 0;
+	obj.vy = 0;
+	obj.isMoving = false;
 }
 
 function activateSound(index){

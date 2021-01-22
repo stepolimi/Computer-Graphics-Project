@@ -17,6 +17,7 @@ class structureObjects {
 		this.startTime = 0;
 		this.isColliding = false;
 		this.isStable = true;
+		this.isMoving = false;
 		this.supLeftPieces = [];
 		this.supRightPieces = [];
 
