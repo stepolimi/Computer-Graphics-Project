@@ -685,9 +685,10 @@ function objectFall(){
             obj.vy = obj.vy - (g*TICK*TICK /2);
             obj.ty = obj.ty + obj.vy * TICK;
         }
-
-        obj.startTime = globalTime;
-        startMovement(obj);
+        if(!obj.isMoving){
+            obj.startTime = globalTime;
+            startMovement(obj);
+        }
      }
     });
 }
