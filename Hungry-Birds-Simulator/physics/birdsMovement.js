@@ -13,6 +13,10 @@ var velz = 0;
 var trajectoryY;
 var trajectoryZ;
 
+var collisionY;
+var collisionZ;
+var collisionT = 0;
+
 //sound
 var firstTimeSound = true;
 
@@ -55,12 +59,24 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
-	vely = v*t*Math.sin(utils.degToRad(angle));
-	velz = v*t*Math.cos(utils.degToRad(angle));
-
-	trajectoryY = birdStartingY + vely - (g*t*t /2);
-	trajectoryZ = -birdStartingZ + velz;
+	if(!birdCollides){
+		let velys = v*Math.sin(utils.degToRad(angle));
+		let velyg = g*t;
 	
+		vely = velys - velyg;
+		velz = v*Math.cos(utils.degToRad(angle));
+
+		trajectoryY = birdStartingY + velys*t - velyg*t/2;
+		trajectoryZ = -birdStartingZ + velz*t;
+	}else{
+		let deltaT = t - collisionT;
+		trajectoryY = collisionY + vely - (g*deltaT*deltaT /2);
+		trajectoryZ = collisionZ + velz;
+
+		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
+		isColliding(birdsArray[index-2]);
+	}
+
 	if(activateBirdPower)
 		activatePower(index);
 
@@ -99,6 +115,10 @@ function isColliding(bird){
 			useless = 0;
 		else{
 			birdCollides = true;
+			collisionY = trajectoryY;
+			collisionZ = trajectoryZ;
+			collisionT = t;
+
 			birdCollision(bird, structureObjs[i]);
 			console.log("objY " + objY);
 			console.log("objZ " + objZ);
