@@ -120,11 +120,6 @@ function isColliding(bird){
 			collisionT = t;
 
 			birdCollision(bird, structureObjs[i]);
-			console.log("objY " + objY);
-			console.log("objZ " + objZ);
-			console.log("trajectoryY " + trajectoryY);
-			console.log("trajectoryZ " + trajectoryZ);
-
 		}
 	}	
 }
