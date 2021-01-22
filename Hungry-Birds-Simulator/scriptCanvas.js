@@ -55,6 +55,7 @@ var program;
 var vertexShader;
 var fragmentShader;
 var vaos;
+var globalTime = 0;
 
 //Meshes variables
 var allMeshes;
@@ -573,6 +574,8 @@ function addMeshToScene(i) {
     checkStability();
     objectFall();
 
+    globalTime ++;
+
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
     for (var i = 0; i < allMeshes.length; i++) {
@@ -649,6 +652,7 @@ function checkStability(){
     });
 }
 
+//change TICK in globalTime
 function objectFall(){
     structureObjs.forEach(function(obj) {
        if(!obj.isStable){

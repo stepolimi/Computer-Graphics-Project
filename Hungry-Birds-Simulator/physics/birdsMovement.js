@@ -130,7 +130,7 @@ function isColliding(bird){
 }
 
 function birdCollision(bird, obj){
-	let elasticCoefficient = 0.1;
+	let elasticCoefficient = 0.4;
 	let birdVzFinal = velz * elasticCoefficient;
 	let birdVyFinal = vely * elasticCoefficient;
 
@@ -156,7 +156,7 @@ function collides(objMoving){
 		if(obj.ty > objMoving.ty + objMoving.rady || objMoving.vy > obj.ty + obj.rady || obj.tz > objMoving.tz + objMoving.radz || objMoving.tz > obj.tz + obj.radz )
 			useless = 0;
 		else{
-			let elasticCoefficient = 0.1;
+			let elasticCoefficient = 0.4;
 			let thisVzFinal = objMoving.vz * elasticCoefficient;
 			let thisVyFinal = objMoving.vy * elasticCoefficient;
 		
@@ -171,10 +171,12 @@ function collides(objMoving){
 }
 
 function startMovement(obj){
+	let colT = t;
 	while(obj.vx >= 0.0001 || obj.vy >= 0.0001){
-		obj.vy = obj.vy - (g*TICK*TICK /2);
-		obj.ty = obj.ty + obj.vy * TICK;
-		obj.tz = obj.vz * TICK;
+		let delT = t - colT;
+		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
+		obj.tz = obj.tz + obj.vz * delT;
+		obj.vy = obj.vy - g*delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		collides(obj);
 	}
