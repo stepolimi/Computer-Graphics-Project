@@ -644,9 +644,12 @@ function checkStability(){
                     }
                 }
             });
-            if(!stable && !(precStable && sucStable))
+            if(!stable && !(precStable && sucStable)){
+                if(objTocheck.isStable && !objTocheck.isMoving)
+                    objTocheck.startTime = globalTime;
                 objTocheck.isStable = false;
-            else{
+                
+            }else{
                 objTocheck.isStable = true;
                 if(!objTocheck.isMoving){
                     objTocheck.vy = 0;
@@ -699,8 +702,6 @@ function objectFall(){
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
         }
-        
-        obj.isMoving = true;
      }
-    });
+    });//non funzia piu per i maiali
 }

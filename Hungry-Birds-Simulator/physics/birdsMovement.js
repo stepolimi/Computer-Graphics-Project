@@ -139,6 +139,8 @@ function birdCollision(bird, obj){
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
+	if(obj.isStable && !obj.isMoving)
+		obj.startTime = globalTime;
 	obj.isMoving = true;
 }
 
