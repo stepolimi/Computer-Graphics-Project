@@ -191,6 +191,8 @@ function startMovement(obj){
 		if(!obj.isStable){
 			obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
 			obj.vy = obj.vy - g*delT;
+		}else{
+			obj.vy = 0;
 		}
 		obj.tz = obj.tz + obj.vz * delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);

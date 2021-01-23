@@ -15,6 +15,7 @@ class structureObjects {
 		this.index = index;
 		this.type = type;
 		this.startTime = 0;
+		this.hp = 3;
 		this.isColliding = false;
 		this.isStable = true;
 		this.isMoving = false;
