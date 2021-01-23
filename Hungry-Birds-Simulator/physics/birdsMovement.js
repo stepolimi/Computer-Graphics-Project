@@ -149,7 +149,7 @@ function birdCollision(bird, obj){
 function collides(objMoving){
 	let useless;
 	structureObjs.forEach(function(obj) {
-		if(!obj.ty > objMoving.ty + objMoving.rady && !objMoving.vy > obj.ty + obj.rady){
+		if(!obj.ty + obj.rady > objMoving.ty + objMoving.rady && !objMoving.vy + objMoving.rady> obj.ty + obj.rady){
 			if(objMoving.vy <= 0.0001  && objMoving.ty >= -0.4){
 				let elasticCoefficient = 0.4;
 				let thisVyFinal = objMoving.vy * elasticCoefficient;
@@ -167,7 +167,7 @@ function collides(objMoving){
 				}
 			}
 		}
-		if(!obj.tz > objMoving.tz + objMoving.radz && !objMoving.tz > obj.tz + obj.radz){
+		if(!obj.tz + obj.radz > objMoving.tz + objMoving.radz && !objMoving.tz + objMoving.radz > obj.tz + obj.radz){
 			if(objMoving.vz >= 0.0001){
 				let elasticCoefficient = 0.4;
 				let thisVzFinal = objMoving.vz * elasticCoefficient;
