@@ -152,7 +152,7 @@ function collides(objMoving){
 		if(obj.ty > objMoving.ty + objMoving.rady || objMoving.vy > obj.ty + obj.rady || obj.tz > objMoving.tz + objMoving.radz || objMoving.tz > obj.tz + obj.radz )
 			useless = 0;
 		else{
-			if(!obj.isStable){
+			if((objMoving.vy <= 0.0001 || objMoving.vz >= 0.0001) && objMoving.ty >= -0.4){
 				let elasticCoefficient = 0.4;
 				let thisVzFinal = objMoving.vz * elasticCoefficient;
 				let thisVyFinal = objMoving.vy * elasticCoefficient;
@@ -162,9 +162,14 @@ function collides(objMoving){
 			
 				objMoving.vz = thisVzFinal;
 				objMoving.vy = thisVyFinal;
-				//startMovement(obj);
+
+				if(obj.isStable && !obj.isMoving)
+					obj.startTime = globalTime;
+				obj.isMoving = true;
 			}else{
 				objMoving.vy = 0;
+				objMoving.vz = 0;
+				objMoving.isMoving = false;
 			}
 		}
 	});
@@ -189,7 +194,7 @@ function startMovement(obj){
 		}
 		obj.tz = obj.tz + obj.vz * delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
-		//collides(obj);
+		collides(obj);
 		if((obj.vz <= 0.0001 && obj.vy >= 0.0001) || obj.ty <= -0.4)
 			obj.isMoving = false;
 	}else{
