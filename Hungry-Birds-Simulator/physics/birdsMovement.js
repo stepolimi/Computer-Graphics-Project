@@ -179,6 +179,8 @@ function startMovement(obj){
 		console.log("g: " + g)
 		console.log("ty: " + obj.ty);
 		console.log("tz: " + obj.tz);
+		console.log("moving: " + obj.isMoving);
+		console.log("stable: " + obj.isStable);
 		console.log("-------------------------------");
 
 		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
@@ -188,6 +190,9 @@ function startMovement(obj){
 		//collides(obj);
 		if((obj.vz <= 0.0001 && obj.vy >= 0.0001) || obj.ty <= -0.4)
 			obj.isMoving = false;
+	}else{
+		obj.vy = 0;
+		obj.vz = 0;
 	}
 }
 
