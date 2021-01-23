@@ -169,6 +169,7 @@ function collides(objMoving){
 		}
 		if(!obj.tz > objMoving.tz + objMoving.radz && !objMoving.tz > obj.tz + obj.radz){
 			if(objMoving.vz >= 0.0001){
+				let elasticCoefficient = 0.4;
 				let thisVzFinal = objMoving.vz * elasticCoefficient;
 				obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 			
