@@ -183,9 +183,11 @@ function startMovement(obj){
 		console.log("stable: " + obj.isStable);
 		console.log("-------------------------------");
 
-		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
+		if(!obj.isStable){
+			obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
+			obj.vy = obj.vy - g*delT;
+		}
 		obj.tz = obj.tz + obj.vz * delT;
-		obj.vy = obj.vy - g*delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		//collides(obj);
 		if((obj.vz <= 0.0001 && obj.vy >= 0.0001) || obj.ty <= -0.4)
