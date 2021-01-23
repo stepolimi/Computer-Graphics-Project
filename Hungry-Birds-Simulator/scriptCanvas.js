@@ -578,7 +578,7 @@ function addMeshToScene(i) {
         startMovement(obj);
     });
 
-    globalTime += 0.05;
+    globalTime += 0.005;
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
