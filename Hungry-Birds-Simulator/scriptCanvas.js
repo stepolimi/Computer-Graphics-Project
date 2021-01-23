@@ -578,7 +578,7 @@ function addMeshToScene(i) {
         startMovement(obj);
     });
 
-    globalTime += 0.001;
+    globalTime += 0.002;
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
@@ -610,7 +610,7 @@ window.onload = main;
 
 //applies gravity to objects
 function checkStability(){
-    let tollerance = 0.01;
+    let tollerance = 0.05;
 
     structureObjs.forEach(function(objTocheck) {
         let objY = objTocheck.ty - objTocheck.rady;
