@@ -152,7 +152,7 @@ function collides(objMoving){
 
 	structureObjs.forEach(function(obj) {
 		if(!obj.ty + obj.rady > objMoving.ty + objMoving.rady + tollerance && !objMoving.vy + objMoving.rady > obj.ty + obj.rady + tollerance){
-			if(objMoving.vy <= 0.0001  && objMoving.ty >= -0.4){
+			if(objMoving.vy <= 0.0001){
 				let elasticCoefficient = 0.4;
 				let thisVyFinal = objMoving.vy * elasticCoefficient;
 				obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
