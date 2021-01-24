@@ -82,9 +82,9 @@ function birdTrajectory(index){
 	}
 
 	let ground;
-	if(trajectoryZ >= 3.8 && trajectoryZ < 6.6)
+	if(trajectoryZ >= 3.8 && trajectoryZ < 6.4)
 		ground = 0.4;
-	else if(trajectoryZ >= 6.6 && trajectoryZ <= 9)
+	else if(trajectoryZ >= 6.4 && trajectoryZ <= 9.2)
 		ground = 1.1;
 	else if(trajectoryZ < 9.5)
 		ground = -0.4;
@@ -125,7 +125,7 @@ function isColliding(bird){
 		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
 			useless = 0;
 		else{
-			if(vely <= 0.0001 || vely >= 0.0001){
+			if(vely <= -0.0001 || vely >= 0.0001){
 				birdCollides = true;
 				collisionY = trajectoryY;
 				collisionZ = trajectoryZ;
@@ -150,8 +150,6 @@ function birdCollision(bird, obj){
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
-	if(obj.isStable && !obj.isMoving)
-		obj.startTime = globalTime;
 	obj.isMoving = true;
 }
 
@@ -163,14 +161,12 @@ function collides(objMoving){
 
 	structureObjs.forEach(function(obj) {
 		if(!obj.ty + obj.rady > objMoving.ty + objMoving.rady + tollerance && !objMoving.vy + objMoving.rady > obj.ty + obj.rady + tollerance){
-			if(objMoving.vy <= 0.0001){
+			if(objMoving.vy <= -0.0001){
 				let elasticCoefficient = 0.4;
 				let thisVyFinal = objMoving.vy * elasticCoefficient;
 				obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 				objMoving.vy = thisVyFinal;
 				
-				if(obj.isStable && !obj.isMoving)
-					obj.startTime = globalTime;
 				obj.isMoving = true;
 			}else{
 				objMoving.vy = 0;
@@ -192,12 +188,10 @@ function collides(objMoving){
 			
 				objMoving.vz = thisVzFinal;
 
-				if(obj.isStable && !obj.isMoving)
-					obj.startTime = globalTime;
 				obj.isMoving = true;
 			}else{
 				objMoving.vz = 0;
-				if(objMoving.vy <= 0.0001){
+				if(objMoving.vy >= -0.0001){
 					objMoving.vy = 0;
 					objMoving.isMoving = false;
 				}
@@ -209,9 +203,9 @@ function collides(objMoving){
 function startMovement(obj){
 	if(obj.isMoving || !obj.isStable){
 		let ground;
-        if(obj.tz >= 3.8 && obj.tz < 6.6)
+        if(obj.tz >= 3.8 && obj.tz < 6.4)
             ground = 0.4;
-        else if(obj.tz >= 6.6 && obj.tz <= 9)
+        else if(obj.tz >= 6.4 && obj.tz <= 9.2)
             ground = 1.1;
         else if(obj.tz < 9.5)
             ground = -0.4;
@@ -226,9 +220,13 @@ function startMovement(obj){
 		}
 		obj.vz = obj.vz - obj.vz/100;
 		obj.tz = obj.tz + obj.vz * TICK;
-		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+		if(obj.tz < 9.5 && obj.ty > -0.4)
+			worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+		else{
+			worldPositions[obj.index] = utils.MakeWorld(0 , -5, 0, obj.rx, obj.ry, obj.rz, 0);
+		}
 		collides(obj);
-		if((obj.vz <= 0.0001 && obj.vy >= 0.0001) || obj.ty <= ground)
+		if(obj.vz <= 0.0001 && obj.vy >= -0.0001)
 			obj.isMoving = false;
 	}else{
 		obj.vy = 0;

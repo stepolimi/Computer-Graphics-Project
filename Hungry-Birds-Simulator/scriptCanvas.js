@@ -622,9 +622,9 @@ function checkStability(){
         let sucStable = false;
         let ground = -0.4;
 
-        if(objZ >= 3.8 && objZ < 6.6)
+        if(objZ >= 3.8 && objZ < 6.4)
             ground = 0.4;
-        else if(objZ >= 6.6 && objZ <= 9)
+        else if(objZ >= 6.4 && objZ <= 9.2)
             ground = 1.1;
         else if(objZ < 9.5)
             ground = -0.4;
@@ -647,10 +647,7 @@ function checkStability(){
                 }
             });
             if(!stable && !(precStable && sucStable)){
-                if(objTocheck.isStable && !objTocheck.isMoving)
-                    objTocheck.startTime = globalTime;
                 objTocheck.isStable = false;
-                
             }else{
                 objTocheck.isStable = true;
                 if(!objTocheck.isMoving){
