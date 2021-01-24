@@ -353,7 +353,7 @@ function activateMatildaPower(){
 	
 	//if(egg.vy == 0){
 	if(eggY >= -5.0)
-		worldPositions[8] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
+		;
 	else{
 		eggT = 0;
 		isMatildaActiveFirstTime = true;
