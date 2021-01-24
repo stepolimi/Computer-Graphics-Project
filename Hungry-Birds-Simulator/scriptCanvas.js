@@ -393,6 +393,9 @@ async function loadMeshes(){
     stoneSquare = await utils.loadMesh("/assets/Others/stoneSquare.obj");
     rock1 = await utils.loadMesh("/assets/Others/rock1.obj");
     rock2 = await utils.loadMesh("/assets/Others/rock2.obj");
+
+    structureObjs.push(new structureObjects(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0,  "rock1", 33, 99999 ));
+    structureObjs.push(new structureObjects(0.0, 0.0 , 8.2, 0.0, 0.0, 0.0,  "rock2", 59, 99999 ));
     
     //randomize birds
     randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda);
@@ -578,7 +581,7 @@ function addMeshToScene(i) {
         startMovement(obj);
     });
 
-    globalTime ++;
+    globalTime += 0.002;
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
@@ -610,7 +613,7 @@ window.onload = main;
 
 //applies gravity to objects
 function checkStability(){
-    let tollerance = 0.01;
+    let tollerance = 0.05;
 
     structureObjs.forEach(function(objTocheck) {
         let objY = objTocheck.ty - objTocheck.rady;
@@ -622,12 +625,14 @@ function checkStability(){
         let sucStable = false;
         let ground = -0.4;
 
-        if(objZ >= 4.2 && objZ <= 6.15)
+        /*if(objZ >= 3.8 && objZ < 6.4)
             ground = 0.4;
-        else if(objZ >= 7 && objZ <= 9)
+        else if(objZ >= 6.4 && objZ <= 9.2)
             ground = 1.1;
-        else
+        else if(objZ < 10)
             ground = -0.4;
+        else
+            ground = -100;*/
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
@@ -644,9 +649,10 @@ function checkStability(){
                     }
                 }
             });
-            if(!stable && !(precStable && sucStable))
+
+            if(!stable && !(precStable && sucStable)){
                 objTocheck.isStable = false;
-            else{
+            }else{
                 objTocheck.isStable = true;
                 if(!objTocheck.isMoving){
                     objTocheck.vy = 0;
@@ -675,7 +681,7 @@ function objectFall(){
                 if(supObj.tz + supObj.radz > maxZ)
                     maxZ = supObj.tz + supObj.radz;
             });
-            obj.ry -= 0.1 / obj.radz * (obj.radz - maxZ);
+            obj.ry -= 0.01 / obj.radz * (obj.radz - maxZ);
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
             if(obj.vz == 0)
@@ -688,7 +694,7 @@ function objectFall(){
                 if(supObj.tz - supObj.radz < minZ)
                     minZ = supObj.tz - supObj.radz;
             });
-            obj.ry += 0.1 / obj.radz * (obj.radz - minZ);
+            obj.ry += 0.01 / obj.radz * (obj.radz - minZ);
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
             if(obj.vz == 0)
@@ -699,8 +705,6 @@ function objectFall(){
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
         }
-        
-        obj.isMoving = true;
      }
-    });
+    });//non funzia piu per i maiali
 }

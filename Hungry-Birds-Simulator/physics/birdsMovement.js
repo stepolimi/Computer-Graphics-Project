@@ -77,10 +77,21 @@ function birdTrajectory(index){
 		isColliding(birdsArray[index-2]);
 	}
 
-	if(activateBirdPower)
+	if(activateBirdPower){
 		activatePower(index);
+	}
 
-	if(trajectoryY >= -5.0 && trajectoryY <= 20.00 && !birdCollides){
+	let ground = -0.4;
+	/*if(trajectoryZ >= 3.8 && trajectoryZ < 6.4)
+		ground = 0.4;
+	else if(trajectoryZ >= 6.4 && trajectoryZ <= 9.2)
+		ground = 1.1;
+	else if(trajectoryZ < 10)
+		ground = -0.4;
+	else
+		ground = -100;*/
+
+	if(trajectoryY >= ground && !birdCollides){
 		birdsArray[index-2].ty = trajectoryY;
 		birdsArray[index-2].tz = trajectoryZ;
 		birdsArray[index-2].ry = angle;
@@ -114,7 +125,7 @@ function isColliding(bird){
 		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
 			useless = 0;
 		else{
-			if((vely <= 0.0001 || vely >= 0.0001) && trajectoryY >= -0.4){
+			if(vely <= -0.0001 || vely >= 0.0001){
 				birdCollides = true;
 				collisionY = trajectoryY;
 				collisionZ = trajectoryZ;
@@ -146,23 +157,44 @@ function birdCollision(bird, obj){
 
 function collides(objMoving){
 	let useless;
+	let tollerance = 0.1;
+
 	structureObjs.forEach(function(obj) {
-		if(obj.ty > objMoving.ty + objMoving.rady || objMoving.vy > obj.ty + obj.rady || obj.tz > objMoving.tz + objMoving.radz || objMoving.tz > obj.tz + obj.radz )
-			useless = 0;
-		else{
-			if(!obj.isStable){
+		if(!obj.ty + obj.rady > objMoving.ty + objMoving.rady + tollerance && !objMoving.vy + objMoving.rady > obj.ty + obj.rady + tollerance){
+			if(objMoving.vy <= -0.0001){
 				let elasticCoefficient = 0.4;
-				let thisVzFinal = objMoving.vz * elasticCoefficient;
 				let thisVyFinal = objMoving.vy * elasticCoefficient;
-			
-				obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 				obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
-			
-				objMoving.vz = thisVzFinal;
 				objMoving.vy = thisVyFinal;
-				//startMovement(obj);
+				
+				obj.isMoving = true;
 			}else{
 				objMoving.vy = 0;
+				if(objMoving.vz <= 0.0001){
+					objMoving.vz = 0;
+					objMoving.isMoving = false;
+				}
+			}
+		}
+		let objMovingInf = objMoving.ty - objMoving.rady;
+		let objMovingSup = objMoving.ty + objMoving.rady;
+		let objInf = obj.ty - obj.rady;
+		let objSup = obj.ty + obj.rady;
+		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && obj.tz > objMoving.tz + objMoving.radz && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
+			if(objMoving.vz >= 0.0001){
+				let elasticCoefficient = 0.4;
+				let thisVzFinal = objMoving.vz * elasticCoefficient;
+				obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+			
+				objMoving.vz = thisVzFinal;
+
+				obj.isMoving = true;
+			}else{
+				objMoving.vz = 0;
+				if(objMoving.vy >= -0.0001){
+					objMoving.vy = 0;
+					objMoving.isMoving = false;
+				}
 			}
 		}
 	});
@@ -170,22 +202,35 @@ function collides(objMoving){
 
 function startMovement(obj){
 	if(obj.isMoving || !obj.isStable){
-		let delT = globalTime - obj.startTime;
-		/*console.log("vz: " + obj.vz);
-		console.log("vy: " + obj.vy);
-		console.log("delta: " + delT);
-		console.log("g: " + g)
-		console.log("ty: " + obj.ty);
-		console.log("tz: " + obj.tz);
-		console.log("-------------------------------");*/
+		let ground = -0.4;
+        /*if(obj.tz >= 3.8 && obj.tz < 6.4)
+            ground = 0.4;
+        else if(obj.tz >= 6.4 && obj.tz <= 9.2)
+            ground = 1.1;
+        else if(obj.tz < 10)
+            ground = -0.4;
+        else
+            ground = -100;*/
 
-		obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
-		obj.tz = obj.tz + obj.vz * delT;
-		obj.vy = obj.vy - g*delT;
-		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
-		//collides(obj);
-		if((obj.vz >= 0.0001 || obj.vy <= 0.0001) && obj.ty > -0.4)
+		if(!obj.isStable){
+			obj.ty = obj.ty + obj.vy * TICK - (g*TICK*TICK /2);
+			obj.vy = obj.vy - g*TICK;
+		}else{
+			obj.vy = 0;
+		}
+		obj.vz = obj.vz - obj.vz/100;
+		obj.tz = obj.tz + obj.vz * TICK;
+		if(obj.tz < 9.5 && obj.ty > -0.4)
+			worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+		else{
+			worldPositions[obj.index] = utils.MakeWorld(0 , -5, 0, obj.rx, obj.ry, obj.rz, 0);
+		}
+		collides(obj);
+		if(obj.vz <= 0.0001 && obj.vy >= -0.0001)
 			obj.isMoving = false;
+	}else{
+		obj.vy = 0;
+		obj.vz = 0;
 	}
 }
 

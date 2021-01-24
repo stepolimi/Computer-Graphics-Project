@@ -14,7 +14,7 @@ class structureObjects {
 		this.durability = 3;
 		this.index = index;
 		this.type = type;
-		this.startTime = 0;
+		this.hp = 3;
 		this.isColliding = false;
 		this.isStable = true;
 		this.isMoving = false;
@@ -35,7 +35,13 @@ class structureObjects {
 			this.scale = scale;
 			this.rady = scale/3;
 			this.radz = scale/3;	
-		}else{
+		} else if(type == "rock1"){
+			this.rady = VERTICAL_ROCK_1_RADIUS;
+			this.radz = HORIZONTAL_ROCK_1_RADIUS;
+		} else if(type == "rock2"){
+			this.rady = VERTICAL_ROCK_2_RADIUS;
+			this.radz = HORIZONTAL_ROCK_2_RADIUS;
+		} else{
 			this.rady = STRUCTURE_OBJ_RADIUS;
 			this.radz = STRUCTURE_OBJ_RADIUS;
 		}
