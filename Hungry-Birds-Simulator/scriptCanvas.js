@@ -395,7 +395,7 @@ async function loadMeshes(){
     rock2 = await utils.loadMesh("/assets/Others/rock2.obj");
 
     structureObjs.push(new structureObjects(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0,  "rock1", 33, 99999 ));
-    structureObjs.push(new structureObjects(0.0, 0.0 , 8.2, 0.0, 0.0, 0.0,  "rock2", 59, 99999 ));
+    structureObjs.push(new structureObjects(0.0, 0.35 , 8.2, 0.0, 0.0, 0.0,  "rock2", 59, 99999 ));
     
     //randomize birds
     randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda);

@@ -76,7 +76,7 @@ var tower219Matrix = utils.MakeWorld(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, 0.2);		//cub
 var tower220Matrix = utils.MakeWorld(0.0, 6.3 , 5.0, 0.0, 0.0, 0.0, 0.2);		//horizontal plane
 
 
-var rock2Matrix = utils.MakeWorld(0.0, 0.0 , 8.2, 0.0, 0.0, 0.0, 0.2);
+var rock2Matrix = utils.MakeWorld(0.0, 0.35 , 8.2, 0.0, 0.0, 0.0, 0.2);
 
 //Tower 3    7 < z < 9
 var pig31Matrix = utils.MakeWorld(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, 0.6);		//pig1 of tower 3
