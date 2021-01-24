@@ -678,7 +678,7 @@ function objectFall(){
                 if(supObj.tz + supObj.radz > maxZ)
                     maxZ = supObj.tz + supObj.radz;
             });
-            obj.ry -= 0.1 / obj.radz * (obj.radz - maxZ);
+            obj.ry -= 0.01 / obj.radz * (obj.radz - maxZ);
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
             if(obj.vz == 0)
@@ -691,7 +691,7 @@ function objectFall(){
                 if(supObj.tz - supObj.radz < minZ)
                     minZ = supObj.tz - supObj.radz;
             });
-            obj.ry += 0.1 / obj.radz * (obj.radz - minZ);
+            obj.ry += 0.01 / obj.radz * (obj.radz - minZ);
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
             if(obj.vz == 0)
