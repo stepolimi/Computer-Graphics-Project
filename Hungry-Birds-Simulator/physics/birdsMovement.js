@@ -175,7 +175,6 @@ function collides(objMoving){
 		let objSup = obj.ty + obj.rady;
 		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && obj.tz > objMoving.tz + objMoving.radz && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
 			if(objMoving.vz >= 0.0001){
-				console.log("moving z")
 				let elasticCoefficient = 0.4;
 				let thisVzFinal = objMoving.vz * elasticCoefficient;
 				obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
@@ -198,7 +197,15 @@ function collides(objMoving){
 
 function startMovement(obj){
 	if(obj.isMoving || !obj.isStable){
-		let delT = globalTime - obj.startTime;
+		let ground;
+        if(objZ >= 3.8 && objZ < 6.6)
+            ground = 0.4;
+        else if(objZ >= 6.6 && objZ <= 9)
+            ground = 1.1;
+        else if(objZ < 9.5)
+            ground = -0.4;
+        else
+            ground = -100;
 
 		if(!obj.isStable){
 			obj.ty = obj.ty + obj.vy * TICK - (g*TICK*TICK /2);
@@ -210,7 +217,7 @@ function startMovement(obj){
 		obj.tz = obj.tz + obj.vz * TICK;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		collides(obj);
-		if((obj.vz <= 0.0001 && obj.vy >= 0.0001) || obj.ty <= -0.4)
+		if((obj.vz <= 0.0001 && obj.vy >= 0.0001) || obj.ty <= ground)
 			obj.isMoving = false;
 	}else{
 		obj.vy = 0;
