@@ -344,12 +344,6 @@ function activateMatildaPower(){
 			}
 		});
 	}
-
-	
-	if(egg.vy == 0){
-		isMatildaActiveFirstTime = true;
-		activateBirdPower = false;
-	}
 	
 	v = v*1.2;
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
