@@ -169,7 +169,7 @@ function collides(objMoving){
 				}
 			}
 		}
-		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && obj.tz > objMoving.tz + objMoving.radz && ((obj.ty + obj.rady > objMoving.ty - objMoving.rady + tollerance && obj.ty + obj.rady < objMoving.ty + objMoving.rady)  || (obj.ty - obj.rady < objMoving.ty + objMoving.rady - tollerance && obj.ty - obj.rady > objMoving.ty - objMoving.rady) ||(obj.ty - obj.rady - tollerance <= objMoving - rady && obj.ty + obj.rady + tollerance >= objMoving + rady ))){
+		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && obj.tz > objMoving.tz + objMoving.radz && ((obj.ty + obj.rady > objMoving.ty - objMoving.rady + tollerance && obj.ty + obj.rady < objMoving.ty + objMoving.rady)  || (obj.ty - obj.rady < objMoving.ty + objMoving.rady - tollerance && obj.ty - obj.rady > objMoving.ty - objMoving.rady) ||(obj.ty - obj.rady - tollerance <= objMoving.ty - objMoving.rady && obj.ty + obj.rady + tollerance >= objMoving.ty + objMoving.rady ))){
 			if(objMoving.vz >= 0.0001){
 				console.log("moving z")
 				let elasticCoefficient = 0.4;
