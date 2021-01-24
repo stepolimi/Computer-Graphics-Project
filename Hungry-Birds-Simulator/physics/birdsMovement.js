@@ -169,7 +169,11 @@ function collides(objMoving){
 				}
 			}
 		}
-		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && obj.tz > objMoving.tz + objMoving.radz && ((obj.ty + obj.rady > objMoving.ty - objMoving.rady + tollerance && obj.ty + obj.rady < objMoving.ty + objMoving.rady)  || (obj.ty - obj.rady < objMoving.ty + objMoving.rady - tollerance && obj.ty - obj.rady > objMoving.ty - objMoving.rady) ||(obj.ty - obj.rady - tollerance <= objMoving.ty - objMoving.rady && obj.ty + obj.rady + tollerance >= objMoving.ty + objMoving.rady ))){
+		let objMovingInf = objMoving.ty - objMoving.rady;
+		let objMovingSup = objMoving.ty + objMoving.rady;
+		let objInf = obj.ty - obj.rady;
+		let objSup = obj.ty + obj.rady;
+		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && obj.tz > objMoving.tz + objMoving.radz && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
 			if(objMoving.vz >= 0.0001){
 				console.log("moving z")
 				let elasticCoefficient = 0.4;
