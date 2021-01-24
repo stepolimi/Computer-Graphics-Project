@@ -325,16 +325,17 @@ function activateChuckPower(){
 	}
 }
 
+var egg;
 
 function activateMatildaPower(){
 	//at first round the new starting coord must be set
-	var egg;
 	if (isMatildaActiveFirstTime){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		t = 0;
 		structureObjs.forEach(function(obj) {
+			egg = obj;
 			if(obj.type == "egg"){
 				obj.tz = matildaZ;
 				obj.ty = matildaY;
@@ -345,10 +346,8 @@ function activateMatildaPower(){
 	}
 
 	
-	if(eggY >= -5.0)
-		;
-	else{
-		eggT = 0;
+	if(egg.vy == 0){
+		console.log("free")
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
 	}
