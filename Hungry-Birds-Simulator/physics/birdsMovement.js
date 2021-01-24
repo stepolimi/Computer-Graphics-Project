@@ -198,7 +198,7 @@ function collides(objMoving){
 	});
 }
 
-function startMovement(obj){
+function moveObject(obj){
 	if(obj.isMoving || !obj.isStable){
 		let ground = -0.4;
 
@@ -328,19 +328,25 @@ function activateChuckPower(){
 
 function activateMatildaPower(){
 	//at first round the new starting coord must be set
+	var egg;
 	if (isMatildaActiveFirstTime){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
-		eggT = 0;
 		t = 0;
+		structureObjs.forEach(function(obj) {
+			if(obj.type == "egg"){
+				obj.tz = matildaZ;
+				obj.ty = matildaY;
+				obj.vy = 2;
+				obj.scale = 0.5;
+			}
+		});
 	}
-	eggZ = matildaZ;
-	eggY = matildaY - (0.3*t*t /2);
-	eggT += 0.1;
+
 	
 	if(eggY >= -5.0)
-		worldPositions[8] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
+		;
 	else{
 		eggT = 0;
 		isMatildaActiveFirstTime = true;

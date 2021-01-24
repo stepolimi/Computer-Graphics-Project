@@ -14,7 +14,7 @@ var bird3Matrix = utils.MakeWorld(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);
 var bird4Matrix = utils.MakeWorld(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
 var bird5Matrix = utils.MakeWorld(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, 0.5);	
 var slingElasticMatrix = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
-var eggMatrix = utils.MakeWorld(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0, 0.5);
+var eggMatrix = utils.MakeWorld(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0, 0.0);
 var plumeExplosionMatrix = utils.MakeWorld(0.0, 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0);
 
 

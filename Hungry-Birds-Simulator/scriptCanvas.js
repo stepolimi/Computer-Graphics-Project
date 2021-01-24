@@ -394,6 +394,7 @@ async function loadMeshes(){
     rock1 = await utils.loadMesh("/assets/Others/rock1.obj");
     rock2 = await utils.loadMesh("/assets/Others/rock2.obj");
 
+    structureObjs.push(new structureObjects(0.0, -5.0 , 0.0, 0.0, 0.0, 0.0,  "egg", 8, 10 ));
     structureObjs.push(new structureObjects(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0,  "rock1", 33, 99999 ));
     structureObjs.push(new structureObjects(0.0, 0.35 , 8.2, 0.0, 0.0, 0.0,  "rock2", 59, 99999 ));
     
@@ -578,7 +579,7 @@ function addMeshToScene(i) {
     objectFall();
 
     structureObjs.forEach(function(obj) {
-        startMovement(obj);
+        moveObject(obj);
     });
 
     globalTime += 0.002;
@@ -671,7 +672,7 @@ function objectFall(){
                     maxZ = supObj.tz + supObj.radz;
             });
             if(obj.ry < 90)
-                obj.ry += 10*obj.radz * (obj.tz - maxZ);
+                obj.ry += obj.radz * (obj.tz - maxZ);
             if(obj.vz == 0)
                 obj.vz = 0.1;
         }
@@ -682,7 +683,7 @@ function objectFall(){
                     minZ = supObj.tz - supObj.radz;
             });
             if(obj.ry > -90)
-                obj.ry -= 10*obj.radz * (obj.tz - minZ);
+                obj.ry -= obj.radz * (obj.tz - minZ);
             if(obj.vz == 0)
                 obj.vz = 0.1;
         }
