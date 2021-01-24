@@ -671,7 +671,7 @@ function objectFall(){
                     maxZ = supObj.tz + supObj.radz;
             });
             if(obj.ry < 90)
-                obj.ry += obj.radz * (obj.tz - maxZ);
+                obj.ry += 10*obj.radz * (obj.tz - maxZ);
             if(obj.vz == 0)
                 obj.vz = 0.1;
         }
@@ -682,7 +682,7 @@ function objectFall(){
                     minZ = supObj.tz - supObj.radz;
             });
             if(obj.ry > -90)
-                obj.ry -= obj.radz * (obj.tz - minZ);
+                obj.ry -= 10*obj.radz * (obj.tz - minZ);
             if(obj.vz == 0)
                 obj.vz = 0.1;
         }
