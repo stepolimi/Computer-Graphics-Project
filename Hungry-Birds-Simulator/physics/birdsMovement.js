@@ -345,9 +345,12 @@ function activateMatildaPower(){
 		});
 	}
 
+	eggZ = matildaZ;
+	eggY = matildaY - (0.3*t*t /2);
+	eggT += 0.1;
+
 	
 	if(egg.vy == 0){
-		console.log("free")
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
 	}
