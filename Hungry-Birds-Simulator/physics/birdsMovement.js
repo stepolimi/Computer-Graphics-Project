@@ -81,15 +81,15 @@ function birdTrajectory(index){
 		activatePower(index);
 	}
 
-	let ground;
-	if(trajectoryZ >= 3.8 && trajectoryZ < 6.4)
+	let ground = -0.4;
+	/*if(trajectoryZ >= 3.8 && trajectoryZ < 6.4)
 		ground = 0.4;
 	else if(trajectoryZ >= 6.4 && trajectoryZ <= 9.2)
 		ground = 1.1;
-	else if(trajectoryZ < 9.5)
+	else if(trajectoryZ < 10)
 		ground = -0.4;
 	else
-		ground = -100;
+		ground = -100;*/
 
 	if(trajectoryY >= ground && !birdCollides){
 		birdsArray[index-2].ty = trajectoryY;
@@ -202,15 +202,15 @@ function collides(objMoving){
 
 function startMovement(obj){
 	if(obj.isMoving || !obj.isStable){
-		let ground;
-        if(obj.tz >= 3.8 && obj.tz < 6.4)
+		let ground = -0.4;
+        /*if(obj.tz >= 3.8 && obj.tz < 6.4)
             ground = 0.4;
         else if(obj.tz >= 6.4 && obj.tz <= 9.2)
             ground = 1.1;
-        else if(obj.tz < 9.5)
+        else if(obj.tz < 10)
             ground = -0.4;
         else
-            ground = -100;
+            ground = -100;*/
 
 		if(!obj.isStable){
 			obj.ty = obj.ty + obj.vy * TICK - (g*TICK*TICK /2);

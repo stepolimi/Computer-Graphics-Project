@@ -393,6 +393,9 @@ async function loadMeshes(){
     stoneSquare = await utils.loadMesh("/assets/Others/stoneSquare.obj");
     rock1 = await utils.loadMesh("/assets/Others/rock1.obj");
     rock2 = await utils.loadMesh("/assets/Others/rock2.obj");
+
+    structureObjs.push(new structureObjects(0.0, 0.0 , 5.0, 0.0, 0.0, 0.0,  "rock1", 33, 99999 ));
+    structureObjs.push(new structureObjects(0.0, 0.0 , 8.2, 0.0, 0.0, 0.0,  "rock2", 59, 99999 ));
     
     //randomize birds
     randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda);
@@ -622,14 +625,14 @@ function checkStability(){
         let sucStable = false;
         let ground = -0.4;
 
-        if(objZ >= 3.8 && objZ < 6.4)
+        /*if(objZ >= 3.8 && objZ < 6.4)
             ground = 0.4;
         else if(objZ >= 6.4 && objZ <= 9.2)
             ground = 1.1;
-        else if(objZ < 9.5)
+        else if(objZ < 10)
             ground = -0.4;
         else
-            ground = -100;
+            ground = -100;*/
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
@@ -646,6 +649,7 @@ function checkStability(){
                     }
                 }
             });
+
             if(!stable && !(precStable && sucStable)){
                 objTocheck.isStable = false;
             }else{
