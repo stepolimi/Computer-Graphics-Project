@@ -152,7 +152,16 @@ function collides(objMoving){
 	let tollerance = 0.1;
 
 	structureObjs.forEach(function(obj) {
-		if(!obj.ty + obj.rady > objMoving.ty + objMoving.rady + tollerance && !objMoving.vy + objMoving.rady > obj.ty + obj.rady + tollerance){
+		let objMovingInf = objMoving.ty - objMoving.rady;
+		let objMovingSup = objMoving.ty + objMoving.rady;
+		let objMovingStart = objMoving.tz - objMoving.radz;
+		let objMovingEnd = objMoving.tz + objMoving.radz;
+		let objInf = obj.ty - obj.rady;
+		let objSup = obj.ty + obj.rady;
+		let objStart = obj.tz - obj.radz;
+		let objEnd = obj.tz + obj.radz;
+
+		if(objSup > objMovingInf && obj.ty < objMovingInf && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
 			if(objMoving.vy <= -0.0001){
 				let elasticCoefficient = 0.4;
 				let thisVyFinal = objMoving.vy * elasticCoefficient;
@@ -168,11 +177,8 @@ function collides(objMoving){
 				}
 			}
 		}
-		let objMovingInf = objMoving.ty - objMoving.rady;
-		let objMovingSup = objMoving.ty + objMoving.rady;
-		let objInf = obj.ty - obj.rady;
-		let objSup = obj.ty + obj.rady;
-		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && obj.tz > objMoving.tz + objMoving.radz && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
+
+		if(objStart < objMovingEnd && obj.tz > objMovingEnd && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
 			if(objMoving.vz >= 0.0001){
 				let elasticCoefficient = 0.4;
 				let thisVzFinal = objMoving.vz * elasticCoefficient;

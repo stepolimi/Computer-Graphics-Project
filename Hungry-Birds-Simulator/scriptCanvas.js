@@ -661,7 +661,6 @@ function checkStability(){
     });
 }
 
-//change TICK in globalTime
 function objectFall(){
     structureObjs.forEach(function(obj) {
        if(!obj.isStable){
@@ -673,11 +672,8 @@ function objectFall(){
                     maxZ = supObj.tz + supObj.radz;
             });
             obj.ry -= 0.01 / obj.radz * (obj.radz - maxZ);
-            //obj.vy = obj.vy - (g*TICK*TICK /2);
-            //obj.ty = obj.ty + obj.vy * TICK;
             if(obj.vz == 0)
                 obj.vz = 0.1;
-            //obj.tz = obj.tz + obj.vz * TICK
         }
         else if(obj.supRightPieces.length != 0){
             let minZ = 100;
@@ -686,16 +682,13 @@ function objectFall(){
                     minZ = supObj.tz - supObj.radz;
             });
             obj.ry += 0.01 / obj.radz * (obj.radz - minZ);
-            //obj.vy = obj.vy - (g*TICK*TICK /2);
-            //obj.ty = obj.ty + obj.vy * TICK;
             if(obj.vz == 0)
                 obj.vz = 0.1;
-            //obj.tz = obj.tz + obj.vz * TICK
         }
         else{
             //obj.vy = obj.vy - (g*TICK*TICK /2);
             //obj.ty = obj.ty + obj.vy * TICK;
         }
      }
-    });//non funzia piu per i maiali
+    });
 }
