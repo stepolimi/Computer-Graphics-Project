@@ -206,6 +206,7 @@ function startMovement(obj){
 		}else{
 			obj.vy = 0;
 		}
+		obj.vz = obj.vz - obj.vz/100
 		obj.tz = obj.tz + obj.vz * delT;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		collides(obj);
