@@ -334,6 +334,7 @@ function activateMatildaPower(){
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		t = 0;
+		eggT = 0;
 		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
@@ -343,6 +344,16 @@ function activateMatildaPower(){
 				obj.scale = 0.5;
 			}
 		});
+	}
+
+	eggZ = matildaZ;
+	eggY = matildaY - (0.3*t*t /2);
+	eggT += 0.1;
+	
+	if(egg.vy == 0){
+		eggT = 0;
+		isMatildaActiveFirstTime = true;
+		activateBirdPower = false;
 	}
 	
 	v = v*1.2;
