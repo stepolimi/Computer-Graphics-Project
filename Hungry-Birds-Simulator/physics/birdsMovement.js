@@ -338,7 +338,7 @@ function activateMatildaPower(){
 			if(obj.type == "egg"){
 				obj.tz = matildaZ;
 				obj.ty = matildaY;
-				obj.vy = 2;
+				obj.vy = -2;
 				obj.scale = 0.5;
 			}
 		});
