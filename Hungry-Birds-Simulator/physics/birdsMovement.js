@@ -334,28 +334,19 @@ function activateMatildaPower(){
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		t = 0;
-		eggT = 0;/*
 		structureObjs.forEach(function(obj) {
-			egg = obj;
 			if(obj.type == "egg"){
+				egg = obj;
 				obj.tz = matildaZ;
 				obj.ty = matildaY;
 				obj.vy = -2;
 				obj.scale = 0.5;
 			}
-		});*/
+		});
 	}
 
-	eggZ = matildaZ;
-	eggY = matildaY - (0.3*t*t /2);
-	eggT += 0.1;
-
 	
-	//if(egg.vy == 0){
-	if(eggY >= -5.0)
-		;
-	else{
-		eggT = 0;
+	if(egg.vy == 0){
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
 	}
