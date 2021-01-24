@@ -673,7 +673,7 @@ function objectFall(){
             });
             if(obj.ry < 90)
                 obj.ry += obj.radz * (obj.tz - maxZ);
-            if(obj.vz == 0)
+            if(obj.vz == 0 && obj.type!="egg")
                 obj.vz = 0.1;
         }
         else if(obj.supRightPieces.length != 0){
@@ -684,7 +684,7 @@ function objectFall(){
             });
             if(obj.ry > -90)
                 obj.ry -= obj.radz * (obj.tz - minZ);
-            if(obj.vz == 0)
+            if(obj.vz == 0 && obj.type!="egg")
                 obj.vz = 0.1;
         }
         else{
