@@ -201,13 +201,13 @@ function startMovement(obj){
 		let delT = globalTime - obj.startTime;
 
 		if(!obj.isStable){
-			obj.ty = obj.ty + obj.vy * delT - (g*delT*delT /2);
-			obj.vy = obj.vy - g*delT;
+			obj.ty = obj.ty + obj.vy * TICK - (g*TICK*TICK /2);
+			obj.vy = obj.vy - g*TICK;
 		}else{
 			obj.vy = 0;
 		}
-		obj.vz = obj.vz - obj.vz/100
-		obj.tz = obj.tz + obj.vz * delT;
+		obj.vz = obj.vz - obj.vz/100;
+		obj.tz = obj.tz + obj.vz * TICK;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		collides(obj);
 		if((obj.vz <= 0.0001 && obj.vy >= 0.0001) || obj.ty <= -0.4)
