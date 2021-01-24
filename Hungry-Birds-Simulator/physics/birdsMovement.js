@@ -334,7 +334,7 @@ function activateMatildaPower(){
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		t = 0;
-		eggT = 0;
+		eggT = 0;/*
 		structureObjs.forEach(function(obj) {
 			egg = obj;
 			if(obj.type == "egg"){
@@ -343,7 +343,7 @@ function activateMatildaPower(){
 				obj.vy = -2;
 				obj.scale = 0.5;
 			}
-		});
+		});*/
 	}
 
 	eggZ = matildaZ;
@@ -351,7 +351,11 @@ function activateMatildaPower(){
 	eggT += 0.1;
 
 	
-	if(egg.vy == 0){
+	//if(egg.vy == 0){
+	if(eggY >= -5.0)
+		worldPositions[8] = utils.MakeWorld(0.0, eggY, eggZ, 0.0, 0.0, 0.0, 0.5);
+	else{
+		eggT = 0;
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
 	}
