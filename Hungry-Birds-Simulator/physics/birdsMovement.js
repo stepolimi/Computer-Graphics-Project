@@ -169,7 +169,7 @@ function collides(objMoving){
 				}
 			}
 		}
-		if(!obj.tz + obj.radz > objMoving.tz + objMoving.radz + tollerance && !objMoving.tz + objMoving.radz > obj.tz + obj.radz + tollerance){
+		if(obj.tz - obj.radz < objMoving.tz + objMoving.radz && (obj.ty + obj.rady > objMoving.ty - objMoving.rady + tollerance || obj.ty - obj.rady < objMoving.ty + objMoving.rady - tollerance)){
 			if(objMoving.vz >= 0.0001){
 				console.log("moving z")
 				let elasticCoefficient = 0.4;
