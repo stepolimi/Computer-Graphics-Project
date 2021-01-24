@@ -82,14 +82,6 @@ function birdTrajectory(index){
 	}
 
 	let ground = -0.4;
-	/*if(trajectoryZ >= 3.8 && trajectoryZ < 6.4)
-		ground = 0.4;
-	else if(trajectoryZ >= 6.4 && trajectoryZ <= 9.2)
-		ground = 1.1;
-	else if(trajectoryZ < 10)
-		ground = -0.4;
-	else
-		ground = -100;*/
 
 	if(trajectoryY >= ground && !birdCollides){
 		birdsArray[index-2].ty = trajectoryY;
@@ -203,14 +195,6 @@ function collides(objMoving){
 function startMovement(obj){
 	if(obj.isMoving || !obj.isStable){
 		let ground = -0.4;
-        /*if(obj.tz >= 3.8 && obj.tz < 6.4)
-            ground = 0.4;
-        else if(obj.tz >= 6.4 && obj.tz <= 9.2)
-            ground = 1.1;
-        else if(obj.tz < 10)
-            ground = -0.4;
-        else
-            ground = -100;*/
 
 		if(!obj.isStable){
 			obj.ty = obj.ty + obj.vy * TICK - (g*TICK*TICK /2);
@@ -220,7 +204,7 @@ function startMovement(obj){
 		}
 		obj.vz = obj.vz - obj.vz/100;
 		obj.tz = obj.tz + obj.vz * TICK;
-		if(obj.tz < 9.5 && obj.ty > -0.4)
+		if(obj.tz < 9.5 || obj.ty - obj.rady > ground)
 			worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 		else{
 			worldPositions[obj.index] = utils.MakeWorld(0 , -5, 0, obj.rx, obj.ry, obj.rz, 0);

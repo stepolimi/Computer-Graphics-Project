@@ -625,15 +625,6 @@ function checkStability(){
         let sucStable = false;
         let ground = -0.4;
 
-        /*if(objZ >= 3.8 && objZ < 6.4)
-            ground = 0.4;
-        else if(objZ >= 6.4 && objZ <= 9.2)
-            ground = 1.1;
-        else if(objZ < 10)
-            ground = -0.4;
-        else
-            ground = -100;*/
-
         if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
             structureObjs.forEach(function(obj) {
                 if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
