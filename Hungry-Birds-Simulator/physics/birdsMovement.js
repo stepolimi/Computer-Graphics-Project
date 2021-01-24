@@ -334,6 +334,7 @@ function activateMatildaPower(){
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		t = 0;
+		eggT = 0;
 		structureObjs.forEach(function(obj) {
 			egg = obj;
 			if(obj.type == "egg"){
