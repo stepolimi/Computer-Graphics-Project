@@ -148,7 +148,7 @@ function birdCollision(bird, obj){
 
 function collides(objMoving){
 	let useless;
-	let tollerance = 0.05;
+	let tollerance = 0.1;
 
 	structureObjs.forEach(function(obj) {
 		if(!obj.ty + obj.rady > objMoving.ty + objMoving.rady + tollerance && !objMoving.vy + objMoving.rady > obj.ty + obj.rady + tollerance){
