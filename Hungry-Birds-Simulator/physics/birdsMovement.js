@@ -83,7 +83,7 @@ function birdTrajectory(index){
 
 	let ground = -0.4;
 
-	if(trajectoryY >= ground && !birdCollides){
+	if(trajectoryY >= ground && trajectoryY <= 20 && !birdCollides){
 		birdsArray[index-2].ty = trajectoryY;
 		birdsArray[index-2].tz = trajectoryZ;
 		birdsArray[index-2].ry = angle;
