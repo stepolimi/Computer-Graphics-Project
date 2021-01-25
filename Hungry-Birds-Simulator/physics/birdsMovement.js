@@ -333,13 +333,15 @@ function activateMatildaPower(){
 		matildaY = trajectoryY;
 		t = 0;
 		structureObjs.forEach(function(obj) {
-			if(obj.type == "egg"){
+			if(obj.type == "no")
+				;
+			/*if(obj.type == "egg"){
 				egg = obj;
 				obj.tz = matildaZ;
 				obj.ty = matildaY;
 				obj.vy = -2;
 				obj.scale = 0.5;
-			}
+			}*/
 		});
 	}
 
