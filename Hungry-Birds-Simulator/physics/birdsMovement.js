@@ -351,10 +351,8 @@ function activateMatildaPower(){
 		activateBirdPower = false;
 	}
 	
-	v = v*1.2;
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	trajectoryY = matildaY + v*t*tan;
 	trajectoryZ = matildaZ + v*t*tan;
 	rotation += 20.0;
-	  
 }
