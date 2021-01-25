@@ -347,6 +347,7 @@ function activateMatildaPower(){
 
 	
 	if(egg.vy == 0){
+		console.log("reset");
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
 	}
