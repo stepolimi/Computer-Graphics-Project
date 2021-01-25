@@ -59,6 +59,7 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
+	//second check this thing
 	if(!birdCollides){
 		let velys = v*Math.sin(utils.degToRad(angle));
 		let velyg = g*t;
@@ -345,7 +346,7 @@ function activateMatildaPower(){
 		});
 	}
 
-	
+	//don't always resets right
 	if(egg.vy == 0){
 		console.log("reset");
 		isMatildaActiveFirstTime = true;
