@@ -113,18 +113,20 @@ function isColliding(bird){
 		radiusY = structureObjs[i].rady;
 		radiusZ = structureObjs[i].radz;
 
-		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
-			;
-		else{
-			if(vely <= -0.0001 || velz >= 0.0001){
-				birdCollides = true;
-				collisionY = trajectoryY;
-				collisionZ = trajectoryZ;
-				collisionT = t;
+		if(structureObjs[i].type != "egg"){
+			if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
+				;
+			else{
+				if(vely <= -0.0001 || velz >= 0.0001){
+					birdCollides = true;
+					collisionY = trajectoryY;
+					collisionZ = trajectoryZ;
+					collisionT = t;
 				
-				birdCollision(bird, structureObjs[i]);
-			}else{
-				//bird done
+					birdCollision(bird, structureObjs[i]);
+				}else{
+					//bird done
+				}
 			}
 		}
 	}	
@@ -333,23 +335,21 @@ function activateMatildaPower(){
 		matildaY = trajectoryY;
 		t = 0;
 		structureObjs.forEach(function(obj) {
-			if(obj.type == "no")
-				;
-			/*if(obj.type == "egg"){
+			if(obj.type == "egg"){
 				egg = obj;
 				obj.tz = matildaZ;
 				obj.ty = matildaY;
 				obj.vy = -2;
 				obj.scale = 0.5;
-			}*/
+			}
 		});
 	}
 
 	
-	/*if(egg.vy == 0){
+	if(egg.vy == 0){
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
-	}*/
+	}
 	
 	v = v*1.2;
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
