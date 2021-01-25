@@ -55,7 +55,6 @@ var program;
 var vertexShader;
 var fragmentShader;
 var vaos;
-var globalTime = 0;
 
 //Meshes variables
 var allMeshes;
@@ -582,8 +581,6 @@ function addMeshToScene(i) {
         moveObject(obj);
     });
 
-    globalTime += 0.002;
-
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
     for (var i = 0; i < allMeshes.length; i++) {
@@ -686,10 +683,6 @@ function objectFall(){
                 obj.ry -= obj.radz * (obj.tz - minZ);
             if(obj.vz == 0 && obj.type!="egg")
                 obj.vz = 0.1;
-        }
-        else{
-            //obj.vy = obj.vy - (g*TICK*TICK /2);
-            //obj.ty = obj.ty + obj.vy * TICK;
         }
      }
     });

@@ -107,7 +107,6 @@ function birdTrajectory(index){
 function isColliding(bird){
 	let radiusY;
 	let radiusZ;
-	let useless;
 	for(let i = 0; i < structureObjs.length; i++ ){
 		let objY = structureObjs[i].ty;
 		let objZ = structureObjs[i].tz;
@@ -115,9 +114,9 @@ function isColliding(bird){
 		radiusZ = structureObjs[i].radz;
 
 		if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
-			useless = 0;
+			;
 		else{
-			if(vely <= -0.0001 || vely >= 0.0001){
+			if(vely <= -0.0001 || velz >= 0.0001){
 				birdCollides = true;
 				collisionY = trajectoryY;
 				collisionZ = trajectoryZ;
@@ -131,6 +130,7 @@ function isColliding(bird){
 	}	
 }
 
+//urto
 function birdCollision(bird, obj){
 	let elasticCoefficient = 0.4;
 	let birdVzFinal = velz * elasticCoefficient;
@@ -146,9 +146,7 @@ function birdCollision(bird, obj){
 }
 
 //functions to manage objects collisions
-
 function collides(objMoving){
-	let useless;
 	let tollerance = 0.1;
 
 	structureObjs.forEach(function(obj) {
@@ -333,7 +331,7 @@ function activateMatildaPower(){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
-		t = 0;/*
+		t = 0;
 		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
@@ -342,7 +340,7 @@ function activateMatildaPower(){
 				obj.vy = -2;
 				obj.scale = 0.5;
 			}
-		});*/
+		});
 	}
 
 	
