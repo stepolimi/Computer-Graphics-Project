@@ -502,7 +502,7 @@ function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
                 break;
             case 5:
                 tower119 = glassBox;
-                tower119.textures = GLASSBOX_BROKEN_2;
+                tower119.textures = GLASSBOX_BROKEN_1;
                 structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "glassBox", 31, mass ));
                 break;
             case 6:
