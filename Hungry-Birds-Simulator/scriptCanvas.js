@@ -401,10 +401,10 @@ async function loadMeshes(){
     randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda);
 
     //randomize pigs
-    randomizePigs(pig, pigHelmet, pigMustache);
+    randomizePigs();
     
     //pseudo randomize blocks
-    defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane);
+    defineStructureObjs();
 
 
     allMeshes = [
