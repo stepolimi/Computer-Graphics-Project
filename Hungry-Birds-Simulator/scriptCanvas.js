@@ -675,11 +675,11 @@ function objectFall(){
             obj.ry = Math.asin(deltaMov) * (180 / Math.PI);
             obj.rady = Math.sin(utils.degToRad(obj.ry)) * obj.rady + obj.rady;
             obj.radz = Math.cos(utils.degToRad(obj.ry)) * obj.radz + obj.radz;
-            console.log("mov: " + deltaMov);
-            console.log("rot: " + obj.ry);
-            if(obj.tz - obj.radz < rotObj.tz + rotObj.radz){
-                obj.tz = obj.tz + rotObj.tz + rotObj.radz - (obj.tz - obj.radz);
-            }
+            //console.log("mov: " + deltaMov);
+            //console.log("rot: " + obj.ry);
+            //if(obj.tz - obj.radz < rotObj.tz + rotObj.radz){
+            //    obj.tz = obj.tz + rotObj.tz + rotObj.radz - (obj.tz - obj.radz);
+            //}
             /*
             if(obj.ry < 90)
                 obj.ry += obj.radz * (obj.tz - maxZ);
