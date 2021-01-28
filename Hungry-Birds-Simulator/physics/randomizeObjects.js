@@ -153,22 +153,22 @@ async function randomizePigs(pig, pigHelmet, pigMustache){
         
         switch(choiche){
             case 1:
-                pigChoiche = await utils.loadMesh("/../assets/Pigs/pig.obj"); 
+                pigChoiche = await utils.loadMesh("../assets/Pigs/pig.obj"); 
                 objType = "pig";
                 mass = 1;
                 break;
             case 2:
-                pigChoiche = await utils.loadMesh("/../assets/Pigs/pighelment.obj"); 
+                pigChoiche = await utils.loadMesh("../assets/Pigs/pighelment.obj"); 
                 objType = "pigHelmet";
                 mass = 1.5;
                 break;
             case 3:
-                pigChoiche = await utils.loadMesh("/../assets/Pigs/pigstache.obj"); 
+                pigChoiche = await utils.loadMesh("../assets/Pigs/pigstache.obj"); 
                 objType = "pigMustache";
                 mass = 2;
                 break;
             default:
-                pigChoiche = await utils.loadMesh("/../assets/Pigs/pig.obj"); 
+                pigChoiche = await utils.loadMesh("../assets/Pigs/pig.obj"); 
                 objType = "pig";
                 mass = 1;
                 break;
@@ -220,19 +220,19 @@ async function randomizePigs(pig, pigHelmet, pigMustache){
 
 async function defineStructureObjs(){
     mass = 3;
-    tower112 = await utils.loadMesh("/../assets/Others/tnt.obj");
+    tower112 = await utils.loadMesh("../assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 0.8,0.2, 0.4, 0.0, 0.0,  "tnt", 24, mass ));
 
-    tower210 = await utils.loadMesh("/../assets/Others/tnt.obj");
+    tower210 = await utils.loadMesh("../assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0,  "tnt", 48, mass ));
 
-    tower31 = await utils.loadMesh("/../assets/Others/tnt.obj");
+    tower31 = await utils.loadMesh("../assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 1.5 , 7.0, 0.0, 0.0, 0.0,  "tnt", 61, mass ));
 
-    tower32 = await utils.loadMesh("/../assets/Others/tnt.obj");
+    tower32 = await utils.loadMesh("../assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 1.5 , 7.8, 0.0, 0.0, 0.0,  "tnt", 62, mass ));
     
-    tower33 = await utils.loadMesh("/../assets/Others/tnt.obj");
+    tower33 = await utils.loadMesh("../assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 1.5 , 8.6, 0.0, 0.0, 0.0,  "tnt", 63, mass ));
 
 
@@ -252,17 +252,17 @@ async function randomizeHorizontalPlane(){
 
         switch(choiche){
             case 1:
-                piece = await utils.loadMesh("/../assets/Others/glassHorizontalPlane.obj");
+                piece = await utils.loadMesh("../assets/Others/glassHorizontalPlane.obj");
                 objType = "glassHorizontalPlane";
                 mass = 3;
                 break;
             case 2:
-                piece = await utils.loadMesh("/../assets/Others/woodHorizontalPlane.obj");
+                piece = await utils.loadMesh("../assets/Others/woodHorizontalPlane.obj");
                 objType = "woodHorizontalPlane";
                 mass = 5;
                 break;
             default:
-                piece = await utils.loadMesh("/../assets/Others/glassHorizontalPlane.obj");
+                piece = await utils.loadMesh("../assets/Others/glassHorizontalPlane.obj");
                 objType = "glassHorizontalPlane";
                 mass = 3;
                 break;
@@ -311,17 +311,17 @@ async function randomizeVerticalPlane(){
 
         switch(choiche){
             case 1:
-                piece = await utils.loadMesh("/../assets/Others/glassVerticalPlane.obj");
+                piece = await utils.loadMesh("../assets/Others/glassVerticalPlane.obj");
                 objType = "glassVerticalPlane";
                 mass = 3;
                 break;
             case 2:
-                piece = await utils.loadMesh("/../assets/Others/woodVerticalPlane.obj");
+                piece = await utils.loadMesh("../assets/Others/woodVerticalPlane.obj");
                 objType = "woodVerticalPlane";
                 mass = 5;
                 break;
             default:
-                piece = await utils.loadMesh("/../assets/Others/glassVerticalPlane.obj");
+                piece = await utils.loadMesh("../assets/Others/glassVerticalPlane.obj");
                 objType = "glassVerticalPlane";
                 mass = 3;
                 break;
@@ -383,22 +383,22 @@ async function randomizePyramid(){
 
         switch(choiche){
             case 1:
-                piece = await utils.loadMesh("/../assets/Others/glassPyramid.obj");
+                piece = await utils.loadMesh("../assets/Others/glassPyramid.obj");
                 objType = "glassPyramid";
                 mass = 4;
                 break;
             case 2:
-                piece = await utils.loadMesh("/../assets/Others/woodPyramid.obj");
+                piece = await utils.loadMesh("../assets/Others/woodPyramid.obj");
                 objType = "woodPyramid";
                 mass = 6;
                 break;
             case 3:
-                piece = await utils.loadMesh("/../assets/Others/stonePyramid.obj");
+                piece = await utils.loadMesh("../assets/Others/stonePyramid.obj");
                 objType = "stonePyramid";
                 mass = 9;
                 break;
             default:
-                piece = await utils.loadMesh("/../assets/Others/glassPyramid.obj");
+                piece = await utils.loadMesh("../assets/Others/glassPyramid.obj");
                 objType = "glassPyramid";
                 mass = 4;
                 break;
@@ -452,27 +452,27 @@ async function randomizeCube(){
 
         switch(choiche){
             case 1:
-                piece = await utils.loadMesh("/../assets/Others/glassBox.obj");
+                piece = await utils.loadMesh("../assets/Others/glassBox.obj");
                 objType = "glassBox";
                 mass = 5;
                 break;
             case 2:
-                piece = await utils.loadMesh("/../assets/Others/woodBox.obj");
+                piece = await utils.loadMesh("../assets/Others/woodBox.obj");
                 objType = "woodBox";
                 mass = 7;
                 break;
             case 3:
-                piece = await utils.loadMesh("/../assets/Others/stoneBox.obj");
+                piece = await utils.loadMesh("../assets/Others/stoneBox.obj");
                 objType = "stoneBox";
                 mass = 10;
                 break;
             case 4:
-                piece = await utils.loadMesh("/../assets/Others/stoneSquare.obj");
+                piece = await utils.loadMesh("../assets/Others/stoneSquare.obj");
                 objType = "stoneSquare";
                 mass = 6;
                 break;
             default:
-                piece = await utils.loadMesh("/../assets/Others/glassBox.obj");
+                piece = await utils.loadMesh("../assets/Others/glassBox.obj");
                 objType = "glassBox";
                 mass = 5;
                 break;
@@ -501,7 +501,7 @@ async function randomizeCube(){
                 structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType, 29, mass ));
                 break;
             case 5:
-                tower119 = await utils.loadMesh("/../assets/Others/glassBox.obj");
+                tower119 = await utils.loadMesh("../assets/Others/glassBox.obj");
                // tower119.textures =  GLASSBOX_BROKEN_1;
                 structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "glassBox", 31, mass ));
                 break;
