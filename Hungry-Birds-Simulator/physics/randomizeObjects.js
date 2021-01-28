@@ -213,7 +213,7 @@ async function randomizePigs(){
                 break;
                 
         }
-        console.log("maiali : " + objType);
+        console.log("maiali : " + piece;
     }
 }
 
@@ -300,7 +300,7 @@ async function randomizeHorizontalPlane(){
                 break;
         }
         
-    console.log("horizontal : " + objType);
+    console.log("horizontal : " + piece);
     }
 }
 
@@ -373,7 +373,7 @@ async function randomizeVerticalPlane(){
                 break;
 
         }
-    console.log("vertical : " + objType);
+    console.log("vertical : " + piece);
     }
 }
 
@@ -444,7 +444,7 @@ async function randomizePyramid(){
                 break;
         }
         
-    console.log("pyramid : " + objType);
+    console.log("pyramid : " + piece);
     }
 }
 
@@ -558,6 +558,6 @@ async function randomizeCube(){
 
         }
         
-    console.log("cube : " + objType);
+    console.log("cube : " + piece);
     }
 }
