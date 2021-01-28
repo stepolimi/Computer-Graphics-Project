@@ -213,7 +213,7 @@ async function randomizePigs(){
                 break;
                 
         }
-        console.log("maiali : " + piece);
+        console.log("maiali : " + pigChoice);
     }
 }
 
