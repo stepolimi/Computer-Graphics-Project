@@ -145,7 +145,7 @@ function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
 }
     
 
-async function randomizePigs(pig, pigHelmet, pigMustache){
+async function randomizePigs(){
 	for(let i=0; i<9; i++){
         let min = Math.ceil(1);
         let max = Math.floor(3);
