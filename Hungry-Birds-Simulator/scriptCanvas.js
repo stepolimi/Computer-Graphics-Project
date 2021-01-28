@@ -404,7 +404,7 @@ async function loadMeshes(){
     randomizePigs();
     
     //pseudo randomize blocks
-    defineStructureObjs();
+    await defineStructureObjs();
 
 
     allMeshes = [
