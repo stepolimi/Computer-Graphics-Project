@@ -671,7 +671,7 @@ function objectFall(){
                     rotObj = supObj;
                 }
             });
-            let deltaMov = (rotObj.ty + rotObj.rady - obj.ty - obj.rady + obj.vy * TICK - (g*TICK*TICK /2)) / obj.rady;
+            let deltaMov = (rotObj.ty + rotObj.rady - (obj.ty - obj.rady) + obj.vy * TICK - (g*TICK*TICK /2)) / obj.rady;
             obj.ry = Math.asin(deltaMov) * (180 / Math.PI);
             obj.rady = Math.sin(utils.degToRad(obj.ry)) * obj.rady + obj.rady;
             obj.radz = Math.cos(utils.degToRad(obj.ry)) * obj.radz + obj.radz;
