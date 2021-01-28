@@ -153,22 +153,22 @@ function randomizePigs(pig, pigHelmet, pigMustache){
         
         switch(choiche){
             case 1:
-                pigChoiche = pig;
+                pigChoiche = await utils.loadMesh("/assets/Pigs/pig.obj"); 
                 objType = "pig";
                 mass = 1;
                 break;
             case 2:
-                pigChoiche = pigHelmet;
+                pigChoiche = await utils.loadMesh("/assets/Pigs/pighelment.obj"); 
                 objType = "pigHelmet";
                 mass = 1.5;
                 break;
             case 3:
-                pigChoiche = pigMustache;
+                pigChoiche = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
                 objType = "pigMustache";
                 mass = 2;
                 break;
             default:
-                pigChoiche = pig;
+                pigChoiche = await utils.loadMesh("/assets/Pigs/pig.obj"); 
                 objType = "pig";
                 mass = 1;
                 break;
@@ -218,33 +218,33 @@ function randomizePigs(pig, pigHelmet, pigMustache){
 
 
 
-function defineStructureObjs(tnt, glassBox, woodBox, stoneBox, stoneSquare, woodPyramid, glassPyramid, stonePyramid, glassVerticalPlane, woodVerticalPlane, glassHorizontalPlane, woodHorizontalPlane){
+async function defineStructureObjs(){
     mass = 3;
-    tower112 = tnt;
+    tower112 = await utils.loadMesh("/assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 0.8,0.2, 0.4, 0.0, 0.0,  "tnt", 24, mass ));
 
-    tower210 = tnt;
+    tower210 = await utils.loadMesh("/assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 3.2, 5.0 , 0.4, 0.0, 0.0,  "tnt", 48, mass ));
 
-    tower31 = tnt;
+    tower31 = await utils.loadMesh("/assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 1.5 , 7.0, 0.0, 0.0, 0.0,  "tnt", 61, mass ));
 
-    tower32 = tnt;
+    tower32 = await utils.loadMesh("/assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 1.5 , 7.8, 0.0, 0.0, 0.0,  "tnt", 62, mass ));
     
-    tower33 = tnt;
+    tower33 = await utils.loadMesh("/assets/Others/tnt.obj");
     structureObjs.push(new structureObjects(0.0, 1.5 , 8.6, 0.0, 0.0, 0.0,  "tnt", 63, mass ));
 
 
-    randomizeCube(glassBox, woodBox, stoneBox, stoneSquare);
-    randomizePyramid(woodPyramid, glassPyramid, stonePyramid);
-    randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane);
-    randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane);
+    randomizeCube();
+    randomizePyramid();
+    randomizeVerticalPlane();
+    randomizeHorizontalPlane();
 }
 
 
 //randomize type of horizontal pieces between glass and wood
-function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
+function randomizeHorizontalPlane(){
     for(let i=0; i<7; i++){
         let min = Math.ceil(1);
         let max = Math.floor(2);
@@ -252,17 +252,17 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
 
         switch(choiche){
             case 1:
-                piece = glassHorizontalPlane;
+                piece = await utils.loadMesh("/assets/Others/glassHorizontalPlane.obj");
                 objType = "glassHorizontalPlane";
                 mass = 3;
                 break;
             case 2:
-                piece = woodHorizontalPlane;
+                piece = await utils.loadMesh("/assets/Others/woodHorizontalPlane.obj");
                 objType = "woodHorizontalPlane";
                 mass = 5;
                 break;
             default:
-                piece = glassHorizontalPlane;
+                piece = await utils.loadMesh("/assets/Others/glassHorizontalPlane.obj");
                 objType = "glassHorizontalPlane";
                 mass = 3;
                 break;
@@ -303,7 +303,7 @@ function randomizeHorizontalPlane(glassHorizontalPlane, woodHorizontalPlane){
 
 
 //randomize type of vertical pieces between glass or wood
-function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
+function randomizeVerticalPlane(){
     for(let i=0; i<10; i++){
         let min = Math.ceil(1);
         let max = Math.floor(2);
@@ -311,17 +311,17 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
 
         switch(choiche){
             case 1:
-                piece = glassVerticalPlane;
+                piece = await utils.loadMesh("/assets/Others/glassVerticalPlane.obj");
                 objType = "glassVerticalPlane";
                 mass = 3;
                 break;
             case 2:
-                piece = woodVerticalPlane;
+                piece = await utils.loadMesh("/assets/Others/woodVerticalPlane.obj");
                 objType = "woodVerticalPlane";
                 mass = 5;
                 break;
             default:
-                piece = glassVerticalPlane;
+                piece = await utils.loadMesh("/assets/Others/glassVerticalPlane.obj");
                 objType = "glassVerticalPlane";
                 mass = 3;
                 break;
@@ -375,7 +375,7 @@ function randomizeVerticalPlane(glassVerticalPlane, woodVerticalPlane){
 
 
 //randomize type of pyramid between stone, glass or wood
-function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
+function randomizePyramid(){
     for(let i=0; i<8; i++){
         let min = Math.ceil(1);
         let max = Math.floor(3);
@@ -383,22 +383,22 @@ function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
 
         switch(choiche){
             case 1:
-                piece = glassPyramid;
+                piece = await utils.loadMesh("/assets/Others/glassPyramid.obj");
                 objType = "glassPyramid";
                 mass = 4;
                 break;
             case 2:
-                piece = woodPyramid;
+                piece = await utils.loadMesh("/assets/Others/woodPyramid.obj");
                 objType = "woodPyramid";
                 mass = 6;
                 break;
             case 3:
-                piece = stonePyramid;
+                piece = await utils.loadMesh("/assets/Others/stonePyramid.obj");
                 objType = "stonePyramid";
                 mass = 9;
                 break;
             default:
-                piece = glassPyramid;
+                piece = await utils.loadMesh("/assets/Others/glassPyramid.obj");
                 objType = "glassPyramid";
                 mass = 4;
                 break;
@@ -444,7 +444,7 @@ function randomizePyramid(woodPyramid, glassPyramid, stonePyramid){
 
 
 //randomize type of cube between ston, glass or wood
-function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
+function randomizeCube(){
     for(let i=0; i<17; i++){
         let min = Math.ceil(1);
         let max = Math.floor(4);
@@ -452,27 +452,27 @@ function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
 
         switch(choiche){
             case 1:
-                piece = glassBox;
+                piece = await utils.loadMesh("/assets/Others/glassBox.obj");
                 objType = "glassBox";
                 mass = 5;
                 break;
             case 2:
-                piece = woodBox;
+                piece = await utils.loadMesh("/assets/Others/woodBox.obj");
                 objType = "woodBox";
                 mass = 7;
                 break;
             case 3:
-                piece = stoneBox;
+                piece = await utils.loadMesh("/assets/Others/stoneBox.obj");
                 objType = "stoneBox";
                 mass = 10;
                 break;
             case 4:
-                piece = stoneSquare;
+                piece = await utils.loadMesh("/assets/Others/stoneSquare.obj");
                 objType = "stoneSquare";
                 mass = 6;
                 break;
             default:
-                piece = glassBox;
+                piece = await utils.loadMesh("/assets/Others/glassBox.obj");
                 objType = "glassBox";
                 mass = 5;
                 break;
@@ -501,8 +501,9 @@ function randomizeCube(glassBox, woodBox, stoneBox, stoneSquare){
                 structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType, 29, mass ));
                 break;
             case 5:
-                tower119 = woodBox;
-                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "woodBox", 31, mass ));
+                tower119 = await utils.loadMesh("/assets/Others/glassBox.obj");
+                tower119.textures =  GLASSBOX_BROKEN_1;
+                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "glassBox", 31, mass ));
                 break;
             case 6:
                 tower21 = piece;
