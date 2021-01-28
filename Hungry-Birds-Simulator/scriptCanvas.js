@@ -664,14 +664,27 @@ function objectFall(){
        if(!obj.isStable){
         if(obj.supLeftPieces.length != 0){
             let maxZ = -100;
+            let rotObj = obj;
             obj.supLeftPieces.forEach(function(supObj) {
-                if(supObj.tz + supObj.radz > maxZ)
+                if(supObj.tz + supObj.radz > maxZ){
                     maxZ = supObj.tz + supObj.radz;
+                    rotObj = supObj;
+                }
             });
+            let deltaMov = (rotObj.ty + rotObj.rady - (obj.ty - obj.rady) + obj.vy * TICK - (g*TICK*TICK /2)) / obj.rady;
+            obj.ry = Math.asin(deltaMov) * (180 / Math.PI);
+            obj.rady = Math.sin(utils.degToRad(obj.ry)) * obj.rady + obj.rady;
+            obj.radz = Math.cos(utils.degToRad(obj.ry)) * obj.radz + obj.radz;
+            //console.log("mov: " + deltaMov);
+            //console.log("rot: " + obj.ry);
+            //if(obj.tz - obj.radz < rotObj.tz + rotObj.radz){
+            //    obj.tz = obj.tz + rotObj.tz + rotObj.radz - (obj.tz - obj.radz);
+            //}
+            /*
             if(obj.ry < 90)
                 obj.ry += obj.radz * (obj.tz - maxZ);
             if(obj.vz == 0 && obj.type!="egg")
-                obj.vz = 0.1;
+                obj.vz = 0.1;*/
         }
         else if(obj.supRightPieces.length != 0){
             let minZ = 100;
