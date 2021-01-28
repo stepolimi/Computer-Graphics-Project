@@ -153,22 +153,22 @@ async function randomizePigs(pig, pigHelmet, pigMustache){
         
         switch(choiche){
             case 1:
-                pigChoiche = await utils.loadMesh("./assets/Pigs/pig.obj"); 
+                pigChoiche = await utils.loadMesh("/../assets/Pigs/pig.obj"); 
                 objType = "pig";
                 mass = 1;
                 break;
             case 2:
-                pigChoiche = await utils.loadMesh("./assets/Pigs/pighelment.obj"); 
+                pigChoiche = await utils.loadMesh("/../assets/Pigs/pighelment.obj"); 
                 objType = "pigHelmet";
                 mass = 1.5;
                 break;
             case 3:
-                pigChoiche = await utils.loadMesh("./assets/Pigs/pigstache.obj"); 
+                pigChoiche = await utils.loadMesh("/../assets/Pigs/pigstache.obj"); 
                 objType = "pigMustache";
                 mass = 2;
                 break;
             default:
-                pigChoiche = await utils.loadMesh("./assets/Pigs/pig.obj"); 
+                pigChoiche = await utils.loadMesh("/../assets/Pigs/pig.obj"); 
                 objType = "pig";
                 mass = 1;
                 break;
