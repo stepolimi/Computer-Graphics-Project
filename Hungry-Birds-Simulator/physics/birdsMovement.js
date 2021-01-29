@@ -126,6 +126,7 @@ function checkBirdStability(bird){
 	let birdZEnd = bird.tz + bird.BIRD_RADIUS;
 	let ground = -0.4;
 	let tollerance = 0.05;
+	let stable = false;
 
 	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
