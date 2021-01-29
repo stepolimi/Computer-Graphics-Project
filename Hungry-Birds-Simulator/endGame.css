@@ -271,8 +271,6 @@ body {
 
 #score-div{
     position: absolute;
-    top: 50vmin;
-    left: 50vmax;
     z-index: 1;
 }
 

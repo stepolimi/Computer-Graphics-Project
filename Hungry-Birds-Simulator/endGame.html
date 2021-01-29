@@ -22,22 +22,24 @@
             </h1>
         </div>
         <div class="col-sm-12">
-            <button id="close-button">
+            <button id="play-button">
                 <p id="play-text">
                     Close
                 </p>
             </button>
         </div>
-        <div id="score-div" >
-            <h1 id="score">
-                Score: 0
-            </h1>
+        <div class="col-sm-12">
+            <div id="score-div" >
+                <h1 id="score">
+                    Score: 0
+                </h1>
+            </div>
         </div>
 
 </body>
 
 <script>
-    var closeButton = document.getElementById("close-button");
+    var closeButton = document.getElementById("play-button");
 
     closeButton.onclick = function (){
         window.location.replace("./index.html");

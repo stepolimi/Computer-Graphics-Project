@@ -94,8 +94,10 @@ function birdTrajectory(index){
 			rotation = 0.0;
 			scaling = 0.5;
 			busy = false;
-			if(counter == 5)
+			if(counter == 5){
 				window.location.replace("./endGame.html");
+				document.getElementById("score").innerHTML = "Score: " + score;
+			}
 		} else{
 			checkBirdStability(bird);
 			let deltaT = t - collisionT;
@@ -119,8 +121,10 @@ function birdTrajectory(index){
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
-		if(counter == 5)
+		if(counter == 5){
 			window.location.replace("./endGame.html");
+			document.getElementById("score").innerHTML = "Score: " + score;
+		}
 	} else if(trajectoryY > 20){
 		killBird(bird,index, 0);
 		rotation = 0.0;
