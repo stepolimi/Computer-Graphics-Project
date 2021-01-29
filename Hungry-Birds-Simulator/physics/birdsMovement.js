@@ -108,6 +108,8 @@ function birdTrajectory(index){
 	}
 
 	if(trajectoryY - BIRD_RADIUS <= ground){
+		birdCollides = true;
+		bird.isStable = true;
 		killBird(bird,index, 3000);
 		rotation = 0.0;
 		scaling = 0.5;
