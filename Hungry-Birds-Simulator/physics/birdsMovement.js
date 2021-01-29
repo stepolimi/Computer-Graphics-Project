@@ -50,7 +50,7 @@ var birdPosition;
 var ground = -0.4;
 
 //score variables
-var score;
+var score = 0;
 var scoreDiv;
 
 function birdTrajectory(index){
