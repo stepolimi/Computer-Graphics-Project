@@ -228,6 +228,7 @@ function checkHp(obj){
 		obj.tz = 0;
 		obj.vy = 0;
 		obj.vz = 0;
+		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	} else if(obj.hp < obj.maxHp / 3){
 		console.log("realy broken");
 		switch(obj.type){
