@@ -221,15 +221,90 @@ function collides(objMoving){
 
 function checkHp(obj){
 	if(obj.hp <= 0){
+		console.log("fully broken");
 		obj.scale = 0;
 		obj.ty = -5;
 		obj.tz = 0;
 		obj.vy = 0;
 		obj.vz = 0;
 	} else if(obj.hp < obj.maxHp / 3){
-		worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+		console.log("realy broken");
+		switch(obj.type){
+			case "glassVerticalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "woodVerticalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "glassHorizontalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "woodHorizontalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "glassPyramid":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "glassBox":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "woodPyramid":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "woodBox":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "stoneSquare":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "stonePyramid":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "stoneBox":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			default:
+				break;
+		}
 	} else if(obj.hp < (obj.maxHp / 3) * 2){
-		worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
+		console.log("half broken");
+		switch(obj.type){
+			case "glassVerticalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
+				break;
+			case "woodVerticalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "glassHorizontalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "woodHorizontalPlane":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "glassPyramid":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "glassBox":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "woodPyramid":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "woodBox":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "stoneSquare":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "stonePyramid":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			case "stoneBox":
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				break;
+			default:
+				break;
+		}
 	}
 }
 
