@@ -142,6 +142,11 @@ function birdCollision(bird, obj){
 	obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 	obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
 
+	console.log("bird pz: " + bird.m * velz);
+	console.log("bird py: " + bird.m * vely);
+	console.log("obj pz: " + obj.vz * obj.m);
+	console.log("obj py: " + obj.vy * obj.m);
+
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
