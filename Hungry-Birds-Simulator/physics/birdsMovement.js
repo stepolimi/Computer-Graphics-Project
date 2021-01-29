@@ -50,8 +50,8 @@ var birdPosition;
 var ground = -0.4;
 
 //score variables
-var score
-var scoreDiv = document.getElementById("score");
+var score;
+var scoreDiv;
 
 function birdTrajectory(index){
 	let bird = birdsArray[index-2];
@@ -126,8 +126,10 @@ function birdTrajectory(index){
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
-		if(counter == 5)
+		if(counter == 5){
 			window.location.replace("./endGame.html");
+			document.getElementById("score").innerHTML = "Score: " + score;
+		}
 	}
 	t += TICK;
 }
@@ -301,6 +303,7 @@ function collides(objMoving){
 }
 
 function checkHp(obj){
+	scoreDiv = document.getElementById("score");
 	if(obj.hp <= 0){
 		score += 200;
 		scoreDiv.innerHTML = "Score: " + score;
