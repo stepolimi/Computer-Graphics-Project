@@ -17,8 +17,10 @@
 <body>
     <div id="div-play-game" class="container-fluid row">
         <div class="col-sm-12" >
-            <h1 id="title">
-                Hungry Birds Simulator
+            <h1 id="score">
+                Congratulation!
+
+                You scored 0 points
             </h1>
         </div>
         <div class="col-sm-12">
@@ -28,20 +30,13 @@
                 </p>
             </button>
         </div>
-        <div class="col-sm-12">
-            <div id="score-div" >
-                <h1 id="score">
-                    Score: 0
-                </h1>
-            </div>
-        </div>
 
 </body>
 
 <script>
-    var closeButton = document.getElementById("play-button");
+    var playButton = document.getElementById("play-button");
 
-    closeButton.onclick = function (){
+    playButton.onclick = function (){
         window.location.replace("./index.html");
     }
 </script>
