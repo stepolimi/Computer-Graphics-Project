@@ -152,6 +152,7 @@ function checkBirdStability(bird){
 		bird.isStable = true;
 		vely = 0;
 	}
+	console.log("stable : " + bird.isStable);
 }
 
 
@@ -272,7 +273,7 @@ function collides(objMoving){
 function checkHp(obj){
 	console.log(obj.type + ": " + obj.hp);
 	if(obj.hp <= 0){
-		console.log("fully broken");
+		//console.log("fully broken");
 		obj.scale = 0;
 		obj.ty = -5;
 		obj.tz = 0;
@@ -280,7 +281,7 @@ function checkHp(obj){
 		obj.vz = 0;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	} else if(obj.hp < obj.maxHp / 3){
-		console.log("realy broken");
+		//console.log("realy broken");
 		switch(obj.type){
 			case "glassVerticalPlane":
 				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
@@ -319,7 +320,7 @@ function checkHp(obj){
 				break;
 		}
 	} else if(obj.hp < (obj.maxHp / 3) * 2){
-		console.log("half broken");
+		//console.log("half broken");
 		switch(obj.type){
 			case "glassVerticalPlane":
 				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
