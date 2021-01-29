@@ -44,6 +44,7 @@ var bombY = 0;
 
 //
 var birdCollides = false;
+var landed = false;
 var birdPosition;
 
 
@@ -65,7 +66,7 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
-	if(!birdCollides){
+	if(!birdCollides && !landed){
 		let velys = v*Math.sin(utils.degToRad(angle));
 		let velyg = g*t;
 	
@@ -83,7 +84,7 @@ function birdTrajectory(index){
 		isColliding(bird);
 	}else{
 	
-		if(bird.isStable && velz < 0.001){
+		if((bird.isStable && velz < 0.001) || landed){
 			killBird(bird,index,3000);
 			rotation = 0.0;
 			scaling = 0.5;
@@ -108,8 +109,7 @@ function birdTrajectory(index){
 	}
 
 	if(trajectoryY - BIRD_RADIUS <= ground){
-		birdCollides = true;
-		bird.isStable = true;
+		landed = true;
 		killBird(bird,index, 3000);
 		rotation = 0.0;
 		scaling = 0.5;
