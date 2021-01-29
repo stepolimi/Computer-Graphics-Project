@@ -168,6 +168,11 @@ function isColliding(bird){
 	for(let i = 0; i < structureObjs.length; i++ ){
 		let objY = structureObjs[i].ty;
 		let objZ = structureObjs[i].tz;
+		let objYsup = objY + structureObjs[i].rady;
+		let objYinf = objY - structureObjs[i].rady;
+		let objZstart = objZ - structureObjs[i].radz;
+		let objZend = objZ + structureObjs[i].radz;
+
 		radiusY = structureObjs[i].rady;
 		radiusZ = structureObjs[i].radz;
 
@@ -288,37 +293,37 @@ function checkHp(obj){
 		//console.log("realy broken");
 		switch(obj.type){
 			case "glassVerticalPlane":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodVerticalPlane":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "glassHorizontalPlane":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodHorizontalPlane":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "glassPyramid":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "glassBox":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodPyramid":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodBox":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "stoneSquare":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "stonePyramid":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "stoneBox":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			default:
 				break;
@@ -330,34 +335,34 @@ function checkHp(obj){
 				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodVerticalPlane":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "glassHorizontalPlane":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodHorizontalPlane":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "glassPyramid":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "glassBox":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodPyramid":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodBox":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "stoneSquare":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "stonePyramid":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "stoneBox":
-				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
+				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			default:
 				break;
