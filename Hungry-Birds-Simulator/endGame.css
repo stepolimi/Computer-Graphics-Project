@@ -1,0 +1,282 @@
+@font-face{
+    font-family: AngryBirds;
+    src: url(fonts/AngryBirds\ Regular\ 400.ttf);
+}
+
+@font-face{
+    font-family: AngryBirds;
+    src: url(fonts/AngryBirds\ Regular\ 400.ttf);
+}
+body {
+    margin: 0;
+    background-image: url('resources/background.jpg');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+#canvas {
+    display: block;
+    z-index: 0;
+    background-image: url('resources/in-game-background.png');
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+#title{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 4.5vmax;
+}
+
+#div-play-game{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#div-play-game div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+#play-button {
+    height:15vmin; 
+    width:30vmax; 
+    border-radius: 4vmin;
+    background-color: transparent;
+    border: 1vmin solid #ffa000;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+}
+
+#div-commands{
+    padding-bottom: 5vmin;
+}
+
+#score-div{
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    z-index: 1;
+}
+
+#score{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 1.5vmax;
+    z-index: 1;
+}
+
+#menu{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+#menu-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 5vmin; 
+    width: 10vmax; 
+    border-radius: 2vmin;
+    margin: 1vmin;
+    background-color: transparent;
+    border: 0.5vmin solid #ffa000;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    z-index: 1;
+}
+
+#exit{
+    position: absolute;
+    top: 3vmin;
+    right: 0px;
+    z-index: 1;
+}
+
+#exit-button {
+    position: absolute;
+    top: 3vmin;
+    right: 3vmin;
+    height: 5vmin; 
+    width: 7vmax; 
+    border-radius: 2vmin;
+    margin: 1vmin;
+    background-color: transparent;
+    border: 0.5vmin solid #ffa000;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    z-index: 1;
+}
+
+#commands-button {
+    height:10vmin; 
+    width:20vmax; 
+    border-radius: 4vmin;
+    background-color: transparent;
+    border: 1vmin solid #ffa000;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    padding-bottom: 10vmin;
+}
+
+
+#play-button:hover{
+    background-color: #ffb300;
+}
+
+#play-button:focus{
+    outline-style: none;
+}
+
+#commands-button:hover{
+    background-color: #ffb300;
+}
+
+#commands-button:focus{
+    outline-style: none;
+}
+
+#menu-button:hover{
+    background-color: #ffb300;
+}
+
+#menu-button:focus{
+    outline-style: none;
+}
+
+#exit-button:hover{
+    background-color: #ffb300;
+}
+
+#exit-button:focus{
+    outline-style: none;
+}
+
+#play-text{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 4.5vmax;
+}
+
+#commands-text{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 3.5vmax;
+}
+
+#menu-text{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 1.5vmax;
+    z-index: 1;
+}
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #ffb300;
+    margin-top: 30vmin;
+    padding-bottom: 4vmin;
+    border: 1vmin solid #ffa000;
+  }
+
+  .modal-content li{
+    font-family: AngryBirds;
+    font-weight: bold;
+    font-size: 1vmax;
+    padding: 0.5vmin;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #000000;
+    padding-left: 95vmax;
+    float: inline-end;
+    font-size: 3vmax;
+    font-weight: bold;
+  }
+  
+  .close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modalInGame {
+    top: 0px;
+    left: 0px;
+    position: absolute; /* Stay in place */
+    height: 100%;
+    width: 100%;
+    z-index: 2; /* Sit on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-contentInGame {
+    background-color: #ffb300;
+    margin-top: 30vmin;
+    padding-bottom: 2vmin;
+    border: 1vmin solid #ffa000;
+  }
+
+  .modal-contentInGame li{
+    font-family: AngryBirds;
+    font-weight: bold;
+    font-size: 1vmax;
+    padding: 0.5vmin;
+    margin-left: 40vmax;
+    margin-right: 30%;
+  }
+  
+  /* The Close Button */
+  .closeMenu {
+    color: #000000;
+    margin-left: 95vmax;
+    margin-top: 1vmin;
+    padding: 0vmin;
+    float: inline-end;
+    font-size: 3vmax;
+    font-weight: bold;
+  }
+  
+  .closeMenu:hover, .closeMenu:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+#score-div{
+    position: absolute;
+    z-index: 1;
+}
+
+#score{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 1.5vmax;
+    z-index: 1;
+}
