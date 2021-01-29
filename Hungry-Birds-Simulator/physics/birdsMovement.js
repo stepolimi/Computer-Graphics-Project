@@ -47,8 +47,11 @@ var birdCollides = false;
 var landed = false;
 var birdPosition;
 
-
 var ground = -0.4;
+
+//score variables
+var score
+var scoreDiv = document.getElementById("score");
 
 function birdTrajectory(index){
 	let bird = birdsArray[index-2];
@@ -224,11 +227,6 @@ function birdCollision(bird, obj){
 
 	obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 	obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
-/*
-	console.log("bird pz: " + bird.m * velz);
-	console.log("bird py: " + bird.m * vely);
-	console.log("obj pz: " + obj.vz * obj.m);
-	console.log("obj py: " + obj.vy * obj.m);*/
 
 	obj.hp = obj.hp - bird.m * Math.abs(velz) - bird.m * Math.abs(vely);
  
@@ -303,9 +301,10 @@ function collides(objMoving){
 }
 
 function checkHp(obj){
-	console.log(obj.type + ": " + obj.hp);
 	if(obj.hp <= 0){
-		//console.log("fully broken");
+		score += 200;
+		scoreDiv.innerHTML = "Score: " + score;
+
 		obj.scale = 0;
 		obj.ty = -5;
 		obj.tz = 0;
@@ -313,7 +312,9 @@ function checkHp(obj){
 		obj.vz = 0;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	} else if(obj.hp < obj.maxHp / 3){
-		//console.log("realy broken");
+		score += 100;
+		scoreDiv.innerHTML = "Score: " + score;
+
 		switch(obj.type){
 			case "glassVerticalPlane":
 				allMeshes[obj.index].textures = GLASSVERTICAL_BROKEN_1;
@@ -352,7 +353,9 @@ function checkHp(obj){
 				break;
 		}
 	} else if(obj.hp < (obj.maxHp / 3) * 2){
-		//console.log("half broken");
+		score += 50;
+		scoreDiv.innerHTML = "Score: " + score;
+
 		switch(obj.type){
 			case "glassVerticalPlane":
 				allMeshes[obj.index].textures = GLASSVERTICAL_BROKEN_2;
