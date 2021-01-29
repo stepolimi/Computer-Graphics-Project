@@ -178,14 +178,15 @@ function checkBirdStability(bird){
 function isColliding(bird){
 	let tollerance = 0.1;
 	for(let i = 0; i < structureObjs.length; i++ ){
+		let obj = structureObjs[i];
 		let birdInf = bird.ty - BIRD_RADIUS;
 		let birdSup = bird.ty + BIRD_RADIUS;
 		let birdStart = bird.tz - BIRD_RADIUS;
 		let birdEnd = bird.tz + BIRD_RADIUS;
-		let objInf = structureObjs[i].ty - structureObjs[i].rady;
-		let objSup = structureObjs[i].ty + structureObjs[i].rady;
-		let objStart = structureObjs[i].tz - structureObjs[i].radz;
-		let objEnd = structureObjs[i].tz + structureObjs[i].radz;
+		let objInf = obj.ty - obj.rady;
+		let objSup = obj.ty + obj.rady;
+		let objStart = obj.tz - obj.radz;
+		let objEnd = obj.tz + obj.radz;
 
 		if(structureObjs[i].type != "egg"){
 			if(objSup > birdInf && obj.ty < birdInf && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
