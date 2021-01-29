@@ -75,26 +75,27 @@ function birdTrajectory(index){
 		bird.ty = trajectoryY;
 		bird.tz = trajectoryZ;
 	}else{
-		let deltaT = t - collisionT;
-		trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
-		trajectoryZ = collisionZ + velz*deltaT;
-		bird.ty = trajectoryY;
-		bird.tz = trajectoryZ;
-
-		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
-		isColliding(bird);
-		checkBirdStability(bird);
-		
-		if(bird.isStable && bird.vz < 0.001){
+	
+		if(bird.isStable && velz < 0.001){
 			bird.ty = -5;
 			bird.tz = 0;
 			vely = 0;
 			velz = 0;
-			worldPositions[obj.index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
+			worldPositions[index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
 
 			busy = false;
 			if(counter == 5)
 				window.location.replace("./endGame.html");
+		} else{
+			let deltaT = t - collisionT;
+			trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
+			trajectoryZ = collisionZ + velz*deltaT;
+			bird.ty = trajectoryY;
+			bird.tz = trajectoryZ;
+	
+			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
+			isColliding(bird);
+			checkBirdStability(bird);
 		}
 	}
 
@@ -135,8 +136,6 @@ function checkBirdStability(bird){
 	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
 			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
-				console.log("tag obj: " + (obj.tz - obj.radz));
-				console.log("tag bird: " + birdZ);
 				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
 					stable = true;
 				} else if(obj.tz + obj.radz > birdZStart && obj.tz - obj.radz <= birdZEnd && obj.tz < birdZ){
@@ -151,15 +150,15 @@ function checkBirdStability(bird){
 			bird.isStable = false;
 		}else{
 			bird.isStable = true;
+			bird.vy = 0;
 			vely = 0;
 		}
 	}
 	else{
 		bird.isStable = true;
+		bird.vy = 0;
 		vely = 0;
 	}
-	console.log("tag stable: "+ stable);
-	console.log("tag isStable: " + bird.isStable);
 }
 
 
