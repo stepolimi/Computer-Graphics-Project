@@ -158,6 +158,8 @@ function checkBirdStability(bird){
 		bird.isStable = true;
 		vely = 0;
 	}
+	console.log("tag stable: "+ stable);
+	console.log("tag isStable: " + bird.isStable);
 }
 
 
