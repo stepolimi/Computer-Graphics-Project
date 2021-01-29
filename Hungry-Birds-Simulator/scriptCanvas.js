@@ -574,7 +574,7 @@ function addMeshToScene(i) {
     //todo: to be moved somewhere else
     //applies gravity to objects
     checkStability();
-    objectFall();
+    //objectFall();
 
     structureObjs.forEach(function(obj) {
         moveObject(obj);
@@ -638,7 +638,7 @@ function checkStability(){
                 }
             });
 
-            if(!stable && !(precStable && sucStable)){
+            if(!stable && !precStable && !sucStable){
                 objTocheck.isStable = false;
             }else{
                 objTocheck.isStable = true;
