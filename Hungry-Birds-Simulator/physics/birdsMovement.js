@@ -87,7 +87,7 @@ function birdTrajectory(index){
 	}else{
 	
 		if((bird.isStable && velz < 0.001) || landed){
-			killBird(bird,index,3000);
+			killBird(bird,index,1000);
 			rotation = 0.0;
 			scaling = 0.5;
 			busy = false;
@@ -110,9 +110,9 @@ function birdTrajectory(index){
 		activatePower(index);
 	}
 
-	if(trajectoryY - BIRD_RADIUS <= ground){
+	if(trajectoryY - bird.rady <= ground){
 		landed = true;
-		killBird(bird,index, 3000);
+		killBird(bird,index, 1000);
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
@@ -141,10 +141,10 @@ async function killBird(b,ind, t) {
   }
 
 function checkBirdStability(bird){
-	let birdY = bird.ty - BIRD_RADIUS;
+	let birdY = bird.ty - bird.rady;
 	let birdZ = bird.tz;
-	let birdZStart = bird.tz - BIRD_RADIUS;
-	let birdZEnd = bird.tz + BIRD_RADIUS;
+	let birdZStart = bird.tz - bird.radz;
+	let birdZEnd = bird.tz + bird.radz;
 	let ground = -0.4;
 	let tollerance = 0.05;
 	let stable = false;
@@ -183,10 +183,10 @@ function isColliding(bird){
 	let tollerance = 0.1;
 	for(let i = 0; i < structureObjs.length; i++ ){
 		let obj = structureObjs[i];
-		let birdInf = bird.ty - BIRD_RADIUS;
-		let birdSup = bird.ty + BIRD_RADIUS;
-		let birdStart = bird.tz - BIRD_RADIUS;
-		let birdEnd = bird.tz + BIRD_RADIUS;
+		let birdInf = bird.ty - bird.rady;
+		let birdSup = bird.ty + bird.rady;
+		let birdStart = bird.tz - bird.radz;
+		let birdEnd = bird.tz + bird.radz;
 		let objInf = obj.ty - obj.rady;
 		let objSup = obj.ty + obj.rady;
 		let objStart = obj.tz - obj.radz;
