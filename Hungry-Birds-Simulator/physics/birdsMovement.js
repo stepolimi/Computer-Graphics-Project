@@ -134,7 +134,10 @@ function checkBirdStability(bird){
 
 	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
+			console.log("bird.ty: " + birdY);
+			console.log("bird.ty object: " + obj.ty + obj.rady)
 			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
+				console.log("stable????");
 				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
 					stable = true;
 				} else if(obj.tz + obj.radz > birdZStart && obj.tz - obj.radz <= birdZEnd && obj.tz < birdZ){
@@ -372,7 +375,7 @@ function moveObject(obj){
 		}else{
 			obj.vy = 0;
 		}
-		obj.vz = obj.vz - obj.vz/100;
+		obj.vz = obj.vz - obj.vz/100 * 2;
 		obj.tz = obj.tz + obj.vz * TICK;
 		if(obj.tz < 9.5 || obj.ty - obj.rady > ground)
 			worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
