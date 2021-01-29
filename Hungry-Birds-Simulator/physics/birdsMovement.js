@@ -47,7 +47,10 @@ var birdCollides = false;
 var birdPosition;
 
 function birdTrajectory(index){
+	let bird = birdsArray[index-2];
+
 	activateSound(index);
+
 	if(index != prec){
 		t = 0;
 		prec = index;
@@ -75,7 +78,20 @@ function birdTrajectory(index){
 		trajectoryZ = collisionZ + velz*deltaT;
 
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
-		isColliding(birdsArray[index-2]);
+		isColliding(bird);
+		checkBirdStability(bird);
+		
+		if(bird.isStable && bird.vz < 0.001){
+			bird.ty = -5;
+			bird.tz = 0;
+			vely = 0;
+			velz = 0;
+			worldPositions[obj.index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
+
+			busy = false;
+			if(counter == 5)
+				window.location.replace("./endGame.html");
+		}
 	}
 
 	if(activateBirdPower){
@@ -85,23 +101,56 @@ function birdTrajectory(index){
 	let ground = -0.4;
 
 	if(trajectoryY >= ground && trajectoryY <= 20 && !birdCollides){
-		birdsArray[index-2].ty = trajectoryY;
-		birdsArray[index-2].tz = trajectoryZ;
-		birdsArray[index-2].ry = angle;
-		birdsArray[index-2].rz = rotation;
+		bird.ty = trajectoryY;
+		bird.tz = trajectoryZ;
+		bird.ry = angle;
+		bird.rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
-		isColliding(birdsArray[index-2]);
+		isColliding(bird);
 	}
-	else{
+	/*else{
 		//if velx ==0
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
-/*
 		if(counter == 5)
-			window.location.replace("./endGame.html");*/
-	}
+			window.location.replace("./endGame.html");
+	}*/
 	t += TICK;
+}
+
+function checkBirdStability(bird){
+	let birdY = bird.ty - bird.BIRD_RADIUS;
+	let birdZ = bird.tz;
+	let birdZStart = bird.tz - bird.BIRD_RADIUS;
+	let birdZEnd = bird.tz + bird.BIRD_RADIUS;
+	let ground = -0.4;
+	let tollerance = 0.05;
+
+	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && objTocheck.ty != -5){
+		structureObjs.forEach(function(obj) {
+			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
+				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
+					stable = true;
+				} else if(obj.tz + obj.radz > birdZStart && obj.tz - obj.radz <= birdZEnd && obj.tz < birdZ){
+					stable = true;
+				} else if(obj.tz - obj.radz < birdZEnd && obj.tz + obj.radz >= birdZStart){
+					stable = true;
+				}
+			}
+		});
+
+		if(!stable){
+			bird.isStable = false;
+		}else{
+			bird.isStable = true;
+			vely = 0;
+		}
+	}
+	else{
+		bird.isStable = true;
+		vely = 0;
+	}
 }
 
 
