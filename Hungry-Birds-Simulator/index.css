@@ -52,6 +52,20 @@ body {
     padding-bottom: 5vmin;
 }
 
+#score-div{
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    z-index: 1;
+}
+
+#score{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 1.5vmax;
+    z-index: 1;
+}
+
 #menu{
     position: absolute;
     top: 0px;
