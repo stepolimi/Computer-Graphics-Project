@@ -201,7 +201,7 @@ function collides(objMoving){
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 				
 					objMoving.hp = objMoving.hp - objMoving.m * objMoving.vz;
-					obj = obj.hp - objMoving.m * objMoving.vz;
+					obj.hp = obj.hp - objMoving.m * objMoving.vz;
 					checkHp(objMoving);
 					checkHp(obj)
 
@@ -227,9 +227,9 @@ function checkHp(obj){
 		obj.vy = 0;
 		obj.vz = 0;
 	} else if(obj.hp < obj.hp / 3){
-		//apply almost broken textures
+		worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
 	} else if(obj.hp < (obj.hp / 3) * 2){
-		//apply semi broken textures
+		worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 	}
 }
 
