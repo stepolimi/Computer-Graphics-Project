@@ -94,6 +94,7 @@ function birdTrajectory(index){
 			if(counter == 5)
 				window.location.replace("./endGame.html");
 		} else{
+			checkBirdStability(bird);
 			let deltaT = t - collisionT;
 			trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
 			trajectoryZ = collisionZ + velz*deltaT;
@@ -102,7 +103,6 @@ function birdTrajectory(index){
 	
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 			isColliding(bird);
-			checkBirdStability(bird);
 		}
 	}
 
