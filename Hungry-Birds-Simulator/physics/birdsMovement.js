@@ -74,7 +74,7 @@ function birdTrajectory(index){
 		trajectoryZ = -birdStartingZ + velz*t;
 		bird.ty = trajectoryY;
 		bird.tz = trajectoryZ;
-		checkBirdStability(bird);
+		//checkBirdStability(bird);
 	}else{
 	
 		if(bird.isStable && velz < 0.001){
@@ -109,7 +109,7 @@ function birdTrajectory(index){
 		bird.rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 		isColliding(bird);
-		checkBirdStability(bird);
+		//checkBirdStability(bird);
 	}
 	/*else{
 		//if velx ==0
@@ -126,11 +126,11 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
   
-async function killBird(bird,index) {
-	await sleep(5000);
-	bird.ty = -5;
-	bird.tz = 0;
-	worldPositions[index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
+async function killBird(b,ind) {
+	await sleep(3000);
+	b.ty = -5;
+	b.tz = 0;
+	worldPositions[ind] = utils.MakeWorld(b.tx , b.ty, b.tz, b.rx, b.ry, b.rz, 0);
   }
 
 function checkBirdStability(bird){
