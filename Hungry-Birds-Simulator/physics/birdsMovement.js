@@ -74,6 +74,7 @@ function birdTrajectory(index){
 		trajectoryZ = -birdStartingZ + velz*t;
 		bird.ty = trajectoryY;
 		bird.tz = trajectoryZ;
+		checkBirdStability(bird);
 	}else{
 	
 		if(bird.isStable && velz < 0.001){
@@ -108,6 +109,7 @@ function birdTrajectory(index){
 		bird.rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 		isColliding(bird);
+		checkBirdStability(bird);
 	}
 	/*else{
 		//if velx ==0
@@ -163,6 +165,7 @@ function checkBirdStability(bird){
 	}
 	else{
 		bird.isStable = true;
+		birdCollides = true;
 		bird.vy = 0;
 		vely = 0;
 	}
