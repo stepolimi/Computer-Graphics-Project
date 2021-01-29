@@ -75,26 +75,27 @@ function birdTrajectory(index){
 		bird.ty = trajectoryY;
 		bird.tz = trajectoryZ;
 	}else{
-		let deltaT = t - collisionT;
-		trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
-		trajectoryZ = collisionZ + velz*deltaT;
-		bird.ty = trajectoryY;
-		bird.tz = trajectoryZ;
-
-		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
-		isColliding(bird);
-		checkBirdStability(bird);
-		
+	
 		if(bird.isStable && velz < 0.001){
 			bird.ty = -5;
 			bird.tz = 0;
 			vely = 0;
 			velz = 0;
-			worldPositions[obj.index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
+			worldPositions[index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
 
 			busy = false;
 			if(counter == 5)
 				window.location.replace("./endGame.html");
+		} else{
+			let deltaT = t - collisionT;
+			trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
+			trajectoryZ = collisionZ + velz*deltaT;
+			bird.ty = trajectoryY;
+			bird.tz = trajectoryZ;
+	
+			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
+			isColliding(bird);
+			checkBirdStability(bird);
 		}
 	}
 
