@@ -279,7 +279,6 @@ function scaleSlingElasticZ(){
 	var midValue = canvas.height / 2;
 	
 	elasticForce = elasticScalingZ*5.5;
-	console.log("elasticForce " + elasticForce);
 	if(elasticForce < 0.7 && !isReleased)     
 		elasticScalingZ += SLING_ELASTIC_Z_SCALING_SPEED;	
 

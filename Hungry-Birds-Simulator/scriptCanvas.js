@@ -665,14 +665,16 @@ function checkStability(){
             }
         }
         else{
-            let hit = Math.abs(objTocheck.vy) * objTocheck.m;
-            objTocheck.hp = objTocheck.hp - hit;
-            checkHp(objTocheck);
-
-            hitObjs.forEach(function(obj) {
-                obj.hp = obj.hp - hit;
-                checkHp(obj)
-            });
+            if(objTocheck.vy != 0){
+                let hit = Math.abs(objTocheck.vy) * objTocheck.m;
+                objTocheck.hp = objTocheck.hp - hit;
+                checkHp(objTocheck);
+    
+                hitObjs.forEach(function(obj) {
+                    obj.hp = obj.hp - hit;
+                    checkHp(obj)
+                });
+            }
             objTocheck.isStable = true;
             if(!objTocheck.isMoving){
                 objTocheck.vy = 0;

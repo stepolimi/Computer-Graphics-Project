@@ -220,6 +220,7 @@ function collides(objMoving){
 }
 
 function checkHp(obj){
+	console.log(obj.type + ": " + obj.hp);
 	if(obj.hp <= 0){
 		console.log("fully broken");
 		obj.scale = 0;
