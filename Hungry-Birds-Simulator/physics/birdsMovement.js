@@ -46,6 +46,9 @@ var bombY = 0;
 var birdCollides = false;
 var birdPosition;
 
+
+var ground = -0.4;
+
 function birdTrajectory(index){
 	let bird = birdsArray[index-2];
 
@@ -62,7 +65,6 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
-	//second check this thing
 	if(!birdCollides){
 		let velys = v*Math.sin(utils.degToRad(angle));
 		let velyg = g*t;
@@ -74,12 +76,17 @@ function birdTrajectory(index){
 		trajectoryZ = -birdStartingZ + velz*t;
 		bird.ty = trajectoryY;
 		bird.tz = trajectoryZ;
-		//checkBirdStability(bird);
+
+		bird.ry = angle;
+		bird.rz = rotation;
+		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
+		isColliding(bird);
 	}else{
 	
 		if(bird.isStable && velz < 0.001){
-			killBird(bird,index);
-
+			killBird(bird,index,3000);
+			rotation = 0.0;
+			scaling = 0.5;
 			busy = false;
 			if(counter == 5)
 				window.location.replace("./endGame.html");
@@ -100,25 +107,21 @@ function birdTrajectory(index){
 		activatePower(index);
 	}
 
-	let ground = -0.4;
-
-	if(trajectoryY >= ground && trajectoryY <= 20 && !birdCollides){
-		bird.ty = trajectoryY;
-		bird.tz = trajectoryZ;
-		bird.ry = angle;
-		bird.rz = rotation;
-		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
-		isColliding(bird);
-		//checkBirdStability(bird);
-	}
-	/*else{
-		//if velx ==0
+	if(trajectoryY - BIRD_RADIUS <= ground){
+		killBird(bird,index, 3000);
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
 		if(counter == 5)
 			window.location.replace("./endGame.html");
-	}*/
+	} else if(trajectoryY > 20){
+		killBird(bird,index, 0);
+		rotation = 0.0;
+		scaling = 0.5;
+		busy = false;
+		if(counter == 5)
+			window.location.replace("./endGame.html");
+	}
 	t += TICK;
 }
 
@@ -126,8 +129,8 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
   
-async function killBird(b,ind) {
-	await sleep(3000);
+async function killBird(b,ind, t) {
+	await sleep(t);
 	b.ty = -5;
 	b.tz = 0;
 	worldPositions[ind] = utils.MakeWorld(b.tx , b.ty, b.tz, b.rx, b.ry, b.rz, 0);
@@ -173,23 +176,28 @@ function checkBirdStability(bird){
 
 
 function isColliding(bird){
-	let radiusY;
-	let radiusZ;
+	let tollerance = 0.1;
 	for(let i = 0; i < structureObjs.length; i++ ){
-		let objY = structureObjs[i].ty;
-		let objZ = structureObjs[i].tz;
-		let objYsup = objY + structureObjs[i].rady;
-		let objYinf = objY - structureObjs[i].rady;
-		let objZstart = objZ - structureObjs[i].radz;
-		let objZend = objZ + structureObjs[i].radz;
-
-		radiusY = structureObjs[i].rady;
-		radiusZ = structureObjs[i].radz;
+		let birdInf = bird.ty - BIRD_RADIUS;
+		let birdSup = bird.ty + BIRD_RADIUS;
+		let birdStart = bird.tz - BIRD_RADIUS;
+		let birdEnd = bird.tz + BIRD_RADIUS;
+		let objInf = structureObjs[i].ty - structureObjs[i].rady;
+		let objSup = structureObjs[i].ty + structureObjs[i].rady;
+		let objStart = structureObjs[i].tz - structureObjs[i].radz;
+		let objEnd = structureObjs[i].tz + structureObjs[i].radz;
 
 		if(structureObjs[i].type != "egg"){
-			if(objY > trajectoryY + BIRD_RADIUS || trajectoryY > objY + radiusY || objZ > trajectoryZ + BIRD_RADIUS || trajectoryZ > objZ + radiusZ)
-				;
-			else{
+			if(objSup > birdInf && obj.ty < birdInf && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
+				if(vely <= -0.0001 || velz >= 0.0001){
+					birdCollides = true;
+					collisionY = trajectoryY;
+					collisionZ = trajectoryZ;
+					collisionT = t;
+				
+					birdCollision(bird, structureObjs[i]);
+				}
+			} else if(objStart < birdEnd && obj.tz > birdEnd && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
 				if(vely <= -0.0001 || velz >= 0.0001){
 					birdCollides = true;
 					collisionY = trajectoryY;
@@ -199,8 +207,8 @@ function isColliding(bird){
 					birdCollision(bird, structureObjs[i]);
 				}
 			}
-		}
-	}	
+		}	
+	}
 }
 
 //urto
