@@ -9,6 +9,7 @@ class birdObject {
 		this.rz = rz;
 		this.m = m;
 		this.type = type;
+		this.isStable = false;
 		this.isColliding = false;
 	}
 }

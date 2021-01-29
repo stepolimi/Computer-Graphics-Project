@@ -404,8 +404,7 @@ async function loadMeshes(){
     randomizePigs();
     
     //pseudo randomize blocks
-    defineStructureObjs();
-
+    await defineStructureObjs();
 
     allMeshes = [
         environment,            //0
@@ -479,7 +478,7 @@ async function loadMeshes(){
     ];
 
 }
-  
+
 
 function setUpScene(){
 
@@ -575,7 +574,7 @@ function addMeshToScene(i) {
     //todo: to be moved somewhere else
     //applies gravity to objects
     checkStability();
-    objectFall();
+    //objectFall();
 
     structureObjs.forEach(function(obj) {
         moveObject(obj);
@@ -622,26 +621,42 @@ function checkStability(){
         let precStable = false;
         let sucStable = false;
         let ground = -0.4;
+        let hitObjs = [];
 
-        if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
+        if( !((ground > objY - tollerance) && (ground < objY + tollerance)) && objTocheck.ty != -5){
             structureObjs.forEach(function(obj) {
                 if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
                     if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
                         stable = true;
+                        hitObjs.push(obj);
                     }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd && obj.tz < objZ){
                         precStable = true;
                         objTocheck.supLeftPieces.push(obj);
+                        hitObjs.push(obj);
                     }
-                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZEnd){
+                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
                         sucStable = true;
                         objTocheck.supRightPieces.push(obj);
+                        hitObjs.push(obj);
                     }
                 }
             });
 
-            if(!stable && !(precStable && sucStable)){
+            //to be changed in !stable && !(precStable && sucStable) for full stability, as well as decommenting objectFall call
+            if(!stable && !precStable && !sucStable){
                 objTocheck.isStable = false;
             }else{
+                if(objTocheck.vy != 0){
+                    let hit = Math.abs(objTocheck.vy) * objTocheck.m;
+                    objTocheck.hp = objTocheck.hp - hit;
+                    checkHp(objTocheck);
+    
+                    hitObjs.forEach(function(obj) {
+                        obj.hp = obj.hp - hit;
+                        checkHp(obj)
+                    });
+                }
+
                 objTocheck.isStable = true;
                 if(!objTocheck.isMoving){
                     objTocheck.vy = 0;
@@ -650,6 +665,16 @@ function checkStability(){
             }
         }
         else{
+            if(objTocheck.vy != 0){
+                let hit = Math.abs(objTocheck.vy) * objTocheck.m;
+                objTocheck.hp = objTocheck.hp - hit;
+                checkHp(objTocheck);
+    
+                hitObjs.forEach(function(obj) {
+                    obj.hp = obj.hp - hit;
+                    checkHp(obj)
+                });
+            }
             objTocheck.isStable = true;
             if(!objTocheck.isMoving){
                 objTocheck.vy = 0;

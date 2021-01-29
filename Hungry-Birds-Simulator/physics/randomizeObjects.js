@@ -213,7 +213,7 @@ async function randomizePigs(){
                 break;
                 
         }
-        console.log("maiali : " + pigChoice);
+        console.log("maiali : " + pigChoiche);
     }
 }
 
@@ -237,10 +237,10 @@ async function defineStructureObjs(){
     structureObjs.push(new structureObjects(0.0, 1.5 , 8.6, 0.0, 0.0, 0.0,  "tnt", 63, mass ));
 
 
-    randomizeCube();
-    randomizePyramid();
-    randomizeVerticalPlane();
-    randomizeHorizontalPlane();
+    await randomizeCube();
+    await randomizePyramid();
+    await randomizeVerticalPlane();
+    await randomizeHorizontalPlane();
 }
 
 
