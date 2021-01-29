@@ -57,6 +57,8 @@ function birdTrajectory(index){
 
 	if(index != prec){
 		t = 0;
+		landed = false;
+		birdCollides = false;
 		prec = index;
 		v = BIRD_SPEED * elasticForce;
 	}
