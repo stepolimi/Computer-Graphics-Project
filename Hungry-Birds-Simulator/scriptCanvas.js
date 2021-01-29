@@ -404,8 +404,9 @@ async function loadMeshes(){
     randomizePigs();
     
     //pseudo randomize blocks
-    await defineStructureObjs();
+    defineStructureObjs();
 
+    await sleep(20000);
 
     allMeshes = [
         environment,            //0
@@ -479,6 +480,10 @@ async function loadMeshes(){
     ];
 
 }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }  
   
 
 function setUpScene(){
