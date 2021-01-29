@@ -20,7 +20,7 @@ body {
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
 }
-#score{
+#endScore{
     font-family: AngryBirds;
     font-weight: bolder;
     font-size: 4.5vmax;

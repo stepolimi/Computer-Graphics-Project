@@ -96,7 +96,7 @@ function birdTrajectory(index){
 			busy = false;
 			if(counter == 5){
 				window.location.replace("./endGame.html");
-				document.getElementById("score").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
+				document.getElementById("endScore").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
 			}
 		} else{
 			checkBirdStability(bird);
@@ -123,7 +123,7 @@ function birdTrajectory(index){
 		busy = false;
 		if(counter == 5){
 			window.location.replace("./endGame.html");
-			document.getElementById("score").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
+			document.getElementById("endScore").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
 		}
 	} else if(trajectoryY > 20){
 		killBird(bird,index, 0);
@@ -132,7 +132,7 @@ function birdTrajectory(index){
 		busy = false;
 		if(counter == 5){
 			window.location.replace("./endGame.html");
-			document.getElementById("score").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
+			document.getElementById("endScore").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
 		}
 	}
 	t += TICK;
