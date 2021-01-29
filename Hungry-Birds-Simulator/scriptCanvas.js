@@ -631,13 +631,14 @@ function checkStability(){
                         precStable = true;
                         objTocheck.supLeftPieces.push(obj);
                     }
-                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZEnd){
+                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
                         sucStable = true;
                         objTocheck.supRightPieces.push(obj);
                     }
                 }
             });
 
+            //to be changed in !stable && !(precStable && sucStable) for full stability, as well as decommenting objectFall call
             if(!stable && !precStable && !sucStable){
                 objTocheck.isStable = false;
             }else{
