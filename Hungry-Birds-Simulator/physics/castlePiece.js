@@ -69,6 +69,9 @@ class structureObjects {
 		} else if(type == "egg"){
 			this.hp = 0.1;
 			this.maxHp = 0.1;
+		} else if(type == "tnt"){
+			this.hp = 3;
+			this.maxHp = 3;
 		} else{
 			this.hp = 1000;
 			this.maxHp = 1000;
