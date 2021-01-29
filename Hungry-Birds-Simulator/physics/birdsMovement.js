@@ -226,9 +226,9 @@ function checkHp(obj){
 		obj.tz = 0;
 		obj.vy = 0;
 		obj.vz = 0;
-	} else if(obj.hp < obj.hp / 3){
+	} else if(obj.hp < obj.maxHp / 3){
 		worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
-	} else if(obj.hp < (obj.hp / 3) * 2){
+	} else if(obj.hp < (obj.maxHp / 3) * 2){
 		worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;
 	}
 }
