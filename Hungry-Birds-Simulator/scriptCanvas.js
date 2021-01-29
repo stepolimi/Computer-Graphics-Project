@@ -623,7 +623,7 @@ function checkStability(){
         let ground = -0.4;
         let hitObjs = [];
 
-        if( !((ground > objY - tollerance) && (ground < objY + tollerance))){
+        if(ground < objY - tollerance){
             structureObjs.forEach(function(obj) {
                 if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
                     if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
