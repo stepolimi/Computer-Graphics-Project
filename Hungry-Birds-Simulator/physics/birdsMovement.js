@@ -309,7 +309,15 @@ function collides(objMoving){
 function checkHp(obj){
 	scoreDiv = document.getElementById("score");
 	if(obj.hp <= 0){
-		score += 200;
+		if(obj.type == "pig"){
+			score += 500;
+		}else if(obj.type == "pigHelmet"){
+			score += 750;
+		}else if(obj.type == "pigMustache"){
+			score += 1000;
+		}else {
+			score += 200;
+		}
 		scoreDiv.innerHTML = "Score: " + score;
 
 		obj.scale = 0;
