@@ -220,16 +220,13 @@ function collides(objMoving){
 }
 
 function checkHp(obj){
-	console.log(obj.type + ": " + obj.hp);
 	if(obj.hp <= 0){
-		console.log("fully broken");
 		obj.scale = 0;
 		obj.ty = -5;
 		obj.tz = 0;
 		obj.vy = 0;
 		obj.vz = 0;
 	} else if(obj.hp < obj.maxHp / 3){
-		console.log("realy broken");
 		switch(obj.type){
 			case "glassVerticalPlane":
 				worldPositions[obj.index].textures = GLASSBOX_BROKEN_1;
@@ -268,7 +265,6 @@ function checkHp(obj){
 				break;
 		}
 	} else if(obj.hp < (obj.maxHp / 3) * 2){
-		console.log("half broken");
 		switch(obj.type){
 			case "glassVerticalPlane":
 				worldPositions[obj.index].textures = GLASSBOX_BROKEN_2;

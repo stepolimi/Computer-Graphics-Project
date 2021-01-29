@@ -625,19 +625,21 @@ function checkStability(){
 
         if( !((ground > objY - tollerance) && (ground < objY + tollerance)) && objTocheck.ty != -5){
             structureObjs.forEach(function(obj) {
-                if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
-                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
-                        stable = true;
-                        hitObjs.push(obj);
-                    }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd && obj.tz < objZ){
-                        precStable = true;
-                        objTocheck.supLeftPieces.push(obj);
-                        hitObjs.push(obj);
-                    }
-                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
-                        sucStable = true;
-                        objTocheck.supRightPieces.push(obj);
-                        hitObjs.push(obj);
+                if(obj.ty != -5){
+                    if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
+                        if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
+                            stable = true;
+                            hitObjs.push(obj);
+                        }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd && obj.tz < objZ){
+                            precStable = true;
+                            objTocheck.supLeftPieces.push(obj);
+                            hitObjs.push(obj);
+                        }
+                        else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
+                            sucStable = true;
+                            objTocheck.supRightPieces.push(obj);
+                            hitObjs.push(obj);
+                        }
                     }
                 }
             });
