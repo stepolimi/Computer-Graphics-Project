@@ -85,7 +85,7 @@ function birdTrajectory(index){
 		isColliding(bird);
 		checkBirdStability(bird);
 		
-		if(bird.isStable && bird.vz < 0.001){
+		if(bird.isStable && velz < 0.001){
 			bird.ty = -5;
 			bird.tz = 0;
 			vely = 0;
@@ -135,8 +135,6 @@ function checkBirdStability(bird){
 	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
 			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
-				console.log("tag obj: " + (obj.tz - obj.radz));
-				console.log("tag bird: " + birdZ);
 				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
 					stable = true;
 				} else if(obj.tz + obj.radz > birdZStart && obj.tz - obj.radz <= birdZEnd && obj.tz < birdZ){
@@ -151,15 +149,15 @@ function checkBirdStability(bird){
 			bird.isStable = false;
 		}else{
 			bird.isStable = true;
+			bird.vy = 0;
 			vely = 0;
 		}
 	}
 	else{
 		bird.isStable = true;
+		bird.vy = 0;
 		vely = 0;
 	}
-	console.log("tag stable: "+ stable);
-	console.log("tag isStable: " + bird.isStable);
 }
 
 

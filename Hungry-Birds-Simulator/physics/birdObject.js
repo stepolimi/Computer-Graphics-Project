@@ -7,6 +7,9 @@ class birdObject {
 		this.rx = rx;
 		this.ry = ry;
 		this.rz = rz;
+		this.vx = 0;
+		this.vy = 0;
+		this.vz = 0;
 		this.m = m;
 		this.type = type;
 		this.isStable = false;
