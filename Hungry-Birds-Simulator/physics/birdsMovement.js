@@ -124,20 +124,17 @@ function birdTrajectory(index){
 }
 
 function checkBirdStability(bird){
-	let birdY = bird.ty - bird.BIRD_RADIUS;
+	let birdY = bird.ty - BIRD_RADIUS;
 	let birdZ = bird.tz;
-	let birdZStart = bird.tz - bird.BIRD_RADIUS;
-	let birdZEnd = bird.tz + bird.BIRD_RADIUS;
+	let birdZStart = bird.tz - BIRD_RADIUS;
+	let birdZEnd = bird.tz + BIRD_RADIUS;
 	let ground = -0.4;
 	let tollerance = 0.05;
 	let stable = false;
 
 	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
-			console.log("bird.ty: " + birdY);
-			console.log("bird.ty object: " + obj.ty + obj.rady)
 			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
-				console.log("stable????");
 				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
 					stable = true;
 				} else if(obj.tz + obj.radz > birdZStart && obj.tz - obj.radz <= birdZEnd && obj.tz < birdZ){
