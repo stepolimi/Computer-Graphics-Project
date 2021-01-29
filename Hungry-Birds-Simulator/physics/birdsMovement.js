@@ -141,11 +141,15 @@ function birdCollision(bird, obj){
 
 	obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 	obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
-
+/*
 	console.log("bird pz: " + bird.m * velz);
 	console.log("bird py: " + bird.m * vely);
 	console.log("obj pz: " + obj.vz * obj.m);
-	console.log("obj py: " + obj.vy * obj.m);
+	console.log("obj py: " + obj.vy * obj.m);*/
+
+	obj.hp = obj.hp - bird.m * velz - bird.m * vely;
+ 
+	checkHp(obj);
 
 	velz = birdVzFinal;
 	vely = birdVyFinal;
@@ -158,50 +162,75 @@ function collides(objMoving){
 	let tollerance = 0.1;
 
 	structureObjs.forEach(function(obj) {
-		let objMovingInf = objMoving.ty - objMoving.rady;
-		let objMovingSup = objMoving.ty + objMoving.rady;
-		let objMovingStart = objMoving.tz - objMoving.radz;
-		let objMovingEnd = objMoving.tz + objMoving.radz;
-		let objInf = obj.ty - obj.rady;
-		let objSup = obj.ty + obj.rady;
-		let objStart = obj.tz - obj.radz;
-		let objEnd = obj.tz + obj.radz;
+		if(obj.scale > 0 && obj != objMoving){
+			let objMovingInf = objMoving.ty - objMoving.rady;
+			let objMovingSup = objMoving.ty + objMoving.rady;
+			let objMovingStart = objMoving.tz - objMoving.radz;
+			let objMovingEnd = objMoving.tz + objMoving.radz;
+			let objInf = obj.ty - obj.rady;
+			let objSup = obj.ty + obj.rady;
+			let objStart = obj.tz - obj.radz;
+			let objEnd = obj.tz + obj.radz;
+	
+			if(objSup > objMovingInf && obj.ty < objMovingInf && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
+				if(objMoving.vy <= -0.0001){
+					let elasticCoefficient = 0.4;
+					let thisVyFinal = objMoving.vy * elasticCoefficient;
+					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
-		if(objSup > objMovingInf && obj.ty < objMovingInf && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
-			if(objMoving.vy <= -0.0001){
-				let elasticCoefficient = 0.4;
-				let thisVyFinal = objMoving.vy * elasticCoefficient;
-				obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
-				objMoving.vy = thisVyFinal;
-				
-				obj.isMoving = true;
-			}else{
-				objMoving.vy = 0;
-				if(objMoving.vz <= 0.0001){
-					objMoving.vz = 0;
-					objMoving.isMoving = false;
+					objMoving.hp = objMoving.hp - objMoving.m * objMoving.vy;
+					obj = obj.hp - objMoving.m * objMoving.vy;
+					checkHp(objMoving);
+					checkHp(obj)
+
+					objMoving.vy = thisVyFinal;
+					obj.isMoving = true;
+				}else{
+					objMoving.vy = 0;
+					if(objMoving.vz <= 0.0001){
+						objMoving.vz = 0;
+						objMoving.isMoving = false;
+					}
 				}
 			}
-		}
+	
+			if(objStart < objMovingEnd && obj.tz > objMovingEnd && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
+				if(objMoving.vz >= 0.0001){
+					let elasticCoefficient = 0.4;
+					let thisVzFinal = objMoving.vz * elasticCoefficient;
+					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+				
+					objMoving.hp = objMoving.hp - objMoving.m * objMoving.vz;
+					obj = obj.hp - objMoving.m * objMoving.vz;
+					checkHp(objMoving);
+					checkHp(obj)
 
-		if(objStart < objMovingEnd && obj.tz > objMovingEnd && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
-			if(objMoving.vz >= 0.0001){
-				let elasticCoefficient = 0.4;
-				let thisVzFinal = objMoving.vz * elasticCoefficient;
-				obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
-			
-				objMoving.vz = thisVzFinal;
-
-				obj.isMoving = true;
-			}else{
-				objMoving.vz = 0;
-				if(objMoving.vy >= -0.0001){
-					objMoving.vy = 0;
-					objMoving.isMoving = false;
+					objMoving.vz = thisVzFinal;
+					obj.isMoving = true;
+				}else{
+					objMoving.vz = 0;
+					if(objMoving.vy >= -0.0001){
+						objMoving.vy = 0;
+						objMoving.isMoving = false;
+					}
 				}
 			}
 		}
 	});
+}
+
+function checkHp(obj){
+	if(obj.hp <= 0){
+		obj.scale = 0;
+		obj.ty = -5;
+		obj.tz = 0;
+		obj.vy = 0;
+		obj.vz = 0;
+	} else if(obj.hp < obj.hp / 3){
+		//apply almost broken textures
+	} else if(obj.hp < (obj.hp / 3) * 2){
+		//apply semi broken textures
+	}
 }
 
 function moveObject(obj){

@@ -14,7 +14,8 @@ class structureObjects {
 		this.durability = 3;
 		this.index = index;
 		this.type = type;
-		this.hp = 3;
+		this.hp;
+		this.maxHp;
 		this.isColliding = false;
 		this.isStable = true;
 		this.isMoving = false;
@@ -48,6 +49,29 @@ class structureObjects {
 		} else{
 			this.rady = STRUCTURE_OBJ_RADIUS;
 			this.radz = STRUCTURE_OBJ_RADIUS;
+		}
+
+		if(type == "glassVerticalPlane" || type == "glassHorizontalPlane" || type == "glassPyramid" || type == "glassBox" ){
+			this.hp = 5;
+			this.maxHp = 5;
+		} else 	if(type == "woodVerticalPlane" || type == "woodHorizontalPlane" || type == "woodPyramid" || type == "woodBox" ){
+			this.hp = 10;
+			this.maxHp = 10;
+		} else  if(type == "stoneSquare" || type == "stonePyramid" || type == "stoneBox" ){
+			this.hp = 15;
+			this.maxHp = 15;
+		} else 	if(type == "pig" ){
+			this.hp = 5;
+			this.maxHp = 5;
+		} else if(type == "pigHelmet" || type == "pigMustache" ){
+			this.hp = 10;
+			this.maxHp = 10;
+		} else if(type == "egg"){
+			this.hp = 1;
+			this.maxHp = 1;
+		} else{
+			this.hp = 1000;
+			this.maxHp = 1000;
 		}
 	}
 }
