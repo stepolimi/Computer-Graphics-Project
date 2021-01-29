@@ -77,11 +77,7 @@ function birdTrajectory(index){
 	}else{
 	
 		if(bird.isStable && velz < 0.001){
-			bird.ty = -5;
-			bird.tz = 0;
-			vely = 0;
-			velz = 0;
-			worldPositions[index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
+			killBird(bird,index);
 
 			busy = false;
 			if(counter == 5)
@@ -124,6 +120,17 @@ function birdTrajectory(index){
 	t += TICK;
 }
 
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+  
+async function killBird(bird,index) {
+	await sleep(5000);
+	bird.ty = -5;
+	bird.tz = 0;
+	worldPositions[index] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
+  }
+
 function checkBirdStability(bird){
 	let birdY = bird.ty - BIRD_RADIUS;
 	let birdZ = bird.tz;
@@ -133,7 +140,7 @@ function checkBirdStability(bird){
 	let tollerance = 0.05;
 	let stable = false;
 
-	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
+	if( ground < birdY - tollerance && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
 			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
 				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
