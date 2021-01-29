@@ -646,14 +646,16 @@ function checkStability(){
             if(!stable && !precStable && !sucStable){
                 objTocheck.isStable = false;
             }else{
-                let hit = objTocheck.vy * objTocheck.m;
-                objTocheck.hp = objTocheck.hp - hit;
-                checkHp(objTocheck);
-
-                hitObjs.forEach(function(obj) {
-                    obj.hp = obj.hp - hit;
-                    checkHp(obj)
-                });
+                if(objTocheck.vy != 0){
+                    let hit = Math.abs(objTocheck.vy) * objTocheck.m;
+                    objTocheck.hp = objTocheck.hp - hit;
+                    checkHp(objTocheck);
+    
+                    hitObjs.forEach(function(obj) {
+                        obj.hp = obj.hp - hit;
+                        checkHp(obj)
+                    });
+                }
 
                 objTocheck.isStable = true;
                 if(!objTocheck.isMoving){
@@ -663,7 +665,7 @@ function checkStability(){
             }
         }
         else{
-            let hit = objTocheck.vy * objTocheck.m;
+            let hit = Math.abs(objTocheck.vy) * objTocheck.m;
             objTocheck.hp = objTocheck.hp - hit;
             checkHp(objTocheck);
 

@@ -147,7 +147,7 @@ function birdCollision(bird, obj){
 	console.log("obj pz: " + obj.vz * obj.m);
 	console.log("obj py: " + obj.vy * obj.m);*/
 
-	obj.hp = obj.hp - bird.m * velz - bird.m * vely;
+	obj.hp = obj.hp - bird.m * Math.abs(velz) - bird.m * Math.abs(vely);
  
 	checkHp(obj);
 
@@ -178,8 +178,8 @@ function collides(objMoving){
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
-					objMoving.hp = objMoving.hp - objMoving.m * objMoving.vy;
-					obj.hp = obj.hp - objMoving.m * objMoving.vy;
+					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
+					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy);
 					checkHp(objMoving);
 					checkHp(obj)
 
@@ -200,8 +200,8 @@ function collides(objMoving){
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 				
-					objMoving.hp = objMoving.hp - objMoving.m * objMoving.vz;
-					obj.hp = obj.hp - objMoving.m * objMoving.vz;
+					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
+					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz);
 					checkHp(objMoving);
 					checkHp(obj)
 
