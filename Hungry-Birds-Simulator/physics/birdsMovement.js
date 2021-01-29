@@ -179,7 +179,7 @@ function collides(objMoving){
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
 					objMoving.hp = objMoving.hp - objMoving.m * objMoving.vy;
-					obj = obj.hp - objMoving.m * objMoving.vy;
+					obj.hp = obj.hp - objMoving.m * objMoving.vy;
 					checkHp(objMoving);
 					checkHp(obj)
 
