@@ -521,7 +521,7 @@ async function randomizeCube(){
                 break;
             case 8:
                 tower23 = piece;
-                structureObjs.push(new structureObjects(0.0, 1.6 , 4.6, 0.0, 0.0, 0.0, 0.2, objType, 41, mass ));
+                structureObjs.push(new structureObjects(0.0, 1.6 , 4.6, 0.0, 0.0, 0.0, objType, 41, mass ));
                 break;
             case 9:
                 tower28 = piece;
