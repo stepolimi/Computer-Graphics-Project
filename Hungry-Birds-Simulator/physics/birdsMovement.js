@@ -130,7 +130,9 @@ function checkBirdStability(bird){
 
 	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
+			console.log("stable check");
 			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
+				console.log("stable????");
 				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
 					stable = true;
 				} else if(obj.tz + obj.radz > birdZStart && obj.tz - obj.radz <= birdZEnd && obj.tz < birdZ){
@@ -152,7 +154,6 @@ function checkBirdStability(bird){
 		bird.isStable = true;
 		vely = 0;
 	}
-	console.log("stable : " + bird.isStable);
 }
 
 
