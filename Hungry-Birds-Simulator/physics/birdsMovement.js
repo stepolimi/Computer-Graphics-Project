@@ -76,6 +76,8 @@ function birdTrajectory(index){
 		let deltaT = t - collisionT;
 		trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
 		trajectoryZ = collisionZ + velz*deltaT;
+		bird.ty = trajectoryY;
+		bird.tz = trajectoryZ;
 
 		worldPositions[index] = utils.MakeWorld(0.0 , trajectoryY, trajectoryZ, 0.0,  angle, rotation, scaling);
 		isColliding(bird);
@@ -131,7 +133,7 @@ function checkBirdStability(bird){
 	if( !((ground > birdY - tollerance) && (ground < birdY + tollerance)) && bird.ty != -5){
 		structureObjs.forEach(function(obj) {
 			console.log("stable check");
-			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty - obj.rady <= birdY)){
+			if((obj.ty + obj.rady >= birdY - tollerance) && (obj.ty + obj.rady <= birdY + tollerance)){
 				console.log("stable????");
 				if((obj.tz + obj.radz >= birdZ && obj.tz - obj.radz <= birdZ) || (obj.tz - obj.radz <= birdZ && obj.tz + obj.radz >= birdZ)){
 					stable = true;
