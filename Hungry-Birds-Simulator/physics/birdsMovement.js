@@ -324,6 +324,7 @@ function checkHp(obj){
 			default:
 				break;
 		}
+		 addMeshToScene(obj.index);
 	} else if(obj.hp < (obj.maxHp / 3) * 2){
 		//console.log("half broken");
 		switch(obj.type){
