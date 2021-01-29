@@ -72,6 +72,8 @@ function birdTrajectory(index){
 
 		trajectoryY = birdStartingY + velys*t - velyg*t/2;
 		trajectoryZ = -birdStartingZ + velz*t;
+		bird.ty = trajectoryY;
+		bird.tz = trajectoryZ;
 	}else{
 		let deltaT = t - collisionT;
 		trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
