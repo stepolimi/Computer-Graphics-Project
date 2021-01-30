@@ -42,7 +42,9 @@
     var qs = new Querystring();
     var score = qs.get("score");
 
-    document.getElementById("endScore").innerHTML = "Congratulation! \n \n You scored " + score +" points!";
+    while(true){
+        document.getElementById("endScore").innerHTML = "Congratulation! \n \n You scored " + score +" points!";
+    }
 
 </script>
 </html>
