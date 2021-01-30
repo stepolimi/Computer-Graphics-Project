@@ -10,6 +10,8 @@ var v = 0;
 var vely = 0;
 var velz = 0;
 
+var bird;
+
 var collisionY;
 var collisionZ;
 var collisionT = 0;
@@ -51,7 +53,7 @@ var score = 0;
 var scoreDiv;
 
 function birdTrajectory(index){
-	let bird = birdsArray[index-2];
+	bird = birdsArray[index-2];
 
 	activateSound(index);
 
