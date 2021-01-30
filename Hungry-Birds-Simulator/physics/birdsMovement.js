@@ -573,10 +573,10 @@ function activateMatildaPower(){
 				obj.vy = -2;
 				obj.scale = 0.5;
 			}
-		});
+		});*/
 	}
 
-	//don't always resets right
+	/*//don't always resets right
 	if(egg.vy == 0){
 		console.log("reset");
 		isMatildaActiveFirstTime = true;
