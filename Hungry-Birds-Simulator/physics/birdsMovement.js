@@ -78,7 +78,7 @@ function birdTrajectory(index){
 		velz = v*Math.cos(utils.degToRad(angle));
 
 		if(activateBirdPower){
-			activatePower(index);
+			activatePower();
 		}else{
 			bird.ty = birdStartingY + velys*t - velyg*t/2;
 			bird.tz = -birdStartingZ + velz*t;
@@ -88,11 +88,11 @@ function birdTrajectory(index){
 		bird.rz = rotation;
 
 		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
-		isColliding(bird);
+		isColliding();
 	}else{
 	
 		if((bird.isStable && velz < 0.001) || landed){
-			killBird(bird,index,1000);
+			killBird(index,1000);
 			rotation = 0.0;
 			scaling = 0.5;
 			busy = false;
@@ -105,23 +105,23 @@ function birdTrajectory(index){
 				window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 			}
 		} else{
-			checkBirdStability(bird);
+			checkBirdStability();
 			let deltaT = t - collisionT;
 			bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
 			bird.tz = collisionZ + velz*deltaT;
 
 			if(activateBirdPower){
-				activatePower(index);
+				activatePower();
 			}
 	
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
-			isColliding(bird);
+			isColliding();
 		}
 	}
 
 	if(bird.ty - bird.rady <= ground){
 		landed = true;
-		killBird(bird,index, 1000);
+		killBird(index, 1000);
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
@@ -134,7 +134,7 @@ function birdTrajectory(index){
 			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 		}
 	} else if(bird.ty > 30){
-		killBird(bird,index, 0);
+		killBird(index, 0);
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
@@ -154,14 +154,14 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
   
-async function killBird(b,ind, t) {
+async function killBird(ind, t) {
 	await sleep(t);
-	b.ty = -5;
-	b.tz = 0;
-	worldPositions[ind] = utils.MakeWorld(b.tx , b.ty, b.tz, b.rx, b.ry, b.rz, 0);
+	bird.ty = -5;
+	bird.tz = 0;
+	worldPositions[ind] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
   }
 
-function checkBirdStability(bird){
+function checkBirdStability(){
 	let birdY = bird.ty - bird.rady;
 	let birdZ = bird.tz;
 	let birdZStart = bird.tz - bird.radz;
@@ -200,7 +200,7 @@ function checkBirdStability(bird){
 }
 
 
-function isColliding(bird){
+function isColliding(){
 	let tollerance = 0.1;
 	for(let i = 0; i < structureObjs.length; i++ ){
 		let obj = structureObjs[i];
@@ -221,7 +221,7 @@ function isColliding(bird){
 					collisionZ = bird.tz;
 					collisionT = t;
 				
-					birdCollision(bird, structureObjs[i]);
+					birdCollision(structureObjs[i]);
 				}
 			} else if(objStart < birdEnd && obj.tz > birdEnd && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
 				if(vely <= -0.0001 || velz >= 0.0001){
@@ -230,7 +230,7 @@ function isColliding(bird){
 					collisionZ = bird.tz;
 					collisionT = t;
 				
-					birdCollision(bird, structureObjs[i]);
+					birdCollision(structureObjs[i]);
 				}
 			}
 		}	
@@ -238,7 +238,7 @@ function isColliding(bird){
 }
 
 //urto
-function birdCollision(bird, obj){
+function birdCollision(obj){
 	let elasticCoefficient = 0.4;
 	let birdVzFinal = velz * elasticCoefficient;
 	let birdVyFinal = vely * elasticCoefficient;
@@ -468,9 +468,9 @@ function activateSound(index){
 		a) z = starting matilda z
 		b) y = the speed variation over this axis
 */
-function activatePower(index){
-	var bird = birdsArray[index-2].type;
-	switch(bird){
+function activatePower(){
+	var birdType = bird.type;
+	switch(birdType){
 		case "red":
 		default:
 			break;
