@@ -14,7 +14,7 @@
     <link href="./endGame.css" rel="stylesheet"/>
 
 </head>
-<body>
+<body onload="getScore()" >
     <div id="div-play-game" class="container-fluid row">
         <div class="col-sm-12" >
             <h1 id="endScore">
@@ -42,7 +42,7 @@
     var query;
     var score ;
 
-    while(true){
+    function getScore(){
         query = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);
         score = query.substring(query.indexOf("="), query.length);
         document.getElementById("endScore").innerHTML = "Congratulation! \n \n You scored " + score +" points!";
