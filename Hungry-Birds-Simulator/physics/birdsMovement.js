@@ -246,7 +246,7 @@ function birdCollision(bird, obj){
 	obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 	obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
 
-	obj.hp = obj.hp - bird.m * Math.abs(velz) - bird.m * Math.abs(vely);
+	obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT;
  
 	checkHp(obj);
 
@@ -278,7 +278,7 @@ function collides(objMoving){
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
-					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy);
+					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
 					checkHp(obj)
 
@@ -300,7 +300,7 @@ function collides(objMoving){
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 				
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
-					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz);
+					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
 					checkHp(obj)
 
