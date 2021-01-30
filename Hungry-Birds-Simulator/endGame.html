@@ -18,9 +18,10 @@
     <div id="div-play-game" class="container-fluid row">
         <div class="col-sm-12" >
             <h1 id="endScore">
-                Congratulation!
+                Congratulations!
             </h1>
-            <br>
+        </div>
+        <div class="col-sm-12" >
             <h1 id="endScore1">
                 You scored 0 points!
             </h1>
@@ -54,7 +55,7 @@
         secondParam = query.substring(query.indexOf("&") + 1, query.length);
         pigs = secondParam.substring(secondParam.indexOf("=") + 1, secondParam.length);
         if(pigs == 0)
-            document.getElementById("endScore").innerHTML = "Congratulation, you won!"
+            document.getElementById("endScore").innerHTML = "Congratulations, you won!"
         else{
             document.getElementById("endScore").innerHTML = "You were close! You missed " + pigs + " pigs"
         }
