@@ -86,16 +86,12 @@ function checkHp(obj){
 
 		switch(obj.type){
 			case "glassVerticalPlane":
-				allMeshes[obj.index].textures = GLASSVERTICAL_BROKEN_1;
+			case "glassHorizontalPlane":
+				allMeshes[obj.index].textures = GLASSPLANE_BROKEN_1;
 				break;
 			case "woodVerticalPlane":
-				allMeshes[obj.index].textures = WOODVERTICAL_BROKEN_1;
-				break;
-			case "glassHorizontalPlane":
-				allMeshes[obj.index].textures = GLASSHORIZONTAL_BROKEN_1;
-				break;
 			case "woodHorizontalPlane":
-				allMeshes[obj.index].textures = WOODHORIZONTAL_BROKEN_1;
+				allMeshes[obj.index].textures = WOODPLANE_BROKEN_1;
 				break;
 			case "glassPyramid":
 				allMeshes[obj.index].textures = GLASSBOX_BROKEN_1;
@@ -127,16 +123,12 @@ function checkHp(obj){
 
 		switch(obj.type){
 			case "glassVerticalPlane":
-				allMeshes[obj.index].textures = GLASSVERTICAL_BROKEN_2;
+			case "glassHorizontalPlane":
+				allMeshes[obj.index].textures = GLASSPLANE_BROKEN_2;
 				break;
 			case "woodVerticalPlane":
-				allMeshes[obj.index].textures = WOODVERTICAL_BROKEN_2;
-				break;
-			case "glassHorizontalPlane":
-				allMeshes[obj.index].textures = GLASSHORIZONTAL_BROKEN_2;
-				break;
 			case "woodHorizontalPlane":
-				allMeshes[obj.index].textures = WOODHORIZONTAL_BROKEN_2;
+				allMeshes[obj.index].textures = WOODPLANE_BROKEN_2;
 				break;
 			case "glassPyramid":
 				allMeshes[obj.index].textures = GLASSBOX_BROKEN_2;
