@@ -24,7 +24,7 @@
         <div class="col-sm-12">
             <button id="play-button">
                 <p id="play-text">
-                    Close
+                    Play again
                 </p>
             </button>
         </div>
@@ -44,8 +44,9 @@
 
     function getScore(){
         query = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);
-        score = query.substring(query.indexOf("="), query.length);
-        document.getElementById("endScore").innerHTML = "Congratulation! \n \n You scored " + score +" points!";
+        score = query.substring(query.indexOf("=") + 1, query.length);
+        document.getElementById("endScore").innerHTML = "Congratulation!\
+        You scored " + score +" points!";
     }
 
 </script>
