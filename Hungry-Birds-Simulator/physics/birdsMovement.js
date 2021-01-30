@@ -391,10 +391,10 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = WOODVERTICAL_BROKEN_2;
 				break;
 			case "glassHorizontalPlane":
-				allMeshes[obj.index].textures = GLASSHORIZONTAL_BROKEN_1;
+				allMeshes[obj.index].textures = GLASSHORIZONTAL_BROKEN_2;
 				break;
 			case "woodHorizontalPlane":
-				allMeshes[obj.index].textures = WOODHORIZONTAL_BROKEN_1;
+				allMeshes[obj.index].textures = WOODHORIZONTAL_BROKEN_2;
 				break;
 			case "glassPyramid":
 				allMeshes[obj.index].textures = GLASSBOX_BROKEN_2;
@@ -409,7 +409,7 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = WOODBOX_BROKEN_2;
 				break;
 			case "stoneSquare":
-				allMeshes[obj.index].textures = STONESQUARE_BROKEN_2;
+				allMeshes[obj.index].textures = STONESQUARE_BROKEN_1;
 				break;
 			case "stonePyramid":
 				allMeshes[obj.index].textures = STONEBOX_BROKEN_2;
