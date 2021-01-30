@@ -95,11 +95,11 @@ function birdTrajectory(index){
 			scaling = 0.5;
 			busy = false;
 			if(counter == 5){
-				//window.location.replace("./endGame.html");
-				document.getElementById("div-play-game").style.display = none;
+				window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score);
+				/*document.getElementById("div-play-game").style.display = none;
 				document.getElementById("div-canvas").style.display = none;
 				document.getElementById("div-end-game").style.display = block;
-				document.getElementById("endcore").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
+				document.getElementById("endcore").innerHTML = "Congratulation!\n\n You scored " + score + " points!";*/
 			}
 		} else{
 			checkBirdStability(bird);
@@ -125,11 +125,7 @@ function birdTrajectory(index){
 		scaling = 0.5;
 		busy = false;
 		if(counter == 5){
-			//window.location.replace("./endGame.html");
-			document.getElementById("div-play-game").style.display = none;
-			document.getElementById("div-canvas").style.display = none;
-			document.getElementById("div-end-game").style.display = block;
-			document.getElementById("endcore").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
+			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score);
 		}
 	} else if(trajectoryY > 20){
 		killBird(bird,index, 0);
@@ -137,11 +133,7 @@ function birdTrajectory(index){
 		scaling = 0.5;
 		busy = false;
 		if(counter == 5){
-			//window.location.replace("./endGame.html");
-			document.getElementById("div-play-game").style.display = none;
-			document.getElementById("div-canvas").style.display = none;
-			document.getElementById("div-end-game").style.display = block;
-			document.getElementById("endcore").innerHTML = "Congratulation!\n\n You scored " + score + " points!";
+			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score);
 		}
 	}
 	t += TICK;
