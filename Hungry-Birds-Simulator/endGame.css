@@ -25,6 +25,11 @@ body {
     font-weight: bolder;
     font-size: 4.5vmax;
 }
+#endScore1{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 4.5vmax;
+}
 
 #div-play-game{
     margin: 0;

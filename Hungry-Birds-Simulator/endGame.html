@@ -18,7 +18,10 @@
     <div id="div-play-game" class="container-fluid row">
         <div class="col-sm-12" >
             <h1 id="endScore">
-                Congratulation! \n \n You scored 0 points
+                Congratulation!
+            </h1>
+            <h1 id="endScore1">
+                You scored 0 points!
             </h1>
         </div>
         <div class="col-sm-12">
@@ -40,13 +43,21 @@
     }
 
     var query;
-    var score ;
+    var secondParam;
+    var score;
+    var pigs;
 
     function getScore(){
         query = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);
-        score = query.substring(query.indexOf("=") + 1, query.length);
-        document.getElementById("endScore").innerHTML = "Congratulation!\
-        You scored " + score +" points!";
+        score = query.substring(query.indexOf("=") + 1, query.indexOf("&"));
+        secondParam = query.substring(query.indexOf("&") + 1, query.length);
+        pigs = secondParam.substring(secondParam.indexOf("=") + 1, secondParam.length);
+        if(pigs == 0)
+            document.getElementById("endScore").innerHTML = "Congratulation, you won!"
+        else{
+            document.getElementById("endScore").innerHTML = "You were close! You missed " + pigs + " pigs"
+        }
+        document.getElementById("endScore1").innerHTML = "You scored " + score +" points!";
     }
 
 </script>
