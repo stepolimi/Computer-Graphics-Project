@@ -37,6 +37,28 @@ body {
     width: 100vw;
 }
 
+#div-end-game{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#div-end-game div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+#end-score{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 4.5vmax;
+}
+
 #play-button {
     height:15vmin; 
     width:30vmax; 
