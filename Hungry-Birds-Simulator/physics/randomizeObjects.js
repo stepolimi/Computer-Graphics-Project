@@ -155,17 +155,17 @@ async function randomizePigs(){
             case 1:
                 pigChoiche = await utils.loadMesh("../assets/Pigs/pig.obj"); 
                 objType = "pig";
-                mass = 1;
+                mass = 3;
                 break;
             case 2:
                 pigChoiche = await utils.loadMesh("../assets/Pigs/pighelment.obj"); 
                 objType = "pigHelmet";
-                mass = 1.5;
+                mass = 5;
                 break;
             case 3:
                 pigChoiche = await utils.loadMesh("../assets/Pigs/pigstache.obj"); 
                 objType = "pigMustache";
-                mass = 2;
+                mass = 7;
                 break;
             default:
                 pigChoiche = await utils.loadMesh("../assets/Pigs/pig.obj"); 
@@ -177,39 +177,39 @@ async function randomizePigs(){
         switch(i){
             case 0:
                 pig11 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, objType, 10, mass, 0.7 ));
+                structureObjs.push(new structureObjects(0.0, 0.0 , 1.8, 270.0, 0.0, 0.0, objType, 10, mass * 0.7, 0.7 ));
                 break;
             case 1:
                 pig12 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.8 , 0.2, 270.0, 0.0, 0.0, objType, 11, mass, 0.7 ));
+                structureObjs.push(new structureObjects(0.0, 1.8 , 0.2, 270.0, 0.0, 0.0, objType, 11, mass * 0.7, 0.7 ));
                 break;
             case 2:
                 pig13 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, objType, 12, mass, 0.4 ));
+                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 270.0, 0.0, 0.0, objType, 12, mass * 0.4, 0.4 ));
                 break;
              case 3:
                 pig21 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 0.8 , 5.0, 270.0, 0.0, 0.0, objType, 34, mass, 0.75 ));
+                structureObjs.push(new structureObjects(0.0, 0.8 , 5.0, 270.0, 0.0, 0.0, objType, 34, mass * 0.75, 0.75 ));
                 break;
             case 4:
                 pig22 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, objType, 35, mass, 0.4 ));
+                structureObjs.push(new structureObjects(0.0, 1.35 , 5.8, 270.0, 0.0, 0.0, objType, 35, mass * 0.4, 0.4 ));
                 break;
             case 5:
                 pig23 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, objType, 36, mass, 0.4 ));
+                structureObjs.push(new structureObjects(0.0, 2.15 , 4.8, 270.0, 0.0, 0.0, objType, 36, mass * 0.4, 0.4 ));
                 break;
             case 6:
                 pig24 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 4.0 , 5.0, 270.0, 0.0, 0.0, objType, 37, mass, 0.6 ));
+                structureObjs.push(new structureObjects(0.0, 4.0 , 5.0, 270.0, 0.0, 0.0, objType, 37, mass * 0.6, 0.6 ));
                 break;
             case 7:
                 pig25 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 7 , 5.0, 270.0, 0.0, 0.0, objType, 38, mass, 1.0 ));
+                structureObjs.push(new structureObjects(0.0, 7 , 5.0, 270.0, 0.0, 0.0, objType, 38, mass * 1.0, 1.0 ));
                 break;
             case 8:
                 pig31 = pigChoiche;
-                structureObjs.push(new structureObjects(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, objType, 60, mass, 0.6 ));
+                structureObjs.push(new structureObjects(0.0, 2.1 , 7.8, 270.0, 0.0, 0.0, objType, 60, mass * 0.6, 0.6 ));
                 break;
                 
         }
