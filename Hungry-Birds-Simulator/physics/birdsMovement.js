@@ -137,7 +137,7 @@ function birdTrajectory(index){
 			});
 			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 		}
-	} else if(trajectoryY > 20){
+	} else if(trajectoryY > 30){
 		killBird(bird,index, 0);
 		rotation = 0.0;
 		scaling = 0.5;
@@ -369,7 +369,7 @@ function activateMatildaPower(){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
-		t = 0;
+		t = TICK;
 		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
