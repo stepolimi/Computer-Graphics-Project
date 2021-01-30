@@ -10,9 +10,6 @@ var v = 0;
 var vely = 0;
 var velz = 0;
 
-var trajectoryY;
-var trajectoryZ;
-
 var collisionY;
 var collisionZ;
 var collisionT = 0;
@@ -81,14 +78,16 @@ function birdTrajectory(index){
 		if(activateBirdPower){
 			activatePower(index);
 		}else{
-			trajectoryY = birdStartingY + velys*t - velyg*t/2;
-			trajectoryZ = -birdStartingZ + velz*t;
-			bird.ty = trajectoryY;
-			bird.tz = trajectoryZ;
+			bird.ty = birdStartingY + velys*t - velyg*t/2;
+			bird.tz = -birdStartingZ + velz*t;
 		}
 
 		bird.ry = angle;
 		bird.rz = rotation;
+
+		console.log("ty: " + bird.ty);
+		console.log("tz: " + bird.tz);
+		
 		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 		isColliding(bird);
 	}else{
@@ -109,10 +108,8 @@ function birdTrajectory(index){
 		} else{
 			checkBirdStability(bird);
 			let deltaT = t - collisionT;
-			trajectoryY = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
-			trajectoryZ = collisionZ + velz*deltaT;
-			bird.ty = trajectoryY;
-			bird.tz = trajectoryZ;
+			bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
+			bird.tz = collisionZ + velz*deltaT;
 
 			if(activateBirdPower){
 				activatePower(index);
@@ -123,7 +120,7 @@ function birdTrajectory(index){
 		}
 	}
 
-	if(trajectoryY - bird.rady <= ground){
+	if(bird.ty - bird.rady <= ground){
 		landed = true;
 		killBird(bird,index, 1000);
 		rotation = 0.0;
@@ -137,7 +134,7 @@ function birdTrajectory(index){
 			});
 			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 		}
-	} else if(trajectoryY > 30){
+	} else if(bird.ty > 30){
 		killBird(bird,index, 0);
 		rotation = 0.0;
 		scaling = 0.5;
@@ -221,8 +218,8 @@ function isColliding(bird){
 			if(objSup > birdInf && obj.ty < birdInf && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
 				if(vely <= -0.0001 || velz >= 0.0001){
 					birdCollides = true;
-					collisionY = trajectoryY;
-					collisionZ = trajectoryZ;
+					collisionY = bird.ty;
+					collisionZ = bird.tz;
 					collisionT = t;
 				
 					birdCollision(bird, structureObjs[i]);
@@ -230,8 +227,8 @@ function isColliding(bird){
 			} else if(objStart < birdEnd && obj.tz > birdEnd && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
 				if(vely <= -0.0001 || velz >= 0.0001){
 					birdCollides = true;
-					collisionY = trajectoryY;
-					collisionZ = trajectoryZ;
+					collisionY = bird.ty;
+					collisionZ = bird.tz;
 					collisionT = t;
 				
 					birdCollision(bird, structureObjs[i]);
@@ -497,8 +494,8 @@ function activateBombPower(){
 	scaling = 0.0;
 	if(isBombActiveFirstTime){
 		isBombActiveFirstTime = false;
-		bombZ = trajectoryZ;
-		bombY = trajectoryY;
+		bombZ = bird.tz;
+		bombY = bird.ty;
 		explosionScaling = 0.0;
 	
 	}
@@ -517,8 +514,8 @@ function activateBombPower(){
 function activateChuckPower(){
 	if (isChuckActiveFirstTime){
 		isChuckActiveFirstTime = false;
-		chuckZ = trajectoryZ;
-		chuckY = trajectoryY;
+		chuckZ = bird.tz;
+		chuckY = bird.ty;
 		t = 0;	
 		
 		var angleInRad = utils.degToRad(angle);
@@ -544,13 +541,13 @@ function activateChuckPower(){
 	
 	console.log("q: " + q);
 	
-	trajectoryZ = chuckZ + t*v*v;
-	trajectoryY = m*trajectoryZ + t*v*v + q;
+	bird.tz = chuckZ + t*v*v;
+	bird.ty = m*bird.tz + t*v*v + q;
 
-	console.log("Z: " + trajectoryZ);
-	console.log("Y: " + trajectoryY);
+	console.log("Z: " + bird.tz);
+	console.log("Y: " + bird.ty);
 	console.log("-----------------------");
-	if(trajectoryY >= 20.0 | trajectoryY <= 0.0){
+	if(bird.ty >= 20.0 | bird.ty <= 0.0){
 		isChuckActiveFirstTime = true;
 		activateBirdPower = false;
 	}
@@ -562,10 +559,10 @@ function activateMatildaPower(){
 	//at first round the new starting coord must be set
 	if (isMatildaActiveFirstTime){
 		isMatildaActiveFirstTime = false;
-		matildaZ = trajectoryZ;
-		matildaY = trajectoryY;
+		matildaZ = bird.tz;
+		matildaY = bird.ty;
 		t = TICK *3;
-		/*structureObjs.forEach(function(obj) {
+		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
 				obj.tz = matildaZ;
@@ -573,23 +570,19 @@ function activateMatildaPower(){
 				obj.vy = -2;
 				obj.scale = 0.5;
 			}
-		});*/
+		});
 	}
 
-	/*//don't always resets right
+	//don't always resets right
 	if(egg.vy == 0){
 		console.log("reset");
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
-	}*/
+	}
 	
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
-	trajectoryY = matildaY + v*t*tan;
-	trajectoryZ = matildaZ + v*t*tan;
-	bird.ty = trajectoryY;
-	bird.tz = trajectoryZ;
+	bird.ty = matildaY + v*t*tan;
+	bird.tz = matildaZ + v*t*tan;
 
-	console.log("ty: " + bird.ty);
-	console.log("tz: " + bird.tz);
 	rotation += 20.0;
 }
