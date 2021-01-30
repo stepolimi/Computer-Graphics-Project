@@ -369,7 +369,7 @@ function activateMatildaPower(){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
-		t = TICK;
+		t = TICK *3;
 		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
