@@ -126,7 +126,12 @@ function birdTrajectory(index){
 		scaling = 0.5;
 		busy = false;
 		if(counter == 5){
-			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score);
+			let remainings = 0;
+			structureObjs.forEach(function(obj) {
+				if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty != -5)
+					remainings ++;
+			});
+			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 		}
 	} else if(trajectoryY > 20){
 		killBird(bird,index, 0);
@@ -134,7 +139,12 @@ function birdTrajectory(index){
 		scaling = 0.5;
 		busy = false;
 		if(counter == 5){
-			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score);
+			let remainings = 0;
+			structureObjs.forEach(function(obj) {
+				if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty != -5)
+					remainings ++;
+			});
+			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 		}
 	}
 	t += TICK;

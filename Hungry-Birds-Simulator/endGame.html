@@ -17,13 +17,20 @@
 <body onload="getScore()" >
     <div id="div-play-game" class="container-fluid row">
         <div class="col-sm-12" >
-            <h1 id="endScore">
-                Congratulation!
-            </h1>
-            <h1 id="endScore1">
-                You scored 0 points!
-            </h1>
+            <div id="div-play-game" class="container-fluid row">
+                <div class="col-sm-12" >
+                    <p id="endScore">
+                        Congratulations!
+                    </p>
+                </div>
+                <div class="col-sm-12" >
+                    <p id="endScore1">
+                        You scored 0 points!
+                    </p>
+                </div>
+            </div>
         </div>
+
         <div class="col-sm-12">
             <button id="play-button">
                 <p id="play-text">
@@ -53,7 +60,7 @@
         secondParam = query.substring(query.indexOf("&") + 1, query.length);
         pigs = secondParam.substring(secondParam.indexOf("=") + 1, secondParam.length);
         if(pigs == 0)
-            document.getElementById("endScore").innerHTML = "Congratulation, you won!"
+            document.getElementById("endScore").innerHTML = "Congratulations, you won!"
         else{
             document.getElementById("endScore").innerHTML = "You were close! You missed " + pigs + " pigs"
         }
