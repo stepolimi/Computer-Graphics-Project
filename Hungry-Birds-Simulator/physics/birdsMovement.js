@@ -588,5 +588,8 @@ function activateMatildaPower(){
 	trajectoryZ = matildaZ + v*t*tan;
 	bird.ty = trajectoryY;
 	bird.tz = trajectoryZ;
+
+	console.log("ty: " + bird.ty);
+	console.log("tz: " + bird.tz);
 	rotation += 20.0;
 }
