@@ -85,9 +85,6 @@ function birdTrajectory(index){
 		bird.ry = angle;
 		bird.rz = rotation;
 
-		console.log("ty: " + bird.ty);
-		console.log("tz: " + bird.tz);
-		
 		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 		isColliding(bird);
 	}else{
@@ -583,6 +580,8 @@ function activateMatildaPower(){
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	bird.ty = matildaY + v*t*tan;
 	bird.tz = matildaZ + v*t*tan;
-
+	console.log("ty: " + bird.ty);
+	console.log("tz: " + bird.tz);
+	
 	rotation += 20.0;
 }
