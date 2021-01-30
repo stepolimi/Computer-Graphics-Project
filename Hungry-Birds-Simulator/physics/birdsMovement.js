@@ -83,6 +83,10 @@ function birdTrajectory(index){
 		bird.ty = trajectoryY;
 		bird.tz = trajectoryZ;
 
+		if(activateBirdPower){
+			activatePower(index);
+		}
+
 		bird.ry = angle;
 		bird.rz = rotation;
 		worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
@@ -113,10 +117,6 @@ function birdTrajectory(index){
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 			isColliding(bird);
 		}
-	}
-
-	if(activateBirdPower){
-		activatePower(index);
 	}
 
 	if(trajectoryY - bird.rady <= ground){
