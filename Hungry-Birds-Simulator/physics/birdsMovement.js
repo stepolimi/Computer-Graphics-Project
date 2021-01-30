@@ -51,6 +51,7 @@ var ground = -0.4;
 //score variables
 var score = 0;
 var scoreDiv;
+var ended = false;
 
 function birdTrajectory(index){
 	bird = birdsArray[index-2];
@@ -96,13 +97,17 @@ function birdTrajectory(index){
 			rotation = 0.0;
 			scaling = 0.5;
 			busy = false;
+			resetBirdPower();
 			if(counter == 5){
 				let remainings = 0;
 				structureObjs.forEach(function(obj) {
 					if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty != -5)
 						remainings ++;
 				});
-				window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
+				if(!ended){
+					window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
+					ended = true;
+				}
 			}
 		} else{
 			checkBirdStability();
@@ -125,26 +130,34 @@ function birdTrajectory(index){
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
+		resetBirdPower();
 		if(counter == 5){
 			let remainings = 0;
 			structureObjs.forEach(function(obj) {
 				if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty != -5)
 					remainings ++;
 			});
-			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
+			if(!ended){
+				window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
+				ended = true;
+			}
 		}
 	} else if(bird.ty > 30){
 		killBird(index, 0);
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
+		resetBirdPower();
 		if(counter == 5){
 			let remainings = 0;
 			structureObjs.forEach(function(obj) {
 				if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty != -5)
 					remainings ++;
 			});
-			window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
+			if(!ended){
+				window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
+				ended = true;
+			}		
 		}
 	}
 	t += TICK;
@@ -489,6 +502,12 @@ function activatePower(){
 	}
 }
 
+function resetBirdPower(){
+	console.log("reset");
+	isMatildaActiveFirstTime = true;
+	activateBirdPower = false;
+}
+
 function activateBombPower(){
 	scaling = 0.0;
 	if(isBombActiveFirstTime){
@@ -560,7 +579,11 @@ function activateMatildaPower(){
 		isMatildaActiveFirstTime = false;
 		matildaZ = bird.tz;
 		matildaY = bird.ty;
-		t = TICK *3;
+
+		console.log("ty1: " + bird.ty);
+		console.log("tz1: " + bird.tz);
+
+		t = TICK;
 		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
@@ -570,13 +593,6 @@ function activateMatildaPower(){
 				obj.scale = 0.5;
 			}
 		});
-	}
-
-	//don't always resets right
-	if(egg.vy == 0){
-		console.log("reset");
-		isMatildaActiveFirstTime = true;
-		activateBirdPower = false;
 	}
 	
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
