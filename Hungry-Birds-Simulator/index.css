@@ -211,7 +211,7 @@ body {
   /* Modal Content/Box */
   .modal-content {
     background-color: #ffb300;
-    margin-top: 30vmin;
+    margin-top: 15vmin;
     padding-bottom: 4vmin;
     border: 1vmin solid #ffa000;
   }
@@ -255,7 +255,7 @@ body {
   /* Modal Content/Box */
   .modal-contentInGame {
     background-color: #ffb300;
-    margin-top: 30vmin;
+    margin-top: 15vmin;
     padding-bottom: 2vmin;
     border: 1vmin solid #ffa000;
   }
