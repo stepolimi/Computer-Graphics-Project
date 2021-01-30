@@ -1,5 +1,5 @@
 // JavaScript source code
-let bird; 
+let birdChoiche; 
 let pigChoiche;
 let choiche;
 let tower;
@@ -93,27 +93,27 @@ function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
 
         switch(choiche){
             case 1:
-                bird = birdRed;
+                birdChoiche = birdRed;
                 birdName = "red";
                 mass = 1;
                 break;
             case 2:
-                bird = birdChuck;
+                birdChoiche = birdChuck;
                 birdName = "chuck";
                 mass = 1;
                 break;
             case 3:
-                bird = birdBomb;
+                birdChoiche = birdBomb;
                 birdName = "bomb";
                 mass = 2;
                 break;
             case 4:
-                bird = birdMatilda;
+                birdChoiche = birdMatilda;
                 birdName = "matilda";
                 mass = 2;
                 break;
             default:
-                bird = birdRed;
+                birdChoiche = birdRed;
                 birdName = "red";
                 mass = 1;
                 break;
@@ -121,23 +121,23 @@ function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
 
         switch(i){
             case 0:
-                  bird1 = bird;
+                  bird1 = birdChoiche;
                   birdsArray[i] = new birdObject(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, birdName, mass);
                   break;
             case 1:
-                  bird2 = bird;
+                  bird2 = birdChoiche;
                   birdsArray[i] = new birdObject(-0.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName, mass);
                   break;
             case 2:
-                  bird3 = bird;
+                  bird3 = birdChoiche;
                   birdsArray[i] = new birdObject(-1.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName, mass);
                   break;
             case 3:
-                  bird4 = bird;
+                  bird4 = birdChoiche;
                   birdsArray[i] = new birdObject(-2.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName, mass);
                   break;
             case 4:
-                  bird5 = bird;
+                  bird5 = birdChoiche;
                   birdsArray[i] = new birdObject(-3.5, 0.0 , -7.5, 0.0, 0.0, 0.0, birdName, mass);
                   break;
         }
