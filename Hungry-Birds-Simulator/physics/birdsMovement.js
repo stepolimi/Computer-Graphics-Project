@@ -564,8 +564,8 @@ function activateMatildaPower(){
 		isMatildaActiveFirstTime = false;
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
-		t = TICK;
-		structureObjs.forEach(function(obj) {
+		t = TICK *3;
+		/*structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
 				obj.tz = matildaZ;
@@ -573,20 +573,23 @@ function activateMatildaPower(){
 				obj.vy = -2;
 				obj.scale = 0.5;
 			}
-		});
+		});*/
 	}
 
-	//don't always resets right
+	/*//don't always resets right
 	if(egg.vy == 0){
 		console.log("reset");
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
-	}
+	}*/
 	
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	trajectoryY = matildaY + v*t*tan;
 	trajectoryZ = matildaZ + v*t*tan;
 	bird.ty = trajectoryY;
 	bird.tz = trajectoryZ;
+
+	console.log("ty: " + bird.ty);
+	console.log("tz: " + bird.tz);
 	rotation += 20.0;
 }
