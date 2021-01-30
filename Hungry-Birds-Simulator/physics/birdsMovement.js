@@ -397,7 +397,7 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = WOODBOX_BROKEN_2;
 				break;
 			case "stoneSquare":
-				allMeshes[obj.index].textures = STONESQUARE_BROKEN_2;
+				allMeshes[obj.index].textures = STONESQUARE_BROKEN_1;
 				break;
 			case "stonePyramid":
 				allMeshes[obj.index].textures = STONEBOX_BROKEN_2;
