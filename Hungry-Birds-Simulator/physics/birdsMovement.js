@@ -579,6 +579,10 @@ function activateMatildaPower(){
 		isMatildaActiveFirstTime = false;
 		matildaZ = bird.tz;
 		matildaY = bird.ty;
+
+		console.log("ty1: " + bird.ty);
+		console.log("tz1: " + bird.tz);
+
 		t = TICK;
 		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
