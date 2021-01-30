@@ -647,7 +647,7 @@ function checkStability(){
                 objTocheck.isStable = false;
             }else{
                 if(objTocheck.vy != 0){
-                    let hit = Math.abs(objTocheck.vy) * objTocheck.m /2;
+                    let hit = Math.abs(objTocheck.vy) * objTocheck.m /3;
                     objTocheck.hp = objTocheck.hp - hit;
                     checkHp(objTocheck);
     
@@ -666,7 +666,7 @@ function checkStability(){
         }
         else{
             if(objTocheck.vy != 0){
-                let hit = Math.abs(objTocheck.vy) * objTocheck.m /2;
+                let hit = Math.abs(objTocheck.vy) * objTocheck.m /3;
                 objTocheck.hp = objTocheck.hp - hit;
                 checkHp(objTocheck);
     
