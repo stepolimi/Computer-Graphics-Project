@@ -565,7 +565,7 @@ function activateMatildaPower(){
 		matildaZ = trajectoryZ;
 		matildaY = trajectoryY;
 		t = TICK *3;
-		structureObjs.forEach(function(obj) {
+		/*structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
 				egg = obj;
 				obj.tz = matildaZ;
@@ -581,7 +581,7 @@ function activateMatildaPower(){
 		console.log("reset");
 		isMatildaActiveFirstTime = true;
 		activateBirdPower = false;
-	}
+	}*/
 	
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	trajectoryY = matildaY + v*t*tan;
