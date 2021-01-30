@@ -78,10 +78,14 @@ function birdTrajectory(index){
 		vely = velys - velyg;
 		velz = v*Math.cos(utils.degToRad(angle));
 
-		trajectoryY = birdStartingY + velys*t - velyg*t/2;
-		trajectoryZ = -birdStartingZ + velz*t;
-		bird.ty = trajectoryY;
-		bird.tz = trajectoryZ;
+		if(activateBirdPower){
+			activatePower(index);
+		}else{
+			trajectoryY = birdStartingY + velys*t - velyg*t/2;
+			trajectoryZ = -birdStartingZ + velz*t;
+			bird.ty = trajectoryY;
+			bird.tz = trajectoryZ;
+		}
 
 		bird.ry = angle;
 		bird.rz = rotation;
@@ -109,14 +113,14 @@ function birdTrajectory(index){
 			trajectoryZ = collisionZ + velz*deltaT;
 			bird.ty = trajectoryY;
 			bird.tz = trajectoryZ;
+
+			if(activateBirdPower){
+				activatePower(index);
+			}
 	
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 			isColliding(bird);
 		}
-	}
-
-	if(activateBirdPower){
-		activatePower(index);
 	}
 
 	if(trajectoryY - bird.rady <= ground){
