@@ -71,6 +71,11 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
+	if(bird.type == "matilda"){
+		console.log("mat ty: " + bird.ty);
+		console.log("mat tz: " + bird.tz)
+	}
+	
 	if(!birdCollides && !landed){
 		let velys = v*Math.sin(utils.degToRad(angle));
 		let velyg = g*t;
