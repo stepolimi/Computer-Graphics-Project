@@ -655,6 +655,10 @@ function activateBombPower(){
 		explosionScaling = 0.0;
 		isBombActiveFirstTime = true;
 		activateBirdPower = false;
+		bird.ty = -5;
+		bird.tz = 0;
+		bird.rady = 0;
+		bird.radz = 0;
 		endBird(prec);
 		setTimeout(function(){worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
 	}
