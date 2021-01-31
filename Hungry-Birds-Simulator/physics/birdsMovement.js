@@ -211,8 +211,16 @@ function isColliding(){
 		let objEnd = obj.tz + obj.radz;
 
 		if(structureObjs[i].type != "egg"){
-			if(((objSup > birdInf && obj.ty < birdInf) || (objInf < birdSup && obj.ty > birdSup)) && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
+			//bird collision down
+			if((objSup > birdInf && obj.ty < birdInf) && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
 				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
+					let elasticCoefficient = 0.4;
+					let birdVzFinal = velz * elasticCoefficient;
+					let birdVyFinal = vely * elasticCoefficient;
+				
+					obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
+					obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
+					
 					birdCollides = true;
 					collisionY = bird.ty;
 					collisionZ = bird.tz;
@@ -220,8 +228,50 @@ function isColliding(){
 				
 					birdCollision(structureObjs[i]);
 				}
-			} else if(((objStart < birdEnd && obj.tz > birdEnd) || (objEnd > birdStart && obj.tz < birdStart)) && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
+			//bird collision up
+			} else if((objInf < birdSup && obj.ty > birdSup) && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
 				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
+					let elasticCoefficient = 0.4;
+					let birdVzFinal = velz * elasticCoefficient;
+					let birdVyFinal = vely * elasticCoefficient;
+				
+					obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
+					obj.vy = - (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
+					
+					birdCollides = true;
+					collisionY = bird.ty;
+					collisionZ = bird.tz;
+					collisionT = t;
+				
+					birdCollision(structureObjs[i]);
+				}
+			//bird collision right
+			} else if((objEnd > birdStart && obj.tz < birdStart) && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
+				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
+					let elasticCoefficient = 0.4;
+					let birdVzFinal = velz * elasticCoefficient;
+					let birdVyFinal = vely * elasticCoefficient;
+				
+					obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
+					obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
+
+					birdCollides = true;
+					collisionY = bird.ty;
+					collisionZ = bird.tz;
+					collisionT = t;
+
+					birdCollision(structureObjs[i]);
+				}
+			//bird collision left
+			} else if( (objEnd > birdStart && obj.tz < birdStart)&& ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
+				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
+					let elasticCoefficient = 0.4;
+					let birdVzFinal = velz * elasticCoefficient;
+					let birdVyFinal = vely * elasticCoefficient;
+				
+					obj.vz = - (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
+					obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
+					
 					birdCollides = true;
 					collisionY = bird.ty;
 					collisionZ = bird.tz;
@@ -239,9 +289,6 @@ function birdCollision(obj){
 	let elasticCoefficient = 0.4;
 	let birdVzFinal = velz * elasticCoefficient;
 	let birdVyFinal = vely * elasticCoefficient;
-
-	obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
-	obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
 
 	obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT;
  
