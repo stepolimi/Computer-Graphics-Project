@@ -511,9 +511,8 @@ function resetBirdPower(){
 
 function activateBombPower(){
 	scaling = 0.0;
-	let bombTemp;
+	let bombTemp = bird;
 	if(isBombActiveFirstTime){
-		bombTemp = bird;
 		isBombActiveFirstTime = false;
 		bombZ = bombTemp.tz;
 		bombY = bombTemp.ty;
