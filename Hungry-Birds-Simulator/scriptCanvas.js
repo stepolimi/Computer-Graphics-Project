@@ -644,6 +644,12 @@ function checkStability(){
                         objTocheck.supRightPieces.push(obj);
                         hitObjs.push(obj);
                     }
+                }else if(obj.type =="glassBox" || obj.type == "woodBox"  || obj.type == "stoneBox") 
+                    if(objY > obj.tz - obj.rady && objTocheck.ty + objTocheck.rady < obj.tz + obj.rady){
+                        if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
+                            stable = true;
+                            hitObjs.push(obj);
+                        }
                 }
             });
 
