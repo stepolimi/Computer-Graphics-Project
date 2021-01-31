@@ -260,7 +260,7 @@ function isColliding(){
 					birdCollision(structureObjs[i]);
 				}
 			//bird collision right
-			if((objEnd > birdStart && obj.tz < birdStart) && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup)))
+			if((objStart < birdEnd && obj.tz > birdEnd) && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup)))
 				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
