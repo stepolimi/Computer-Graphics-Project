@@ -360,6 +360,7 @@ function collides(objMoving){
 						obj.vy = - obj.vy;
 
 					console.log("objMoving type: " + objMoving.type);
+					console.log("objMoving stable: " + objMoving.isStable);
 					console.log("objMoving vy: " + objMoving.vy);
 					console.log("objMoving vz: " + objMoving.vz);
 
