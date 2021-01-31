@@ -99,8 +99,9 @@ function birdTrajectory(index){
 	}else{
 	
 		if((bird.isStable && velz < 0.001) || landed){
-			if(bird.type == "bomb")
+			if(bird.type == "bomb"){
 				activateBombPower();
+			}
 			endBird(index);
 		} else{
 			checkBirdStability();
@@ -246,6 +247,12 @@ function birdCollision(obj){
  
 	checkHp(obj);
 
+	if(bird.type == "bomb"){
+		obj.vz = - obj.vz * 2;
+		obj.vy = - obj.vy * 2;
+		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT * 2;
+	}
+
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
@@ -328,11 +335,17 @@ function checkHp(obj){
 		}
 		scoreDiv.innerHTML = "Score: " + score;
 
-		obj.scale = 0;
-		obj.ty = -5;
-		obj.tz = 0;
-		obj.vy = 0;
-		obj.vz = 0;
+		if(obj.type == "tnt"){
+			if(obj.scale != 0)
+				explode(obj);
+		} else{
+			obj.scale = 0;
+			obj.ty = -5;
+			obj.tz = 0;
+			obj.vy = 0;
+			obj.vz = 0;
+		}
+
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	} else if(obj.hp < obj.maxHp / 3){
 		score += 100;
@@ -413,6 +426,29 @@ function checkHp(obj){
 	addMeshToScene(obj.index);
 }
 
+async function explode(obj){
+	let objTy = obj.ty;
+	let objTz = obj.tz;
+	while(obj.rady < 1){
+		obj.rady += 0.02; 
+		obj.radz += 0.02;
+		obj.isMoving = false;
+		obj.vy = 10;
+		obj.vz = 5;
+		obj.ty = objTy;
+		obj.tz = objTz
+		obj.scale = 0;
+		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+	}
+
+	obj.scale = 0;
+	obj.ty = -5;
+	obj.tz = 0;
+	obj.vy = 0;
+	obj.vz = 0;
+	worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+}
+
 function moveObject(obj){
 	if(obj.isMoving || !obj.isStable){
 		let ground = -0.4;
@@ -485,25 +521,23 @@ function resetBirdPower(){
 
 function activateBombPower(){
 	scaling = 0.0;
+	let bombTemp = bird;
 	if(isBombActiveFirstTime){
 		isBombActiveFirstTime = false;
-		bombZ = bird.tz;
-		bombY = bird.ty;
-		bird.vy= 0.0;
-		bird.vz = 0.0;
+		bombZ = bombTemp.tz;
+		bombY = bombTemp.ty;
+		bombTemp.vy= 0.0;
+		bombTemp.vz = 0.0;
 		scaling = 0.0;
 		explosionScaling = 0.0;
 	}
 
 	explosionScaling += 0.02;
 	if(explosionScaling <= 1.0){
-		bird.rady += 0.02; 
-		bird.radz += 0.02;
-		bird.ty = bombY;
-		bird.tz = bombZ;
-		bird.vy = -bird.vy;
-		bird.vz = -bird.vz;
-		checkExplosion();
+		bombTemp.rady += 0.02; 
+		bombTemp.radz += 0.02;
+		bombTemp.ty = bombY;
+		bombTemp.tz = bombZ;
 		worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 	}else{
 		explosionScaling = 0.0;
@@ -512,12 +546,6 @@ function activateBombPower(){
 		endBird(prec);
 		setTimeout(function(){worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
 	}
-}
-
-function checkExplosion(){
-	structureObjs.forEach(function(obj) {
-
-	});
 }
 
 function activateChuckPower(){
