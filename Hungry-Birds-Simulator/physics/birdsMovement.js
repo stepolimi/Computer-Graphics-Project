@@ -63,6 +63,7 @@ function birdTrajectory(index){
 		landed = false;
 		birdCollides = false;
 		prec = index;
+		scaling = 0.5;
 		v = BIRD_SPEED * elasticForce;
 	}
 
@@ -490,18 +491,32 @@ function activateBombPower(){
 		isBombActiveFirstTime = false;
 		bombZ = bird.tz;
 		bombY = bird.ty;
+		bird.vy= 0.0;
+		bird.vz = 0.0;
+		scaling = 0.0;
 		explosionScaling = 0.0;
 	}
-	
+
+	bird.rady += 0.02; 
+	bird.radz += 0.02; 
+
 	explosionScaling += 0.02;
-	if(explosionScaling <= 1.0)
+	if(explosionScaling <= 1.0){
+		checkExplosion();
 		worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
-	else{
+	}else{
 		explosionScaling = 0.0;
 		isBombActiveFirstTime = true;
 		activateBirdPower = false;
+		endBird(prec);
 		setTimeout(function(){worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
 	}
+}
+
+function checkExplosion(){
+	structureObjs.forEach(function(obj) {
+
+	});
 }
 
 function activateChuckPower(){
