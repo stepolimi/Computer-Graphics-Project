@@ -626,7 +626,7 @@ function checkStability(){
                     }
                 }else if(obj.type =="glassBox" || obj.type == "woodBox"  || obj.type == "stoneBox"){
                     console.log("first: " + objTocheck.type);
-                    if(objY > obj.tz - obj.rady && objTocheck.ty + objTocheck.rady < obj.tz + obj.rady){
+                    if(objY > obj.ty - obj.rady && objTocheck.ty + objTocheck.rady < obj.ty + obj.rady){
                         console.log("second: " + objTocheck.type);
                         if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
                             console.log("third: " + objTocheck.type);
