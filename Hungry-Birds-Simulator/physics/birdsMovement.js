@@ -247,7 +247,7 @@ function birdCollision(obj){
  
 	checkHp(obj);
 
-	if(byird.type == "bomb"){
+	if(bird.type == "bomb"){
 		obj.vz = - obj.vz * 2;
 		obj.vy = - obj.vy * 2;
 		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT * 2;
