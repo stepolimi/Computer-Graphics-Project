@@ -390,8 +390,6 @@ function collides(objMoving){
 					if(obj.vy < 0 )
 						obj.vy = - obj.vy;
 
-					console.log("up");
-
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
@@ -417,9 +415,7 @@ function collides(objMoving){
 
 					if(obj.vz < 0 )
 						obj.vz = - obj.vz;
-						
-					console.log("right");
-				
+										
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
@@ -443,8 +439,6 @@ function collides(objMoving){
 
 					if(obj.vz > 0 )
 						obj.vz = - obj.vz;
-
-					console.log("left");
 				
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
