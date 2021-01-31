@@ -574,8 +574,8 @@ async function explode(obj){
 	let objTy = obj.ty;
 	let objTz = obj.tz;
 	while(obj.rady < 1){
-		obj.rady += 0.02; 
-		obj.radz += 0.02;
+		obj.rady += 0.1; 
+		obj.radz += 0.1;
 		obj.isMoving = false;
 		obj.vy = 10;
 		obj.vz = 5;
