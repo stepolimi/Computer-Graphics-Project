@@ -212,7 +212,7 @@ function isColliding(){
 
 		if(structureObjs[i].type != "egg"){
 			//bird collision down
-			if((objSup > birdInf && obj.ty < birdInf) && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
+			if((objSup > birdInf && obj.ty < birdInf) && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd)))
 				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
@@ -236,7 +236,7 @@ function isColliding(){
 					birdCollision(structureObjs[i]);
 				}
 			//bird collision up
-			} else if((objInf < birdSup && obj.ty > birdSup) && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd))){
+			if((objInf < birdSup && obj.ty > birdSup) && ((objEnd > birdStart + tollerance && objEnd < birdEnd) || (objStart < birdEnd - tollerance && objStart > birdStart) || (objStart - tollerance <= birdStart && objEnd + tollerance >= birdEnd)))
 				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
@@ -260,7 +260,7 @@ function isColliding(){
 					birdCollision(structureObjs[i]);
 				}
 			//bird collision right
-			} else if((objEnd > birdStart && obj.tz < birdStart) && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
+			if((objEnd > birdStart && obj.tz < birdStart) && ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup)))
 				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
@@ -283,7 +283,7 @@ function isColliding(){
 					birdCollision(structureObjs[i]);
 				}
 			//bird collision left
-			} else if( (objEnd > birdStart && obj.tz < birdStart)&& ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup))){
+			if( (objEnd > birdStart && obj.tz < birdStart)&& ((objSup > birdInf + tollerance && objSup < birdSup)  || (objInf < birdSup - tollerance && objInf > birdInf) ||(objInf - tollerance <= birdInf && objSup + tollerance >= birdSup)))
 				if(vely <= -0.0001 || vely >= 0.0001 || velz >= 0.0001 || velz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
@@ -306,7 +306,6 @@ function isColliding(){
 				
 					birdCollision(structureObjs[i]);
 				}
-			}
 		}	
 	}
 }
