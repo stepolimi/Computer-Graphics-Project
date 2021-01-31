@@ -217,6 +217,13 @@ function isColliding(){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
 					let birdVyFinal = vely * elasticCoefficient;
+
+					if(bird.type == "bomb"){
+						bird.vy= 10.0;
+						bird.vz = 5.0;
+						vely = bird.vy;
+						velz = bird.vz;
+					}
 				
 					obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 					obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
@@ -234,6 +241,13 @@ function isColliding(){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
 					let birdVyFinal = vely * elasticCoefficient;
+
+					if(bird.type == "bomb"){
+						bird.vy= 10.0;
+						bird.vz = 5.0;
+						vely = bird.vy;
+						velz = bird.vz;
+					}
 				
 					obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 					obj.vy = - (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
@@ -252,6 +266,12 @@ function isColliding(){
 					let birdVzFinal = velz * elasticCoefficient;
 					let birdVyFinal = vely * elasticCoefficient;
 				
+					if(bird.type == "bomb"){
+						bird.vy= 10.0;
+						bird.vz = 5.0;
+						vely = bird.vy;
+						velz = bird.vz;
+					}
 					obj.vz = (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 					obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
 
@@ -268,6 +288,13 @@ function isColliding(){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
 					let birdVyFinal = vely * elasticCoefficient;
+
+					if(bird.type == "bomb"){
+						bird.vy= 10.0;
+						bird.vz = 5.0;
+						vely = bird.vy;
+						velz = bird.vz;
+					}
 				
 					obj.vz = - (bird.m * velz + obj.m * obj.vz - bird.m * birdVzFinal) / obj.m;
 					obj.vy = (bird.m * vely + obj.m * obj.vy - bird.m * birdVyFinal) / obj.m;
@@ -290,19 +317,15 @@ function birdCollision(obj){
 	let birdVzFinal = velz * elasticCoefficient;
 	let birdVyFinal = vely * elasticCoefficient;
 
-	obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT;
- 
-	checkHp(obj);
-
 	if(bird.type == "bomb"){
-		obj.vz = - obj.vz * 2;
-		obj.vy = - obj.vy * 2;
 		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT * 2;
+	}else{
+		velz = birdVzFinal;
+		vely = birdVyFinal;
+		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT;
 	}
 
-	velz = birdVzFinal;
-	vely = birdVyFinal;
-
+	checkHp(obj);
 	obj.isMoving = true;
 }
 
@@ -617,8 +640,6 @@ function activateBombPower(){
 		isBombActiveFirstTime = false;
 		bombZ = bombTemp.tz;
 		bombY = bombTemp.ty;
-		bombTemp.vy= 0.0;
-		bombTemp.vz = 0.0;
 		scaling = 0.0;
 		explosionScaling = 0.0;
 	}
