@@ -433,7 +433,7 @@ async function explode(obj){
 		obj.rady += 0.02; 
 		obj.radz += 0.02;
 		obj.isMoving = false;
-		obj.vy = 5;
+		obj.vy = 10;
 		obj.vz = 5;
 		obj.ty = objTy;
 		obj.tz = objTz
