@@ -1,7 +1,7 @@
-# Blender v2.90.1 OBJ File: ''
+# Blender v2.90.1 OBJ File: 'glassVerticalPlane.blend'
 # www.blender.org
 mtllib glassVerticalPlane.mtl
-o Cube_Cube.001
+o glassVerticalPlane
 v -0.481292 2.000000 -0.497738
 v -0.481292 -2.000000 0.497738
 v -0.481292 -2.000000 -0.497738
