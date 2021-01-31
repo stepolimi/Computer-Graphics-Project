@@ -467,6 +467,7 @@ function collides(objMoving){
 
 function checkHp(obj){
 	scoreDiv = document.getElementById("score");
+	let newMesh = allMeshes[obj.index];
 	if(obj.hp <= 0){
 		if(obj.type == "pig"){
 			score += 500;
@@ -496,11 +497,11 @@ function checkHp(obj){
 	} else if(obj.hp < obj.maxHp / 3){
 		score += 100;
 		scoreDiv.innerHTML = "Score: " + score;
-		let newMesh = allMeshes[obj.index];
 
 		switch(obj.type){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
+				console.log("glassPlane1");
 				newMesh.textures = GLASSPLANE_BROKEN_1;
 				break;
 			case "woodVerticalPlane":
@@ -538,7 +539,8 @@ function checkHp(obj){
 		switch(obj.type){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
-				allMeshes[obj.index].textures = GLASSPLANE_BROKEN_2;
+				console.log("glassPlane1");
+				newMesh.textures = GLASSPLANE_BROKEN_2;
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
