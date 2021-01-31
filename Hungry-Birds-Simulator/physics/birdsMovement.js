@@ -99,6 +99,8 @@ function birdTrajectory(index){
 	}else{
 	
 		if((bird.isStable && velz < 0.001) || landed){
+			if(bird.type == "bomb")
+				activateBombPower();
 			endBird(index);
 		} else{
 			checkBirdStability();
