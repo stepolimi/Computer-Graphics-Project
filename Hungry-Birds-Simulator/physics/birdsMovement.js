@@ -356,9 +356,6 @@ function collides(objMoving){
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
-					if(objMoving.type == "tnt")
-						console.log("hit: " + obj.type);
-
 					if(obj.vy > 0 )
 						obj.vy = - obj.vy;
 
@@ -382,9 +379,6 @@ function collides(objMoving){
 					let elasticCoefficient = 0.4;
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
-
-					if(objMoving.type == "tnt")
-						console.log("hit: " + obj.type);
 
 					if(obj.vy < 0 )
 						obj.vy = - obj.vy;
@@ -412,9 +406,6 @@ function collides(objMoving){
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 
-					if(objMoving.type == "tnt")
-						console.log("hit: " + obj.type);
-
 					if(obj.vz < 0 )
 						obj.vz = - obj.vz;
 				
@@ -438,9 +429,6 @@ function collides(objMoving){
 					let elasticCoefficient = 0.4;
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
-
-					if(objMoving.type == "tnt")
-						console.log("hit: " + obj.type);
 
 					if(obj.vz > 0 )
 						obj.vz = - obj.vz;
@@ -493,6 +481,7 @@ function checkHp(obj){
 
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	} else if(obj.hp < obj.maxHp / 3){
+		console.log("full: " + obj.type);
 		score += 100;
 		scoreDiv.innerHTML = "Score: " + score;
 
@@ -530,6 +519,7 @@ function checkHp(obj){
 				break;
 		}
 	} else if(obj.hp < (obj.maxHp / 3) * 2){
+		console.log("half: " + obj.type);
 		score += 50;
 		scoreDiv.innerHTML = "Score: " + score;
 
