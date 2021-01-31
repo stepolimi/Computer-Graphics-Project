@@ -440,6 +440,13 @@ async function explode(obj){
 		obj.scale = 0;
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	}
+
+	obj.scale = 0;
+	obj.ty = -5;
+	obj.tz = 0;
+	obj.vy = 0;
+	obj.vz = 0;
+	worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 }
 
 function moveObject(obj){
