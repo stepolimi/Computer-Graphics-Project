@@ -473,8 +473,10 @@ function checkHp(obj){
 		scoreDiv.innerHTML = "Score: " + score;
 
 		if(obj.type == "tnt"){
-			if(obj.scale != 0)
+			if(obj.scale != 0){
+				document.getElementById("tnt").play;
 				explode(obj);
+			}
 		} else{
 			obj.scale = 0;
 			obj.ty = -5;
