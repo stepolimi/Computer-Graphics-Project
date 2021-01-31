@@ -646,10 +646,10 @@ function activateBombPower(){
 
 	explosionScaling += 0.02;
 	if(explosionScaling <= 1.0){
-		bombTemp.rady += 0.02; 
-		bombTemp.radz += 0.02;
-		bombTemp.ty = bombY;
-		bombTemp.tz = bombZ;
+		bird.rady += 0.02; 
+		bird.radz += 0.02;
+		bird.ty = bombY;
+		bird.tz = bombZ;
 		worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 	}else{
 		explosionScaling = 0.0;
