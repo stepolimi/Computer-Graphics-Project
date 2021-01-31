@@ -103,6 +103,7 @@ function birdTrajectory(index){
 				activateBombPower();
 			}
 			endBird(index);
+			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 		} else{
 			checkBirdStability();
 			let deltaT = t - collisionT;
