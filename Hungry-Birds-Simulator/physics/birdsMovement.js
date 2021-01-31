@@ -152,12 +152,12 @@ function endBird(index){
 					remainings ++;
 			});
 			if(!ended){
-				endGame();
+				endGame(remainings);
 			}		
 		}
 }
 
-async function endGame(){
+async function endGame(remainings){
 	ended = true;
 	await sleep(3000);
 	window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
