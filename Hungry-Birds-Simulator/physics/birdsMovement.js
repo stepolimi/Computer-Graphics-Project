@@ -108,10 +108,6 @@ function birdTrajectory(index){
 			let deltaT = t - collisionT;
 			bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
 			bird.tz = collisionZ + velz*deltaT;
-
-			if(activateBirdPower){
-				activatePower();
-			}
 	
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 			isColliding();
