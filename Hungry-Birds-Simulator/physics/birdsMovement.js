@@ -83,12 +83,15 @@ function birdTrajectory(index){
 		vely = velys - velyg;
 		velz = v*Math.cos(utils.degToRad(angle));
 
+		bird.ty = birdStartingY + velys*t - velyg*t/2;
+		bird.tz = -birdStartingZ + velz*t;
+
 		if(activateBirdPower){
 			activatePower();
-		}else{
+		}/*else{
 			bird.ty = birdStartingY + velys*t - velyg*t/2;
 			bird.tz = -birdStartingZ + velz*t;
-		}
+		}*/
 
 		bird.ry = angle;
 		bird.rz = rotation;
@@ -98,22 +101,7 @@ function birdTrajectory(index){
 	}else{
 	
 		if((bird.isStable && velz < 0.001) || landed){
-			killBird(index,1000);
-			rotation = 0.0;
-			scaling = 0.5;
-			busy = false;
-			resetBirdPower();
-			if(counter == 5){
-				let remainings = 0;
-				structureObjs.forEach(function(obj) {
-					if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty != -5)
-						remainings ++;
-				});
-				if(!ended){
-					window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
-					ended = true;
-				}
-			}
+			endBird();
 		} else{
 			checkBirdStability();
 			let deltaT = t - collisionT;
@@ -131,23 +119,27 @@ function birdTrajectory(index){
 
 	if(bird.ty - bird.rady <= ground){
 		landed = true;
-		killBird(index, 1000);
-		rotation = 0.0;
-		scaling = 0.5;
-		busy = false;
-		resetBirdPower();
-		if(counter == 5){
-			let remainings = 0;
-			structureObjs.forEach(function(obj) {
-				if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty != -5)
-					remainings ++;
-			});
-			if(!ended){
-				window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
-				ended = true;
-			}
-		}
+		endBird();
 	} else if(bird.ty > 30){
+		endBird();
+	}
+	t += TICK;
+}
+
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function killBird(ind, t) {
+	await sleep(t);
+	bird.ty = -5;
+	bird.tz = 0;
+	worldPositions[ind] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
+}
+
+
+function endBird(){
 		killBird(index, 0);
 		rotation = 0.0;
 		scaling = 0.5;
@@ -164,20 +156,7 @@ function birdTrajectory(index){
 				ended = true;
 			}		
 		}
-	}
-	t += TICK;
 }
-
-function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
-}
-  
-async function killBird(ind, t) {
-	await sleep(t);
-	bird.ty = -5;
-	bird.tz = 0;
-	worldPositions[ind] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
-  }
 
 function checkBirdStability(){
 	let birdY = bird.ty - bird.rady;
@@ -500,9 +479,9 @@ function activatePower(){
 }
 
 function resetBirdPower(){
-	console.log("reset");
 	isMatildaActiveFirstTime = true;
 	activateBirdPower = false;
+	isBombActiveFirstTime = true;
 }
 
 function activateBombPower(){
@@ -512,7 +491,6 @@ function activateBombPower(){
 		bombZ = bird.tz;
 		bombY = bird.ty;
 		explosionScaling = 0.0;
-	
 	}
 	
 	explosionScaling += 0.02;
