@@ -427,16 +427,19 @@ function checkHp(obj){
 }
 
 async function explode(obj){
+	let objTy = obj.ty;
+	let objTz = obj.tz;
 	while(obj.rady < 1){
 		obj.rady += 0.02; 
 		obj.radz += 0.02;
 		obj.isMoving = false;
-		obj.vy = 0;
-		obj.vz = 0;
+		obj.vy = 5;
+		obj.vz = 5;
+		obj.ty = objTy;
+		obj.tz = objTz
 		obj.scale = 0;
+		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	}
-
-	worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 }
 
 function moveObject(obj){
@@ -528,7 +531,6 @@ function activateBombPower(){
 		bombTemp.radz += 0.02;
 		bombTemp.ty = bombY;
 		bombTemp.tz = bombZ;
-		checkExplosion();
 		worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 	}else{
 		explosionScaling = 0.0;
@@ -537,12 +539,6 @@ function activateBombPower(){
 		endBird(prec);
 		setTimeout(function(){worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling)}, 1000);
 	}
-}
-
-function checkExplosion(){
-	structureObjs.forEach(function(obj) {
-
-	});
 }
 
 function activateChuckPower(){
