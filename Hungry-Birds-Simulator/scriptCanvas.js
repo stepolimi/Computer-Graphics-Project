@@ -528,6 +528,11 @@ function addMeshToScene(i) {
     vaos[i] = vao;
     gl.bindVertexArray(vao);
     
+    console.log("vertices: " + mesh.vertices);
+    console.log("textures: " + mesh.textures);
+    console.log("vertexNormals: " + mesh.vertexNormals);
+    console.log("indices: " + mesh.indices);
+
     var positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.vertices), gl.STATIC_DRAW);
