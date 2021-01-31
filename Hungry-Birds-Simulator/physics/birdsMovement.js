@@ -575,7 +575,7 @@ async function explode(obj){
 		obj.ty = objTy;
 		obj.tz = objTz
 		obj.scale = 0;
-		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
+		collides(obj);
 	}
 
 	obj.scale = 0;
