@@ -351,7 +351,7 @@ function collides(objMoving){
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
 					if(objMoving.type == "tnt")
-						;
+						console.log("hit: " + obj.type);
 
 					if(obj.vy > 0 )
 						obj.vy = - obj.vy;
@@ -378,7 +378,7 @@ function collides(objMoving){
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
 					if(objMoving.type == "tnt")
-						;
+						console.log("hit: " + obj.type);
 
 					if(obj.vy < 0 )
 						obj.vy = - obj.vy;
@@ -407,7 +407,7 @@ function collides(objMoving){
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 
 					if(objMoving.type == "tnt")
-						;
+						console.log("hit: " + obj.type);
 
 					if(obj.vz < 0 )
 						obj.vz = - obj.vz;
@@ -434,7 +434,7 @@ function collides(objMoving){
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
 
 					if(objMoving.type == "tnt")
-						;
+						console.log("hit: " + obj.type);
 
 					if(obj.vz > 0 )
 						obj.vz = - obj.vz;
