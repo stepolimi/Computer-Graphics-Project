@@ -359,6 +359,8 @@ function collides(objMoving){
 					if(obj.vy > 0 )
 						obj.vy = - obj.vy;
 
+					console.log("down");
+
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
@@ -382,6 +384,8 @@ function collides(objMoving){
 
 					if(obj.vy < 0 )
 						obj.vy = - obj.vy;
+
+					console.log("up");
 
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
@@ -408,6 +412,8 @@ function collides(objMoving){
 
 					if(obj.vz < 0 )
 						obj.vz = - obj.vz;
+						
+					console.log("right");
 				
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
@@ -432,6 +438,8 @@ function collides(objMoving){
 
 					if(obj.vz > 0 )
 						obj.vz = - obj.vz;
+
+					console.log("left");
 				
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
@@ -481,7 +489,6 @@ function checkHp(obj){
 
 		worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
 	} else if(obj.hp < obj.maxHp / 3){
-		console.log("full: " + obj.type);
 		score += 100;
 		scoreDiv.innerHTML = "Score: " + score;
 
@@ -519,7 +526,6 @@ function checkHp(obj){
 				break;
 		}
 	} else if(obj.hp < (obj.maxHp / 3) * 2){
-		console.log("half: " + obj.type);
 		score += 50;
 		scoreDiv.innerHTML = "Score: " + score;
 
