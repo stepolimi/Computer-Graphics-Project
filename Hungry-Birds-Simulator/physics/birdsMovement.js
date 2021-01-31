@@ -343,12 +343,15 @@ function collides(objMoving){
 			let objStart = obj.tz - obj.radz;
 			let objEnd = obj.tz + obj.radz;
 	
-			//collision down
+			//object collision down
 			if(((objSup > objMovingInf && obj.ty < objMovingInf) || (objInf < objMovingSup && obj.ty > objMovingSup)) && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
 				if(objMoving.vy <= -0.0001 || objMoving.vy >= 0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
+
+					if(objMoving.type == "tnt")
+						;
 
 					if(obj.vy > 0 )
 						obj.vy = - obj.vy;
@@ -367,12 +370,15 @@ function collides(objMoving){
 						objMoving.isMoving = false;
 					}
 				}
-			//collision up
+			//object collision up
 			}else if((objInf < objMovingSup && obj.ty > objMovingSup) && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
 				if(objMoving.vy <= -0.0001 || objMoving.vy >= 0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
+
+					if(objMoving.type == "tnt")
+						;
 
 					if(obj.vy < 0 )
 						obj.vy = - obj.vy;
@@ -393,12 +399,15 @@ function collides(objMoving){
 				}
 			}
 	
-			//collision right
+			//object collision right
 			if((objStart < objMovingEnd && obj.tz > objMovingEnd) && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
 				if(objMoving.vz >= 0.0001 || objMoving.vz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+
+					if(objMoving.type == "tnt")
+						;
 
 					if(obj.vz < 0 )
 						obj.vz = - obj.vz;
@@ -417,12 +426,15 @@ function collides(objMoving){
 						objMoving.isMoving = false;
 					}
 				}
-			//collision left
+			//object collision left
 			}else if((objEnd > objMovingStart && obj.tz < objMovingStart) && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
 				if(objMoving.vz >= 0.0001 || objMoving.vz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+
+					if(objMoving.type == "tnt")
+						;
 
 					if(obj.vz > 0 )
 						obj.vz = - obj.vz;
