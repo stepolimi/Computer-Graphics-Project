@@ -359,12 +359,16 @@ function collides(objMoving){
 					if(obj.vy > 0 )
 						obj.vy = - obj.vy;
 
-					console.log("down");
+					console.log("objMoving type: " + objMoving.type);
+					console.log("objMoving vy: " + objMoving.vy);
+					console.log("objMoving vz: " + objMoving.vz);
 
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
 					checkHp(obj)
+					console.log("objMoving hp: " + objMoving.hp);
+					console.log("obj hp: " + obj.hp);
 
 					objMoving.vy = thisVyFinal;
 					obj.isMoving = true;
