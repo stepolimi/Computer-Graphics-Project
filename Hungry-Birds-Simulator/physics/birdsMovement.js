@@ -89,10 +89,7 @@ function birdTrajectory(index){
 
 		if(activateBirdPower){
 			activatePower();
-		}/*else{
-			bird.ty = birdStartingY + velys*t - velyg*t/2;
-			bird.tz = -birdStartingZ + velz*t;
-		}*/
+		}
 
 		bird.ry = angle;
 		bird.rz = rotation;
@@ -109,6 +106,9 @@ function birdTrajectory(index){
 			bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
 			bird.tz = collisionZ + velz*deltaT;
 	
+			if(bird.type == "bomb")
+				activateBombPower();
+
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 			isColliding();
 		}
@@ -493,11 +493,12 @@ function activateBombPower(){
 		explosionScaling = 0.0;
 	}
 
-	bird.rady += 0.02; 
-	bird.radz += 0.02; 
-
 	explosionScaling += 0.02;
 	if(explosionScaling <= 1.0){
+		bird.rady += 0.02; 
+		bird.radz += 0.02;
+		bird.ty = bombY;
+		bird.tz = bombZ;
 		checkExplosion();
 		worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 	}else{
