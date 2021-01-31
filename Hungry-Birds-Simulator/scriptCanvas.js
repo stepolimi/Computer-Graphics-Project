@@ -644,13 +644,7 @@ function checkStability(){
                         objTocheck.supRightPieces.push(obj);
                         hitObjs.push(obj);
                     }
-                }else if(obj.type =="glassBox" || type == "woodBox"  || type == "stoneBox") 
-                    if(objY > obj.tz - obj.rady && objTocheck.ty + objTocheck.rady < obj.tz + obj.rady){
-                        if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
-                            stable = true;
-                            hitObjs.push(obj);
-                        }
-                    }
+                }
             });
 
             //to be changed in !stable && !(precStable && sucStable) for full stability, as well as decommenting objectFall call
