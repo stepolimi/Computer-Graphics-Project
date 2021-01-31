@@ -73,8 +73,8 @@ class structureObjects {
 			this.hp = 3;
 			this.maxHp = 3;
 		} else{
-			this.hp = 1000;
-			this.maxHp = 1000;
+			this.hp = 10000;
+			this.maxHp = 10000;
 		}
 	}
 }

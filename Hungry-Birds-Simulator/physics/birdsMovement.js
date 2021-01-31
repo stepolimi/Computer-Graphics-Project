@@ -152,10 +152,15 @@ function endBird(index){
 					remainings ++;
 			});
 			if(!ended){
-				window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
-				ended = true;
+				endGame();
 			}		
 		}
+}
+
+async function endGame(){
+	ended = true;
+	await sleep(3000);
+	window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 }
 
 function checkBirdStability(){
