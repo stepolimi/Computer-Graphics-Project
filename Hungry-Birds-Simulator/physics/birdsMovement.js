@@ -474,7 +474,7 @@ function checkHp(obj){
 
 		if(obj.type == "tnt"){
 			if(obj.scale != 0){
-				document.getElementById("tnt").play;
+				document.getElementById("tnt").play();
 				explode(obj);
 			}
 		} else{
