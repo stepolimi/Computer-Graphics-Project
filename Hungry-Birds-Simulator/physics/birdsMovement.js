@@ -266,7 +266,7 @@ function collides(objMoving){
 			let objEnd = obj.tz + obj.radz;
 	
 			if(((objSup > objMovingInf && obj.ty < objMovingInf) || (objInf < objMovingSup && obj.ty > objMovingSup)) && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
-				if(objMoving.vy <= -0.0001 || objMoving.vy >= 0.0001){
+				if(objMoving.vy <= -0.0001 && objMoving.vy >= 0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
@@ -280,7 +280,7 @@ function collides(objMoving){
 					obj.isMoving = true;
 				}else{
 					objMoving.vy = 0;
-					if(objMoving.vz <= 0.0001 || objMoving.vz >= -0.0001){
+					if(objMoving.vz <= 0.0001 && objMoving.vz >= -0.0001){
 						objMoving.vz = 0;
 						objMoving.isMoving = false;
 					}
@@ -288,7 +288,7 @@ function collides(objMoving){
 			}
 	
 			if(((objStart < objMovingEnd && obj.tz > objMovingEnd) || (objEnd > objMovingStart && obj.tz < objMovingStart)) && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
-				if(objMoving.vz >= 0.0001 || objMoving.vz <= -0.0001){
+				if(objMoving.vz >= 0.0001 && objMoving.vz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
@@ -302,7 +302,7 @@ function collides(objMoving){
 					obj.isMoving = true;
 				}else{
 					objMoving.vz = 0;
-					if(objMoving.vy >= -0.0001 || objMoving.vy <= 0.0001){
+					if(objMoving.vy >= -0.0001 && objMoving.vy <= 0.0001){
 						objMoving.vy = 0;
 						objMoving.isMoving = false;
 					}
