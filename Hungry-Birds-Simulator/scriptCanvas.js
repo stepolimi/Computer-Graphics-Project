@@ -369,27 +369,12 @@ async function loadMeshes(){
     environment = await utils.loadMesh("/assets/Others/environment.obj");
     sling = await utils.loadMesh("/assets/Others/sling.obj");
     elastic = await utils.loadMesh("/assets/Others/slingElastic.obj");
-    //tnt = await utils.loadMesh("/assets/Others/tnt.obj");
     birdRed = await utils.loadMesh("/assets/Birds/red.obj");
     birdChuck = await utils.loadMesh("/assets/Birds/chuck.obj");
     birdBomb = await utils.loadMesh("/assets/Birds/bomb.obj");
     birdMatilda = await utils.loadMesh("/assets/Birds/matilda.obj"); 
-    //pig = await utils.loadMesh("/assets/Pigs/pig.obj"); 
-    //pigHelmet = await utils.loadMesh("/assets/Pigs/pighelment.obj"); 
-    //pigMustache = await utils.loadMesh("/assets/Pigs/pigstache.obj"); 
     egg = await utils.loadMesh("/assets/Others/egg.obj");
     plumeExplosion = await utils.loadMesh("/assets/Others/plume.obj");
-    //woodBox = await utils.loadMesh("/assets/Others/woodBox.obj");
-    //glassBox = await utils.loadMesh("/assets/Others/glassBox.obj");
-    //stoneBox = await utils.loadMesh("/assets/Others/stoneBox.obj");
-    //woodPyramid = await utils.loadMesh("/assets/Others/woodPyramid.obj");
-    //glassPyramid = await utils.loadMesh("/assets/Others/glassPyramid.obj");
-    //stonePyramid = await utils.loadMesh("/assets/Others/stonePyramid.obj");
-    //glassVerticalPlane = await utils.loadMesh("/assets/Others/glassVerticalPlane.obj");
-    //woodVerticalPlane = await utils.loadMesh("/assets/Others/woodVerticalPlane.obj");
-    //glassHorizontalPlane = await utils.loadMesh("/assets/Others/glassHorizontalPlane.obj");
-    //woodHorizontalPlane = await utils.loadMesh("/assets/Others/woodHorizontalPlane.obj");
-    //stoneSquare = await utils.loadMesh("/assets/Others/stoneSquare.obj");
     rock1 = await utils.loadMesh("/assets/Others/rock1.obj");
     rock2 = await utils.loadMesh("/assets/Others/rock2.obj");
 
@@ -527,11 +512,6 @@ function addMeshToScene(i) {
     let vao = gl.createVertexArray();
     vaos[i] = vao;
     gl.bindVertexArray(vao);
-    
-    console.log("vertices: " + mesh.vertices);
-    console.log("textures: " + mesh.textures);
-    console.log("vertexNormals: " + mesh.vertexNormals);
-    console.log("indices: " + mesh.indices);
 
     var positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);

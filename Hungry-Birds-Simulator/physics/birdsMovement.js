@@ -500,7 +500,10 @@ function checkHp(obj){
 		switch(obj.type){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
+				console.log("obj type: " + obj.type);
+				console.log("prev texture: " + allMeshes[obj.index].textures );
 				allMeshes[obj.index].textures = GLASSPLANE_BROKEN_1;
+				console.log("new texture: " + allMeshes[obj.index].textures );
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
