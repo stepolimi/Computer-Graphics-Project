@@ -101,7 +101,7 @@ function birdTrajectory(index){
 	}else{
 	
 		if((bird.isStable && velz < 0.001) || landed){
-			endBird();
+			endBird(index);
 		} else{
 			checkBirdStability();
 			let deltaT = t - collisionT;
@@ -119,9 +119,9 @@ function birdTrajectory(index){
 
 	if(bird.ty - bird.rady <= ground){
 		landed = true;
-		endBird();
+		endBird(index);
 	} else if(bird.ty > 30){
-		endBird();
+		endBird(index);
 	}
 	t += TICK;
 }
@@ -139,7 +139,7 @@ async function killBird(ind, t) {
 }
 
 
-function endBird(){
+function endBird(index){
 		killBird(index, 0);
 		rotation = 0.0;
 		scaling = 0.5;
