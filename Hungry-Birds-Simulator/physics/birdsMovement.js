@@ -247,6 +247,12 @@ function birdCollision(obj){
  
 	checkHp(obj);
 
+	if(byird.type == "bomb"){
+		obj.vz = - obj.vz * 2;
+		obj.vy = - obj.vy * 2;
+		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT * 2;
+	}
+
 	velz = birdVzFinal;
 	vely = birdVyFinal;
 
@@ -505,8 +511,9 @@ function resetBirdPower(){
 
 function activateBombPower(){
 	scaling = 0.0;
-	let bombTemp = bird;
+	let bombTemp;
 	if(isBombActiveFirstTime){
+		bombTemp = bird;
 		isBombActiveFirstTime = false;
 		bombZ = bombTemp.tz;
 		bombY = bombTemp.ty;
@@ -522,8 +529,6 @@ function activateBombPower(){
 		bombTemp.radz += 0.02;
 		bombTemp.ty = bombY;
 		bombTemp.tz = bombZ;
-		bombTemp.vy = -bombTemp.vy;
-		bombTemp.vz = -bombTemp.vz;
 		checkExplosion();
 		worldPositions[9] = utils.MakeWorld(0.0, bombY, bombZ, 0.0, 0.0, 0.0, explosionScaling);
 	}else{
