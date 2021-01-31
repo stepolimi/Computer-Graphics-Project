@@ -624,12 +624,16 @@ function checkStability(){
                         objTocheck.supRightPieces.push(obj);
                         hitObjs.push(obj);
                     }
-                }else if(obj.type =="glassBox" || obj.type == "woodBox"  || obj.type == "stoneBox") 
+                }else if(obj.type =="glassBox" || obj.type == "woodBox"  || obj.type == "stoneBox"){
+                    console.log("first: " + objTocheck.type);
                     if(objY > obj.tz - obj.rady && objTocheck.ty + objTocheck.rady < obj.tz + obj.rady){
+                        console.log("second: " + objTocheck.type);
                         if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
+                            console.log("third: " + objTocheck.type);
                             stable = true;
                             hitObjs.push(obj);
                         }
+                    }
                 }
             });
 
