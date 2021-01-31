@@ -351,6 +351,9 @@ function collides(objMoving){
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
 					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
 
+					if(obj.vy > 0 )
+						obj.vy = - obj.vy;
+
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
@@ -370,7 +373,10 @@ function collides(objMoving){
 				if(objMoving.vy <= -0.0001 || objMoving.vy >= 0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVyFinal = objMoving.vy * elasticCoefficient;
-					obj.vy = - (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
+					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
+
+					if(obj.vy < 0 )
+						obj.vy = - obj.vy;
 
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
@@ -394,6 +400,9 @@ function collides(objMoving){
 					let elasticCoefficient = 0.4;
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
 					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+
+					if(obj.vz < 0 )
+						obj.vz = - obj.vz;
 				
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
@@ -414,7 +423,10 @@ function collides(objMoving){
 				if(objMoving.vz >= 0.0001 || objMoving.vz <= -0.0001){
 					let elasticCoefficient = 0.4;
 					let thisVzFinal = objMoving.vz * elasticCoefficient;
-					obj.vz = - (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
+
+					if(obj.vz > 0 )
+						obj.vz = - obj.vz;
 				
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
