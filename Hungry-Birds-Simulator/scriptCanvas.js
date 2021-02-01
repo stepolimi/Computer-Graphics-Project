@@ -559,7 +559,7 @@ function addMeshToScene(i) {
     //todo: to be moved somewhere else
     //applies gravity to objects
     checkStability();
-    //objectFall();
+    objectFall();
 
     structureObjs.forEach(function(obj) {
         moveObject(obj);
@@ -635,7 +635,7 @@ function checkStability(){
             });
 
             //to be changed in !stable && !(precStable && sucStable) for full stability, as well as decommenting objectFall call
-            if(!stable && !precStable && !sucStable){
+            if(!stable && !(precStable && sucStable)){
                 objTocheck.isStable = false;
             }else{
                 if(objTocheck.vy != 0){
@@ -688,20 +688,8 @@ function objectFall(){
                     rotObj = supObj;
                 }
             });
-            let deltaMov = (rotObj.ty + rotObj.rady - (obj.ty - obj.rady) + obj.vy * TICK - (g*TICK*TICK /2)) / obj.rady;
-            obj.ry = Math.asin(deltaMov) * (180 / Math.PI);
-            obj.rady = Math.sin(utils.degToRad(obj.ry)) * obj.rady + obj.rady;
-            obj.radz = Math.cos(utils.degToRad(obj.ry)) * obj.radz + obj.radz;
-            //console.log("mov: " + deltaMov);
-            //console.log("rot: " + obj.ry);
-            //if(obj.tz - obj.radz < rotObj.tz + rotObj.radz){
-            //    obj.tz = obj.tz + rotObj.tz + rotObj.radz - (obj.tz - obj.radz);
-            //}
-            /*
-            if(obj.ry < 90)
-                obj.ry += obj.radz * (obj.tz - maxZ);
             if(obj.vz == 0 && obj.type!="egg")
-                obj.vz = 0.1;*/
+                obj.vz = 0.1;
         }
         else if(obj.supRightPieces.length != 0){
             let minZ = 100;
@@ -709,10 +697,8 @@ function objectFall(){
                 if(supObj.tz - supObj.radz < minZ)
                     minZ = supObj.tz - supObj.radz;
             });
-            if(obj.ry > -90)
-                obj.ry -= obj.radz * (obj.tz - minZ);
             if(obj.vz == 0 && obj.type!="egg")
-                obj.vz = 0.1;
+                obj.vz = - 0.1;
         }
      }
     });
