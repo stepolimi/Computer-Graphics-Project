@@ -120,7 +120,7 @@ function birdTrajectory(index){
 	if(bird.ty - bird.rady <= ground){
 		landed = true;
 		endBird(index);
-	} else if(bird.ty > 30){
+	} else if(bird.ty > 20){
 		escaped = true;
 		endBird(index);
 	}
