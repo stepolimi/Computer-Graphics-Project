@@ -330,32 +330,6 @@ function birdCollision(obj){
 		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT;
 	}
 
-	switch(obj.type){
-		case "glassHorizontalPlane":
-		case "glassPyramid":
-		case "glassBox":
-		case "glassVerticalPlane":
-			document.getElementById("ice_collision").play();
-			break;
-		case "woodVerticalPlane":
-		case "woodHorizontalPlane":
-		case "woodPyramid":
-		case "woodBox":
-			document.getElementById("wood_collision").play();
-			break;
-		case "stoneSquare":
-		case "stonePyramid":
-		case "stoneBox":
-			document.getElementById("stone_collision").play();
-			break;
-		case "pig":
-			document.getElementById("pig_collision").play();
-			break;
-		case "pigHelmet":
-		case "pigMustache":
-			document.getElementById("big_pig_collision").play();
-			break;
-	}
 	checkHp(obj);
 	obj.isMoving = true;
 }
@@ -581,6 +555,35 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = STONEBOX_BROKEN_2;
 				break;
 			default:
+				break;
+		}
+	}
+
+	if(obj.hp < (obj.maxHp / 3) * 2){
+		switch(obj.type){
+			case "glassHorizontalPlane":
+			case "glassPyramid":
+			case "glassBox":
+			case "glassVerticalPlane":
+				document.getElementById("ice_collision").play();
+				break;
+			case "woodVerticalPlane":
+			case "woodHorizontalPlane":
+			case "woodPyramid":
+			case "woodBox":
+				document.getElementById("wood_collision").play();
+				break;
+			case "stoneSquare":
+			case "stonePyramid":
+			case "stoneBox":
+				document.getElementById("stone_collision").play();
+				break;
+			case "pig":
+				document.getElementById("pig_collision").play();
+				break;
+			case "pigHelmet":
+			case "pigMustache":
+				document.getElementById("big_pig_collision").play();
 				break;
 		}
 	}
