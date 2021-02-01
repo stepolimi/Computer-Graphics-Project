@@ -68,8 +68,7 @@ var tower218;
 var tower219;
 var tower220;
 
-
-//Tower 3
+//meshes for tower 3
 var pig31;
 var tower31;
 var tower32;
@@ -83,7 +82,7 @@ var tower37;
 var birdsArray = [];
 var structureObjs = [];
 
-
+//randomize type of birds between red, chuck, matilda and bomb
 function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
     for(let i=0; i<5; i++){
         let min = Math.ceil(1);
@@ -144,7 +143,7 @@ function randomizeBirds(birdChuck, birdRed, birdBomb, birdMatilda){
     }
 }
     
-
+//randomize type of pigs between pig, pigHelmet and pigMustache
 async function randomizePigs(){
 	for(let i=0; i<9; i++){
         let min = Math.ceil(1);
