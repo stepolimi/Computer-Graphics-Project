@@ -170,7 +170,7 @@
             </button>
         </div>
         <div onload="playMusic()" class="col-sm-12">
-            <audio  id="startingSound" type="audio/mp3" src="./sounds/start-game-track.mp3"></audio> 
+            <audio  id="startingSound" type="audio/ogg" src="./sounds/Angry Birds Theme Song.ogg"></audio> 
             <audio  id="game_sound" type="audio/ogg" src="./sounds/ambient_green_jungleish.ogg"></audio>
 
             <audio  id="pullSlingSound" type="audio/mp3" src="./sounds/pullSling.mp3"></audio>
@@ -255,6 +255,7 @@
     }
 
     function playMusic(){
+        console.log("bella");
         var sound = document.getElementById("startingSound");
         sound.addEventListener('ended', function() {
             this.currentTime = 0;
