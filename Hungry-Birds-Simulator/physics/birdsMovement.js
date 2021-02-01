@@ -734,18 +734,19 @@ function activateChuckPower(){
 		chuckV = v*2.5;
 		chuckY = bird.ty;
 		chuckZ = bird.tz;
+		
+		let futureTy = birdStartingY + v*Math.sin(utils.degToRad(angle))*(t+TICK) - g*(t+TICK)*(t+TICK)/2;
+		if(futureTy < bird.ty)
+			angleChange = true;
 	}
 	
 	console.log("q: " + q);
 	console.log("pre tz: " + bird.tz);
 
-	if((chuckY + chuckV*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2) < chuckY)
-		if(!angleChange){
-			angle = -angle;
-			angleChange = true;
-		}
-
-	chuckY = chuckY + chuckV*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2;
+	if(!angleChange)
+		chuckY = chuckY + chuckV*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2;
+	else
+		chuckY = chuckY - chuckV*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2;
 	chuckZ = chuckZ + chuckV*Math.cos(utils.degToRad(angle))*TICK;
 	bird.ty = chuckY;
 	bird.tz = chuckZ;
