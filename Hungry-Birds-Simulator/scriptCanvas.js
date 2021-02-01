@@ -263,14 +263,7 @@ function keyFunctionUp(e) {
     }
 }
 
-
-
-
-
-
-
-
-
+//create shaders
 function createShader(gl, type, source) {
   var shader = gl.createShader(type);
   gl.shaderSource(shader, source);
@@ -286,6 +279,7 @@ function createShader(gl, type, source) {
 
 }
 
+//attach program and shaders
 function createProgram(gl, vertexShader, fragmentShader) {
   program = gl.createProgram();
   gl.attachShader(program, vertexShader);
@@ -302,6 +296,7 @@ function createProgram(gl, vertexShader, fragmentShader) {
   }
 }
 
+//resize canvas to be full screen
 function autoResizeCanvas(canvas) {
     const expandFullScreen = () => {
       canvas.width = window.innerWidth;
@@ -364,6 +359,7 @@ async function main() {
     drawScene();
 }
 
+//loads meashes from objs
 async function loadMeshes(){
     
     environment = await utils.loadMesh("/assets/Others/environment.obj");
