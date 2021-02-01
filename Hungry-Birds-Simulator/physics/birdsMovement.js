@@ -489,7 +489,25 @@ function checkHp(obj){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
 				console.log("glassPlane1");
+				newMesh.vertices = [
+					-0.481292,  2.000000, -0.497738,
+					-0.481292,  -2.000000, 0.497738,
+					-0.481292,  -2.000000, -0.497738,
+					-0.481292,  2.000000, 0.497738,
+					0.481292 , -2.000000, 0.497738,
+					0.481292 , 2.000000, 0.497738,
+					0.481292 , -2.000000, -0.497738,
+					0.481292 , 2.000000, -0.497738
+				];
 				newMesh.textures = GLASSPLANE_BROKEN_1;
+				newMesh.vertexNormals = [
+					1.0000, 0.0000, 0.0000,
+					0.0000, 0.0000, -1.0000,
+					-1.0000, 0.0000, 0.0000,
+					0.0000, -0.0000, 1.0000,
+					0.0000, 1.0000, 0.0000,
+					0.0000, -1.0000, -0.0000
+				]
 				//changeMesh(obj.index);
 				break;
 			case "woodVerticalPlane":
@@ -527,9 +545,27 @@ function checkHp(obj){
 		switch(obj.type){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
-				console.log("glassPlane1");
+				console.log("glassPlane2");
+				newMesh.vertices = [
+					-0.481292,  2.000000, -0.497738,
+					-0.481292,  -2.000000, 0.497738,
+					-0.481292,  -2.000000, -0.497738,
+					-0.481292,  2.000000, 0.497738,
+					0.481292 , -2.000000, 0.497738,
+					0.481292 , 2.000000, 0.497738,
+					0.481292 , -2.000000, -0.497738,
+					0.481292 , 2.000000, -0.497738
+				];
 				newMesh.textures = GLASSPLANE_BROKEN_2;
 				//changeMesh(obj.index);
+				newMesh.vertexNormals = [
+					1.0000, 0.0000, 0.0000,
+					0.0000, 0.0000, -1.0000,
+					-1.0000, 0.0000, 0.0000,
+					0.0000, -0.0000, 1.0000,
+					0.0000, 1.0000, 0.0000,
+					0.0000, -1.0000, -0.0000
+				]
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
