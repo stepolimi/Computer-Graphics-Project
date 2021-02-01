@@ -274,6 +274,8 @@ function isColliding(){
 					let elasticCoefficient = 0.4;
 					let birdVzFinal = velz * elasticCoefficient;
 					let birdVyFinal = vely * elasticCoefficient;
+
+					console.log("obj: " + obj.type);
 				
 					if(bird.type == "bomb"){
 						bird.vy= 10.0;
