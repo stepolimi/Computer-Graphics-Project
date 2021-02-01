@@ -43,7 +43,7 @@ class structureObjects {
 			this.rady = VERTICAL_ROCK_2_RADIUS;
 			this.radz = HORIZONTAL_ROCK_2_RADIUS;
 		} else if(type == "egg"){
-			this.scale = 0.0 //to be transformed in 0.5
+			this.scale = 0.0
 			this.rady = 0.2;
 			this.radz = 0.2;
 		} else{

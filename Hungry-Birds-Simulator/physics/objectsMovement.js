@@ -167,3 +167,116 @@ function moveObject(obj){
 		obj.vz = 0;
 	}
 }
+
+//check stability conditions for objects
+function checkStability(){
+    let tollerance = 0.05;
+
+    structureObjs.forEach(function(objTocheck) {
+        let objY = objTocheck.ty - objTocheck.rady;
+        let objZ = objTocheck.tz;
+        let objZStart = objTocheck.tz - objTocheck.radz;
+        let objZEnd = objTocheck.tz + objTocheck.radz;
+        let stable = false;
+        let precStable = false;
+        let sucStable = false;
+        let ground = -0.4;
+        let hitObjs = [];
+
+        if( !((ground > objY - tollerance) && (ground < objY + tollerance)) && objTocheck.ty != -5){
+            structureObjs.forEach(function(obj) {
+                if((obj.ty + obj.rady >= objY - tollerance) && (obj.ty + obj.rady <= objY + tollerance)){
+                    if((obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ) || (obj.tz - obj.radz <= objZ && obj.tz + obj.radz >= objZ)){
+                        stable = true;
+                        hitObjs.push(obj);
+                    }else if(obj.tz + obj.radz > objZStart && obj.tz - obj.radz <= objZEnd && obj.tz < objZ){
+                        precStable = true;
+                        objTocheck.supLeftPieces.push(obj);
+                        hitObjs.push(obj);
+                    }
+                    else if(obj.tz - obj.radz < objZEnd && obj.tz + obj.radz >= objZStart){
+                        sucStable = true;
+                        objTocheck.supRightPieces.push(obj);
+                        hitObjs.push(obj);
+                    }
+                }else if(obj.type =="glassBox" || obj.type == "woodBox"  || obj.type == "stoneBox"){
+                    if(objY > obj.ty - obj.rady && objTocheck.ty + objTocheck.rady < obj.ty + obj.rady){
+                        if(obj.tz + obj.radz >= objZ && obj.tz - obj.radz <= objZ){
+                            stable = true;
+                            hitObjs.push(obj);
+                        }
+                    }
+                }
+            });
+
+            if(!stable && !(precStable && sucStable)){
+                objTocheck.isStable = false;
+            }else{
+                if(objTocheck.vy != 0){
+                    let hit = Math.abs(objTocheck.vy) * objTocheck.m * FALL_DMG_COEFFICIENT;
+                    objTocheck.hp = objTocheck.hp - hit;
+                    checkHp(objTocheck);
+    
+                    hitObjs.forEach(function(obj) {
+                        obj.hp = obj.hp - hit;
+                        checkHp(obj)
+                    });
+                }
+
+                objTocheck.isStable = true;
+                if(!objTocheck.isMoving){
+                    objTocheck.vy = 0;
+                    objTocheck.vz = 0;
+                }
+            }
+        }
+        else{
+            if(objTocheck.vy != 0){
+                let hit = Math.abs(objTocheck.vy) * objTocheck.m * FALL_DMG_COEFFICIENT;
+                objTocheck.hp = objTocheck.hp - hit;
+                checkHp(objTocheck);
+    
+                hitObjs.forEach(function(obj) {
+                    obj.hp = obj.hp - hit;
+                    checkHp(obj)
+                });
+            }
+            objTocheck.isStable = true;
+            if(!objTocheck.isMoving){
+                objTocheck.vy = 0;
+                objTocheck.vz = 0;
+            }
+        }
+    });
+}
+
+//manages falls of partially instable objects
+function objectFall(){
+    structureObjs.forEach(function(obj) {
+       if(!obj.isStable){
+        //object supported only on the left
+        if(obj.supLeftPieces.length != 0){
+            let maxZ = -100;
+            let rotObj = obj;
+            obj.supLeftPieces.forEach(function(supObj) {
+                if(supObj.tz + supObj.radz > maxZ){
+                    maxZ = supObj.tz + supObj.radz;
+                    rotObj = supObj;
+                }
+            });
+            if(obj.vz == 0 && obj.type!="egg")
+                obj.vz = 0.1;
+        }
+        //object supported only on the right
+        else if(obj.supRightPieces.length != 0){
+            let minZ = 100;
+            obj.supRightPieces.forEach(function(supObj) {
+                if(supObj.tz - supObj.radz < minZ)
+                    minZ = supObj.tz - supObj.radz;
+            });
+            if(obj.vz == 0 && obj.type!="egg")
+                obj.vz = - 0.1;
+        }
+     }
+    });
+}

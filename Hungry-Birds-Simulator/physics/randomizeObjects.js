@@ -213,7 +213,6 @@ async function randomizePigs(){
                 break;
                 
         }
-        console.log("maiali : " + pigChoiche);
     }
 }
 
@@ -300,7 +299,6 @@ async function randomizeHorizontalPlane(){
                 break;
         }
         
-    console.log("horizontal : " + piece);
     }
 }
 
@@ -373,7 +371,6 @@ async function randomizeVerticalPlane(){
                 break;
 
         }
-    console.log("vertical : " + piece);
     }
 }
 
@@ -444,7 +441,6 @@ async function randomizePyramid(){
                 break;
         }
         
-    console.log("pyramid : " + piece);
     }
 }
 
@@ -556,8 +552,6 @@ async function randomizeCube(){
                 structureObjs.push(new structureObjects(0.0, 4.2 , 4.2, 0.0, 0.0, 0.0, objType, 57, mass ));
                 break;
 
-        }
-        
-    console.log("cube : " + piece);
+        }        
     }
 }
