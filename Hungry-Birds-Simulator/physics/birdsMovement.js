@@ -1,20 +1,14 @@
-// JavaScript source code
+//birds base variables
 var t = 0;
 var prec = 0;
 var busy = false;
-
 var angle;
 var rotation = 0.0;
 var g = GRAVITY;
 var v = 0; 
 var vely = 0;
 var velz = 0;
-
 var bird;
-
-var collisionY;
-var collisionZ;
-var collisionT = 0;
 
 //sound
 var firstTimeSound = true;
@@ -41,12 +35,14 @@ var bombZ = 0;
 var bombY = 0;
 
 
-//
+//collision variables
+var collisionY;
+var collisionZ;
+var collisionT = 0;
 var birdCollides = false;
 var landed = false;
 var escaped = false;
 var birdPosition;
-
 var ground = -0.4;
 
 //score variables
@@ -54,6 +50,7 @@ var score = 0;
 var scoreDiv;
 var ended = false;
 
+//main function to manage birds launch, trajectory and liveliness
 function birdTrajectory(index){
 	bird = birdsArray[index-2];
 
@@ -132,6 +129,7 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+//kills the current bird
 async function killBird(ind, t) {
 	await sleep(t);
 	if(bird.type != "bomb")
@@ -141,7 +139,7 @@ async function killBird(ind, t) {
 	worldPositions[ind] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
 }
 
-
+//resets some values and kills the bird when it is done
 function endBird(index){
 		if(busy)
 			killBird(index, 1000);
@@ -161,12 +159,14 @@ function endBird(index){
 		}
 }
 
+//replace index page with endGame page
 async function endGame(remainings){
 	ended = true;
 	await sleep(3000);
 	window.location.replace("https://hungry-birds-simulator.herokuapp.com/endGame.html?score=" + score + "&p=" + remainings);
 }
 
+//ceck is the bird is able to free falling or is over an object
 function checkBirdStability(){
 	let birdY = bird.ty - bird.rady;
 	let birdZ = bird.tz;
@@ -205,7 +205,7 @@ function checkBirdStability(){
 	}
 }
 
-
+//checks if the current bird is colliding with some objects
 function isColliding(){
 	let tollerance = 0.05;
 	for(let i = 0; i < structureObjs.length; i++ ){
@@ -321,7 +321,7 @@ function isColliding(){
 	}
 }
 
-//urto
+//manages collisions of birds
 function birdCollision(obj){
 	let elasticCoefficient = 0.4;
 	let birdVzFinal = velz * elasticCoefficient;
@@ -357,124 +357,7 @@ function birdCollision(obj){
 	obj.isMoving = true;
 }
 
-//functions to manage objects collisions
-function collides(objMoving){
-	let tollerance = 0.1;
-
-	structureObjs.forEach(function(obj) {
-		if(obj.scale > 0 && obj != objMoving){
-			let objMovingInf = objMoving.ty - objMoving.rady;
-			let objMovingSup = objMoving.ty + objMoving.rady;
-			let objMovingStart = objMoving.tz - objMoving.radz;
-			let objMovingEnd = objMoving.tz + objMoving.radz;
-			let objInf = obj.ty - obj.rady;
-			let objSup = obj.ty + obj.rady;
-			let objStart = obj.tz - obj.radz;
-			let objEnd = obj.tz + obj.radz;
-	
-			//object collision down
-			if(((objSup > objMovingInf && obj.ty < objMovingInf) || (objInf < objMovingSup && obj.ty > objMovingSup)) && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
-				if(objMoving.vy <= -0.0001 || objMoving.vy >= 0.0001){
-					let elasticCoefficient = 0.4;
-					let thisVyFinal = objMoving.vy * elasticCoefficient;
-					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
-
-					if(obj.vy > 0 )
-						obj.vy = - obj.vy;
-
-					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
-					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
-					checkHp(objMoving);
-					checkHp(obj)
-
-					objMoving.vy = thisVyFinal;
-					obj.isMoving = true;
-				}else{
-					objMoving.vy = 0;
-					if(objMoving.vz <= 0.0001 && objMoving.vz >= -0.0001){
-						objMoving.vz = 0;
-						objMoving.isMoving = false;
-					}
-				}
-			//object collision up
-			}else if((objInf < objMovingSup && obj.ty > objMovingSup) && ((objEnd > objMovingStart + tollerance && objEnd < objMovingEnd) || (objStart < objMovingEnd - tollerance && objStart > objMovingStart) || (objStart - tollerance <= objMovingStart && objEnd + tollerance >= objMovingEnd))){
-				if(objMoving.vy <= -0.0001 || objMoving.vy >= 0.0001){
-					let elasticCoefficient = 0.4;
-					let thisVyFinal = objMoving.vy * elasticCoefficient;
-					obj.vy = (objMoving.m * objMoving.vy + obj.m * obj.vy - objMoving.m * thisVyFinal) / obj.m;
-
-					if(obj.vy < 0 )
-						obj.vy = - obj.vy;
-
-					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
-					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
-					checkHp(objMoving);
-					checkHp(obj)
-
-					objMoving.vy = thisVyFinal;
-					obj.isMoving = true;
-				}else{
-					objMoving.vy = 0;
-					if(objMoving.vz <= 0.0001 && objMoving.vz >= -0.0001){
-						objMoving.vz = 0;
-						objMoving.isMoving = false;
-					}
-				}
-			}
-	
-			//object collision right
-			if((objStart < objMovingEnd && obj.tz > objMovingEnd) && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
-				if(objMoving.vz >= 0.0001 || objMoving.vz <= -0.0001){
-					let elasticCoefficient = 0.4;
-					let thisVzFinal = objMoving.vz * elasticCoefficient;
-					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
-
-					if(obj.vz < 0 )
-						obj.vz = - obj.vz;
-										
-					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
-					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
-					checkHp(objMoving);
-					checkHp(obj)
-
-					objMoving.vz = thisVzFinal;
-					obj.isMoving = true;
-				}else{
-					objMoving.vz = 0;
-					if(objMoving.vy >= -0.0001 && objMoving.vy <= 0.0001){
-						objMoving.vy = 0;
-						objMoving.isMoving = false;
-					}
-				}
-			//object collision left
-			}else if((objEnd > objMovingStart && obj.tz < objMovingStart) && ((objSup > objMovingInf + tollerance && objSup < objMovingSup)  || (objInf < objMovingSup - tollerance && objInf > objMovingInf) ||(objInf - tollerance <= objMovingInf && objSup + tollerance >= objMovingSup))){
-				if(objMoving.vz >= 0.0001 || objMoving.vz <= -0.0001){
-					let elasticCoefficient = 0.4;
-					let thisVzFinal = objMoving.vz * elasticCoefficient;
-					obj.vz = (objMoving.m * objMoving.vz + obj.m * obj.vz - objMoving.m * thisVzFinal) / obj.m;
-
-					if(obj.vz > 0 )
-						obj.vz = - obj.vz;
-				
-					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
-					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
-					checkHp(objMoving);
-					checkHp(obj)
-
-					objMoving.vz = thisVzFinal;
-					obj.isMoving = true;
-				}else{
-					objMoving.vz = 0;
-					if(objMoving.vy >= -0.0001 && objMoving.vy <= 0.0001){
-						objMoving.vy = 0;
-						objMoving.isMoving = false;
-					}
-				}
-			}
-		}
-	});
-}
-
+//check objects hp to change theyr textures, calculate the score and eliminate destroyed objects
 function checkHp(obj){
 	scoreDiv = document.getElementById("score");
 	let newMesh = allMeshes[obj.index];
@@ -622,56 +505,8 @@ function checkHp(obj){
 async function changeMesh(index){
 	allMeshes[index] = await utils.loadMesh("../assets/Others/glassPlaneBroken1.obj");
 }
-				
-async function explode(obj){
-	let objTy = obj.ty;
-	let objTz = obj.tz;
-	while(obj.rady < 1){
-		obj.rady += 0.1; 
-		obj.radz += 0.1;
-		obj.isMoving = false;
-		obj.vy = 10;
-		obj.vz = 5;
-		obj.ty = objTy;
-		obj.tz = objTz
-		obj.scale = 0;
-		collides(obj);
-	}
 
-	obj.scale = 0;
-	obj.ty = -5;
-	obj.tz = 0;
-	obj.vy = 0;
-	obj.vz = 0;
-	worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
-}
-
-function moveObject(obj){
-	if(obj.isMoving || !obj.isStable){
-		let ground = -0.4;
-
-		if(!obj.isStable){
-			obj.ty = obj.ty + obj.vy * TICK - (g*TICK*TICK /2);
-			obj.vy = obj.vy - g*TICK;
-		}else{
-			obj.vy = 0;
-		}
-		obj.vz = obj.vz - obj.vz/100 * 2;
-		obj.tz = obj.tz + obj.vz * TICK;
-		if(obj.tz < 9.5 || obj.ty - obj.rady > ground)
-			worldPositions[obj.index] = utils.MakeWorld(obj.tx , obj.ty, obj.tz, obj.rx, obj.ry, obj.rz, obj.scale);
-		else{
-			worldPositions[obj.index] = utils.MakeWorld(0 , -5, 0, obj.rx, obj.ry, obj.rz, 0);
-		}
-		collides(obj);
-		if(obj.vz <= 0.0001 && obj.vz >= -0.0001 && obj.vy >= -0.0001 && obj.vy <= 0.0001)
-			obj.isMoving = false;
-	}else{
-		obj.vy = 0;
-		obj.vz = 0;
-	}
-}
-
+//plays the launch sound of birds
 function activateSound(index){
 	var sound = document.getElementById( birdsArray[index-2].type);
 	if(firstTimeSound){
@@ -710,6 +545,7 @@ function activatePower(){
 	}
 }
 
+//resets each bird power, is called at each bird change
 function resetBirdPower(){
 	isMatildaActiveFirstTime = true;
 	activateBirdPower = false;
@@ -717,6 +553,7 @@ function resetBirdPower(){
 	isChuckActiveFirstTime = true;
 }
 
+//manages the explosion of bomb
 function activateBombPower(){
 	scaling = 0.0;
 	let bombTemp = bird;
@@ -753,6 +590,7 @@ function activateBombPower(){
 var chuckV;
 var angleChange = false;
 
+//manages the change of valocity of chuck
 function activateChuckPower(){
 	if (isChuckActiveFirstTime){
 		isChuckActiveFirstTime = false;
@@ -785,8 +623,8 @@ function activateChuckPower(){
 
 var egg;
 
+//manages the Matilda's power
 function activateMatildaPower(){
-	//at first round the new starting coord must be set
 	if (isMatildaActiveFirstTime){
 		isMatildaActiveFirstTime = false;
 		matildaZ = bird.tz;
