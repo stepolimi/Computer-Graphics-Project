@@ -142,7 +142,8 @@ async function killBird(ind, t) {
 
 
 function endBird(index){
-		killBird(index, 1000);
+		if(busy)
+			killBird(index, 1000);
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
