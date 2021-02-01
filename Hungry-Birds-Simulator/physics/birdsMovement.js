@@ -754,7 +754,7 @@ function activateChuckPower(){
 	console.log("q: " + q);
 	console.log("pre tz: " + bird.tz);
 	
-	bird.tz = bird.tz + velz*TICK*TICK*2;
+	bird.tz = -birdStartingZ + velz*t*5;
 
 	console.log("post tz: " + bird.tz);
 	console.log("Z: " + bird.tz);
