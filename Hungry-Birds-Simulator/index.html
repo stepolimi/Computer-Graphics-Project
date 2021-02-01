@@ -173,6 +173,15 @@
             <audio  id="startingSound" type="audio/ogg" src="./sounds/Angry Birds Theme Song.ogg"></audio> 
             <script>
                 window.addEventListener("mouseover", realPlayMusic());
+                function realPlayMusic(){
+                    console.log("bella");
+                    var sound = document.getElementById("startingSound");
+                    sound.addEventListener('ended', function() {
+                        this.currentTime = 0;
+                        this.play();
+                    }, false);
+                    sound.play();
+                }
             </script>
             <audio  id="game_sound" type="audio/ogg" src="./sounds/ambient_green_jungleish.ogg"></audio>
 
@@ -255,15 +264,6 @@
         div_canvas.style.display = "block";
     }
 
-    function realPlayMusic(){
-        console.log("bella");
-        var sound = document.getElementById("startingSound");
-        sound.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
-        }, false);
-        sound.play();
-    }
 </script>
 
 </html>
