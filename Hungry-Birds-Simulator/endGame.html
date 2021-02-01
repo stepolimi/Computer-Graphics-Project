@@ -37,7 +37,18 @@
         </div>
     </div>
 
-    <audio  id="game_compleye" type="audio/ogg" src="./sounds/game_complete.ogg"></audio>
+    <audio  id="game_complete" type="audio/ogg" src="./sounds/game_complete.ogg"></audio>
+    <script>
+        window.addEventListener("mousedown", realPlayMusic());
+        function realPlayMusic(){
+            var sound = document.getElementById("game_complete");
+            sound.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play();
+            }, false);
+            sound.play();
+        }
+    </script>
 
 </body>
 

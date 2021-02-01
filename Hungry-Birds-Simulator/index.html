@@ -174,7 +174,6 @@
             <script>
                 window.addEventListener("mousedown", realPlayMusic());
                 function realPlayMusic(){
-                    console.log("bella");
                     var sound = document.getElementById("startingSound");
                     sound.addEventListener('ended', function() {
                         this.currentTime = 0;
