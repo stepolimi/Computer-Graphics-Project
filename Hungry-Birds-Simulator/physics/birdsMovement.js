@@ -785,12 +785,12 @@ function activateChuckPower(){
 		else
 			m = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 		q = chuckZ + chuckY;
+
+		v = v*3;
 	}
 	
 	console.log("q: " + q);
 	console.log("pre tz: " + bird.tz);
-	
-	bird.tz = -birdStartingZ + velz*t*2;
 
 	console.log("post tz: " + bird.tz);
 	console.log("Z: " + bird.tz);
