@@ -152,7 +152,7 @@ function endBird(index){
 		if(counter == 5){
 			let remainings = 0;
 			structureObjs.forEach(function(obj) {
-				if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty <= -0.4)
+				if((obj.type == "pig" || obj.type =="pigHelmet" || obj.type == "pigMustache") && obj.ty >= -0.4)
 					remainings ++;
 			});
 			if(!ended){
