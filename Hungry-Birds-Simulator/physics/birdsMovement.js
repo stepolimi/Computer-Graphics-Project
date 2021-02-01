@@ -690,7 +690,8 @@ function activateBombPower(){
 		bombY = bombTemp.ty;
 		scaling = 0.0;
 		explosionScaling = 0.0;
-		document.getElementById("bomb_explode").play();
+		if(bird.ty != -5)
+			document.getElementById("bomb_explode").play();
 	}
 
 	explosionScaling += 0.02;
