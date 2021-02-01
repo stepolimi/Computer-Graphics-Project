@@ -499,7 +499,7 @@ function setupLights(){
     var directionalLightAColor = [1.0, 0.0, 0.0];
     var directionaLightAPos = [0.5, 0.5, 0.5];
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
-    var directionalLightATransform = utils.normalizeVec3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
+    var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
   //ambient lights
   gl.uniform3fv(ambientLightColorHandle, ambientLight);
