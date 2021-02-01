@@ -173,6 +173,8 @@
             <audio id="startingSound" autoplay loop>
                 <source type="audio/mp3" src="./sounds/start-game-track.mp3">
             </audio> 
+            <audio  id="game_sound" type="audio/ogg" src="./sounds/ambient_green_jungleish.ogg"></audio>
+
             <audio  id="pullSlingSound" type="audio/mp3" src="./sounds/pullSling.mp3"></audio>
             <audio  id="releaseSlingSound" type="audio/mp3" src="./sounds/releaseSling.mp3"></audio>
             
@@ -182,6 +184,15 @@
             <audio  id="matilda" type="audio/mp3" src="./sounds/matilda.mp3"></audio>
 
             <audio  id="tnt" type="audio/ogg" src="./sounds/tnt box explodes.ogg"></audio>
+            <audio  id="bomb_explode" type="audio/ogg" src="./sounds/birds_bomb_shockwave_01.ogg"></audio>
+            <audio  id="ice_collision" type="audio/ogg" src="./sounds/ice light collision a7.ogg"></audio>
+            <audio  id="wood_collision" type="audio/ogg" src="./sounds/wood damage a2.ogg"></audio>
+            <audio  id="stone_collision" type="audio/ogg" src="./sounds/rock damage a2.ogg"></audio>
+            <audio  id="pig_collision" type="audio/ogg" src="./sounds/piglette damage a4.ogg"></audio>
+            <audio  id="big_pig_collision" type="audio/ogg" src="./sounds/piglette damage a2.ogg"></audio>
+
+
+
         </div>
     </div>
 </body>
@@ -201,6 +212,12 @@
         play();
         var sound = document.getElementById("startingSound");
         sound.pause();
+        var game_sound = document.getElementById("game_sound");
+        game_sound.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        game_sound.play();
     }
 
     btn.onclick = function(){
