@@ -792,6 +792,9 @@ function activateChuckPower(){
 	console.log("q: " + q);
 	console.log("pre tz: " + bird.tz);
 
+	bird.ty = bird.ty + v*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2;
+	bird.tz = bird.tz + v*Math.cos(utils.degToRad(angle))*TICK;
+
 	console.log("post tz: " + bird.tz);
 	console.log("Z: " + bird.tz);
 	console.log("Y: " + bird.ty);
