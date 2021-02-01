@@ -688,6 +688,7 @@ function resetBirdPower(){
 	isMatildaActiveFirstTime = true;
 	activateBirdPower = false;
 	isBombActiveFirstTime = true;
+	isChuckActiveFirstTime = true;
 }
 
 function activateBombPower(){
@@ -754,7 +755,6 @@ function activateChuckPower(){
 	console.log("q: " + q);
 	
 	bird.tz = chuckZ + t*v*v;
-	bird.ty = m*bird.tz + t*v*v + q;
 
 	console.log("Z: " + bird.tz);
 	console.log("Y: " + bird.ty);
