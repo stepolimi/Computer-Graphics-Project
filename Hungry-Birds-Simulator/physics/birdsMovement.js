@@ -62,6 +62,7 @@ function birdTrajectory(index){
 	if(index != prec){
 		t = 0;
 		landed = false;
+		escaped = false;
 		birdCollides = false;
 		prec = index;
 		scaling = 0.5;
@@ -116,7 +117,7 @@ function birdTrajectory(index){
 		}
 	}
 
-	if(bird.ty - bird.rady <= ground + 0.5){
+	if(bird.ty - bird.rady <= ground){
 		landed = true;
 		endBird(index);
 	} else if(bird.ty > 30){
@@ -140,7 +141,7 @@ async function killBird(ind, t) {
 
 
 function endBird(index){
-		killBird(index, 0);
+		killBird(index, 1000);
 		rotation = 0.0;
 		scaling = 0.5;
 		busy = false;
