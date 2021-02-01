@@ -134,8 +134,8 @@ function sleep(ms) {
 
 async function killBird(ind, t) {
 	await sleep(t);
-	document.getElementById("bird_death").play();
-	console.log("?");
+	if(bird.type != "bomb")
+		document.getElementById("bird_death").play();
 	bird.ty = -5;
 	bird.tz = 0;
 	worldPositions[ind] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
