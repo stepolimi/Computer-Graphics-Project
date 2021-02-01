@@ -39,6 +39,7 @@
 
     <audio  id="game_complete" type="audio/ogg" src="./sounds/game_complete.ogg"></audio>
     <script>
+        //start and loops end game music
         window.addEventListener("mousedown", realPlayMusic());
         function realPlayMusic(){
             var sound = document.getElementById("game_complete");
@@ -64,6 +65,7 @@
     var score;
     var pigs;
 
+    //fetches score and pig lefts from url and changes end game messages based on them
     function getScore(){
         query = parent.document.URL.substring(parent.document.URL.indexOf('?'), parent.document.URL.length);
         score = query.substring(query.indexOf("=") + 1, query.indexOf("&"));
