@@ -44,6 +44,7 @@ var bombY = 0;
 //
 var birdCollides = false;
 var landed = false;
+var escaped = false;
 var birdPosition;
 
 var ground = -0.4;
@@ -72,12 +73,7 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
-	if(bird.type == "matilda"){
-		console.log("mat ty: " + bird.ty);
-		console.log("mat tz: " + bird.tz)
-	}
-	
-	if(!birdCollides && !landed){
+	if(!birdCollides && !landed && !escaped){
 		let velys = v*Math.sin(utils.degToRad(angle));
 		let velyg = g*t;
 	
@@ -105,23 +101,26 @@ function birdTrajectory(index){
 			endBird(index);
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 		} else{
-			checkBirdStability();
-			let deltaT = t - collisionT;
-			bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
-			bird.tz = collisionZ + velz*deltaT;
+			if(!escaped){
+				checkBirdStability();
+				let deltaT = t - collisionT;
+				bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
+				bird.tz = collisionZ + velz*deltaT;
+		
+				if(bird.type == "bomb")
+					activateBombPower();
 	
-			if(bird.type == "bomb")
-				activateBombPower();
-
-			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
-			isColliding();
+				worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
+				isColliding();
+			}
 		}
 	}
 
-	if(bird.ty - bird.rady <= ground){
+	if(bird.ty - bird.rady <= ground + 0.5){
 		landed = true;
 		endBird(index);
 	} else if(bird.ty > 30){
+		escaped = true;
 		endBird(index);
 	}
 	t += TICK;
@@ -724,46 +723,28 @@ function activateBombPower(){
 	}
 }
 
+var chuckV;
+
 function activateChuckPower(){
 	if (isChuckActiveFirstTime){
 		isChuckActiveFirstTime = false;
-		chuckZ = bird.tz;
+		chuckV = v*2.5;
 		chuckY = bird.ty;
-		
-		var angleInRad = utils.degToRad(angle);
-		var cos = Math.cos(angleInRad);
-		var sin = Math.sin(angleInRad);
-		var tan = Math.sin(angleInRad) / Math.cos(angleInRad);
-		var cosSquared = Math.pow(cos,2);
-		
-		var parabolicA = - (g)/(2*v*v*cosSquared) ;
-		var parabolicB = (g*chuckZ)/(v*v*cosSquared) + tan ;
-		var parabolicC = (g*chuckZ*chuckZ) / (2*v*v*cosSquared) - tan*chuckZ; 
-
-		var mB = 2*parabolicB + 4*parabolicA*chuckZ;
-		var mC = parabolicB*parabolicB - 4*parabolicA*parabolicC;
-		//value mA = 1 so useless
-
-		if(mB*mB - 4*mC < 0)
-			m = - mB*0.5;
-		else
-			m = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
-		q = chuckZ + chuckY;
+		chuckZ = bird.tz;
 	}
 	
 	console.log("q: " + q);
 	console.log("pre tz: " + bird.tz);
-	
-	bird.tz = -birdStartingZ + velz*t*2;
+
+	chuckY = chuckY + chuckV*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2;
+	chuckZ = chuckZ + chuckV*Math.cos(utils.degToRad(angle))*TICK;
+	bird.ty = chuckY;
+	bird.tz = chuckZ;
 
 	console.log("post tz: " + bird.tz);
 	console.log("Z: " + bird.tz);
 	console.log("Y: " + bird.ty);
 	console.log("-----------------------");
-	if(bird.ty >= 20.0 | bird.ty <= 0.0){
-		isChuckActiveFirstTime = true;
-		activateBirdPower = false;
-	}
 }
 
 var egg;
