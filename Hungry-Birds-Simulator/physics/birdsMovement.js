@@ -481,10 +481,13 @@ function checkHp(obj){
 	if(obj.hp <= 0){
 		if(obj.type == "pig"){
 			score += 500;
+			document.getElementById("pig_death").play();
 		}else if(obj.type == "pigHelmet"){
 			score += 750;
+			document.getElementById("pig_death").play();
 		}else if(obj.type == "pigMustache"){
 			score += 1000;
+			document.getElementById("pig_death").play();
 		}else {
 			score += 200;
 		}
