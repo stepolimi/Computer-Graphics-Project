@@ -489,7 +489,8 @@ function checkHp(obj){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
 				console.log("glassPlane1");
-				newMesh.textures = GLASSPLANE_BROKEN_1;
+				//newMesh.textures = GLASSPLANE_BROKEN_1;
+				allMeshes[obj.index] = await utils.loadMesh("/assets/Others/glassPlaneBroken1.obj");
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
