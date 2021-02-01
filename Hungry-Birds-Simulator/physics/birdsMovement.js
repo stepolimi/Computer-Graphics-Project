@@ -44,6 +44,7 @@ var bombY = 0;
 //
 var birdCollides = false;
 var landed = false;
+var escaped = false;
 var birdPosition;
 
 var ground = -0.4;
@@ -72,7 +73,7 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
-	if(!birdCollides && !landed){
+	if(!birdCollides && !landed && !escaped){
 		let velys = v*Math.sin(utils.degToRad(angle));
 		let velyg = g*t;
 	
@@ -100,23 +101,26 @@ function birdTrajectory(index){
 			endBird(index);
 			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
 		} else{
-			checkBirdStability();
-			let deltaT = t - collisionT;
-			bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
-			bird.tz = collisionZ + velz*deltaT;
+			if(!escaped){
+				checkBirdStability();
+				let deltaT = t - collisionT;
+				bird.ty = collisionY + vely*deltaT - (g*deltaT*deltaT /2);
+				bird.tz = collisionZ + velz*deltaT;
+		
+				if(bird.type == "bomb")
+					activateBombPower();
 	
-			if(bird.type == "bomb")
-				activateBombPower();
-
-			worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
-			isColliding();
+				worldPositions[index] = utils.MakeWorld(0.0 , bird.ty, bird.tz, 0.0,  angle, rotation, scaling);
+				isColliding();
+			}
 		}
 	}
 
-	if(bird.ty - bird.rady <= ground){
+	if(bird.ty - bird.rady <= ground + 0.5){
 		landed = true;
 		endBird(index);
 	} else if(bird.ty > 30){
+		escaped = true;
 		endBird(index);
 	}
 	t += TICK;
@@ -760,7 +764,7 @@ var chuckV;
 function activateChuckPower(){
 	if (isChuckActiveFirstTime){
 		isChuckActiveFirstTime = false;
-		chuckV = v*2;
+		chuckV = v*2.5;
 		chuckY = bird.ty;
 		chuckZ = bird.tz;
 	}
