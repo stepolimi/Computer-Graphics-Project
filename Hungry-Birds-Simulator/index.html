@@ -173,6 +173,7 @@
         <div class="col-sm-12">
             <audio  id="startingSound" type="audio/ogg" src="./sounds/Angry Birds Theme Song.ogg"></audio> 
             <script>
+                //start and loops starting music
                 window.addEventListener("mousedown", realPlayMusic());
                 function realPlayMusic(){
                     var sound = document.getElementById("startingSound");
@@ -223,6 +224,7 @@
     var playButton = document.getElementById("play-button");
 
 
+    //starts in-game sound and starts the game
     playButton.onclick = function (){
         play();
         var sound = document.getElementById("startingSound");
@@ -264,6 +266,7 @@
         }
     }
 
+    //change displayed items to start the game
     function play(){
         var div_play = document.getElementById("div-play-game");
         var div_canvas = document.getElementById("div-canvas");
