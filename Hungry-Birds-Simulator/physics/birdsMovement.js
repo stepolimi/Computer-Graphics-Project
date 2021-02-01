@@ -452,7 +452,7 @@ function collides(objMoving){
 	});
 }
 
-function checkHp(obj){
+async function checkHp(obj){
 	scoreDiv = document.getElementById("score");
 	let newMesh = allMeshes[obj.index];
 	if(obj.hp <= 0){
@@ -489,7 +489,8 @@ function checkHp(obj){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
 				console.log("glassPlane1");
-				newMesh.textures = GLASSPLANE_BROKEN_1;
+				//newMesh.textures = GLASSPLANE_BROKEN_1;
+				allMeshes[obj.index] = await utils.loadMesh("/assets/Others/glassPlaneBroken1.obj");
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
