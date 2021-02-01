@@ -72,11 +72,6 @@ function birdTrajectory(index){
 	else
 		angle = Math.abs(angleY);
 	
-	if(bird.type == "matilda"){
-		console.log("mat ty: " + bird.ty);
-		console.log("mat tz: " + bird.tz)
-	}
-	
 	if(!birdCollides && !landed){
 		let velys = v*Math.sin(utils.degToRad(angle));
 		let velyg = g*t;
@@ -760,49 +755,28 @@ function activateBombPower(){
 	}
 }
 
+var chuckV;
+
 function activateChuckPower(){
 	if (isChuckActiveFirstTime){
 		isChuckActiveFirstTime = false;
-		chuckZ = bird.tz;
+		chuckV = v*2;
 		chuckY = bird.ty;
-		
-		var angleInRad = utils.degToRad(angle);
-		var cos = Math.cos(angleInRad);
-		var sin = Math.sin(angleInRad);
-		var tan = Math.sin(angleInRad) / Math.cos(angleInRad);
-		var cosSquared = Math.pow(cos,2);
-		
-		var parabolicA = - (g)/(2*v*v*cosSquared) ;
-		var parabolicB = (g*chuckZ)/(v*v*cosSquared) + tan ;
-		var parabolicC = (g*chuckZ*chuckZ) / (2*v*v*cosSquared) - tan*chuckZ; 
-
-		var mB = 2*parabolicB + 4*parabolicA*chuckZ;
-		var mC = parabolicB*parabolicB - 4*parabolicA*parabolicC;
-		//value mA = 1 so useless
-
-		if(mB*mB - 4*mC < 0)
-			m = - mB*0.5;
-		else
-			m = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
-		q = chuckZ + chuckY;
-
-		v = v*2;
+		chuckZ = bird.tz;
 	}
 	
 	console.log("q: " + q);
 	console.log("pre tz: " + bird.tz);
 
-	bird.ty = bird.ty + v*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2;
-	bird.tz = bird.tz + v*Math.cos(utils.degToRad(angle))*TICK;
+	chuckY = chuckY + chuckV*Math.sin(utils.degToRad(angle))*TICK - g*TICK*TICK/2;
+	chuckZ = chuckZ + chuckV*Math.cos(utils.degToRad(angle))*TICK;
+	bird.ty = chuckY;
+	bird.tz = chuckZ;
 
 	console.log("post tz: " + bird.tz);
 	console.log("Z: " + bird.tz);
 	console.log("Y: " + bird.ty);
 	console.log("-----------------------");
-	if(bird.ty >= 20.0 | bird.ty <= 0.0){
-		isChuckActiveFirstTime = true;
-		activateBirdPower = false;
-	}
 }
 
 var egg;
