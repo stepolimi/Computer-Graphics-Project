@@ -330,6 +330,32 @@ function birdCollision(obj){
 		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT;
 	}
 
+	switch(obj.type){
+		case "glassHorizontalPlane":
+		case "glassPyramid":
+		case "glassBox":
+		case "glassVerticalPlane":
+			document.getElementById("ice_collision").play();
+			break;
+		case "woodVerticalPlane":
+		case "woodHorizontalPlane":
+		case "woodPyramid":
+		case "woodBox":
+			document.getElementById("wood_collision").play();
+			break;
+		case "stoneSquare":
+		case "stonePyramid":
+		case "stoneBox":
+			document.getElementById("stone_collision").play();
+			break;
+		case "pig":
+			document.getElementById("pig_collision").play();
+			break;
+		case "pigHelmet":
+		case "pigMustache":
+			document.getElementById("big_pig_collision").play();
+			break;
+	}
 	checkHp(obj);
 	obj.isMoving = true;
 }
@@ -359,17 +385,10 @@ function collides(objMoving){
 					if(obj.vy > 0 )
 						obj.vy = - obj.vy;
 
-					console.log("objMoving type: " + objMoving.type);
-					console.log("objMoving stable: " + objMoving.isStable);
-					console.log("objMoving vy: " + objMoving.vy);
-					console.log("objMoving vz: " + objMoving.vz);
-
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
 					checkHp(obj)
-					console.log("objMoving hp: " + objMoving.hp);
-					console.log("obj hp: " + obj.hp);
 
 					objMoving.vy = thisVyFinal;
 					obj.isMoving = true;
@@ -389,8 +408,6 @@ function collides(objMoving){
 
 					if(obj.vy < 0 )
 						obj.vy = - obj.vy;
-
-					console.log("up");
 
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vy);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vy) * COLLISION_DMG_COEFFICIENT;
@@ -417,9 +434,7 @@ function collides(objMoving){
 
 					if(obj.vz < 0 )
 						obj.vz = - obj.vz;
-						
-					console.log("right");
-				
+										
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
 					checkHp(objMoving);
@@ -443,8 +458,6 @@ function collides(objMoving){
 
 					if(obj.vz > 0 )
 						obj.vz = - obj.vz;
-
-					console.log("left");
 				
 					objMoving.hp = objMoving.hp - objMoving.m * Math.abs(objMoving.vz);
 					obj.hp = obj.hp - objMoving.m * Math.abs(objMoving.vz) * COLLISION_DMG_COEFFICIENT;
@@ -677,6 +690,7 @@ function activateBombPower(){
 		bombY = bombTemp.ty;
 		scaling = 0.0;
 		explosionScaling = 0.0;
+		document.getElementById("bomb_explode").play();
 	}
 
 	explosionScaling += 0.02;

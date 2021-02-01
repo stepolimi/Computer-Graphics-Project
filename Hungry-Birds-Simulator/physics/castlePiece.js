@@ -70,8 +70,8 @@ class structureObjects {
 			this.hp = 0.1;
 			this.maxHp = 0.1;
 		} else if(type == "tnt"){
-			this.hp = 3;
-			this.maxHp = 3;
+			this.hp = 5;
+			this.maxHp = 5;
 		} else{
 			this.hp = 10000;
 			this.maxHp = 10000;
