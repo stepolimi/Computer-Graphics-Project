@@ -490,7 +490,7 @@ function checkHp(obj){
 			case "glassHorizontalPlane":
 				console.log("glassPlane1");
 				//newMesh.textures = GLASSPLANE_BROKEN_1;
-				changeMesh(obj.index);
+				changeMesh();
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
@@ -528,7 +528,8 @@ function checkHp(obj){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
 				console.log("glassPlane1");
-				newMesh.textures = GLASSPLANE_BROKEN_2;
+				//newMesh.textures = GLASSPLANE_BROKEN_2;
+				changeMesh();
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
@@ -593,7 +594,7 @@ function checkHp(obj){
 }
 
 async function changeMesh(){
-	allMeshes[obj.index] = await utils.loadMesh("/assets/Others/glassPlaneBroken1.obj");
+	allMeshes[obj.index] = await utils.loadMesh("../assets/Others/glassPlaneBroken1.obj");
 }
 				
 async function explode(obj){
