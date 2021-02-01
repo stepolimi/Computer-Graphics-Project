@@ -174,6 +174,7 @@ var count2 = 0;
 var count3 = 0;
 var count4 = 0;
 
+//manages animations for inactive birds
 function waitingBirdsAnimation(){
 	birdY += BIRD_Y; 
 	var currentTime = (new Date).getTime();
@@ -221,6 +222,7 @@ function waitingBirdsAnimation(){
 	}
 }
 
+//makes inactive birds do flips
 function birdFlip(){
 	if(roundY1 == 360){
 		let min = Math.ceil(1);
@@ -271,7 +273,7 @@ function birdFlip(){
 		roundY4 += 8;
 }
 
-
+//manages the sling charging effect and aspect
 function scaleSlingElasticZ(){
 
 	var normlizedY;
@@ -298,9 +300,9 @@ function scaleSlingElasticZ(){
 
 	if (counter < 5)
 		moveBirdWithSling();
-	
 }
 
+//move the current bird to be attached to the sling when it is charging
 function moveBirdWithSling(){
 	var variation = 7.2 + elasticForce;
 
