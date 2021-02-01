@@ -26,7 +26,8 @@
     <script src="./scriptCanvas.js"></script>
 </head>
 
-<body >
+<body onload="playMusic()" >
+    <audio  id="startingSound" type="audio/ogg" src="./sounds/Angry Birds Theme Song.ogg"></audio> 
     <div id="div-canvas" style="display: none;" >
         <canvas id="canvas" width="600" height="400" >
             Your browser does not support canvas!
@@ -169,8 +170,7 @@
                 </p>
             </button>
         </div>
-        <div onload="playMusic()" class="col-sm-12">
-            <audio  id="startingSound" type="audio/ogg" src="./sounds/Angry Birds Theme Song.ogg"></audio> 
+        <div class="col-sm-12">
             <audio  id="game_sound" type="audio/ogg" src="./sounds/ambient_green_jungleish.ogg"></audio>
 
             <audio  id="pullSlingSound" type="audio/mp3" src="./sounds/pullSling.mp3"></audio>
