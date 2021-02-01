@@ -189,8 +189,6 @@
             <audio  id="pig_collision" type="audio/ogg" src="./sounds/piglette damage a4.ogg"></audio>
             <audio  id="big_pig_collision" type="audio/ogg" src="./sounds/piglette damage a2.ogg"></audio>
 
-
-
         </div>
     </div>
 </body>
@@ -255,6 +253,10 @@
     }
 
     function playMusic(){
+        addEventListener("mousedown", realPlayMusic);
+    }
+
+    function realPlayMusic(){
         console.log("bella");
         var sound = document.getElementById("startingSound");
         sound.addEventListener('ended', function() {
