@@ -31,6 +31,12 @@ precision mediump float;
 //ambient
 uniform vec3 ambientLightCol;
 
+//directional
+uniform vec3 lightDirectionA; 
+uniform vec3 lightColorA;
+
+//
+
 //texture
 uniform sampler2D in_texture;
 
@@ -41,10 +47,16 @@ in vec4 fs_pos;
 out vec4 outColor;
 
 void main() {
+
   //computing ambient color
   vec3 ambient = ambientLightCol;
 
-  outColor = vec4(clamp(ambient,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  //computing Lambert diffuse
+  vec3 nNormal = normalize(fsNormal)
+  vec3 diffA = lightColorA * dot(-lightColorA, nNormal);
+
+
+  outColor = vec4(clamp(ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
 }
 `;
 
@@ -62,9 +74,6 @@ var birdRed;
 var birdChuck;
 var birdBomb;
 var birdMatilda;
-//var pig;
-//var pigHelmet;
-//var pigMustache;
 var sling;
 var elastic;
 var environment;
@@ -72,17 +81,6 @@ var tnt;
 var texture;
 var egg;
 var plumeExplosion;
-//var woodBox;
-//var glassBox;
-//var stoneBox;  
-//var woodPyramid;
-//var glassPyramid;
-//var stonePyramid;    
-//var glassVerticalPlane;
-//var woodVerticalPlane;
-//var glassHorizontalPlane;
-//var woodHorizontalPlane;
-//var stoneSquare;
 var rock1;
 var rock2;
 
@@ -104,7 +102,10 @@ var matrixLocation;
 var normalMatrixPositionHandle;
 var worldViewMatrixPositionHandle;
 
+
 var ambientLightColorHandle;
+var lightDirectionAHandle;
+var lightColorAHandle;
 
 //movement variables
 var perspectiveMatrix;
@@ -112,9 +113,6 @@ var viewMatrix;
 var worldViewMatrix;
 var projectionMatrix;
 var normalTransformationMatrix;
-
-//lights variables
-var ambientLight = [1.0, 1.0, 1.0];
 
 //camera variables
 var cx = -9.8;
@@ -472,6 +470,8 @@ function setUpScene(){
     normalMatrixPositionHandle = gl.getUniformLocation(program, 'nMatrix');
     worldViewMatrixPositionHandle = gl.getUniformLocation(program, 'worldViewMatrix');
     ambientLightColorHandle = gl.getUniformLocation(program, "ambientLightCol");
+    lightDirectionAHandle = gl.getUniformLocation(program, "lightDirectionA");
+    lightColorAHandle = gl.getUniformLocation(program, "lightColorA");
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
     //add textures
@@ -497,9 +497,18 @@ function setUpScene(){
 }
 
 function setupLights(){
+    var ambientLight = [1.0, 1.0, 1.0];
+    var directionalLightAColor = [1.0, 0.0, 0.0];
+    var directionaLightAPos = [0.5, 0.5, 0.5];
+    var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
+    var directionalLightATransform = utils.normalizeVec3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
+
   //ambient lights
   gl.uniform3fv(ambientLightColorHandle, ambientLight);
 
+  //directional light
+  gl.uniform3fv(lightDirectionAHandle, directionalLightAColor);
+  gl.uniform3fv(lightColorAHandle, directionalLightATransform);
 }
 
 
@@ -546,7 +555,7 @@ function addMeshToScene(i) {
     elev += rvx;
     ang += rvy;
 
-    setupLights();
+
 
     waitingBirdsAnimation();
     if(isPressed)
@@ -563,6 +572,9 @@ function addMeshToScene(i) {
 
     //base view matrix
     viewMatrix = utils.MakeView(cx, cy, cz, elev, ang);
+
+    setupLights();
+
     for (var i = 0; i < allMeshes.length; i++) {
        worldViewMatrix = utils.multiplyMatrices(viewMatrix, worldPositions[i]);
        projectionMatrix = utils.multiplyMatrices(perspectiveMatrix, worldViewMatrix);  
