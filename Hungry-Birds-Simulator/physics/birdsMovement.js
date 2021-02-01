@@ -786,7 +786,7 @@ function activateChuckPower(){
 			m = (- mB - Math.sqrt(mB*mB - 4*mC)) / 2;
 		q = chuckZ + chuckY;
 
-		v = v*3;
+		v = v*2;
 	}
 	
 	console.log("q: " + q);
