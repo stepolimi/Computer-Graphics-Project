@@ -324,6 +324,10 @@ function birdCollision(obj){
 
 	if(bird.type == "bomb"){
 		obj.hp = obj.hp -(bird.m * Math.abs(velz) + bird.m * Math.abs(vely) )* BIRD_DMG_COEFFICIENT * 2;
+	}else if(bird.type == "chuck" && !isChuckActiveFirstTime){
+		velz = birdVzFinal;
+		vely = birdVyFinal;
+		obj.hp = obj.hp - bird.m * Math.abs(v) * BIRD_DMG_COEFFICIENT;
 	}else{
 		velz = birdVzFinal;
 		vely = birdVyFinal;
