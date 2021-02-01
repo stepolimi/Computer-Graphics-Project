@@ -35,8 +35,6 @@ uniform vec3 ambientLightCol;
 uniform vec3 lightDirectionA; 
 uniform vec3 lightColorA;
 
-//
-
 //texture
 uniform sampler2D in_texture;
 
@@ -52,7 +50,7 @@ void main() {
   vec3 ambient = ambientLightCol;
 
   //computing Lambert diffuse
-  vec3 nNormal = normalize(fsNormal)
+  vec3 nNormal = normalize(fsNormal);
   vec3 diffA = lightColorA * dot(-lightColorA, nNormal);
 
 
