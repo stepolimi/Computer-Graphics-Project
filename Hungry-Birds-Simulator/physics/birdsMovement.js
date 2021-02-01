@@ -729,7 +729,7 @@ function activateChuckPower(){
 		isChuckActiveFirstTime = false;
 		chuckZ = bird.tz;
 		chuckY = bird.ty;
-		t = 0;	
+		//t = 0;	
 		
 		var angleInRad = utils.degToRad(angle);
 		var cos = Math.cos(angleInRad);
@@ -754,7 +754,7 @@ function activateChuckPower(){
 	
 	console.log("q: " + q);
 	
-	bird.tz = chuckZ + t*v*v;
+	bird.tz = bird.tz + velz*TICK*TICK;
 
 	console.log("Z: " + bird.tz);
 	console.log("Y: " + bird.ty);
