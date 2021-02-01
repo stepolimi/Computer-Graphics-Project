@@ -754,7 +754,7 @@ function activateChuckPower(){
 	console.log("q: " + q);
 	console.log("pre tz: " + bird.tz);
 	
-	bird.tz = -birdStartingZ + velz*t*5;
+	bird.tz = -birdStartingZ + velz*t*2;
 
 	console.log("post tz: " + bird.tz);
 	console.log("Z: " + bird.tz);
@@ -775,9 +775,6 @@ function activateMatildaPower(){
 		matildaZ = bird.tz;
 		matildaY = bird.ty;
 
-		console.log("ty1: " + bird.ty);
-		console.log("tz1: " + bird.tz);
-
 		t = TICK;
 		structureObjs.forEach(function(obj) {
 			if(obj.type == "egg"){
@@ -793,8 +790,6 @@ function activateMatildaPower(){
 	var tan = Math.sin(utils.degToRad(angle)) / Math.cos(utils.degToRad(angle));
 	bird.ty = matildaY + v*t*tan;
 	bird.tz = matildaZ + v*t*tan;
-	console.log("ty: " + bird.ty);
-	console.log("tz: " + bird.tz);
 	
 	rotation += 20.0;
 }
