@@ -532,6 +532,7 @@ function addMeshToScene(i) {
     
     var uvBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
+    console.log(mesh.textures);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.textures), gl.STATIC_DRAW);
     gl.enableVertexAttribArray(uvAttributeLocation);
     gl.vertexAttribPointer(uvAttributeLocation, 2, gl.FLOAT, false, 0, 0);
