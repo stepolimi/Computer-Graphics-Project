@@ -350,6 +350,7 @@ async function main() {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     
     // Clear the canvas
+    gl.clearColor(0.0, 0.0, 0.0, 0.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.enable(gl.DEPTH_TEST); 
     
@@ -499,9 +500,10 @@ function setUpScene(){
 
 }
 
+//sets light colors and positions
 function setupLights(){
     var ambientLight = [1.0, 1.0, 1.0];
-    var directionalLightAColor = [1.0, 0.5, 0.5];
+    var directionalLightAColor = [1.0, 0.2, 0.2];
     var directionaLightAPos = [0.0, 0.5, -0.2];
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
@@ -545,12 +547,6 @@ function addMeshToScene(i) {
  }
 
  function drawScene(){
-    //clear scene
-    gl.clearColor(0.85, 0.85, 0.85, 1.0);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
-
-    //logicHandler();  
-
     //move camera and calculate view matrix
     cx += vx;
     cy += vy;
