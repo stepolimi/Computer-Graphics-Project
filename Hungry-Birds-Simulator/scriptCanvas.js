@@ -495,8 +495,8 @@ function setUpScene(){
 }
 
 function setupLights(){
-    var ambientLight = [0.5, 0.5, 0.5];
-    var directionalLightAColor = [1.0, 1.0, 1.0];
+    var ambientLight = [1.0, 1.0, 1.0];
+    var directionalLightAColor = [0.4, 0.4, 0.4];
     var directionaLightAPos = [0.5, 0.5, 0.5];
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
