@@ -57,7 +57,8 @@ void main() {
   vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
 
 
-  outColor = vec4(clamp(ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  //outColor = vec4(clamp(ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
 
