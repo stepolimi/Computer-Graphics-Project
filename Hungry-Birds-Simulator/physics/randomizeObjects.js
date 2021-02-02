@@ -1,11 +1,11 @@
 // JavaScript source code
 var birdChoiche; 
-let pigChoiche;
-let choiche;
-let tower;
-let piece;
+var pigChoiche;
+var choiche;
+var tower;
+var piece;
 var objType;
-let mass;
+var mass;
 
 //meshes for random birds
 var bird1;
