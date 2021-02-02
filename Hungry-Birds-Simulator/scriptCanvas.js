@@ -526,8 +526,8 @@ function setupLights(){
   gl.uniform3fv(ambientLightColorHandle, ambientLight);
 
   //directional light
-  gl.uniform3fv(lightDirectionAHandle, directionalLightAColor);
-  gl.uniform3fv(lightColorAHandle, directionalLightATransform);
+  gl.uniform3fv(lightDirectionAHandle, directionalLightATransform);
+  gl.uniform3fv(lightColorAHandle, directionalLightAColor);
 }
 
 
