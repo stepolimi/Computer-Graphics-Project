@@ -51,7 +51,7 @@ void main() {
 
   //computing Lambert diffuse
   vec3 nNormal = normalize(fsNormal);
-  vec3 diffA = lightColorA * dot(lightColorA, nNormal);
+  vec3 diffA = lightColorA * clamp(dot(lightColorA, nNormal), 1.0, 0.0);
 
 
   outColor = vec4(clamp(ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
@@ -495,7 +495,7 @@ function setUpScene(){
 }
 
 function setupLights(){
-    var ambientLight = [1.0, 1.0, 1.0];
+    var ambientLight = [0.0, 0.0, 0.0];
     var directionalLightAColor = [1.0, 1.0, 1.0];
     var directionaLightAPos = [0.0, 0.5, -0.2];
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
