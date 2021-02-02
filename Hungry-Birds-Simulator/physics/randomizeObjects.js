@@ -502,8 +502,8 @@ async function randomizeCube(){
                 structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType, 29, mass ));
                 break;
             case 5:
-                tower119 = await utils.loadMesh("../assets/Others/woodVerticalPlaneBroken1.obj");
-                let trial = await utils.loadMesh("../assets/Others/woodVerticalPlaneBroken2.obj");
+                tower119 = await utils.loadMesh("../assets/Others/glassBox.obj");
+                /*let trial = await utils.loadMesh("../assets/Others/woodVerticalPlaneBroken2.obj");
                 console.log("TOWER");
                 console.log("vertex " + tower119.vertices);
                 console.log("vertex length " + tower119.vertices.length);
@@ -522,7 +522,7 @@ async function randomizeCube(){
                 console.log("normals " + trial.vertexNormals);
                 console.log("vertex length " + trial.vertexNormals.length);
                 console.log("indices " + trial.indices);
-               // tower119.textures =  GLASSBOX_BROKEN_1;
+               // tower119.textures =  GLASSBOX_BROKEN_1;*/
                 structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "glassBox", 31, mass ));
                 break;
             case 6:
