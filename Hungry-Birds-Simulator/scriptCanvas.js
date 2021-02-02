@@ -18,7 +18,9 @@ uniform mat4 nMatrix;     //matrix to transform normals
 
 void main() {
   fsUV = in_uv;
-  fs_pos = worldViewMatrix * vec4(inPosition,1.0); //coordinates in Camera Space
+
+  //to transform coordinates in Camera Space
+  fs_pos = worldViewMatrix * vec4(inPosition,1.0); 
   fsNormal = mat3(nMatrix) * inNormal; 
 
   gl_Position = matrix * vec4(inPosition, 1.0);
@@ -50,8 +52,8 @@ void main() {
   vec3 ambient = ambientLightCol;
 
   //computing Lambert diffuse
-  vec3 nLightDirectionA = normalize(lightDirectionA);
   vec3 nNormal = normalize(fsNormal);
+  vec3 nLightDirectionA = normalize(lightDirectionA);
   vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
 
 
@@ -544,7 +546,7 @@ function addMeshToScene(i) {
 
  function drawScene(){
     //clear scene
-    gl.clearColor(0.0, 0.0, 0.0, 0.0);
+    gl.clearColor(0.85, 0.85, 0.85, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
 
     //logicHandler();  
