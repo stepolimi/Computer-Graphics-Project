@@ -615,9 +615,9 @@ function addMeshToScene(i) {
 window.onload = main;
 
 function fromHexToRGBVec(hex) {
-    col = hex.substring(1,7);
-      R = parseInt(col.substring(0,2) ,16) / 255;
-      G = parseInt(col.substring(2,4) ,16) / 255;
-      B = parseInt(col.substring(4,6) ,16) / 255;
+    var col = hex.substring(1,7);
+    var  R = parseInt(col.substring(0,2) ,16) / 255;
+    var  G = parseInt(col.substring(2,4) ,16) / 255;
+    var  B = parseInt(col.substring(4,6) ,16) / 255;
     return [R,G,B]
   }
