@@ -504,8 +504,21 @@ function setUpScene(){
 //sets light colors and positions
 function setupLights(){
     var ambientLight = [1.0, 1.0, 1.0];
-    var directionalLightAColor = [1.0, 0.2, 0.2];
-    var directionaLightAPos = [0.0, 0.5, -0.2];
+  //  var directionalLightAColor = [1.0, 0.2, 0.2];
+  //  var directionaLightAPos = [0.0, 0.5, -0.2];
+
+
+      var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
+      var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
+  
+      var directionalLightAColor = [Math.cos(180 - dirLightAlphaA) * Math.cos(dirLightBetaA),
+        Math.sin(180 - dirLightAlphaA),
+        Math.cos(180 - dirLightAlphaA) * Math.sin(dirLightBetaA)
+        ];
+      var directionaLightAPos = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
+
+
+
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
@@ -600,3 +613,11 @@ function addMeshToScene(i) {
  }
 
 window.onload = main;
+
+function fromHexToRGBVec(hex) {
+    col = hex.substring(1,7);
+      R = parseInt(col.substring(0,2) ,16) / 255;
+      G = parseInt(col.substring(2,4) ,16) / 255;
+      B = parseInt(col.substring(4,6) ,16) / 255;
+    return [R,G,B]
+  }
