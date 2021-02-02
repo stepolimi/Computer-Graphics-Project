@@ -507,7 +507,7 @@ var sunAngle = 0;
 function setupLights(){
     var ambientLight = [0.4, 0.4, 0.4];
 
-    if(angle < 2* Math.PI)
+    if(sunAngle < 2* Math.PI)
         sunAngle += Math.PI/100;
     else
         sunAngle = 0;
