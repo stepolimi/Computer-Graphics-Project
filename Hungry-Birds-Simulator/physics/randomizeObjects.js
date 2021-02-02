@@ -1,5 +1,4 @@
 // JavaScript source code
-let birdChoiche; 
 let pigChoiche;
 let choiche;
 let tower;
