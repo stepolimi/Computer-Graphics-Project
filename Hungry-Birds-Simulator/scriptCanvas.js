@@ -47,7 +47,7 @@ out vec4 outColor;
 void main() {
 
   //computing ambient color
-  vec3 ambient = 0.5 * ambientLightCol;
+  vec3 ambient = ambientLightCol;
 
   //computing Lambert diffuse
   vec3 nNormal = normalize(fsNormal);
