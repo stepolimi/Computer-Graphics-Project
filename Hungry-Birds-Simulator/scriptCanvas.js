@@ -52,7 +52,7 @@ void main() {
   //computing Lambert diffuse
   vec3 nLightDirectionA = normalize(lightDirectionA);
   vec3 nNormal = normalize(fsNormal);
-  vec3 diffA = lightColorA * clamp(dot(nLightDirectionA, nNormal), 0.0, 1.0);
+  vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
 
 
   outColor = vec4(clamp(ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
