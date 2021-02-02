@@ -511,8 +511,9 @@ function setupLights(){
         sunAngle += Math.PI/1000;
     else
         sunAngle = 0;
-      
-    var directionaLightAPos = [-0.15, 0.5 * Math.sin(sunAngle), 0.5 * Math.cos(sunAngle)];
+    
+        //x to be -0.2 on day, -0 on night
+    var directionaLightAPos = [-0.2, 0.5 * Math.sin(sunAngle), 0.5 * Math.cos(sunAngle)];
     var directionalLightAColor = [1.0, 0.8, 0.1];//#4d4d4d
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
