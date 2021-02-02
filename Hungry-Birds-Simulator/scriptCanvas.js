@@ -503,7 +503,7 @@ function setUpScene(){
 
 //sets light colors and positions
 function setupLights(){
-    var ambientLight = [1.0, 1.0, 1.0];
+    var ambientLight = [0.4, 0.4, 0.4];
   //  var directionalLightAColor = [1.0, 0.2, 0.2];
   //  var directionaLightAPos = [0.0, 0.5, -0.2];
 
