@@ -501,23 +501,19 @@ function setUpScene(){
 
 }
 
+var sunAngle = 0;
+
 //sets light colors and positions
 function setupLights(){
     var ambientLight = [0.4, 0.4, 0.4];
-  //  var directionalLightAColor = [1.0, 0.2, 0.2];
-  //  var directionaLightAPos = [0.0, 0.5, -0.2];
 
-
-      var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
-      var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
+    if(angle < 2* Math.PI)
+        sunAngle += Math.PI/100;
+    else
+        sunAngle = 0;
       
-      var directionaLightAPos = [Math.cos(180 - dirLightAlphaA) * Math.cos(dirLightBetaA),
-        Math.sin(180 - dirLightAlphaA),
-        Math.cos(180 - dirLightAlphaA) * Math.sin(dirLightBetaA)
-        ];
-      var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
-
-
+    var directionaLightAPos = [0.0, Math.sin(sunAngle), Math.cos(sunAngle)];
+    var directionalLightAColor = [1.0, 0.8, 0.1];//#4d4d4d
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
