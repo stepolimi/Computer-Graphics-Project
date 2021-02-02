@@ -502,36 +502,24 @@ async function randomizeCube(){
                 structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType, 29, mass ));
                 break;
             case 5:
-                tower119 = await utils.loadMesh("../assets/Others/woodBox.obj");
-                let broken1 = await utils.loadMesh("../assets/Others/woodBoxBroken1.obj");
-                let broken2 = await utils.loadMesh("../assets/Others/woodBoxBroken2.obj");
-                console.log("TOWER");
-                console.log("vertex " + tower119.vertices);
-                console.log("vertex length " + tower119.vertices.length);
-                console.log("texture " + tower119.textures);
-                console.log("vertex length " + tower119.textures.length);
-                console.log("normals " + tower119.vertexNormals);
-                console.log("vertex length " + tower119.vertexNormals.length);
-                console.log("indices " + tower119.indices);
-                console.log("vertex length " + tower119.indices.length);
-
-                console.log("BROKEN 1");
-                console.log("trial " + broken1.vertices);
-                console.log("vertex length " + broken1.vertices.length);
+                tower119 = await utils.loadMesh("../assets/Others/glassBox.obj");
+                let broken1 = await utils.loadMesh("../assets/Others/glassBoxBroken1.obj");
+                let broken2 = await utils.loadMesh("../assets/Others/glassBoxBroken2.obj");
+                let broken3 = await utils.loadMesh("../assets/Others/stoneBoxBroken1.obj");
+                let broken4 = await utils.loadMesh("../assets/Others/stoneBoxBroken2.obj");
+                 
+                console.log("BROKER 1");
                 console.log("texture " + broken1.textures);
-                console.log("vertex length " + broken1.textures.length);
-                console.log("normals " + broken1.vertexNormals);
-                console.log("vertex length " + broken1.vertexNormals.length);
-                console.log("indices " + broken1.indices);
 
                 console.log("BROKEN 2");
-                console.log("trial " + broken2.vertices);
-                console.log("vertex length " + broken2.vertices.length);
                 console.log("texture " + broken2.textures);
-                console.log("vertex length " + broken2.textures.length);
-                console.log("normals " + broken2.vertexNormals);
-                console.log("vertex length " + broken2.vertexNormals.length);
-                console.log("indices " + broken2.indices);
+
+                console.log("BROKER 3");
+                console.log("texture " + broken3.textures);
+
+                console.log("BROKEN 4");
+                console.log("texture " + broken4.textures);
+
 
 
                 structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "glassBox", 31, mass ));

@@ -1,6 +1,5 @@
-# Blender v2.90.1 OBJ File: 'tnt.blend'
+# Blender v2.90.1 OBJ File: ''
 # www.blender.org
-mtllib tnt.mtl
 o Cube
 v 1.979106 1.979106 -1.979106
 v 1.979106 -1.979106 -1.979106
@@ -40,7 +39,6 @@ vn 1.0000 0.0000 0.0000
 vn 0.0000 0.0000 -1.0000
 vn -1.0000 0.0000 0.0000
 vn 0.0000 0.0000 1.0000
-usemtl Material
 s off
 f 3/1/1 1/2/1 7/3/1
 f 4/4/2 8/5/2 2/6/2

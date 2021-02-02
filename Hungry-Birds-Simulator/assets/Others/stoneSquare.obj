@@ -1,6 +1,5 @@
 # Blender v2.90.1 OBJ File: 'stoneSquare.blend1'
 # www.blender.org
-mtllib stoneSquare.mtl
 o Cube_Cube.002
 v -2.000000 -2.000000 2.000000
 v -2.000000 2.000000 2.000000
@@ -49,7 +48,6 @@ vn 1.0000 0.0000 0.0000
 vn 0.0000 0.0000 1.0000
 vn 0.0000 -1.0000 0.0000
 vn 0.0000 1.0000 0.0000
-usemtl None
 s off
 f 2/1/1 3/2/1 1/3/1
 f 4/4/2 7/5/2 3/6/2
