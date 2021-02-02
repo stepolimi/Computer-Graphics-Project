@@ -504,9 +504,13 @@ async function randomizeCube(){
             case 5:
                 tower119 = await utils.loadMesh("../assets/Others/glassBox.obj");
                 console.log("vertex " + tower119.vertices);
+                console.log("vertex length " + tower119.vertices.length);
                 console.log("texture " + tower119.textures);
+                console.log("vertex length " + tower119.textures.length);
                 console.log("normals " + tower119.vertexNormals);
+                console.log("vertex length " + tower119.vertexNormals.length);
                 console.log("indices " + tower119.indices);
+                console.log("vertex length " + tower119.indices.length);
                // tower119.textures =  GLASSBOX_BROKEN_1;
                 structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "glassBox", 31, mass ));
                 break;
