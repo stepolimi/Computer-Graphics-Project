@@ -510,12 +510,12 @@ function setupLights(){
 
       var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
       var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
-  
-      var directionalLightAColor = [Math.cos(180 - dirLightAlphaA) * Math.cos(dirLightBetaA),
+      
+      var directionaLightAPos = [Math.cos(180 - dirLightAlphaA) * Math.cos(dirLightBetaA),
         Math.sin(180 - dirLightAlphaA),
         Math.cos(180 - dirLightAlphaA) * Math.sin(dirLightBetaA)
         ];
-      var directionaLightAPos = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
+      var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
 
 
 
