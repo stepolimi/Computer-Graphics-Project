@@ -397,9 +397,7 @@ function checkHp(obj){
 		switch(obj.type){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
-				console.log("glassPlane1");
 				newMesh.textures = GLASSPLANE_BROKEN_1;
-				//changeMesh(obj.index);
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
@@ -436,9 +434,7 @@ function checkHp(obj){
 		switch(obj.type){
 			case "glassVerticalPlane":
 			case "glassHorizontalPlane":
-				console.log("glassPlane2");
 				newMesh.textures = GLASSPLANE_BROKEN_2;
-				//changeMesh(obj.index);
 				break;
 			case "woodVerticalPlane":
 			case "woodHorizontalPlane":
