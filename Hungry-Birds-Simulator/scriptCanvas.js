@@ -577,8 +577,8 @@ function setupLights(){
     var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA];
     var diffuseLightColor = [0.8, 0.8, 0.8];
     //Transform the diffuse light's Position into Camera Space
-    var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
-    var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
+    //var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
+    //var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
 
     //reflection light
     var shininess = 30;
@@ -591,7 +591,7 @@ function setupLights(){
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
 
     //diffuse light
-    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
+    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosition);
     gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
 
     //reflection light
