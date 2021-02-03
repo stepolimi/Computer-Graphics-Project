@@ -424,6 +424,9 @@ function checkHp(obj){
 			case "stoneBox":
 				allMeshes[obj.index].textures = STONEBOX_BROKEN_1;
 				break;
+			case "pig":
+				allMeshes[obj.index].textures = PIG_BROKEN_1;
+				break;
 			default:
 				break;
 		}
@@ -460,6 +463,9 @@ function checkHp(obj){
 				break;
 			case "stoneBox":
 				allMeshes[obj.index].textures = STONEBOX_BROKEN_2;
+				break;
+			case "pig":
+				allMeshes[obj.index].textures = PIG_BROKEN_2;
 				break;
 			default:
 				break;
