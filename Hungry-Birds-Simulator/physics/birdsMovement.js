@@ -404,13 +404,13 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = WOODPLANE_BROKEN_1;
 				break;
 			case "glassPyramid":
-				allMeshes[obj.index].textures = GLASSBOX_BROKEN_1;
+				allMeshes[obj.index].textures = GLASSPYRAMID_BROKEN_1;
 				break;
 			case "glassBox":
 				allMeshes[obj.index].textures = GLASSBOX_BROKEN_1;
 				break;
 			case "woodPyramid":
-				allMeshes[obj.index].textures = WOODBOX_BROKEN_1;
+				allMeshes[obj.index].textures = WOODPYRAMID_BROKEN_1;
 				break;
 			case "woodBox":
 				allMeshes[obj.index].textures = WOODBOX_BROKEN_1;
@@ -419,7 +419,7 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = STONESQUARE_BROKEN_1;
 				break;
 			case "stonePyramid":
-				allMeshes[obj.index].textures = STONEBOX_BROKEN_1;
+				allMeshes[obj.index].textures = STONEPYRAMID_BROKEN_1;
 				break;
 			case "stoneBox":
 				allMeshes[obj.index].textures = STONEBOX_BROKEN_1;
@@ -441,13 +441,13 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = WOODPLANE_BROKEN_2;
 				break;
 			case "glassPyramid":
-				allMeshes[obj.index].textures = GLASSBOX_BROKEN_2;
+				allMeshes[obj.index].textures = GLASSPYRAMID_BROKEN_2;
 				break;
 			case "glassBox":
 				allMeshes[obj.index].textures = GLASSBOX_BROKEN_2;
 				break;
 			case "woodPyramid":
-				allMeshes[obj.index].textures = WOODBOX_BROKEN_2;
+				allMeshes[obj.index].textures = WOODPYRAMID_BROKEN_2;
 				break;
 			case "woodBox":
 				allMeshes[obj.index].textures = WOODBOX_BROKEN_2;
@@ -456,7 +456,7 @@ function checkHp(obj){
 				allMeshes[obj.index].textures = STONESQUARE_BROKEN_2;
 				break;
 			case "stonePyramid":
-				allMeshes[obj.index].textures = STONEBOX_BROKEN_2;
+				allMeshes[obj.index].textures = STONEPYRAMID_BROKEN_2;
 				break;
 			case "stoneBox":
 				allMeshes[obj.index].textures = STONEBOX_BROKEN_2;
