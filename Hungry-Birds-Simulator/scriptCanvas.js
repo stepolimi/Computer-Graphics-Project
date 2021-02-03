@@ -37,6 +37,10 @@ uniform vec3 ambientLightCol;
 uniform vec3 lightDirectionA; 
 uniform vec3 lightColorA;
 
+//diffuse light
+uniform vec3 lightDiffusePosition;
+uniform vec3 lightDiffuseColor;
+
 //texture
 uniform sampler2D in_texture;
 
@@ -47,17 +51,29 @@ in vec4 fs_pos;
 out vec4 outColor;
 
 void main() {
+  //normalize fsNormal, it could be not normalized coming out of vs
+  vec3 nNormal = normalize(fsNormal);
 
   //computing ambient color
   vec3 ambient = ambientLightCol;
 
   //computing Lambert diffuse
-  vec3 nNormal = normalize(fsNormal);
   vec3 nLightDirectionA = normalize(lightDirectionA);
   vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
 
+  //diffuse light
+  vec3 to_light;
+  vec3 diffLight;
+  float cos_angle;
+  to_light = lightDiffusePosition - vec3(fs_pos);
+  to_light = normalize( to_light );
+  // Calculate the cosine of the angle between the vertex's normal vector and the vector going to the light.
+  cos_angle = dot(fsNormal, to_light);
+  cos_angle = clamp(cos_angle, 0.0, 1.0);
+  diffLight = lightDiffuseColor * cos_angle;
 
-  outColor = vec4(clamp(ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+//  outColor = vec4(clamp(ambient + diffA + diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(clamp(diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
@@ -108,6 +124,8 @@ var worldViewMatrixPositionHandle;
 var ambientLightColorHandle;
 var lightDirectionAHandle;
 var lightColorAHandle;
+var lightDiffusePositionHandler;
+var lightDiffuseColorHandler;
 var posZdirLightA = -0.5;
 var posYdirLightA = 0.5;
 
@@ -477,6 +495,8 @@ function setUpScene(){
     ambientLightColorHandle = gl.getUniformLocation(program, "ambientLightCol");
     lightDirectionAHandle = gl.getUniformLocation(program, "lightDirectionA");
     lightColorAHandle = gl.getUniformLocation(program, "lightColorA");
+    lightDiffuseColorHandler = gl.getUniformLocation(program, "lightDiffuseColor");
+    lightDiffusePositionHandler = gl.getUniformLocation(program, "lightDiffusePosition");
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
     //add textures
@@ -505,9 +525,11 @@ var sunAngle = 0;
 
 //sets light colors and positions
 function setupLights(){
-    var xDirLightA;
+    //ambient light
     var ambientLight = [0.4, 0.4, 0.4];
 
+    //directional light
+    var xDirLightA;
     if(sunAngle < 2* Math.PI)
         sunAngle += Math.PI/1000;
     else
@@ -517,7 +539,7 @@ function setupLights(){
     else
         xDirLightA = 0;
     
-        //x to be -0.2 on day, -0 on night
+    //x to be -0.2 on day, -0 on night
     var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     //var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
@@ -525,12 +547,24 @@ function setupLights(){
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
-  //ambient lights
-  gl.uniform3fv(ambientLightColorHandle, ambientLight);
+    //diffuse light
+    var diffuseLightPosition = [0.0, 8.0, -6.0];
+    var diffuseLightColor = [1.0, 1.0, 1.0];
+    //Transform the diffuse light's Position into Camera Space
+    var diffuseLightPosTransfMatrix = viewMatrix;
+    var diffuseLightPosTransform = utils.multiplyMatrixVector(diffuseLightPosTransfMatrix,diffuseLightPosition);
 
-  //directional light
-  gl.uniform3fv(lightDirectionAHandle, directionalLightATransform);
-  gl.uniform3fv(lightColorAHandle, directionalLightAColor);
+
+    //ambient lights
+    gl.uniform3fv(ambientLightColorHandle, ambientLight);
+
+    //directional light
+    gl.uniform3fv(lightDirectionAHandle, directionalLightATransform);
+    gl.uniform3fv(lightColorAHandle, directionalLightAColor);
+
+    //diffuse light
+    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
+    gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
 }
 
 
