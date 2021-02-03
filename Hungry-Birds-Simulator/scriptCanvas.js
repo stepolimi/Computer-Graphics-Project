@@ -571,9 +571,9 @@ function setupLights(){
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
     //diffuse light
-    var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
-    var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
-    var dirLightGammaA = utils.degToRad(document.getElementById("dirLightGammaA").value);//32
+    var dirLightAlphaA = document.getElementById("dirLightAlphaA").value;//20
+    var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
+    var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
     var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA];
     var diffuseLightColor = [0.8, 0.8, 0.8];
     //Transform the diffuse light's Position into Camera Space
