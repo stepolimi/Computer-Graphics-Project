@@ -72,8 +72,8 @@ void main() {
   cos_angle = clamp(cos_angle, 0.0, 1.0);
   diffLight = lightDiffuseColor * cos_angle;
 
-
-  outColor = vec4(clamp(ambient + diffA + diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+//  outColor = vec4(clamp(ambient + diffA + diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(clamp(diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
