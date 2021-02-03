@@ -63,7 +63,7 @@ void main() {
 
   //diffuse light
   vec3 to_light;
-  vec4 diffLight;
+  vec3 diffLight;
   float cos_angle;
   to_light = lightDiffusePosition - vec3(fs_pos);
   to_light = normalize( to_light );
