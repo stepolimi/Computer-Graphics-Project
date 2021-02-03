@@ -70,7 +70,8 @@ void main() {
   // Calculate the cosine of the angle between the vertex's normal vector and the vector going to the light.
   cos_angle = dot(fsNormal, to_light);
   cos_angle = clamp(cos_angle, 0.0, 1.0);
-  diffLight = lightDiffuseColor * cos_angle;
+  diffLight = lightDiffuseColor ;
+  //maybe try to cancel cos_angle?
 
 //  outColor = vec4(clamp(ambient + diffA + diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
   outColor = vec4(clamp(diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
