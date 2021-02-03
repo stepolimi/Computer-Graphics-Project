@@ -548,7 +548,7 @@ function setupLights(){
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
     //diffuse light
-    var diffuseLightPosition = [0.0, 0.0, -6.0];
+    var diffuseLightPosition = [1.0, 6.0, -6.0];
     var diffuseLightColor = [1.0, 1.0, 1.0];
     //Transform the diffuse light's Position into Camera Space
     var diffuseLightPosTransfMatrix = viewMatrix;
