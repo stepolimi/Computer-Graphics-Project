@@ -550,6 +550,9 @@ function setupLights(){
     //diffuse light
     var diffuseLightPosition = [0.0, 8.0, -6.0];
     var diffuseLightColor = [1.0, 1.0, 1.0];
+    //Transform the diffuse light's Position into Camera Space
+    var diffuseLightPosTransfMatrix = viewMatrix;
+    var diffuseLightPosTransform = utils.multiplyMatrixVector(diffuseLightPosTransfMatrix,diffuseLightPosition);
 
 
     //ambient lights
@@ -560,7 +563,7 @@ function setupLights(){
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
 
     //diffuse light
-    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosition);
+    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
     gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
 }
 
