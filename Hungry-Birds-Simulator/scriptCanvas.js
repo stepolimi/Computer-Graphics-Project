@@ -551,8 +551,8 @@ function setupLights(){
     var diffuseLightPosition = [1.0, 6.0, -6.0];
     var diffuseLightColor = [1.0, 1.0, 1.0];
     //Transform the diffuse light's Position into Camera Space
-    var diffuseLightPosTransfMatrix = viewMatrix;
-    var diffuseLightPosTransform = utils.multiplyMatrixVector(diffuseLightPosTransfMatrix,diffuseLightPosition);
+    var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
+    var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
 
 
     //ambient lights
