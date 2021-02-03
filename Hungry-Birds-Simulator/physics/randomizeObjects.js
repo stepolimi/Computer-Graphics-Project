@@ -503,8 +503,8 @@ async function randomizeCube(){
                 break;
             case 5:
                 tower119 = await utils.loadMesh("../assets/Others/glassBox.obj");
-                let broken1 = await utils.loadMesh("../assets/Others/woodPyramidBroken1.obj");
-                let broken2 = await utils.loadMesh("../assets/Others/woodPyramidBroken2.obj");
+                let broken1 = await utils.loadMesh("../assets/Pigs/pigBroken1.obj);
+                let broken2 = await utils.loadMesh("../assets/Pigs/pigBroken2.obj");
                  
                 console.log("BROKER 1");
                 console.log("texture " + broken1.textures);
