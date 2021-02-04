@@ -20,10 +20,10 @@ void main() {
   fsUV = in_uv;
 
   //to transform coordinates in Camera Space
-  fs_pos = worldViewMatrix * vec4(inPosition,1.0); 
-  fsNormal = mat3(nMatrix) * inNormal; 
+  fs_pos = utils.multiplyMatrixVector(worldViewMatrix, vec4(inPosition,1.0)); 
+  fsNormal = utils.multiplyMatrixVector(mat3(nMatrix), inNormal); 
 
-  gl_Position = matrix * vec4(inPosition, 1.0);
+  gl_Position = utils.multiplyMatrixVector(matrix, vec4(inPosition, 1.0));
 }
 `;
 
@@ -79,6 +79,7 @@ void main() {
   // Calculate the reflection vector
   vec3 reflection = 2.0 * dot(nNormal,to_light) * nNormal - to_light;
   reflection = normalize( reflection );
+
   // Calculate a vector from the fragment location to the camera.
   // The camera is at the origin, so negating the vertex location gives the vector
   vec3 to_camera = -1.0 * vec3(fs_pos);
@@ -87,6 +88,7 @@ void main() {
   cos_angle = dot(reflection, to_camera);
   cos_angle = clamp(cos_angle, 0.0, 1.0);
   cos_angle = pow(cos_angle, shininess);
+
   // If this fragment gets a specular reflection, use the light's color, otherwise use the objects's color
   vec3 specular_color = lightDiffuseColor * cos_angle;
   vec3 object_color = vec3(texture(in_texture, fsUV)) * (1.0 - cos_angle);
@@ -577,8 +579,8 @@ function setupLights(){
     var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA];
     var diffuseLightColor = [0.8, 0.8, 0.8];
     //Transform the diffuse light's Position into Camera Space
-    //var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
-    //var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
+    var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
+    var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
 
     //reflection light
     var shininess = 30;
@@ -591,7 +593,7 @@ function setupLights(){
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
 
     //diffuse light
-    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosition);
+    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
     gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
 
     //reflection light
