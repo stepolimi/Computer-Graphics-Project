@@ -559,9 +559,9 @@ function setupLights(){
     var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA];
     var diffuseLightColor = [0.9, 0.9, 0.9];
     //Transform the diffuse light's Position into Camera Space
-    var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(viewMatrix);
-    var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
-    //var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix,diffuseLightPosition);
+    //var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
+    //var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
+    var diffuseLightPosTransform = diffuseLightPosition;
 
     //reflection light
     var shininess = 30;
