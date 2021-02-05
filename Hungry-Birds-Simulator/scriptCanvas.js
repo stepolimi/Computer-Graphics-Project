@@ -40,7 +40,7 @@ uniform vec3 lightColorA;
 
 //diffuse light
 //uniform vec3 lightDiffusePosition;      //this is the position of a light
-//uniform vec3 lightDiffuseColor;
+uniform vec3 lightDiffuseColor;
 
 //reflection
 uniform float shininess;
@@ -71,10 +71,10 @@ void main() {
 
   //Eye position in camera space
   vec3 eyePos = normalize(-1.0 * vec3(fs_pos));
-  vec3 specularA = pow(clamp(dot(normalize(eyePos + nLightDirectionA), nNormal), 0.0, 1.0), shininess) * lightColorA;
+  vec3 specularA = pow(clamp(dot(normalize(eyePos + nLightDirectionA), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
 
 
-  outColor = vec4(clamp(ambient + specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(clamp(diffA + specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
@@ -545,7 +545,7 @@ function setupLights(){
     
     //x to be -0.2 on day, -0 on night
     var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
-    var directionalLightAColor = [0.87, 0.67, 0.44];
+    var directionalLightAColor = [0.4, 0.4, 0.4]; //[0.87, 0.67, 0.44]
     //var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
@@ -556,7 +556,7 @@ function setupLights(){
     var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
     var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA];
-    var diffuseLightColor = [0.8, 0.8, 0.8];
+    var diffuseLightColor = [0.9, 0.9, 0.9];
     //Transform the diffuse light's Position into Camera Space
     var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
