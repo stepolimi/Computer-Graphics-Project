@@ -88,7 +88,13 @@ void main() {
   to_camera = normalize( to_camera );
 
   // Calculate the cosine of the angle between the reflection vector and the vector going to the camera.
-  vec3 specularA = pow(clamp(dot(normalize(to_camera + to_light), nNormal)), 0.0, 1.0), shininess) * lightDiffuseColor;
+  vec3 specularA = pow(
+                    clamp(
+                        dot(
+                            normalize(to_camera + to_light), nNormal
+                            )
+                    , 0.0, 1.0), 
+                    shininess) * lightDiffuseColor;
   
   
   
