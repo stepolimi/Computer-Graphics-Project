@@ -38,7 +38,7 @@ uniform vec3 lightDirectionA;
 uniform vec3 lightColorA;
 
 //diffuse light
-uniform vec3 lightDiffusePosition;
+uniform vec3 lightDiffusePosition;      //this is the position of a light
 uniform vec3 lightDiffuseColor;
 
 //reflection
@@ -66,35 +66,40 @@ void main() {
   vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
 
   //diffuse light
-  vec3 to_light;
+  vec3 to_light;    //vector between light poition and fragment position
   vec3 diffLight;
   float cos_angle;
   to_light = lightDiffusePosition - vec3(fs_pos);
   to_light = normalize( to_light );
+
   // Calculate the cosine of the angle between the vertex's normal vector and the vector going to the light.
   //cos_angle = dot(fsNormal, to_light);
   //cos_angle = clamp(cos_angle, 0.0, 1.0);
   //diffLight = lightDiffuseColor * cos_angle;
 
   // Calculate the reflection vector
-  vec3 reflection = 2.0 * dot(nNormal,to_light) * nNormal - to_light;
-  reflection = normalize( reflection );
+  //vec3 reflection = 2.0 * dot(nNormal,to_light) * nNormal - to_light;
+  //reflection = normalize( reflection );
   // Calculate a vector from the fragment location to the camera.
+
+
   // The camera is at the origin, so negating the vertex location gives the vector
   vec3 to_camera = -1.0 * vec3(fs_pos);
   to_camera = normalize( to_camera );
+
   // Calculate the cosine of the angle between the reflection vector and the vector going to the camera.
-  cos_angle = dot(reflection, to_camera);
-  cos_angle = clamp(cos_angle, 0.0, 1.0);
-  cos_angle = pow(cos_angle, shininess);
+  vec3 specularA = pow(clamp(dot(normalize(to_camera + to_light), nNormal)), 0.0, 1.0), shininess) * lightDiffuseColor;
+  
+  
+  
   // If this fragment gets a specular reflection, use the light's color, otherwise use the objects's color
-  vec3 specular_color = lightDiffuseColor * cos_angle;
-  vec3 object_color = vec3(texture(in_texture, fsUV)) * (1.0 - cos_angle);
-  vec3 color = specular_color + object_color;
 
-
-//  outColor = vec4(clamp(ambient + diffA + diffLight,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
-  outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
+  //vec3 object_color = vec3(texture(in_texture, fsUV)) * (1.0 - cos_angle);
+  //vec3 color = specular_color + object_color;
+  
+  
+  outColor = vec4(clamp(ambient + specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+   //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
@@ -579,6 +584,7 @@ function setupLights(){
     //Transform the diffuse light's Position into Camera Space
     //var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     //var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
+    var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix,diffuseLightPosition);
 
     //reflection light
     var shininess = 30;
@@ -591,7 +597,7 @@ function setupLights(){
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
 
     //diffuse light
-    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosition);
+    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
     gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
 
     //reflection light

@@ -15,17 +15,17 @@ function anim() {
 				[8,3,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(180)),
 				[8,6,-8],  Quaternion.fromAxisAngle([1,0,0],utils.degToRad(180)),],
 					
-			[4, [8,6,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(180)),
+			[2, [8,6,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(180)),
 				[7,7,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(180)),
 				[6,8,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(270)),
 				[5,8,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(180))],
 				
-			[4, [5,8,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(270)),
+			[2, [5,8,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(270)),
 				[5,8,-8],  Quaternion.fromAxisAngle([0,1,0],utils.degToRad(300)),
 				[0,8,0],   Quaternion.fromAxisAngle([0,1,0],utils.degToRad(0)),
 				[0,8,0],   Quaternion.fromAxisAngle([0,1,0],utils.degToRad(-90))],
 				
-			[4, [0,8,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(0)),
+			[2, [0,8,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(0)),
 				[0,8,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(0)),
 				[0,0,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(-10)),
 				[0,0,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(-180))]
