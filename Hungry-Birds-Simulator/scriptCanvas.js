@@ -39,7 +39,7 @@ uniform vec3 lightColorA;
 
 
 //diffuse light
-//uniform vec3 lightDiffusePosition;      //this is the position of a light
+uniform vec3 lightDiffusePosition;      //this is the position of a light
 uniform vec3 lightDiffuseColor;
 
 //reflection
@@ -70,8 +70,9 @@ void main() {
   //compute Blinn
 
   //Eye position in camera space
+  vec3 posReflection = normalize(lightDiffusePosition);
   vec3 eyePos = normalize(-1.0 * vec3(fs_pos));
-  vec3 specularA = pow(clamp(dot(normalize(eyePos + nLightDirectionA), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
+  vec3 specularA = pow(clamp(dot(normalize(eyePos + posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
 
 
   outColor = vec4(clamp(diffA + specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
@@ -555,7 +556,7 @@ function setupLights(){
     var dirLightAlphaA = document.getElementById("dirLightAlphaA").value;//20
     var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
-    var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA];
+    var diffuseLightPosition = [0, 0.0, -1.0];
     var diffuseLightColor = [0.9, 0.9, 0.9];
     //Transform the diffuse light's Position into Camera Space
     var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
