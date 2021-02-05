@@ -74,7 +74,7 @@ void main() {
   vec3 specularA = pow(clamp(dot(normalize(eyePos + nLightDirectionA), nNormal), 0.0, 1.0), shininess) * lightColorA;
 
 
-  outColor = vec4(clamp(ambient + diffA + specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(clamp(ambient + specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
