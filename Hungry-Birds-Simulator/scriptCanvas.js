@@ -37,6 +37,7 @@ uniform vec3 ambientLightCol;
 uniform vec3 lightDirectionA; 
 uniform vec3 lightColorA;
 
+
 //diffuse light
 uniform vec3 lightDiffusePosition;      //this is the position of a light
 uniform vec3 lightDiffuseColor;
@@ -104,7 +105,7 @@ void main() {
   //vec3 color = specular_color + object_color;
   
   
-  outColor = vec4(clamp(ambient + specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(clamp(ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
