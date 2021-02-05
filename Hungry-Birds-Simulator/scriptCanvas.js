@@ -556,10 +556,10 @@ function setupLights(){
     var dirLightAlphaA = document.getElementById("dirLightAlphaA").value;//20
     var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
-    var diffuseLightPosition = [0, 0.0, -1.0];
+    var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA];
     var diffuseLightColor = [0.9, 0.9, 0.9];
     //Transform the diffuse light's Position into Camera Space
-    var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
+    var diffuseLightPosTransfMatrix = utils.sub3x3from4x4(utils.transposeMatrix(worldViewMatrix));
     var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
     //var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix,diffuseLightPosition);
 
