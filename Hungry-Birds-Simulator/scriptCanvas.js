@@ -72,7 +72,7 @@ void main() {
   //Eye position in camera space
   vec3 posReflection = normalize(lightDiffusePosition);
   vec3 eyePos = normalize(-1.0 * vec3(fs_pos));
-  vec3 specularA = pow(clamp(dot(normalize(eyePos + posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
+  vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
 
 
   outColor = vec4(clamp(specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
