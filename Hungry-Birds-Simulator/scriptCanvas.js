@@ -45,6 +45,13 @@ uniform vec3 lightDiffuseColor;
 //reflection
 uniform float shininess;
 
+//spot
+uniform float spotATarget;
+uniform float spotADecay;
+uniform float spotAConeOut;
+uniform float spotAConeIn;
+uniform vec3 spotADir;
+
 //texture
 uniform sampler2D in_texture;
 
@@ -74,6 +81,10 @@ void main() {
   vec3 eyePos = normalize(-1.0 * vec3(fs_pos));
   vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
 
+  //compute spot light
+  vec3 spotAPos = normalize(lightDiffusePosition);
+  vec3 spotCol = lightDiffuseColor * dot(pow((spotATarget/length(spotAPos - fs_pos)), spotADecay), 
+		clamp((dot(normalize(spotAPos - fs_pos), spotADir) - cos(radians(spotAConeOut)/2.0))/(cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
 
   outColor = vec4(clamp(specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
@@ -132,6 +143,13 @@ var lightDiffuseColorHandler;
 var shininessHandler;
 var posZdirLightA = -0.5;
 var posYdirLightA = 0.5;
+
+//SpotLight
+var spotATargetHandle;
+var spotADecayHandle;
+var spotAConeOutHandle;
+var spotAConeInHandle;
+var spotADirHandle;
 
 //movement variables
 var perspectiveMatrix;
@@ -502,6 +520,11 @@ function setUpScene(){
     lightDiffuseColorHandler = gl.getUniformLocation(program, "lightDiffuseColor");
     lightDiffusePositionHandler = gl.getUniformLocation(program, "lightDiffusePosition");
     shininessHandler = gl.getUniformLocation(program, "shininess");
+    spotATargetHandle = gl.getUniformLocation(program, "spotATarget");
+    spotADecayHandle = gl.getUniformLocation(program, "spotADecay");
+    spotAConeOutHandle = gl.getUniformLocation(program, "spotAConeOut");
+    spotAConeInHandle = gl.getUniformLocation(program, "spotAConeIn");
+    spotADirHandle = gl.getUniformLocation(program, "spotADir");
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
     //add textures
@@ -577,8 +600,29 @@ function setupLights(){
     gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
     gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
 
+
+
     //reflection light
     gl.uniform1f(shininessHandler, shininess);
+
+    
+    //SpotLight
+    var spotTarget = 30.0;
+    var spotDecay = 2.0;
+    var spotConeOut = 75.0;
+    var spotConeIn = 25.0;
+
+
+    gl.uniform1f(spotATargetHandle, spotTarget);
+    gl.uniform1f(spotADecayHandle, spotDecay);
+    gl.uniform1f(spotAConeOutHandle, spotConeOut);
+    gl.uniform1f(spotAConeInHandle, spotConeIn);
+
+    var t = utils.degToRad(45);
+	var p = utils.degToRad(50);
+    var spotDir = [,Math.sin(t)*Math.sin(p), Math.cos(t), Math.sin(t)*Math.cos(p)];
+
+    gl.uniform1f(spotADirHandle, spotConespotDir);
 }
 
 
