@@ -82,9 +82,10 @@ void main() {
   vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
 
   //compute spot light
-  vec3 spotAPos = normalize(lightDiffusePosition);
-  vec3 spotCol = lightDiffuseColor * dot(pow((spotATarget/length(spotAPos - fs_pos)), spotADecay), 
-		clamp((dot(normalize(spotAPos - fs_pos), spotADir) - cos(radians(spotAConeOut)/2.0))/(cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
+  vec3 spotAPos = lightDiffusePosition - fs_pos;
+  console.log("primo pezzo " + pow((spotATarget/length(spotAPos)), spotADecay) );
+  vec3 spotCol = lightDiffuseColor * dot(pow((spotATarget/length(spotAPos)), spotADecay), 
+		clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0))/(cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
 
   outColor = vec4(clamp(spotCol,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
