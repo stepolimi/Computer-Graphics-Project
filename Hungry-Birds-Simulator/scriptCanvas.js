@@ -50,7 +50,7 @@ uniform float spotATarget;
 uniform float spotADecay;
 uniform float spotAConeOut;
 uniform float spotAConeIn;
-uniform vec3 spotADir;
+uniform vec4 spotADir;
 
 //texture
 uniform sampler2D in_texture;
@@ -83,8 +83,8 @@ void main() {
 
   //compute spot light
   vec3 spotAPos = vec3(lightDiffusePosition - fs_pos);
-  vec3 spotCol = lightDiffuseColor * dot(pow((spotATarget/length(spotAPos)), spotADecay), 
-  clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0))/ (cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0 ));
+  vec3 spotCol = lightDiffuseColor * vec3(dot(pow((spotATarget/length(spotAPos)), spotADecay), 
+  clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0))/ (cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0 )));
 
   outColor = vec4(clamp(spotCol,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
@@ -582,14 +582,8 @@ function setupLights(){
     var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA, 1.0];
     var diffuseLightColor = [0.9, 0.9, 0.9];
    
-    //Transform the diffuse light's Position into Camera Space
-    var diffuseLightPosTransfMatrix =  viewMatrix; //utils.sub3x3from4x4(viewMatrix);
-    console.log("diffuse Trans Matrix " + diffuseLightPosTransfMatrix);
-    console.log("vector " + diffuseLightPosition);
-    var diffuseLightPosTransform = utils.multiplyMatrixVector(diffuseLightPosTransfMatrix,diffuseLightPosition);//utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
-    //var diffuseLightPosTransform = diffuseLightPosition;
-    
-    console.log("diffuse Transform " + diffuseLightPosTransform);
+    //Transform the diffuse light's Position into Camera Spaces.
+    var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix, diffuseLightPosition);
 
     //reflection light
     var shininess = 30;
@@ -616,7 +610,7 @@ function setupLights(){
 
     var t = utils.degToRad(45);
 	var p = utils.degToRad(50);
-    var spotDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p)];
+    var spotDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
 
     gl.uniform3fv(spotADirHandle, spotDir);
 
