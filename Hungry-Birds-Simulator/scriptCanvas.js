@@ -597,21 +597,12 @@ function setupLights(){
     gl.uniform3fv(lightDirectionAHandle, directionalLightATransform);
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
 
-    //diffuse light
-    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
-    gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
 
-
-
-    //reflection light
-    gl.uniform1f(shininessHandler, shininess);
-
-    
     //SpotLight
     var spotTarget = 30.0;
     var spotDecay = 2.0;
-    var spotConeOut = 30.0;
-    var spotConeIn = 15.0;
+    var spotConeOut = 100.0;
+    var spotConeIn = 35.0;
 
 
     gl.uniform1f(spotATargetHandle, spotTarget);
@@ -624,6 +615,19 @@ function setupLights(){
     var spotDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p)];
 
     gl.uniform3fv(spotADirHandle, spotDir);
+
+
+    //diffuse light
+    gl.uniform3fv(lightDiffusePositionHandler, diffuseLightPosTransform);
+    gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
+
+
+
+    //reflection light
+    gl.uniform1f(shininessHandler, shininess);
+
+    
+
 }
 
 
