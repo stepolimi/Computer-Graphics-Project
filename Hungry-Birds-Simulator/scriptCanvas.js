@@ -86,7 +86,7 @@ void main() {
   vec3 spotCol = lightDiffuseColor * dot(pow((spotATarget/length(spotAPos - fs_pos)), spotADecay), 
 		clamp((dot(normalize(spotAPos - fs_pos), spotADir) - cos(radians(spotAConeOut)/2.0))/(cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
 
-  outColor = vec4(clamp(specularA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(clamp(spotCol,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
