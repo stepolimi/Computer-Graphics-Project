@@ -599,7 +599,7 @@ function setupLights(){
     //SpotLight
     var spotTarget = 10.0;
     var spotDecay = 2.0;
-    var spotConeOut = 40.0;
+    var spotConeOut = 10.0;
     var spotConeIn = 50.0;
 
 
