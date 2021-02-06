@@ -579,7 +579,7 @@ function setupLights(){
     var dirLightAlphaA = document.getElementById("dirLightAlphaA").value;//20
     var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
-    var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA, 1.0];
+    var diffuseLightPosition = [0, 10, -7, 1.0];
     var diffuseLightColor = [0.9, 0.9, 0.9];
    
     //Transform the diffuse light's Position into Camera Spaces.
@@ -608,8 +608,8 @@ function setupLights(){
     gl.uniform1f(spotAConeOutHandle, spotConeOut);
     gl.uniform1f(spotAConeInHandle, spotConeIn);
 
-    var t = utils.degToRad(45);
-	var p = utils.degToRad(50);
+    var t = utils.degToRad(dirLightAlphaA);
+	var p = utils.degToRad(dirLightBetaA);
     var spotDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
 
     gl.uniform4fv(spotADirHandle, spotDir);
