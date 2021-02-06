@@ -82,7 +82,7 @@ void main() {
   vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
 
   //compute spot light
-  vec3 spotAPos = vec3(lightDiffusePosition - fs_pos);
+  vec3 spotAPos = lightDiffusePosition - fs_pos;
   vec3 spotCol = lightDiffuseColor * vec3(dot(pow((spotATarget/length(spotAPos)), spotADecay), 
   clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0))/ (cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0 )));
 
@@ -612,7 +612,7 @@ function setupLights(){
 	var p = utils.degToRad(50);
     var spotDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
 
-    gl.uniform3fv(spotADirHandle, spotDir);
+    gl.uniform4fv(spotADirHandle, spotDir);
 
 
     //diffuse light
