@@ -584,8 +584,11 @@ function setupLights(){
    
     //Transform the diffuse light's Position into Camera Space
     var diffuseLightPosTransfMatrix =  viewMatrix; //utils.sub3x3from4x4(viewMatrix);
+    console.log("diffuse Trans Matrix " + diffuseLightPosTransfMatrix);
     var diffuseLightPosTransform = utils.normalizeVector3(utils.multiplyMatrixVector(diffuseLightPosTransfMatrix,diffuseLightPosition));//utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
     //var diffuseLightPosTransform = diffuseLightPosition;
+    
+    console.log("diffuse Transform " + diffuseLightPosTransform);
 
     //reflection light
     var shininess = 30;

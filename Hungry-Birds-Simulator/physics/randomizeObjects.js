@@ -502,20 +502,8 @@ async function randomizeCube(){
                 structureObjs.push(new structureObjects(0.0, 2.8 , 0.2, 0.0, 0.0, 0.0, objType, 29, mass ));
                 break;
             case 5:
-                tower119 = await utils.loadMesh("../assets/Others/glassBox.obj");
-                let broken1 = await utils.loadMesh("../assets/Pigs/pigBroken1.obj");
-                let broken2 = await utils.loadMesh("../assets/Pigs/pigBroken2.obj");
-                 
-                console.log("BROKER 1");
-                console.log("texture " + broken1.textures);
-
-                console.log("BROKEN 2");
-                console.log("texture " + broken2.textures);
-
-
-
-
-                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "glassBox", 31, mass ));
+                tower119 = await utils.loadMesh("../assets/Others/woodBox.obj");
+                structureObjs.push(new structureObjects(0.0, 3.8 , 0.2, 0.0, 0.0, 0.0, "woodBox", 31, mass ));
                 break;
             case 6:
                 tower21 = piece;
