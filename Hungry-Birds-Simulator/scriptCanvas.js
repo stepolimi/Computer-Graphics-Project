@@ -579,7 +579,7 @@ function setupLights(){
     var dirLightAlphaA = document.getElementById("dirLightAlphaA").value;//20
     var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
-    var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA,, 1.0];
+    var diffuseLightPosition = [dirLightAlphaA, dirLightBetaA, dirLightGammaA, 1.0];
     var diffuseLightColor = [0.9, 0.9, 0.9];
    
     //Transform the diffuse light's Position into Camera Space
