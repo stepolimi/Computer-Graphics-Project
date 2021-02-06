@@ -583,7 +583,7 @@ function setupLights(){
     var diffuseLightColor = [0.9, 0.9, 0.9];
    
     //Transform the diffuse light's Position into Camera Space
-    var diffuseLightPosTransfMatrix =  utils.invertMatrix(utils.transposeMatrix(viewMatrix)); //utils.sub3x3from4x4(viewMatrix);
+    var diffuseLightPosTransfMatrix =  viewMatrix; //utils.sub3x3from4x4(viewMatrix);
     console.log("diffuse Trans Matrix " + diffuseLightPosTransfMatrix);
     console.log("vector " + diffuseLightPosition);
     var diffuseLightPosTransform = utils.multiplyMatrixVector(diffuseLightPosTransfMatrix,diffuseLightPosition);//utils.normalizeVector3(utils.multiplyMatrix3Vector3(diffuseLightPosTransfMatrix,diffuseLightPosition));
@@ -603,10 +603,10 @@ function setupLights(){
 
 
     //SpotLight
-    var spotTarget = 5.0;
+    var spotTarget = 2.0;
     var spotDecay = 2.0;
-    var spotConeOut = 10.0;
-    var spotConeIn = 2.0;
+    var spotConeOut = 20.0;
+    var spotConeIn = 10.0;
 
 
     gl.uniform1f(spotATargetHandle, spotTarget);
