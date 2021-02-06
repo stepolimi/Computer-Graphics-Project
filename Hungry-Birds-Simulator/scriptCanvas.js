@@ -622,7 +622,7 @@ function setupLights(){
 	var p = utils.degToRad(50);
     var spotDir = [Math.sin(t)*Math.sin(p), Math.cos(t), Math.sin(t)*Math.cos(p)];
 
-    gl.uniform3f(spotADirHandle, spotDir);
+    gl.uniform3fv(spotADirHandle, spotDir);
 }
 
 
