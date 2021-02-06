@@ -603,10 +603,10 @@ function setupLights(){
 
 
     //SpotLight
-    var spotTarget = 2.0;
+    var spotTarget = 15.0;
     var spotDecay = 2.0;
-    var spotConeOut = 20.0;
-    var spotConeIn = 10.0;
+    var spotConeOut = 100.0;
+    var spotConeIn = 75.0;
 
 
     gl.uniform1f(spotATargetHandle, spotTarget);
