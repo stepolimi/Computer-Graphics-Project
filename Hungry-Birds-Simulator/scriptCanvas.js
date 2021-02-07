@@ -84,9 +84,9 @@ void main() {
   //compute spot light
   vec4 spotAPos = lightDiffusePosition - fs_pos;
   vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotADecay), 
-  clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
+        clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
 
-  outColor = vec4(clamp(spotCol,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+  outColor = vec4(clamp(vec3(spotCol) + ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
    //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
   //outColor = vec4(fsUV, 0.0, 1.0);
 }
@@ -568,7 +568,7 @@ function setupLights(){
         xDirLightA = 0;
     
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
+    var directionaLightAPos = [Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA), Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]//[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.4, 0.4, 0.4]; //[0.87, 0.67, 0.44]
     //var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
 
@@ -576,11 +576,11 @@ function setupLights(){
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
     //diffuse light
-    var dirLightAlphaA = document.getElementById("dirLightAlphaA").value;//20
-    var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
+    var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
+    var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
     var diffuseLightPosition = [0, 10, -7, 1.0];
-    var diffuseLightColor = [0.9, 0.9, 0.9];
+    var diffuseLightColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//[0.9, 0.9, 0.9];
    
     //Transform the diffuse light's Position into Camera Spaces.
     var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix, diffuseLightPosition);
