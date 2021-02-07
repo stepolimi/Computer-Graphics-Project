@@ -20,7 +20,7 @@ function shaders() {
 //vec4 LBlightColor;
 //
 //vec3 LCPos;			// Same as above, but for the third one
-//vec3 LCDir;
+//vec3 LCDir;   
 //float LCConeOut;
 //float LCConeIn;
 //float LCDecay;
@@ -77,8 +77,7 @@ var S4 = `
 // Single spot light (with decay)
 var S5 = `
 	lightDirA   = normalize(LAPos - fs_pos);
-	lightColorA = LAlightColor * dot(pow((LATarget/length(LAPos - fs_pos)), LADecay), 
-		clamp((dot(normalize(LAPos - fs_pos), LADir) - cos(radians(LAConeOut)/2.0))/(cos(radians(LAConeIn * LAConeOut)/2.0) - cos(radians(LAConeOut)/2.0)), 0.0, 1.0));
+	lightColorA = LAlightColor * dot(pow((LATarget/length(LAPos - fs_pos)), LADecay), clamp((dot(normalize(LAPos - fs_pos), LADir) - cos(radians(LAConeOut)/2.0))/(cos(radians(LAConeIn)/2.0) - cos(radians(LAConeOut)/2.0)), 0.0, 1.0));
 `;
 
 // Single directional light, hemispheric ambient 
