@@ -290,13 +290,19 @@ function throwBird(e){
 async function blinkSpotLight(){
         spotConeOut = 15.0;
         spotConeIn = 7.5;
-        await sleep(500);
+        await sleep(100);
         spotConeOut = 0.0;
         spotConeIn = 0.0;
         await sleep(100);
         spotConeOut = 15.0;
         spotConeIn = 7.5;
-        await sleep(500);
+        await sleep(100);
+        spotConeOut = 0.0;
+        spotConeIn = 0.0;
+        await sleep(100);
+        spotConeOut = 15.0;
+        spotConeIn = 7.5;
+        await sleep(100);
         spotConeOut = 0.0;
         spotConeIn = 0.0;
 }
@@ -735,7 +741,7 @@ function setupLights(){
     var BConeOut = 22.0;
     var BConeIn = 15.0;
 
-    if(!(sunAngle >= 0 && sunAngle < Math.PI)){
+    if(sunAngle >= 0 && sunAngle < Math.PI){
         BConeOut = 0.0;
         BConeIn = 0.0;
     }
@@ -761,7 +767,7 @@ function setupLights(){
     var CConeOut = 25.0;
     var CConeIn = 15.0;
 
-    if(!(sunAngle >= 0 && sunAngle < Math.PI)){
+    if(sunAngle >= 0 && sunAngle < Math.PI){
         CConeOut = 0.0;
         CConeIn = 0.0;
     }
@@ -787,7 +793,7 @@ function setupLights(){
     var DConeOut = 22.0;
     var DConeIn = 15.0;
 
-    if(!(sunAngle >= 0 && sunAngle < Math.PI)){
+    if(sunAngle >= 0 && sunAngle < Math.PI){
         DConeOut = 0.0;
         DConeIn = 0.0;
     }
