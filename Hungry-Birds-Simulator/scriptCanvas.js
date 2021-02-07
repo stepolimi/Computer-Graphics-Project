@@ -88,6 +88,19 @@ in vec4 fs_pos;
 
 out vec4 outColor;
 
+
+//----BLINN--------------------------------------------------------------------------------------------
+vec4 compSpecular(vec4 lightDir, vec4 lightCol, vec4 normalVec, vec4 eyedirVec) {
+	// Specular
+	// --> Blinn
+	vec3 halfVec = normalize(lightDir + eyedirVec);
+	vec4 specularBlinn = lightCol * pow(max(dot(normalVec, halfVec), 0.0), shininess) * lightColorA;
+
+	// ----> Select final component
+	return specularBlinn;
+    }
+//-----------------------------------------------------------------------------------------------------
+
 void main() {
     //normalize fsNormal, it could be not normalized coming out of vs
     vec3 nNormal = normalize(fsNormal);
@@ -100,15 +113,7 @@ void main() {
     vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
     
     
-    vec4 compSpecular(vec4 lightDir, vec4 lightCol, vec4 normalVec, vec4 eyedirVec) {
-	// Specular
-	// --> Blinn
-	vec3 halfVec = normalize(lightDir + eyedirVec);
-	vec4 specularBlinn = lightCol * pow(max(dot(normalVec, halfVec), 0.0), shininess) * lightColorA;
 
-	// ----> Select final component
-	return specularBlinn;
-    }
     //compute Blinn
     
 
