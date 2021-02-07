@@ -580,7 +580,7 @@ function setupLights(){
     var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
     var diffuseLightPosition = [0, 10, -7, 1.0];
-    var diffuseLightColor = [0.9, 0.9, 0.9];
+    var diffuseLightColor = [0.1, 0.1, 0.1];
    
     //Transform the diffuse light's Position into Camera Spaces.
     var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix, diffuseLightPosition);
