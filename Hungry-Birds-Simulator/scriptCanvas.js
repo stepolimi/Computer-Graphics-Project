@@ -38,19 +38,42 @@ uniform vec3 lightDirectionA;
 uniform vec3 lightColorA;
 
 
-//diffuse light
-uniform vec4 lightDiffusePosition;      //this is the position of a light
-uniform vec3 lightDiffuseColor;
 
 //reflection
 uniform float shininess;
 
-//spot
+//SpotLight general parameters
 uniform float spotATarget;
-uniform float spotADecay;
+uniform float spotDecay;
+uniform vec4 spotDir;
 uniform float spotAConeOut;
 uniform float spotAConeIn;
-uniform vec4 spotADir;
+
+
+//Spotlight A
+uniform vec4 lightDiffusePosition;      
+uniform vec3 lightDiffuseColor;
+uniform float spotAConeOut;
+uniform float spotAConeIn;
+
+
+//Spotlight B
+uniform vec4 spotBPosition;      
+uniform vec3 spotBColor;
+uniform float spotBTarget;
+uniform float spotBConeOut;
+uniform float spotBConeIn;
+
+
+//Spotlight C
+uniform vec4 spotCPosition;      
+uniform vec3 spotCColor;
+
+
+//Spotlight D
+uniform vec4 spotDPosition;      
+uniform vec3 spotDColor;
+
 
 //texture
 uniform sampler2D in_texture;
@@ -63,32 +86,39 @@ in vec4 fs_pos;
 out vec4 outColor;
 
 void main() {
-  //normalize fsNormal, it could be not normalized coming out of vs
-  vec3 nNormal = normalize(fsNormal);
+    //normalize fsNormal, it could be not normalized coming out of vs
+    vec3 nNormal = normalize(fsNormal);
+    
+    //computing ambient color
+    vec3 ambient = ambientLightCol;
+    
+    //computing Lambert diffuse
+    vec3 nLightDirectionA = normalize(lightDirectionA);
+    vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
+    
+    
+    //compute Blinn
+    
+    //Eye position in camera space
+    vec3 posReflection = normalize(vec3(lightDiffusePosition));
+    vec3 eyePos = normalize(-1.0 * vec3(fs_pos));
+    vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
+    
+    //----SPOTLIGHT A--------------------------------------------
+    vec4 spotAPos = lightDiffusePosition - fs_pos;
+    vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotDecay), 
+          clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
+    
 
-  //computing ambient color
-  vec3 ambient = ambientLightCol;
-
-  //computing Lambert diffuse
-  vec3 nLightDirectionA = normalize(lightDirectionA);
-  vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
-
-
-  //compute Blinn
-
-  //Eye position in camera space
-  vec3 posReflection = normalize(vec3(lightDiffusePosition));
-  vec3 eyePos = normalize(-1.0 * vec3(fs_pos));
-  vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
-
-  //compute spot light
-  vec4 spotAPos = lightDiffusePosition - fs_pos;
-  vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotADecay), 
-        clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
-
-  outColor = vec4(clamp(vec3(spotCol) + ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
-   //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
-  //outColor = vec4(fsUV, 0.0, 1.0);
+    //----SPOTLIGHT B--------------------------------------------
+    vec4 spotBPos = spotBPosition - fs_pos;
+    vec4 spotBCol = vec4(spotBColor, 1.0) *  dot(pow(spotBTarget/length(spotBPos), spotDecay), 
+          clamp((dot(normalize(spotBPos), spotDir) - cos(radians(spotBConeOut)/2.0)) / (cos(radians(spotBConeIn)/2.0) - cos(radians(spotBConeOut)/2.0)), 0.0, 1.0));
+    
+    
+    outColor = vec4(clamp(vec3(spotCol + spotBCol) + ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+     //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
+    //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
 
@@ -146,10 +176,19 @@ var posYdirLightA = 0.5;
 
 //SpotLight
 var spotATargetHandle;
-var spotADecayHandle;
+var spotDecayHandle;
 var spotAConeOutHandle;
 var spotAConeInHandle;
-var spotADirHandle;
+var spotDirHandle;
+
+
+//SpotLight B
+var spotBPositionHandle;      
+var spotBColorHandle;
+var spotBTargetHandle;
+var spotBConeOutHandle;
+var spotBConeInHandle;
+
 
 //movement variables
 var perspectiveMatrix;
@@ -521,10 +560,16 @@ function setUpScene(){
     lightDiffusePositionHandler = gl.getUniformLocation(program, "lightDiffusePosition");
     shininessHandler = gl.getUniformLocation(program, "shininess");
     spotATargetHandle = gl.getUniformLocation(program, "spotATarget");
-    spotADecayHandle = gl.getUniformLocation(program, "spotADecay");
+    spotDecayHandle = gl.getUniformLocation(program, "spotDecay");
     spotAConeOutHandle = gl.getUniformLocation(program, "spotAConeOut");
     spotAConeInHandle = gl.getUniformLocation(program, "spotAConeIn");
-    spotADirHandle = gl.getUniformLocation(program, "spotADir");
+    spotDirHandle = gl.getUniformLocation(program, "spotDir");
+    spotBPositionHandle  = gl.getUniformLocation(program, "spotBPosition");      
+    spotBColorHandle = gl.getUniformLocation(program, "spotBColor");
+    spotBTargetHandle = gl.getUniformLocation(program, "spotBTarget");
+    spotBConeOutHandle = gl.getUniformLocation(program, "spotBConeOut");
+    spotBConeInHandle = gl.getUniformLocation(program, "spotBConeIn");
+
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
     //add textures
@@ -579,11 +624,7 @@ function setupLights(){
     var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
     var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
-    var diffuseLightPosition = [0, 10, -7, 1.0];
-    var diffuseLightColor = [0.32, 0.62, 0.64];
-   
-    //Transform the diffuse light's Position into Camera Spaces.
-    var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix, diffuseLightPosition);
+    
 
     //reflection light
     var shininess = 30;
@@ -596,30 +637,58 @@ function setupLights(){
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
 
 
-    //SpotLight
+    //--------------SpotLight general parameters-----------------------------------------------
     var spotTarget = 10.0;
-    var spotDecay = 2.0;
-    var spotConeOut = 15.0;
-    var spotConeIn = 7.5;
-
+    var spotGenDecay = 2.0;
+    
+    var t = utils.degToRad(0);
+	var p = utils.degToRad(45);
+    var spotGenDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
 
     gl.uniform1f(spotATargetHandle, spotTarget);
-    gl.uniform1f(spotADecayHandle, spotDecay);
+    gl.uniform1f(spotDecayHandle, spotGenDecay);
+    gl.uniform4fv(spotDirHandle, spotGenDir);
+    //-----------------------------------------------------------------------------------------
+
+
+    //---------------SpotLight A---------------------------------------------------------------
+    
+    var spotConeOut = 15.0;
+    var spotConeIn = 7.5;
     gl.uniform1f(spotAConeOutHandle, spotConeOut);
     gl.uniform1f(spotAConeInHandle, spotConeIn);
 
-    var t = utils.degToRad(0);
-	var p = utils.degToRad(45);
-    var spotDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
-    console.log("alpha: " + dirLightAlphaA);
-    console.log("beta: " + dirLightBetaA)
 
-    gl.uniform4fv(spotADirHandle, spotDir);
+    var diffuseLightPosition = [0, 10, -7, 1.0];
+    var diffuseLightColor = [0.32, 0.62, 0.64];
+   
+    //Transform the diffuse light's Position into Camera Spaces.
+    var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix, diffuseLightPosition);
 
-
-    //diffuse light
     gl.uniform4fv(lightDiffusePositionHandler, diffuseLightPosTransform);
     gl.uniform3fv(lightDiffuseColorHandler, diffuseLightColor);
+    //-----------------------------------------------------------------------------------------
+
+
+    //---------------SpotLight B---------------------------------------------------------------
+    var BSpotPosition = [0, 10, 1.78, 1.0];
+    var BSpotColor = [0.32, 0.62, 0.64];
+
+    var BTarget = 10.0;
+    var BConeOut = 35.0;
+    var BConeIn = 15.0;
+
+    
+    gl.uniform1f(spotBConeOutHandle, BConeOut);
+    gl.uniform1f(spotBConeInHandle, BConeIn);
+    gl.uniform1f(spotBTargetHandle, BTarget);
+   
+    //Transform the diffuse light's Position into Camera Spaces.
+    var BSpotPositionTransform = utils.multiplyMatrixVector(viewMatrix, BSpotPosition);
+
+    gl.uniform4fv(spotBPositionHandler, diffuseLightPosTransform);
+    gl.uniform3fv(spotBColorHandler, BSpotColor);
+    //-----------------------------------------------------------------------------------------
 
 
 
