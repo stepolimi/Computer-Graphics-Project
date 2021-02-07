@@ -124,7 +124,7 @@ void main() {
 
     //----Lambert on directionalA-----------------------------------------
     vec3 nLightDirectionA = normalize(lightDirectionA);
-    vec3 diffA = lightColorA * clamp(dot(nNormal, nlightDirectionA), 0.0, 1.0);
+    vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
     diffA = diffColor * diffA;
 
     //----Phong on directionalA-------------------------------------------
