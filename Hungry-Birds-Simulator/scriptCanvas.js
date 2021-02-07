@@ -193,6 +193,8 @@ var spotDecayHandle;
 var spotAConeOutHandle;
 var spotAConeInHandle;
 var spotDirHandle;
+var spotConeOut = 0.0;
+var spotConeIn = 0.0;
 
 
 //SpotLight B
@@ -245,7 +247,9 @@ var mouseX = 0.0;
 var mouseY = 0.0;
 
 
-
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 /*function called at the touchpad or mouse press, it works iff the previous bird ended the flight 
 */
@@ -278,7 +282,23 @@ function throwBird(e){
         mouseY = 0.0;
         worldPositions[7] = utils.MakeWorld(0, 1.0 , -7.0, 0.0, 0.0, 0.0, 0.1);
         counter ++;
+
+        blinkSpotLight();
     }
+}
+
+async function blinkSpotLight(){
+        spotConeOut = 15.0;
+        spotConeIn = 7.5;
+        await sleep(500);
+        spotConeOut = 0.0;
+        spotConeIn = 0.0;
+        await sleep(100);
+        spotConeOut = 15.0;
+        spotConeIn = 7.5;
+        await sleep(500);
+        spotConeOut = 0.0;
+        spotConeIn = 0.0;
 }
 
 
@@ -692,8 +712,6 @@ function setupLights(){
 
     //---------------SpotLight A---------------------------------------------------------------
     
-    var spotConeOut = 15.0;
-    var spotConeIn = 7.5;
     gl.uniform1f(spotAConeOutHandle, spotConeOut);
     gl.uniform1f(spotAConeInHandle, spotConeIn);
 
@@ -714,8 +732,13 @@ function setupLights(){
     var BSpotColor = [0.0, 1.0, 0.0];
 
     var BTarget = 10.0;
-    var BConeOut = 25.0;
+    var BConeOut = 22.0;
     var BConeIn = 15.0;
+
+    if(!(sunAngle >= 0 && sunAngle < Math.PI)){
+        BConeOut = 0.0;
+        BConeIn = 0.0;
+    }
 
     
     gl.uniform1f(spotBConeOutHandle, BConeOut);
@@ -735,8 +758,13 @@ function setupLights(){
     var CSpotColor = [0.0, 0.0, 1.0];
 
     var CTarget = 15.0;
-    var CConeOut = 22.0;
+    var CConeOut = 25.0;
     var CConeIn = 15.0;
+
+    if(!(sunAngle >= 0 && sunAngle < Math.PI)){
+        CConeOut = 0.0;
+        CConeIn = 0.0;
+    }
 
     
     gl.uniform1f(spotCConeOutHandle, CConeOut);
@@ -759,6 +787,10 @@ function setupLights(){
     var DConeOut = 22.0;
     var DConeIn = 15.0;
 
+    if(!(sunAngle >= 0 && sunAngle < Math.PI)){
+        DConeOut = 0.0;
+        DConeIn = 0.0;
+    }
     
     gl.uniform1f(spotDConeOutHandle, DConeOut);
     gl.uniform1f(spotDConeInHandle, DConeIn);
