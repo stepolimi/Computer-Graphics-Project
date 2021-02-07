@@ -682,7 +682,7 @@ function setupLights(){
 	var p = utils.degToRad(45);
     var spotGenDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
     
-    var spotGenDirTransform = utils.multiplyMatrixVector(viewMatrix, spotGenDir);
+    var spotGenDirTransform = utils.multiplyMatrixVector(utils.invertMatrix(utils.transposeMatrix(viewMatrix)), spotGenDir);
 
     gl.uniform1f(spotATargetHandle, spotTarget);
     gl.uniform1f(spotDecayHandle, spotGenDecay);
