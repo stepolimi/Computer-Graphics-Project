@@ -713,7 +713,7 @@ function setupLights(){
     //x to be -0.2 on day, -0 on night
     var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
-    var diffLight = [1.0, 1.0, 1.0];
+    var diffCol = [1.0, 1.0, 1.0];
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
@@ -734,7 +734,7 @@ function setupLights(){
     //directional light
     gl.uniform3fv(lightDirectionAHandle, directionalLightATransform);
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
-    gl.uniform3fv(diffColorHandler, diffColor);
+    gl.uniform3fv(diffColorHandler, diffCol);
 
 
     //--------------SpotLight general parameters-----------------------------------------------
