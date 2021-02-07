@@ -46,8 +46,6 @@ uniform float shininess;
 uniform float spotATarget;
 uniform float spotDecay;
 uniform vec4 spotDir;
-uniform float spotAConeOut;
-uniform float spotAConeIn;
 
 
 //Spotlight A
