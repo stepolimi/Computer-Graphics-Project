@@ -700,15 +700,15 @@ function setupLights(){
     var ambientLight = [0.4, 0.4, 0.4];
 
     //directional light
-    /*var xDirLightA;
+    var xDirLightA;
     if(sunAngle < 2* Math.PI)
         sunAngle += Math.PI/1000;
     else
         sunAngle = 0;
     if(sunAngle >= 0 && sunAngle < Math.PI) 
-        xDirLightA = -0.2;
+        xDirLightA = 180;//-0.2;
     else
-        xDirLightA = 0;*/
+        xDirLightA = 0;
     //diffuse light
     var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
     var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
@@ -717,7 +717,7 @@ function setupLights(){
     console.log("alpha " + document.getElementById("dirLightAlphaA").value);
     console.log("beta " + document.getElementById("dirLightBetaA").value);
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [Math.sin(utils.degToRad(180)), Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)];//Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
+    var directionaLightAPos = [Math.sin(utils.degToRad(xDirLightA)), 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];//Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     var diffCol = [1.0, 1.0, 1.0];
 
