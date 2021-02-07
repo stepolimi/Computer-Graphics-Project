@@ -715,7 +715,7 @@ function setupLights(){
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32  
     
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [-0.2, Math.cos(degToRad(dirLightAlphaA)), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
+    var directionaLightAPos = [-0.2, Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     var diffCol = [1.0, 1.0, 1.0];
 
