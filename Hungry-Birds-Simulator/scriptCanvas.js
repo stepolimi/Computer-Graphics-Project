@@ -147,7 +147,7 @@ void main() {
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot  ) + ambient,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot  ) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
     //outColor = vec4(clamp(vec3(blinnTot),0.0,1.0).rgb, 1.0);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
@@ -784,7 +784,7 @@ function setupLights(){
     var CSpotColor = [0.0, 1.0, 0.0];
 
     var CTarget = 15.0;
-    var CConeOut = 25.0;
+    var CConeOut = 20.0;
     var CConeIn = 15.0;
 
     if(sunAngle >= 0 && sunAngle < Math.PI){
