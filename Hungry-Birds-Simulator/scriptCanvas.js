@@ -83,7 +83,7 @@ void main() {
 
   //compute spot light
   vec4 spotAPos = lightDiffusePosition - fs_pos;
-  vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotADecay), 
+  vec4 spotCol = -1 * vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotADecay), 
   clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
 
   outColor = vec4(clamp(spotCol,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
@@ -580,7 +580,7 @@ function setupLights(){
     var dirLightBetaA = document.getElementById("dirLightBetaA").value;//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
     var diffuseLightPosition = [0, 10, -7, 1.0];
-    var diffuseLightColor = [0.1, 0.1, 0.1];
+    var diffuseLightColor = [0.9, 0.9, 0.9];
    
     //Transform the diffuse light's Position into Camera Spaces.
     var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix, diffuseLightPosition);
