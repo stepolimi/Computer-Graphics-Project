@@ -651,7 +651,7 @@ function setupLights(){
     
     //x to be -0.2 on day, -0 on night
     var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
-    var directionalLightAColor = [0.87, 0.67, 0.44];
+    var directionalLightAColor = [0.77, 0.57, 0.34];
     //var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
@@ -729,11 +729,11 @@ function setupLights(){
 
 
     //---------------SpotLight C---------------------------------------------------------------
-    var CSpotPosition = [0, 10, 5.0, 1.0];
+    var CSpotPosition = [0, 15, 5.0, 1.0];
     var CSpotColor = [0.0, 0.0, 1.0];
 
-    var CTarget = 10.0;
-    var CConeOut = 22.0;
+    var CTarget = 15.0;
+    var CConeOut = 20.0;
     var CConeIn = 15.0;
 
     
