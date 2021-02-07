@@ -108,20 +108,21 @@ void main() {
 
 	// ----> Select final component
 	return specularBlinn;
-}
+    }
     //compute Blinn
     
+
     //Eye position in camera space
-    vec3 posReflection = normalize(vec3(lightDiffusePosition));
-    vec3 eyePos = normalize(-1.0 * fs_pos);
-    vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
+    //vec3 posReflection = normalize(vec3(lightDiffusePosition));
+    vec4 eyePos = normalize(-1.0 * fs_pos);
+    //vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
     
 
     //----SPOTLIGHT A + Blinn--------------------------------------------
     vec4 spotAPos = lightDiffusePosition - fs_pos;
     vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotDecay), 
           clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
-    vec4 specularToSpotA = compSpecular(spotAPos, spotCol,vec4(nNormal, 1.0),eyedirVec);
+    vec4 specularToSpotA = compSpecular(spotAPos, spotCol,vec4(nNormal, 1.0),eyePos);
 
     //----SPOTLIGHT B--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
