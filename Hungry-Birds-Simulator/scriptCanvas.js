@@ -41,6 +41,7 @@ uniform vec3 lightColorA;
 
 //reflection
 uniform float shininess;
+uniform vec3 specColor;
 
 //SpotLight general parameters
 uniform float spotDecay;
@@ -94,7 +95,7 @@ vec4 compSpecular(vec4 lightDir, vec4 lightCol, vec4 normalVec, vec4 eyedirVec) 
 	// Specular
 	// --> Blinn
 	vec4 halfVec = normalize(lightDir + eyedirVec);
-	vec4 specularBlinn = lightCol * pow(max(dot(normalVec, halfVec), 0.0), shininess) * vec4(lightColorA, 1.0);
+	vec4 specularBlinn = lightCol * pow(max(dot(normalVec, halfVec), 0.0), shininess) * vec4(specColor, 1.0);
 
 	// ----> Select final component
 	return specularBlinn;
@@ -201,6 +202,7 @@ var lightColorAHandle;
 var lightDiffusePositionHandler;
 var lightDiffuseColorHandler;
 var shininessHandler;
+var specColorHandler;
 var posZdirLightA = -0.5;
 var posYdirLightA = 0.5;
 
@@ -639,16 +641,17 @@ function setUpScene(){
     spotBTargetHandle = gl.getUniformLocation(program, "spotBTarget");
     spotBConeOutHandle = gl.getUniformLocation(program, "spotBConeOut");
     spotBConeInHandle = gl.getUniformLocation(program, "spotBConeIn");
-        spotCPositionHandle  = gl.getUniformLocation(program, "spotCPosition");      
+    spotCPositionHandle  = gl.getUniformLocation(program, "spotCPosition");      
     spotCColorHandle = gl.getUniformLocation(program, "spotCColor");
     spotCTargetHandle = gl.getUniformLocation(program, "spotCTarget");
     spotCConeOutHandle = gl.getUniformLocation(program, "spotCConeOut");
     spotCConeInHandle = gl.getUniformLocation(program, "spotCConeIn");
-        spotDPositionHandle  = gl.getUniformLocation(program, "spotDPosition");      
+    spotDPositionHandle  = gl.getUniformLocation(program, "spotDPosition");      
     spotDColorHandle = gl.getUniformLocation(program, "spotDColor");
     spotDTargetHandle = gl.getUniformLocation(program, "spotDTarget");
     spotDConeOutHandle = gl.getUniformLocation(program, "spotDConeOut");
     spotDConeInHandle = gl.getUniformLocation(program, "spotDConeIn");
+    specColorHandler = gl.getUniformLocation(program, "specColor");
 
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
@@ -828,6 +831,8 @@ function setupLights(){
 
 
     //reflection light
+    var specularColor = [1.0, 1.0, 1.0];
+    gl.uniform3fv(specColorHandler, specularColor);
     gl.uniform1f(shininessHandler, shininess);
 
     
