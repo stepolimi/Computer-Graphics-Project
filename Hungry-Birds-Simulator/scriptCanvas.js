@@ -128,7 +128,7 @@ void main() {
     diffA = diffColor * diffA;
 
     //----Phong on directionalA-------------------------------------------
-    //vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(lightDirectionA, 1.0), n4Normal)),0.0,1.0), phongShininess) * vec4(lightColorA, 1.0) * vec4(specColor, 1.0);
+    vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(nLightDirectionA, 1.0), n4Normal)),0.0,1.0), phongShininess) * vec4(lightColorA, 1.0) * vec4(specColor, 1.0);
 
 
     //----SPOTLIGHT A + Blinn--------------------------------------------
@@ -157,7 +157,7 @@ void main() {
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot ) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong ) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
     //outColor = vec4(clamp(vec3(dirAPhong) + diffA,0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
