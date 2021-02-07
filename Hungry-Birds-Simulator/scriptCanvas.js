@@ -722,7 +722,7 @@ function setupLights(){
 
     //reflection light
     var shininess = 5;
-    var phongS = 60; 
+    var phongS = 200; 
     
     //ambient lights
     gl.uniform3fv(ambientLightColorHandle, ambientLight);
