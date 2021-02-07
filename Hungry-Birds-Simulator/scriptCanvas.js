@@ -43,7 +43,6 @@ uniform vec3 lightColorA;
 uniform float shininess;
 
 //SpotLight general parameters
-uniform float spotATarget;
 uniform float spotDecay;
 uniform vec4 spotDir;
 
@@ -51,6 +50,7 @@ uniform vec4 spotDir;
 //Spotlight A
 uniform vec4 lightDiffusePosition;      
 uniform vec3 lightDiffuseColor;
+uniform float spotATarget;
 uniform float spotAConeOut;
 uniform float spotAConeIn;
 
@@ -100,18 +100,28 @@ void main() {
     vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
     
     
+    vec4 compSpecular(vec4 lightDir, vec4 lightCol, vec4 normalVec, vec4 eyedirVec) {
+	// Specular
+	// --> Blinn
+	vec3 halfVec = normalize(lightDir + eyedirVec);
+	vec4 specularBlinn = lightCol * pow(max(dot(normalVec, halfVec), 0.0), shininess) * lightColorA;
+
+	// ----> Select final component
+	return specularBlinn;
+}
     //compute Blinn
     
     //Eye position in camera space
     vec3 posReflection = normalize(vec3(lightDiffusePosition));
-    vec3 eyePos = normalize(-1.0 * vec3(fs_pos));
+    vec3 eyePos = normalize(-1.0 * fs_pos);
     vec3 specularA = pow(clamp(dot(normalize(posReflection), nNormal), 0.0, 1.0), shininess) * lightDiffuseColor;
     
-    //----SPOTLIGHT A--------------------------------------------
+
+    //----SPOTLIGHT A + Blinn--------------------------------------------
     vec4 spotAPos = lightDiffusePosition - fs_pos;
     vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotDecay), 
           clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
-    
+    vec4 specularToSpotA = compSpecular(spotAPos, spotCol,vec4(nNormal, 1.0),eyedirVec);
 
     //----SPOTLIGHT B--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
@@ -129,7 +139,7 @@ void main() {
           clamp((dot(normalize(spotDPos), spotDir) - cos(radians(spotDConeOut)/2.0)) / (cos(radians(spotDConeIn)/2.0) - cos(radians(spotDConeOut)/2.0)), 0.0, 1.0));
     
     
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol) + ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + specularToSpotA) + ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
      //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
