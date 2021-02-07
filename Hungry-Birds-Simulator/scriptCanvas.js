@@ -125,25 +125,25 @@ void main() {
     vec4 spotAPos = lightDiffusePosition - fs_pos;
     vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotDecay), 
           clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
-    vec4 specularToSpotA = compSpecular(normalize(spotAPos), spotCol, n4Normal,eyePos);
+    vec4 specularToSpotA = compSpecular(spotAPos, spotCol, n4Normal,eyePos);
 
     //----SPOTLIGHT B + Blinn--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
     vec4 spotBCol = vec4(spotBColor, 1.0) *  dot(pow(spotBTarget/length(spotBPos), spotDecay), 
           clamp((dot(normalize(spotBPos), spotDir) - cos(radians(spotBConeOut)/2.0)) / (cos(radians(spotBConeIn)/2.0) - cos(radians(spotBConeOut)/2.0)), 0.0, 1.0));    
-    vec4 specularToSpotB = compSpecular(normalize(spotBPos),spotBCol, n4Normal,eyePos);
+    vec4 specularToSpotB = compSpecular(spotBPos,spotBCol, n4Normal,eyePos);
 
     //----SPOTLIGHT C + Blinn--------------------------------------------
     vec4 spotCPos = spotCPosition - fs_pos;
     vec4 spotCCol = vec4(spotCColor, 1.0) *  dot(pow(spotCTarget/length(spotCPos), spotDecay), 
           clamp((dot(normalize(spotCPos), spotDir) - cos(radians(spotCConeOut)/2.0)) / (cos(radians(spotCConeIn)/2.0) - cos(radians(spotCConeOut)/2.0)), 0.0, 1.0));
-    vec4 specularToSpotC = compSpecular(normalize(spotCPos), spotCCol, n4Normal,eyePos);    
+    vec4 specularToSpotC = compSpecular(spotCPos, spotCCol, n4Normal,eyePos);    
 
     //----SPOTLIGHT D + Blinn--------------------------------------------
     vec4 spotDPos = spotDPosition - fs_pos;
     vec4 spotDCol = vec4(spotDColor, 1.0) *  dot(pow(spotDTarget/length(spotDPos), spotDecay), 
           clamp((dot(normalize(spotDPos), spotDir) - cos(radians(spotDConeOut)/2.0)) / (cos(radians(spotDConeIn)/2.0) - cos(radians(spotDConeOut)/2.0)), 0.0, 1.0));
-    vec4 specularToSpotD = compSpecular(normalize(spotDPos), spotDCol, n4Normal,eyePos);
+    vec4 specularToSpotD = compSpecular(spotDPos, spotDCol, n4Normal,eyePos);
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
