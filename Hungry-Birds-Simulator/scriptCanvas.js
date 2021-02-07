@@ -123,7 +123,7 @@ void main() {
     vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
 
     //----Phong on directionalA-------------------------------------------
-    vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(lightDirectionA, 1.0), n4Normal)),0.0,1.0), shininess) * lightColorA;
+    vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(lightDirectionA, 1.0), n4Normal)),0.0,1.0), shininess) * vec4(lightColorA, 1.0);
 
 
     //----SPOTLIGHT A + Blinn--------------------------------------------
