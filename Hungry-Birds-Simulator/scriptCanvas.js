@@ -755,7 +755,7 @@ function setupLights(){
 
     //---------------SpotLight B---------------------------------------------------------------
     var BSpotPosition = [0, 10, 0.65, 1.0];
-    var BSpotColor = [1.0, 1.0, 1.0];
+    var BSpotColor = [0.0, 0.0, 1.0];
 
     var BTarget = 10.0;
     var BConeOut = 22.0;
