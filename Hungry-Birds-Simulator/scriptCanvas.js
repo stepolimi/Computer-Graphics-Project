@@ -83,7 +83,7 @@ void main() {
 
   //compute spot light
   vec4 spotAPos = lightDiffusePosition - fs_pos;
-  vec4 spotCol = -1 * vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotADecay), 
+  vec4 spotCol = -1.0 * vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotADecay), 
   clamp((dot(normalize(spotAPos), spotADir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn * spotAConeOut)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
 
   outColor = vec4(clamp(spotCol,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
