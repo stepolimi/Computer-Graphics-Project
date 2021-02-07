@@ -669,11 +669,11 @@ function setupLights(){
 
 
     //---------------SpotLight B---------------------------------------------------------------
-    var BSpotPosition = [0, 10, 1.78, 1.0];
-    var BSpotColor = [0.32, 0.62, 0.64];
+    var BSpotPosition = [0, 10, 0.78, 1.0];
+    var BSpotColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//[0.32, 0.62, 0.64];
 
     var BTarget = 10.0;
-    var BConeOut = 35.0;
+    var BConeOut = 30.0;
     var BConeIn = 15.0;
 
     
