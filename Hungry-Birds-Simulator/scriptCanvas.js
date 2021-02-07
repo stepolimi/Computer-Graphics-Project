@@ -66,11 +66,16 @@ uniform float spotBConeIn;
 //Spotlight C
 uniform vec4 spotCPosition;      
 uniform vec3 spotCColor;
-
+uniform float spotCTarget;
+uniform float spotCConeOut;
+uniform float spotCConeIn;
 
 //Spotlight D
 uniform vec4 spotDPosition;      
 uniform vec3 spotDColor;
+uniform float spotDTarget;
+uniform float spotDConeOut;
+uniform float spotDConeIn;
 
 
 //texture
@@ -111,10 +116,20 @@ void main() {
     //----SPOTLIGHT B--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
     vec4 spotBCol = vec4(spotBColor, 1.0) *  dot(pow(spotBTarget/length(spotBPos), spotDecay), 
-          clamp((dot(normalize(spotBPos), spotDir) - cos(radians(spotBConeOut)/2.0)) / (cos(radians(spotBConeIn)/2.0) - cos(radians(spotBConeOut)/2.0)), 0.0, 1.0));
+          clamp((dot(normalize(spotBPos), spotDir) - cos(radians(spotBConeOut)/2.0)) / (cos(radians(spotBConeIn)/2.0) - cos(radians(spotBConeOut)/2.0)), 0.0, 1.0));    
+
+    //----SPOTLIGHT C--------------------------------------------
+    vec4 spotCPos = spotCPosition - fs_pos;
+    vec4 spotCCol = vec4(spotCColor, 1.0) *  dot(pow(spotCTarget/length(spotCPos), spotDecay), 
+          clamp((dot(normalize(spotCPos), spotDir) - cos(radians(spotCConeOut)/2.0)) / (cos(radians(spotCConeIn)/2.0) - cos(radians(spotCConeOut)/2.0)), 0.0, 1.0));    
+
+    //----SPOTLIGHT D--------------------------------------------
+    vec4 spotDPos = spotDPosition - fs_pos;
+    vec4 spotDCol = vec4(spotDColor, 1.0) *  dot(pow(spotDTarget/length(spotDPos), spotDecay), 
+          clamp((dot(normalize(spotDPos), spotDir) - cos(radians(spotDConeOut)/2.0)) / (cos(radians(spotDConeIn)/2.0) - cos(radians(spotDConeOut)/2.0)), 0.0, 1.0));
     
     
-    outColor = vec4(clamp(vec3(spotCol + spotBCol) + ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol) + ambient + diffA ,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
      //outColor = vec4(clamp(color,0.0,1.0).rgb, 1.0);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
@@ -186,6 +201,20 @@ var spotBColorHandle;
 var spotBTargetHandle;
 var spotBConeOutHandle;
 var spotBConeInHandle;
+
+//SpotLight C
+var spotCPositionHandle;      
+var spotCColorHandle;
+var spotCTargetHandle;
+var spotCConeOutHandle;
+var spotCConeInHandle;
+
+//SpotLight D
+var spotDPositionHandle;      
+var spotDColorHandle;
+var spotDTargetHandle;
+var spotDConeOutHandle;
+var spotDConeInHandle;
 
 
 //movement variables
@@ -567,6 +596,16 @@ function setUpScene(){
     spotBTargetHandle = gl.getUniformLocation(program, "spotBTarget");
     spotBConeOutHandle = gl.getUniformLocation(program, "spotBConeOut");
     spotBConeInHandle = gl.getUniformLocation(program, "spotBConeIn");
+        spotCPositionHandle  = gl.getUniformLocation(program, "spotCPosition");      
+    spotCColorHandle = gl.getUniformLocation(program, "spotCColor");
+    spotCTargetHandle = gl.getUniformLocation(program, "spotCTarget");
+    spotCConeOutHandle = gl.getUniformLocation(program, "spotCConeOut");
+    spotCConeInHandle = gl.getUniformLocation(program, "spotCConeIn");
+        spotDPositionHandle  = gl.getUniformLocation(program, "spotDPosition");      
+    spotDColorHandle = gl.getUniformLocation(program, "spotDColor");
+    spotDTargetHandle = gl.getUniformLocation(program, "spotDTarget");
+    spotDConeOutHandle = gl.getUniformLocation(program, "spotDConeOut");
+    spotDConeInHandle = gl.getUniformLocation(program, "spotDConeIn");
 
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
@@ -669,8 +708,8 @@ function setupLights(){
 
 
     //---------------SpotLight B---------------------------------------------------------------
-    var BSpotPosition = [0, 10, 0.78, 1.0];
-    var BSpotColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//[0.32, 0.62, 0.64];
+    var BSpotPosition = [0, 10, 0.65, 1.0];
+    var BSpotColor = [0.0, 1.0, 0.0];
 
     var BTarget = 10.0;
     var BConeOut = 30.0;
@@ -688,6 +727,47 @@ function setupLights(){
     gl.uniform3fv(spotBColorHandle, BSpotColor);
     //-----------------------------------------------------------------------------------------
 
+
+    //---------------SpotLight C---------------------------------------------------------------
+    var CSpotPosition = [0, 10, 5.0, 1.0];
+    var CSpotColor = [0.0, 0.0, 1.0];
+
+    var CTarget = 10.0;
+    var CConeOut = 22.0;
+    var CConeIn = 15.0;
+
+    
+    gl.uniform1f(spotCConeOutHandle, CConeOut);
+    gl.uniform1f(spotCConeInHandle, CConeIn);
+    gl.uniform1f(spotCTargetHandle, CTarget);
+   
+    //Transform the diffuse light's Position into Camera Spaces.
+    var CSpotPositionTransform = utils.multiplyMatrixVector(viewMatrix, CSpotPosition);
+
+    gl.uniform4fv(spotCPositionHandle, CSpotPositionTransform);
+    gl.uniform3fv(spotCColorHandle, CSpotColor);
+    //-----------------------------------------------------------------------------------------
+
+
+     //---------------SpotLight D---------------------------------------------------------------
+    var DSpotPosition = [0, 10, 8.0, 1.0];
+    var DSpotColor = [1.0, 0.0, 0.0];
+
+    var DTarget = 10.0;
+    var DConeOut = 22.0;
+    var DConeIn = 15.0;
+
+    
+    gl.uniform1f(spotDConeOutHandle, DConeOut);
+    gl.uniform1f(spotDConeInHandle, DConeIn);
+    gl.uniform1f(spotDTargetHandle, DTarget);
+   
+    //Transform the diffuse light's Position into Camera Spaces.
+    var DSpotPositionTransform = utils.multiplyMatrixVector(viewMatrix, DSpotPosition);
+
+    gl.uniform4fv(spotDPositionHandle, DSpotPositionTransform);
+    gl.uniform3fv(spotDColorHandle, DSpotColor);
+    //-----------------------------------------------------------------------------------------
 
 
     //reflection light
