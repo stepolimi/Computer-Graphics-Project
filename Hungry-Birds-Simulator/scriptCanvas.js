@@ -700,7 +700,7 @@ function setupLights(){
     var ambientLight = [0.4, 0.4, 0.4];
 
     //directional light
-    var xDirLightA;
+    /*var xDirLightA;
     if(sunAngle < 2* Math.PI)
         sunAngle += Math.PI/1000;
     else
@@ -708,20 +708,21 @@ function setupLights(){
     if(sunAngle >= 0 && sunAngle < Math.PI) 
         xDirLightA = -0.2;
     else
-        xDirLightA = 0;
+        xDirLightA = 0;*/
+    //diffuse light
+    var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
+    var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
+    var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32  
     
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
+    var directionaLightAPos = [-0.2, Math.cos(degToRad(dirLightAlphaA)), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)] //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     var diffCol = [1.0, 1.0, 1.0];
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
-    //diffuse light
-    var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
-    var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
-    var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
+
     
 
     //reflection light
@@ -777,11 +778,11 @@ function setupLights(){
     var BTarget = 10.0;
     var BConeOut = 22.0;
     var BConeIn = 15.0;
-    /*
+
     if(sunAngle >= 0 && sunAngle < Math.PI){
         BConeOut = 0.0;
         BConeIn = 0.0;
-    }*/
+    }
 
     
     gl.uniform1f(spotBConeOutHandle, BConeOut);
