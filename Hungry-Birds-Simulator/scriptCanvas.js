@@ -36,7 +36,7 @@ uniform vec3 ambientLightCol;
 //directional
 uniform vec3 lightDirectionA; 
 uniform vec3 lightColorA;
-
+uniform vec3 diffColor;
 
 
 //Blinn reflection
@@ -125,6 +125,7 @@ void main() {
     //----Lambert on directionalA-----------------------------------------
     vec3 nLightDirectionA = normalize(lightDirectionA);
     vec3 diffA = lightColorA * clamp(dot(nNormal, lightDirectionA), 0.0, 1.0);
+    diffA = diffColor * diffA;
 
     //----Phong on directionalA-------------------------------------------
     vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(lightDirectionA, 1.0), n4Normal)),0.0,1.0), phongShininess) * vec4(lightColorA, 1.0) * vec4(specColor, 1.0);
@@ -215,6 +216,7 @@ var specColorHandler;
 var posZdirLightA = -0.5;
 var posYdirLightA = 0.5;
 var phongShininessHandler;
+var diffColorHandler;
 
 //SpotLight
 var spotATargetHandle;
@@ -663,6 +665,8 @@ function setUpScene(){
     spotDConeInHandle = gl.getUniformLocation(program, "spotDConeIn");
     specColorHandler = gl.getUniformLocation(program, "specColor");
     phongShininessHandler = gl.getUniformLocation(program, "phongShininess");
+    diffColorHandler = gl.getUniformLocation(program, "diffColor");
+
 
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
@@ -709,7 +713,7 @@ function setupLights(){
     //x to be -0.2 on day, -0 on night
     var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
-    //var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
+    var diffLight = [1.0, 1.0, 1.0];
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
@@ -730,6 +734,7 @@ function setupLights(){
     //directional light
     gl.uniform3fv(lightDirectionAHandle, directionalLightATransform);
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
+    gl.uniform3fv(diffColorHandler, diffColor);
 
 
     //--------------SpotLight general parameters-----------------------------------------------
@@ -847,6 +852,7 @@ function setupLights(){
     gl.uniform3fv(specColorHandler, specularColor);
     gl.uniform1f(shininessHandler, shininess);
     gl.uniform1f(phongShininessHandler, phongS);
+
     
 
 }
