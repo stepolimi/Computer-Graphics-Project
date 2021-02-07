@@ -123,7 +123,7 @@ void main() {
     vec4 spotAPos = lightDiffusePosition - fs_pos;
     vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotDecay), 
           clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
-    //vec4 specularToSpotA = compSpecular(spotDir, vec4(lightDiffuseColor, 1.0),vec4(nNormal, 1.0),eyePos);
+    vec4 specularToSpotA = compSpecular(spotDir, vec4(lightDiffuseColor, 1.0),vec4(nNormal, 1.0),eyePos);
 
     //----SPOTLIGHT B + Blinn--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
