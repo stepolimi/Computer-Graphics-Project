@@ -39,9 +39,13 @@ uniform vec3 lightColorA;
 
 
 
-//reflection
+//Blinn reflection
 uniform float shininess;
 uniform vec3 specColor;
+
+
+//Phong reflection
+uniform float phongShininess;
 
 //SpotLight general parameters
 uniform float spotDecay;
@@ -123,7 +127,7 @@ void main() {
     vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
 
     //----Phong on directionalA-------------------------------------------
-    vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(lightDirectionA, 1.0), n4Normal)),0.0,1.0), shininess) * vec4(lightColorA, 1.0);
+    vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(lightDirectionA, 1.0), n4Normal)),0.0,1.0), phongShininess) * vec4(lightColorA, 1.0);
 
 
     //----SPOTLIGHT A + Blinn--------------------------------------------
@@ -210,6 +214,7 @@ var shininessHandler;
 var specColorHandler;
 var posZdirLightA = -0.5;
 var posYdirLightA = 0.5;
+var phongShininessHandler;
 
 //SpotLight
 var spotATargetHandle;
@@ -657,6 +662,7 @@ function setUpScene(){
     spotDConeOutHandle = gl.getUniformLocation(program, "spotDConeOut");
     spotDConeInHandle = gl.getUniformLocation(program, "spotDConeIn");
     specColorHandler = gl.getUniformLocation(program, "specColor");
+    phongShininessHandler = gl.getUniformLocation(program, "phongShininess");
 
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
 
@@ -716,7 +722,8 @@ function setupLights(){
 
     //reflection light
     var shininess = 5;
-
+    var phongS = 60; 
+    
     //ambient lights
     gl.uniform3fv(ambientLightColorHandle, ambientLight);
 
@@ -839,7 +846,7 @@ function setupLights(){
     var specularColor = [1.0, 1.0, 1.0];
     gl.uniform3fv(specColorHandler, specularColor);
     gl.uniform1f(shininessHandler, shininess);
-
+    gl.uniform1f(phongShininessHandler, phongS);
     
 
 }
