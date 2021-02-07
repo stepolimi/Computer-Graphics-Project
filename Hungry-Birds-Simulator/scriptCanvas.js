@@ -710,7 +710,7 @@ function setupLights(){
     
 
     //reflection light
-    var shininess = 30;
+    var shininess = 5;
 
     //ambient lights
     gl.uniform3fv(ambientLightColorHandle, ambientLight);
@@ -724,7 +724,7 @@ function setupLights(){
     var spotTarget = 10.0;
     var spotGenDecay = 2.0;
     
-    var t = utils.degToRad(10);
+    var t = utils.degToRad(0);
 	var p = utils.degToRad(45);
     var spotGenDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
     
