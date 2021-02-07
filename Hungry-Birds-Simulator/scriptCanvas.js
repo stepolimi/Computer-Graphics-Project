@@ -568,8 +568,8 @@ function setupLights(){
         xDirLightA = 0;
     
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA), Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]//[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
-    var directionalLightAColor = [0.4, 0.4, 0.4]; //[0.87, 0.67, 0.44]
+    var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
+    var directionalLightAColor = [0.87, 0.67, 0.44];
     //var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
@@ -580,7 +580,7 @@ function setupLights(){
     var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
     var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32
     var diffuseLightPosition = [0, 10, -7, 1.0];
-    var diffuseLightColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//[0.9, 0.9, 0.9];
+    var diffuseLightColor = [0.32, 0.62, 0.64];
    
     //Transform the diffuse light's Position into Camera Spaces.
     var diffuseLightPosTransform = utils.multiplyMatrixVector(viewMatrix, diffuseLightPosition);
