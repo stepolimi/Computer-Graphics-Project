@@ -686,7 +686,7 @@ function setupLights(){
     //Transform the diffuse light's Position into Camera Spaces.
     var BSpotPositionTransform = utils.multiplyMatrixVector(viewMatrix, BSpotPosition);
 
-    gl.uniform4fv(spotBPositionHandler, diffuseLightPosTransform);
+    gl.uniform4fv(spotBPositionHandler, BSpotPositionTransform);
     gl.uniform3fv(spotBColorHandler, BSpotColor);
     //-----------------------------------------------------------------------------------------
 
