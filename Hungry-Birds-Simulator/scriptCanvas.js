@@ -157,8 +157,8 @@ void main() {
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    //outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot  ) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
-    outColor = vec4(clamp(vec3(dirAPhong) + diffA,0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong ) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    //outColor = vec4(clamp(vec3(dirAPhong) + diffA,0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
@@ -706,7 +706,7 @@ function setupLights(){
     else
         sunAngle = 0;
     if(sunAngle >= 0 && sunAngle < Math.PI) 
-        xDirLightA = 180;//-0.2;
+        xDirLightA = -0.2;
     else
         xDirLightA = 0;
     //diffuse light
@@ -717,7 +717,7 @@ function setupLights(){
     console.log("alpha " + document.getElementById("dirLightAlphaA").value);
     console.log("beta " + document.getElementById("dirLightBetaA").value);
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [Math.sin(utils.degToRad(xDirLightA)), 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];//Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
+    var directionaLightAPos = [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];//Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     var diffCol = [1.0, 1.0, 1.0];
 
