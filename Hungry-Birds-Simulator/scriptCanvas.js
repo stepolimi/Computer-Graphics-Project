@@ -600,7 +600,7 @@ function setupLights(){
     var spotTarget = 10.0;
     var spotDecay = 2.0;
     var spotConeOut = 15.0;
-    var spotConeIn = 10.0;
+    var spotConeIn = 7.5;
 
 
     gl.uniform1f(spotATargetHandle, spotTarget);
@@ -608,8 +608,8 @@ function setupLights(){
     gl.uniform1f(spotAConeOutHandle, spotConeOut);
     gl.uniform1f(spotAConeInHandle, spotConeIn);
 
-    var t = utils.degToRad(dirLightAlphaA);
-	var p = utils.degToRad(dirLightBetaA);
+    var t = utils.degToRad(0);
+	var p = utils.degToRad(45);
     var spotDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
     console.log("alpha: " + dirLightAlphaA);
     console.log("beta: " + dirLightBetaA)
