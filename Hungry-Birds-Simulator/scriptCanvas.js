@@ -290,19 +290,19 @@ function throwBird(e){
 async function blinkSpotLight(){
         spotConeOut = 15.0;
         spotConeIn = 7.5;
-        await sleep(100);
+        await sleep(200);
         spotConeOut = 0.0;
         spotConeIn = 0.0;
-        await sleep(100);
+        await sleep(200);
         spotConeOut = 15.0;
         spotConeIn = 7.5;
-        await sleep(100);
+        await sleep(200);
         spotConeOut = 0.0;
         spotConeIn = 0.0;
-        await sleep(100);
+        await sleep(200);
         spotConeOut = 15.0;
         spotConeIn = 7.5;
-        await sleep(100);
+        await sleep(200);
         spotConeOut = 0.0;
         spotConeIn = 0.0;
 }
@@ -677,7 +677,7 @@ function setupLights(){
     
     //x to be -0.2 on day, -0 on night
     var directionaLightAPos = [xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
-    var directionalLightAColor = [0.77, 0.57, 0.34];
+    var directionalLightAColor = [0.87, 0.67, 0.44];
     //var directionalLightAColor = fromHexToRGBVec(document.getElementById("LAlightColor").value);//#4d4d4d
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
