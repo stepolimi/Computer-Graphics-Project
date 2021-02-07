@@ -714,7 +714,7 @@ function setupLights(){
     var BSpotColor = [0.0, 1.0, 0.0];
 
     var BTarget = 10.0;
-    var BConeOut = 30.0;
+    var BConeOut = 25.0;
     var BConeIn = 15.0;
 
     
@@ -735,7 +735,7 @@ function setupLights(){
     var CSpotColor = [0.0, 0.0, 1.0];
 
     var CTarget = 15.0;
-    var CConeOut = 20.0;
+    var CConeOut = 22.0;
     var CConeIn = 15.0;
 
     
