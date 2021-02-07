@@ -720,7 +720,7 @@ function setupLights(){
     var spotTarget = 10.0;
     var spotGenDecay = 2.0;
     
-    var t = utils.degToRad(0);
+    var t = utils.degToRad(10);
 	var p = utils.degToRad(45);
     var spotGenDir = [ Math.sin(t) * Math.sin(p), Math.cos(t), Math.sin(t) * Math.cos(p), 1.0];
     
@@ -751,16 +751,16 @@ function setupLights(){
 
     //---------------SpotLight B---------------------------------------------------------------
     var BSpotPosition = [0, 10, 0.65, 1.0];
-    var BSpotColor = [0.0, 1.0, 0.0];
+    var BSpotColor = [1.0, 1.0, 1.0];
 
     var BTarget = 10.0;
     var BConeOut = 22.0;
     var BConeIn = 15.0;
-
+    /*
     if(sunAngle >= 0 && sunAngle < Math.PI){
         BConeOut = 0.0;
         BConeIn = 0.0;
-    }
+    }*/
 
     
     gl.uniform1f(spotBConeOutHandle, BConeOut);
@@ -777,7 +777,7 @@ function setupLights(){
 
     //---------------SpotLight C---------------------------------------------------------------
     var CSpotPosition = [0, 15, 5.0, 1.0];
-    var CSpotColor = [0.0, 0.0, 1.0];
+    var CSpotColor = [0.0, 1.0, 0.0];
 
     var CTarget = 15.0;
     var CConeOut = 25.0;
