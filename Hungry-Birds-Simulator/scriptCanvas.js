@@ -93,7 +93,7 @@ out vec4 outColor;
 vec4 compSpecular(vec4 lightDir, vec4 lightCol, vec4 normalVec, vec4 eyedirVec) {
 	// Specular
 	// --> Blinn
-	vec3 halfVec = normalize(lightDir + eyedirVec);
+	vec4 halfVec = normalize(lightDir + eyedirVec);
 	vec4 specularBlinn = lightCol * pow(max(dot(normalVec, halfVec), 0.0), shininess) * lightColorA;
 
 	// ----> Select final component
