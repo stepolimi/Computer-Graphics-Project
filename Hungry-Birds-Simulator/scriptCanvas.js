@@ -695,68 +695,47 @@ function setUpScene(){
 
 }
 
-var sunAngle = 0;
-
 //sets light colors and positions
 function setupLights(){
-    //ambient light
+    //----Ambient Light------------------------------------------------------------------------
     var ambientLight = [0.4, 0.4, 0.4];
+    gl.uniform3fv(ambientLightColorHandle, ambientLight);
+    //-----------------------------------------------------------------------------------------
 
     
-        
-    /*//directional light
-    var xDirLightA;
-    if(sunAngle < 2* Math.PI)
-        sunAngle += Math.PI/1000;
-    else
-        sunAngle = 0;
-    if(sunAngle >= 0 && sunAngle < Math.PI) 
-        xDirLightA = -0.2;
-    else
-        xDirLightA = 0;
-    //diffuse light
-    var dirLightAlphaA = utils.degToRad(document.getElementById("dirLightAlphaA").value);//20
-    var dirLightBetaA = utils.degToRad(document.getElementById("dirLightBetaA").value);//32
-    var dirLightGammaA = document.getElementById("dirLightGammaA").value;//32  
     
-    console.log("x " + Math.cos(dirLightAlphaA) );
-    console.log("y " + 20 * Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA));
-    console.log("z " + 20 * Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA));
-    */
-    //x to be -0.2 on day, -0 on night
-    //var directionaLightAPos = [Math.cos(sunAngle), 0.0, 0.0]; //[Math.cos(dirLightAlphaA), 20 * Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA), 20 * Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; // [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];
-    var directionalLightAColor = [0.87, 0.67, 0.44];
-    //Toggle button
-
+    //----Dark mode changes + directional------------------------------------------------------
     var directionaLightAPos = [-0.2, 1.0 , 0.0];
+    var diffCol = [1.0, 1.0, 1.0];
+    var directionalLightAColor = [0.87, 0.67, 0.44];
     var darkModeToggle = document.getElementById("darkModeToggle");
+    var scoreText = document.getElementById("score");
+
     if(darkModeToggle.checked == true){
         directionalLightAColor = [0.87, 0.67, 0.44];
         canvas.style.backgroundImage = "url(resources/in-game-background.png)";
+        scoreText.style.color = "#000000";
     }
     else{
-        canvas.style.backgroundImage = "url(resources/dark-mode-background.png)";
         directionalLightAColor = [0.0, 0.0, 0.0];
+        canvas.style.backgroundImage = "url(resources/dark-mode-background.png)";
+        scoreText.style.color = "#FFFFFF";
     }
-    var diffCol = [1.0, 1.0, 1.0];
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
     var directionalLightATransform = utils.normalizeVector3(utils.multiplyMatrix3Vector3(lightDirectionalMatrix, directionaLightAPos));
 
 
-    
-
-    //reflection light
-    var shininess = 5;
-    var phongS = 200; 
-    
-    //ambient lights
-    gl.uniform3fv(ambientLightColorHandle, ambientLight);
-
     //directional light
     gl.uniform3fv(lightDirectionAHandle, directionalLightATransform);
     gl.uniform3fv(lightColorAHandle, directionalLightAColor);
     gl.uniform3fv(diffColorHandler, diffCol);
+    //-----------------------------------------------------------------------------------------
+
+    
+    //reflection light
+    var shininess = 5;
+    var phongS = 200; 
 
 
     //--------------SpotLight general parameters-----------------------------------------------
