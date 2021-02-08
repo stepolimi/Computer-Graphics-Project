@@ -170,6 +170,7 @@ var program;
 var vertexShader;
 var fragmentShader;
 var vaos;
+var darkModeToggle;
 
 //Meshes variables
 var allMeshes;
@@ -322,6 +323,7 @@ function throwBird(e){
 }
 
 async function blinkSpotLight(){
+    if(darkModeToggle.checked == true){
         spotConeOut = 15.0;
         spotConeIn = 7.5;
         await sleep(200);
@@ -339,6 +341,11 @@ async function blinkSpotLight(){
         await sleep(200);
         spotConeOut = 0.0;
         spotConeIn = 0.0;
+    }
+    else{
+        spotConeOut = 15.0;
+        spotConeIn = 7.5;
+    }
 }
 
 
@@ -708,7 +715,7 @@ function setupLights(){
     var directionaLightAPos = [-0.2, 1.0 , 0.0];
     var diffCol = [1.0, 1.0, 1.0];
     var directionalLightAColor = [0.87, 0.67, 0.44];
-    var darkModeToggle = document.getElementById("darkModeToggle");
+    darkModeToggle = document.getElementById("darkModeToggle");
     var scoreText = document.getElementById("score");
     var menuText = document.getElementById("menu-text");
 
