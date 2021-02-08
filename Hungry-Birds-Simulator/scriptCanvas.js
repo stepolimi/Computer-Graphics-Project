@@ -278,8 +278,7 @@ var mouseX = 0.0;
 var mouseY = 0.0;
 
 
-//Toggle button
-var darkModeToggle = document.getElementById("darkModeToggle");
+
 
 
 function sleep(ms) {
@@ -703,6 +702,8 @@ function setupLights(){
     //ambient light
     var ambientLight = [0.4, 0.4, 0.4];
 
+    //Toggle button
+    var darkModeToggle = document.getElementById("darkModeToggle");
     if(darkModeToggle.checked == true)
         sunAngle = utils.degToRad(180);
     else

@@ -99,7 +99,7 @@ body {
 .switch {
     position: relative;
     display: inline-block;
-    width: 7vmax;
+    width: 5vmax;
     height: 5vmin;
 }
 
