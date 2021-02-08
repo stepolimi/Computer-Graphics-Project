@@ -706,7 +706,7 @@ function setupLights(){
     
     
     //----Dark mode changes + directional------------------------------------------------------
-    var directionaLightAPos = [-0.2, 1.0 , 0.0];
+    var directionaLightAPos = [-1.2, 1.0 , 0.0];
     var diffCol = [1.0, 1.0, 1.0];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     darkModeToggle = document.getElementById("darkModeToggle");
