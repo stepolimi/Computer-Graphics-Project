@@ -136,6 +136,8 @@ async function killBird(ind, t) {
 		document.getElementById("bird_death").play();
 	bird.ty = -5;
 	bird.tz = 0;
+	if(ind-1 < 5)
+		bird = birdsArray[ind-1];
 	worldPositions[ind] = utils.MakeWorld(bird.tx , bird.ty, bird.tz, bird.rx, bird.ry, bird.rz, 0);
 }
 

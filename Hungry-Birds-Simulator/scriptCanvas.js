@@ -893,11 +893,13 @@ function setupLights(){
 
     //----PointLight---------------------------------------------------------------------------
    
-    var pTarget = 1;
-    var pDecay = 20;
+    var pTarget = document.getElementById("dirLightAlphaA").value;
+    var pDecay = document.getElementById("dirLightBetaA").value;
     var pColor = [1.0, 1.0, 1.0];
     var pPos = [0.0, bird.ty, bird.tz, 1.0];
 
+    console.log("t: " + pTarget);
+    console.log("d: " + pDecay);
     
     var pPosTransform = utils.multiplyMatrixVector(viewMatrix, pPos);
 
@@ -922,7 +924,6 @@ function addMeshToScene(i) {
     
     var uvBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
-    console.log(mesh.textures);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.textures), gl.STATIC_DRAW);
     gl.enableVertexAttribArray(uvAttributeLocation);
     gl.vertexAttribPointer(uvAttributeLocation, 2, gl.FLOAT, false, 0, 0);
