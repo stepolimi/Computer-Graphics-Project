@@ -162,27 +162,12 @@ void main() {
           clamp((dot(normalize(spotDPos), spotDir) - cos(radians(spotDConeOut)/2.0)) / (cos(radians(spotDConeIn)/2.0) - cos(radians(spotDConeOut)/2.0)), 0.0, 1.0));
     vec4 specularToSpotD = compSpecular(spotDPos, spotDCol, n4Normal,eyePos);
 
-    float theta_i = radians(acos(dot(spotDPos, n4Normal)));
-	float theta_r = radians(acos(dot(eyePos, n4Normal)));
-	float alpha = max(theta_i, theta_r);
-	float beta = min(theta_i, theta_r);
-
-	float A = 1.0 - 0.5*((0.5*0.5)/(0.5*0.5+0.33));
-	float B = 0.45*((0.5*0.5)/(0.5*0.5+0.09));
-
-	vec4 v_i = normalize(spotDPos - dot(spotDPos,n4Normal)*n4Normal);
-	vec4 v_r = normalize(eyePos - dot(eyePos,n4Normal)*n4Normal);
-	float G = max(0.0, dot(v_i,v_r));
-	
-	vec4 L = vec4(diffColor,1.0) * clamp(dot(spotDPos,n4Normal), 0.0, 1.0);
-	vec4 spotDOren = L*(A+B*G*sin(alpha)*tan(beta));
-
     //----POINTLIGHT + Oren-Nayar-----------------------------------------------------
     vec4 pointDir   = pointPosition - fs_pos;
     vec4 pointCol = vec4(pointColor, 1.0) * pow((pointTarget/length(pointDir)), pointDecay);
 
    
-    /*// Oren-Nayar
+    // Oren-Nayar
 	float theta_i = radians(acos(dot(pointDir, n4Normal)));
 	float theta_r = radians(acos(dot(eyePos, n4Normal)));
 	float alpha = max(theta_i, theta_r);
@@ -196,12 +181,12 @@ void main() {
 	float G = max(0.0, dot(v_i,v_r));
 	
 	vec4 L = vec4(diffColor,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
-	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));*/
+	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));
 
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol + spotDOren) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
     //outColor = vec4(clamp(vec3(diffA),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
