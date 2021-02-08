@@ -166,6 +166,7 @@ input:checked + .slider:before {
 
 #toggleMoonImg{
   position: absolute;
+  visibility = hidden;
   height: 16px;
   width: 16px;
   left: 4px;
