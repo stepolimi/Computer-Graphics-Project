@@ -302,6 +302,8 @@ function scaleSlingElastic(e){
   NB. worldPositions[10] is the original sling elastic position 
 */
 function throwBird(e){
+    spotConeOut = 0.0;
+    spotConeIn = 0.0;
     isReleased = true;
     if(!busy){
         var sound = document.getElementById("releaseSlingSound");
@@ -767,11 +769,7 @@ function setupLights(){
         spotConeOut = 15.0;
         spotConeIn = 7.5;
     }
-    else{
-        spotConeOut = 0.0;
-        spotConeIn = 0.0;
 
-    }
     gl.uniform1f(spotAConeOutHandle, spotConeOut);
     gl.uniform1f(spotAConeInHandle, spotConeIn);
 
