@@ -763,9 +763,14 @@ function setupLights(){
 
     //---------------SpotLight A---------------------------------------------------------------
     
-    if(darkModeToggle.checked == false){
+    if(darkModeToggle.checked == true){
         spotConeOut = 15.0;
         spotConeIn = 7.5;
+    }
+    else{
+        spotConeOut = 0.0;
+        spotConeIn = 0.0;
+
     }
     gl.uniform1f(spotAConeOutHandle, spotConeOut);
     gl.uniform1f(spotAConeInHandle, spotConeIn);
