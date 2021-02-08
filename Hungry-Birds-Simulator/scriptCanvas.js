@@ -178,7 +178,7 @@ void main() {
 	vec4 v_r = normalize(eyePos - dot(eyePos,n4Normal)*n4Normal);
 	float G = max(0.0, dot(v_i,v_r));
 	
-	vec4 L = diffColor * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
+	vec4 L = vec4(diffColor,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
 	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));
 
     
