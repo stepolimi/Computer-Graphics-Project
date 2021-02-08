@@ -702,13 +702,7 @@ function setupLights(){
     //ambient light
     var ambientLight = [0.4, 0.4, 0.4];
 
-    //Toggle button
-    var directionaLightAPos = [0.0, 0.0, 0.0];
-    var darkModeToggle = document.getElementById("darkModeToggle");
-    if(darkModeToggle.checked == true)
-        directionaLightAPos = [-0.2, 1.0 , 0.0];
-    else
-        directionaLightAPos = [0.0, -1.0, 0.0];
+    
         
     /*//directional light
     var xDirLightA;
@@ -732,6 +726,13 @@ function setupLights(){
     //x to be -0.2 on day, -0 on night
     //var directionaLightAPos = [Math.cos(sunAngle), 0.0, 0.0]; //[Math.cos(dirLightAlphaA), 20 * Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA), 20 * Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; // [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
+    //Toggle button
+    var directionaLightAPos = [-0.2, 1.0 , 0.0];
+    var darkModeToggle = document.getElementById("darkModeToggle");
+    if(darkModeToggle.checked == true)
+        directionalLightAColor = [0.87, 0.67, 0.44];
+    else
+        directionalLightAColor = [0.0, 0.0, 0.0];
     var diffCol = [1.0, 1.0, 1.0];
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
