@@ -727,12 +727,17 @@ function setupLights(){
     //var directionaLightAPos = [Math.cos(sunAngle), 0.0, 0.0]; //[Math.cos(dirLightAlphaA), 20 * Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA), 20 * Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; // [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     //Toggle button
+
     var directionaLightAPos = [-0.2, 1.0 , 0.0];
     var darkModeToggle = document.getElementById("darkModeToggle");
-    if(darkModeToggle.checked == true)
+    if(darkModeToggle.checked == true){
         directionalLightAColor = [0.87, 0.67, 0.44];
-    else
+        canvas.style.backgroundImage = "url(resources/dark-mode-background.png)";
+    }
+    else{
+        canvas.style.backgroundImage = "url(resources/in-game-background.png)";
         directionalLightAColor = [0.0, 0.0, 0.0];
+    }
     var diffCol = [1.0, 1.0, 1.0];
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
@@ -795,7 +800,7 @@ function setupLights(){
     var BConeOut = 22.0;
     var BConeIn = 15.0;
 
-    if(sunAngle >= 0 && sunAngle < Math.PI){
+    if(darkModeToggle.checked == true){
         BConeOut = 0.0;
         BConeIn = 0.0;
     }
@@ -821,7 +826,7 @@ function setupLights(){
     var CConeOut = 20.0;
     var CConeIn = 15.0;
 
-    if(sunAngle >= 0 && sunAngle < Math.PI){
+    if(sdarkModeToggle.checked == true){
         CConeOut = 0.0;
         CConeIn = 0.0;
     }
@@ -847,7 +852,7 @@ function setupLights(){
     var DConeOut = 22.0;
     var DConeIn = 15.0;
 
-    if(sunAngle >= 0 && sunAngle < Math.PI){
+    if(darkModeToggle.checked == true){
         DConeOut = 0.0;
         DConeIn = 0.0;
     }
