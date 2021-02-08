@@ -323,7 +323,6 @@ function throwBird(e){
 }
 
 async function blinkSpotLight(){
-    if(darkModeToggle.checked == true){
         spotConeOut = 15.0;
         spotConeIn = 7.5;
         await sleep(200);
@@ -341,11 +340,6 @@ async function blinkSpotLight(){
         await sleep(200);
         spotConeOut = 0.0;
         spotConeIn = 0.0;
-    }
-    else{
-        spotConeOut = 15.0;
-        spotConeIn = 7.5;
-    }
 }
 
 
@@ -769,6 +763,14 @@ function setupLights(){
 
     //---------------SpotLight A---------------------------------------------------------------
     
+    if(darkModeToggle.checked == true){
+        spotConeOut = 0.0;
+        spotConeIn = 0.0;
+    }
+    else{
+        spotConeOut = 15.0;
+        spotConeIn = 7.5;
+    }
     gl.uniform1f(spotAConeOutHandle, spotConeOut);
     gl.uniform1f(spotAConeInHandle, spotConeIn);
 
