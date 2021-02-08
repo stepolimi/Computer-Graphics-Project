@@ -83,6 +83,13 @@ uniform float spotDConeOut;
 uniform float spotDConeIn;
 
 
+//PointLight
+uniform vec4 pointPosition;
+uniform vec3 pointColor;
+uniform float pointTarget;
+uniform float pointDecay;
+
+
 //texture
 uniform sampler2D in_texture;
 
@@ -154,10 +161,15 @@ void main() {
     vec4 spotDCol = vec4(spotDColor, 1.0) *  dot(pow(spotDTarget/length(spotDPos), spotDecay), 
           clamp((dot(normalize(spotDPos), spotDir) - cos(radians(spotDConeOut)/2.0)) / (cos(radians(spotDConeIn)/2.0) - cos(radians(spotDConeOut)/2.0)), 0.0, 1.0));
     vec4 specularToSpotD = compSpecular(spotDPos, spotDCol, n4Normal,eyePos);
+
+    //----POINTLIGHT-----------------------------------------------------
+    vec4 posDir   = pointPosition - fs_pos;
+	vec4 posCol = vec4(pointColor, 1.0) * pow((pointTarget/length(posDir)), pointDecay);
+
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + posCol) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
     //outColor = vec4(clamp(vec3(dirAPhong) + diffA,0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
@@ -249,6 +261,12 @@ var spotDColorHandle;
 var spotDTargetHandle;
 var spotDConeOutHandle;
 var spotDConeInHandle;
+
+//PointLight
+var pointPositionHandler;
+var pointColorHandler;
+var pointTargetHandler;
+var pointDecayHandler;
 
 
 //movement variables
@@ -673,6 +691,10 @@ function setUpScene(){
     specColorHandler = gl.getUniformLocation(program, "specColor");
     phongShininessHandler = gl.getUniformLocation(program, "phongShininess");
     diffColorHandler = gl.getUniformLocation(program, "diffColor");
+    pointPositionHandler = gl.getUniformLocation(program, "pointPosition");
+    pointColorHandler = gl.getUniformLocation(program, "pointColor");
+    pointTargetHandler = gl.getUniformLocation(program, "pointTarget");
+    pointDecayHandler = gl.getUniformLocation(program, "pointDecay");
 
 
     perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
@@ -869,8 +891,20 @@ function setupLights(){
     gl.uniform1f(shininessHandler, shininess);
     gl.uniform1f(phongShininessHandler, phongS);
 
-    
+    //----PointLight---------------------------------------------------------------------------
+   
+    var pTarget = 1;
+    var pDecay = 0.1;
+    var pColor = [1.0, 1.0, 1.0];
+    var pPos = [0.0, bird.ty, bird.tz, 1.0];
 
+    
+    var pPosTransform = utils.multiplyMatrixVector(viewMatrix, pPos);
+
+    gl.uniform1f(pointTargetHandler, pTarget);
+    gl.uniform1f(pointDecayHandler, pDecay);
+    gl.uniform3fv(pointColorHandler, pCol);
+    gl.uniform4fv(pointPositionHandler, pPosTransform);
 }
 
 

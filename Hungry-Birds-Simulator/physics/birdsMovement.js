@@ -8,7 +8,7 @@ var g = GRAVITY;
 var v = 0; 
 var vely = 0;
 var velz = 0;
-var bird;
+var bird = new birdObject(0.0, 1.1 , -7.2, 0.0, 0.0, 0.0, "red", 5);
 
 //sound
 var firstTimeSound = true;
