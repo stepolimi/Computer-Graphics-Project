@@ -732,10 +732,10 @@ function setupLights(){
     var darkModeToggle = document.getElementById("darkModeToggle");
     if(darkModeToggle.checked == true){
         directionalLightAColor = [0.87, 0.67, 0.44];
-        canvas.style.backgroundImage = "url(resources/dark-mode-background.png)";
+        canvas.style.backgroundImage = "url(resources/in-game-background.png)";
     }
     else{
-        canvas.style.backgroundImage = "url(resources/in-game-background.png)";
+        canvas.style.backgroundImage = "url(resources/dark-mode-background.png)";
         directionalLightAColor = [0.0, 0.0, 0.0];
     }
     var diffCol = [1.0, 1.0, 1.0];
