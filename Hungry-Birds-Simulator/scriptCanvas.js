@@ -165,9 +165,10 @@ void main() {
     //----POINTLIGHT + Oren-Nayar-----------------------------------------------------
     vec4 pointDir   = pointPosition - fs_pos;
     vec4 pointCol = vec4(pointColor, 1.0) * pow((pointTarget/length(pointDir)), pointDecay);
+    vec4 i = pow((pointTarget/length(pointDir)), pointDecay);
 
     
-    vec4 pointDiff = pointCol * clamp(dot(pow((pointTarget/length(pointDir)), pointDecay),n4Normal), 0.0, 1.0);
+    vec4 pointDiff = pointCol * clamp(dot(i,n4Normal), 0.0, 1.0);
     pointDiff = vec4(diffColor, 1.0) * pointDiff;
     // Oren-Nayar
 	float theta_i = radians(acos(dot(pointDir, n4Normal)));
