@@ -903,7 +903,7 @@ function setupLights(){
 
     gl.uniform1f(pointTargetHandler, pTarget);
     gl.uniform1f(pointDecayHandler, pDecay);
-    gl.uniform3fv(pointColorHandler, pCol);
+    gl.uniform3fv(pointColorHandler, pColor);
     gl.uniform4fv(pointPositionHandler, pPosTransform);
 }
 
