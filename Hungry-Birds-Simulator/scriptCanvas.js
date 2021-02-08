@@ -289,6 +289,9 @@ function sleep(ms) {
 /*function called at the touchpad or mouse press, it works iff the previous bird ended the flight 
 */
 function scaleSlingElastic(e){ 
+
+    spotConeOut = 0.0;
+    spotConeIn = 0.0;
     if(!busy){
 	    var sound = document.getElementById("pullSlingSound");
         sound.play();
@@ -302,8 +305,6 @@ function scaleSlingElastic(e){
   NB. worldPositions[10] is the original sling elastic position 
 */
 function throwBird(e){
-    spotConeOut = 0.0;
-    spotConeIn = 0.0;
     isReleased = true;
     if(!busy){
         var sound = document.getElementById("releaseSlingSound");
