@@ -88,6 +88,15 @@ body {
     z-index: 1;
 }
 
+
+#toggle-div{
+    position: absolute;
+    top: 0px;
+    left: 300px;
+    z-index: 1;
+}
+}
+
 #menu{
     position: absolute;
     top: 0px;
