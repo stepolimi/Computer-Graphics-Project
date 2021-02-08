@@ -169,8 +169,8 @@ void main() {
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    //outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + posCol) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
-    outColor = vec4(clamp(vec3(posCol),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + posCol) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    //outColor = vec4(clamp(vec3(posCol),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
@@ -893,13 +893,10 @@ function setupLights(){
 
     //----PointLight---------------------------------------------------------------------------
    
-    var pTarget = document.getElementById("dirLightAlphaA").value;
-    var pDecay = document.getElementById("dirLightBetaA").value;
+    var pTarget = 0.3;
+    var pDecay = 10;
     var pColor = [1.0, 1.0, 1.0];
     var pPos = [0.0, bird.ty, bird.tz, 1.0];
-
-    console.log("t: " + pTarget);
-    console.log("d: " + pDecay);
     
     var pPosTransform = utils.multiplyMatrixVector(viewMatrix, pPos);
 

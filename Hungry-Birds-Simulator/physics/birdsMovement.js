@@ -52,11 +52,10 @@ var ended = false;
 
 //main function to manage birds launch, trajectory and liveliness
 function birdTrajectory(index){
-	bird = birdsArray[index-2];
-
 	activateSound(index);
 
 	if(index != prec){
+		bird = birdsArray[index-2];
 		t = 0;
 		landed = false;
 		escaped = false;
