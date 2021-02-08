@@ -706,7 +706,7 @@ function setupLights(){
     var directionaLightAPos = [0.0, 0.0, 0.0];
     var darkModeToggle = document.getElementById("darkModeToggle");
     if(darkModeToggle.checked == true)
-        directionaLightAPos = [Math.cos(160), 0.0, 0.0];
+        directionaLightAPos = [-0.2, 1.0 , 0.0];
     else
         directionaLightAPos = [0.0, 0.0, 0.0];
         
