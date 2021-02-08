@@ -76,7 +76,7 @@ body {
 
 #score-div{
     position: absolute;
-    top: 2vmin;
+    top: 1vmin;
     left: 10px;
     z-index: 1;
 }
@@ -259,6 +259,13 @@ input:checked + .slider:before {
 }
 
 #menu-text{
+    font-family: AngryBirds;
+    font-weight: bolder;
+    font-size: 1.5vmax;
+    z-index: 1;
+}
+
+#exit-text{
     font-family: AngryBirds;
     font-weight: bolder;
     font-size: 1.5vmax;

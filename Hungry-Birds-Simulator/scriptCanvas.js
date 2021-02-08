@@ -718,18 +718,21 @@ function setupLights(){
     darkModeToggle = document.getElementById("darkModeToggle");
     var scoreText = document.getElementById("score");
     var menuText = document.getElementById("menu-text");
+    var exitText = document.getElementById("exit-text");
 
     if(darkModeToggle.checked == true){
         directionalLightAColor = [0.87, 0.67, 0.44];
         canvas.style.backgroundImage = "url(resources/in-game-background.png)";
         scoreText.style.color = "#000000";
         menuText.style.color = "#000000";
+        exitText.style.color = "#000000";
     }
     else{
         directionalLightAColor = [0.0, 0.0, 0.0];
         canvas.style.backgroundImage = "url(resources/dark-mode-background.png)";
         scoreText.style.color = "#FFFFFF";
         menuText.style.color = "#FFFFFF";
+        exitText.style.color = "#FFFFFF";
     }
 
     var lightDirectionalMatrix = utils.sub3x3from4x4(utils.invertMatrix(utils.transposeMatrix(viewMatrix)));
