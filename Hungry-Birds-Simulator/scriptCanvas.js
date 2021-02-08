@@ -179,7 +179,7 @@ void main() {
 	float G = max(0.0, dot(v_i,v_r));
 	
 	vec4 L = vec4(diffColor,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
-	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));
+	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta))*0.1;
 
     
     
