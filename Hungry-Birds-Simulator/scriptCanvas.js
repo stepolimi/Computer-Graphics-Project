@@ -752,6 +752,9 @@ function setupLights(){
     var diffCol = [1.0, 1.0, 1.0];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     darkModeToggle = document.getElementById("darkModeToggle");
+    var sun = document.getElementById("toggleSunImg");
+    var moon = document.getElementById("toggleMoonImg");
+
     var scoreText = document.getElementById("score");
     var menuText = document.getElementById("menu-text");
     var exitText = document.getElementById("exit-text");
@@ -759,6 +762,8 @@ function setupLights(){
     if(darkModeToggle.checked == true){
         directionalLightAColor = [0.87, 0.67, 0.44];
         canvas.style.backgroundImage = "url(resources/in-game-background.png)";
+        sun.style.visibility = "hidden";
+        moon.style.visibility = "visible";
         scoreText.style.color = "#000000";
         menuText.style.color = "#000000";
         exitText.style.color = "#000000";
@@ -766,6 +771,8 @@ function setupLights(){
     else{
         directionalLightAColor = [0.0, 0.0, 0.0];
         canvas.style.backgroundImage = "url(resources/dark-mode-background.png)";
+        moon.style.visibility = "hidden";
+        sun.style.visibility = "visible";
         scoreText.style.color = "#FFFFFF";
         menuText.style.color = "#FFFFFF";
         exitText.style.color = "#FFFFFF";
