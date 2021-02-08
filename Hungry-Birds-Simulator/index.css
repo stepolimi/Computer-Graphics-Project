@@ -76,7 +76,7 @@ body {
 
 #score-div{
     position: absolute;
-    top: 0px;
+    top: 2vmin;
     left: 10px;
     z-index: 1;
 }
@@ -91,7 +91,7 @@ body {
 
 #toggle-div{
     position: absolute;
-    top: 10vmin;
+    top: 5vmin;
     left: 10px;
     z-index: 1;
 }
