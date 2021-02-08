@@ -278,6 +278,10 @@ var mouseX = 0.0;
 var mouseY = 0.0;
 
 
+//Toggle button
+var darkModeToggle = document.getElementById("darkModeToggle");
+
+
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -699,7 +703,12 @@ function setupLights(){
     //ambient light
     var ambientLight = [0.4, 0.4, 0.4];
 
-    //directional light
+    if(darkModeToggle.checked == true)
+        sunAngle = utils.degToRad(180);
+    else
+        sunAngle =  utils.degToRad(0);
+        
+    /*//directional light
     var xDirLightA;
     if(sunAngle < 2* Math.PI)
         sunAngle += Math.PI/1000;
@@ -717,8 +726,9 @@ function setupLights(){
     console.log("x " + Math.cos(dirLightAlphaA) );
     console.log("y " + 20 * Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA));
     console.log("z " + 20 * Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA));
+    */
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [Math.cos(dirLightAlphaA), 20 * Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA), 20 * Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; // [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];
+    var directionaLightAPos = [[Math.cos(sunAngle), 0.0, 0.0]; //[Math.cos(dirLightAlphaA), 20 * Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA), 20 * Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; // [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     var diffCol = [1.0, 1.0, 1.0];
 
