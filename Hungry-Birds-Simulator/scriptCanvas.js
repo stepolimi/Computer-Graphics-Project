@@ -813,7 +813,7 @@ function setupLights(){
     var CSpotColor = [0.0, 1.0, 0.0];
 
     var CTarget = 15.0;
-    var CConeOut = 20.0;
+    var CConeOut = 18.0;
     var CConeIn = 15.0;
 
     if(darkModeToggle.checked == true){
