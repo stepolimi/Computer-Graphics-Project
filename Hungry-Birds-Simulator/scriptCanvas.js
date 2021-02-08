@@ -826,7 +826,7 @@ function setupLights(){
     var CConeOut = 20.0;
     var CConeIn = 15.0;
 
-    if(sdarkModeToggle.checked == true){
+    if(darkModeToggle.checked == true){
         CConeOut = 0.0;
         CConeIn = 0.0;
     }
