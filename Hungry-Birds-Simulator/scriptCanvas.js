@@ -165,6 +165,10 @@ void main() {
     //----POINTLIGHT + Oren-Nayar-----------------------------------------------------
     vec4 pointDir   = pointPosition - fs_pos;
     vec4 pointCol = vec4(pointColor, 1.0) * pow((pointTarget/length(pointDir)), pointDecay);
+
+    
+    vec4 pointDiff = pointCol * clamp(dot((pointDir/length(pointDir),n4Normal), 0.0, 1.0);
+    pointDiff = vec4(diffColor, 1.0) * pointDiff;
     // Oren-Nayar
 	float theta_i = radians(acos(dot(pointDir, n4Normal)));
 	float theta_r = radians(acos(dot(eyePos, n4Normal)));
@@ -179,12 +183,12 @@ void main() {
 	float G = max(0.0, dot(v_i,v_r));
 	
 	vec4 L = vec4(diffColor,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
-	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta))*0.1;
+	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));
 
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol + pointOren) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol + pointDiff) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
     //outColor = vec4(clamp(vec3(posCol),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
