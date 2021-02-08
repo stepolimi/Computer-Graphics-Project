@@ -182,7 +182,7 @@ void main() {
     vec4 pointCol = vec4(pointColor, 1.0) * pow((pointTarget/length(pointDir)), pointDecay);
 
    
-    // Oren-Nayar
+    /*// Oren-Nayar
 	float theta_i = radians(acos(dot(pointDir, n4Normal)));
 	float theta_r = radians(acos(dot(eyePos, n4Normal)));
 	float alpha = max(theta_i, theta_r);
@@ -196,7 +196,7 @@ void main() {
 	float G = max(0.0, dot(v_i,v_r));
 	
 	vec4 L = vec4(diffColor,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
-	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));
+	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));*/
 
     
     
