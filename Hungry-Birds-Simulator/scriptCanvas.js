@@ -169,8 +169,8 @@ void main() {
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + posCol) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
-    //outColor = vec4(clamp(vec3(dirAPhong) + diffA,0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
+    //outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + posCol) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(posCol),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
@@ -894,7 +894,7 @@ function setupLights(){
     //----PointLight---------------------------------------------------------------------------
    
     var pTarget = 1;
-    var pDecay = 0.1;
+    var pDecay = 20;
     var pColor = [1.0, 1.0, 1.0];
     var pPos = [0.0, bird.ty, bird.tz, 1.0];
 
