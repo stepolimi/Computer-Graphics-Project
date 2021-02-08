@@ -91,7 +91,7 @@ body {
 
 #toggle-div{
     position: absolute;
-    top: 5vmin;
+    top: 7vmin;
     left: 10px;
     z-index: 1;
 }

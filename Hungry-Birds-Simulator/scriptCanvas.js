@@ -763,11 +763,7 @@ function setupLights(){
 
     //---------------SpotLight A---------------------------------------------------------------
     
-    if(darkModeToggle.checked == true){
-        spotConeOut = 0.0;
-        spotConeIn = 0.0;
-    }
-    else{
+    if(darkModeToggle.checked == false){
         spotConeOut = 15.0;
         spotConeIn = 7.5;
     }
