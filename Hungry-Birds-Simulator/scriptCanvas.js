@@ -717,7 +717,7 @@ function setupLights(){
     console.log("alpha " + document.getElementById("dirLightAlphaA").value);
     console.log("beta " + document.getElementById("dirLightBetaA").value);
     //x to be -0.2 on day, -0 on night
-    var directionaLightAPos = [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];//Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA)]; //[xDirLightA, 0.1 * Math.sin(sunAngle), 0.1 * Math.cos(sunAngle)];
+    var directionaLightAPos = [Math.cos(dirLightAlphaA), Math.sin(dirLightAlphaA) * Math.cos(dirLightBetaA) ,Math.sin(dirLightAlphaA) * Math.sin(dirLightBetaA)]; // [xDirLightA, 0.1* Math.cos(sunAngle), 0.1* Math.sin(sunAngle)];
     var directionalLightAColor = [0.87, 0.67, 0.44];
     var diffCol = [1.0, 1.0, 1.0];
 
