@@ -192,14 +192,14 @@ void main() {
 	vec4 v_r = normalize(eyePos - dot(eyePos,n4Normal)*n4Normal);
 	float G = max(0.0, dot(v_i,v_r));
 	
-	vec4 L = vec4(diffColor,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
+	vec4 L = vec4(pointCol,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
 	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));
 
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
     //outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol+ lambertSpotB + lambertSpotC + lambertSpotD ) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
-    outColor = vec4(clamp(vec3(lambertSpotB + lambertSpotC + lambertSpotD),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(pointOren),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
     //+ lambertSpotA 
 }
