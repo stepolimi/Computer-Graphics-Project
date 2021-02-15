@@ -144,7 +144,7 @@ void main() {
           clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
     vec4 specularToSpotA = compSpecular(spotAPos, spotCol, n4Normal,eyePos);
     
-    spotCol = vec4(diffColor, 1.0) * vec4(spotCol, 1.0) * clamp(dot(n4Normal, normalize(spotAPos), 0.0, 1.0);
+    spotCol = vec4(diffColor, 1.0) * vec4(spotCol, 1.0) * clamp(dot(n4Normal, normalize(spotAPos)), 0.0, 1.0);
 
     //----SPOTLIGHT B + Blinn--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
@@ -152,7 +152,7 @@ void main() {
           clamp((dot(normalize(spotBPos), spotDir) - cos(radians(spotBConeOut)/2.0)) / (cos(radians(spotBConeIn)/2.0) - cos(radians(spotBConeOut)/2.0)), 0.0, 1.0));    
     vec4 specularToSpotB = compSpecular(spotBPos,vec4(spotBColor, 1.0), n4Normal,eyePos);
 
-    spotBCol = vec4(diffColor, 1.0) * vec4(spotBCol, 1.0) * clamp(dot(n4Normal, normalize(spotBPos), 0.0, 1.0);
+    spotBCol = vec4(diffColor, 1.0) * vec4(spotBCol, 1.0) * clamp(dot(n4Normal, normalize(spotBPos)), 0.0, 1.0);
 
     //----SPOTLIGHT C + Blinn--------------------------------------------
     vec4 spotCPos = spotCPosition - fs_pos;
