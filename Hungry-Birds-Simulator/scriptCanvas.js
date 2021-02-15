@@ -152,6 +152,8 @@ void main() {
           clamp((dot(normalize(spotBPos), spotDir) - cos(radians(spotBConeOut)/2.0)) / (cos(radians(spotBConeIn)/2.0) - cos(radians(spotBConeOut)/2.0)), 0.0, 1.0));    
     vec4 specularToSpotB = compSpecular(spotBPos,vec4(spotBColor, 1.0), n4Normal,eyePos);
 
+    spotCol = vec4(diffColor, 1.0) * vec4(spotBColor, 1.0) * clamp(dot(n4Normal, normalize(spotBPos), 0.0, 1.0);
+
     //----SPOTLIGHT C + Blinn--------------------------------------------
     vec4 spotCPos = spotCPosition - fs_pos;
     vec4 spotCCol = vec4(spotCColor, 1.0) *  dot(pow(spotCTarget/length(spotCPos), spotDecay), 
@@ -185,12 +187,12 @@ void main() {
 	float G = max(0.0, dot(v_i,v_r));
 	
 	vec4 L = vec4(diffColor,1.0) * clamp(dot(pointDir,n4Normal), 0.0, 1.0);
-	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta)) * pow((pointTarget/length(pointDir)), pointDecay);
+	vec4 pointOren = L*(A+B*G*sin(alpha)*tan(beta));
 
     
     
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
-    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol + pointOren) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
+    outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
     //outColor = vec4(clamp(vec3(diffA),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
     //outColor = vec4(fsUV, 0.0, 1.0);
 }
