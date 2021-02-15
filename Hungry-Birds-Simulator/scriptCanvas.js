@@ -138,11 +138,13 @@ void main() {
     vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(nLightDirectionA, 1.0), n4Normal)),0.0,1.0), phongShininess) * vec4(lightColorA, 1.0) * vec4(specColor, 1.0);
 
 
-    //----SPOTLIGHT A + Blinn--------------------------------------------
+    //----SPOTLIGHT A + Blinn + lambert--------------------------------------------
     vec4 spotAPos = lightDiffusePosition - fs_pos;
     vec4 spotCol = vec4(lightDiffuseColor, 1.0) *  dot(pow(spotATarget/length(spotAPos), spotDecay), 
           clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
     vec4 specularToSpotA = compSpecular(spotAPos, spotCol, n4Normal,eyePos);
+    
+    spotCol = vec4(diffColor, 1.0) * vec4(lightDiffuseColor, 1.0) * clamp(dot(n4Normal, normalize(spotAPos), 0.0, 1.0);
 
     //----SPOTLIGHT B + Blinn--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
