@@ -171,10 +171,12 @@ void main() {
 	float theta_i = radians(acos(dot(pointDir, n4Normal)));
 	float theta_r = radians(acos(dot(eyePos, n4Normal)));
 	float alpha = max(theta_i, theta_r);
-	float beta = min(theta_i, theta_r);
+    float beta = min(theta_i, theta_r);
+    
+    float roughness = 0.1;
 
-	float A = 1.0 - 0.5*((0.5*0.5)/(0.5*0.5+0.33));
-	float B = 0.45*((0.5*0.5)/(0.5*0.5+0.09));
+	float A = 1.0 - 0.5*((roughness*roughness)/(roughness*roughness+0.33));
+	float B = 0.45*((roughness*roughness)/(roughness*roughness+0.09));
 
 	vec4 v_i = normalize(pointDir - dot(pointDir,n4Normal)*n4Normal);
 	vec4 v_r = normalize(eyePos - dot(eyePos,n4Normal)*n4Normal);
