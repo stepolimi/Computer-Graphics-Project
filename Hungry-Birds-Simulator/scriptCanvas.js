@@ -144,7 +144,7 @@ void main() {
           clamp((dot(normalize(spotAPos), spotDir) - cos(radians(spotAConeOut)/2.0)) / (cos(radians(spotAConeIn)/2.0) - cos(radians(spotAConeOut)/2.0)), 0.0, 1.0));
     vec4 specularToSpotA = compSpecular(spotAPos, spotCol, n4Normal,eyePos);
     
-    vec4 lambertSpotA = vec4(diffColor, 1.0) * vec4(lightDiffuseColor, 1.0) * clamp(dot(n4Normal, normalize(spotAPos)), 0.0, 1.0);
+    vec4 lambertSpotA = vec4(diffColor, 1.0) * spotCol * clamp(dot(n4Normal, normalize(spotAPos)), 0.0, 1.0);
 
     //----SPOTLIGHT B + Blinn + Lambert--------------------------------------------
     vec4 spotBPos = spotBPosition - fs_pos;
@@ -152,7 +152,7 @@ void main() {
           clamp((dot(normalize(spotBPos), spotDir) - cos(radians(spotBConeOut)/2.0)) / (cos(radians(spotBConeIn)/2.0) - cos(radians(spotBConeOut)/2.0)), 0.0, 1.0));    
     vec4 specularToSpotB = compSpecular(spotBPos,vec4(spotBColor, 1.0), n4Normal,eyePos);
 
-    vec4 lambertSpotB = vec4(spotBCol, 1.0) * clamp(dot(n4Normal, normalize(spotBPos)), 0.0, 1.0);
+    vec4 lambertSpotB = spotBCol * clamp(dot(n4Normal, normalize(spotBPos)), 0.0, 1.0);
 
     //----SPOTLIGHT C + Blinn + Lambert--------------------------------------------
     vec4 spotCPos = spotCPosition - fs_pos;
@@ -160,7 +160,7 @@ void main() {
           clamp((dot(normalize(spotCPos), spotDir) - cos(radians(spotCConeOut)/2.0)) / (cos(radians(spotCConeIn)/2.0) - cos(radians(spotCConeOut)/2.0)), 0.0, 1.0));
     vec4 specularToSpotC = compSpecular(spotCPos, spotCCol, n4Normal,eyePos);  
     
-    vec4 lambertSpotC = vec4(spotCCol, 1.0) * clamp(dot(n4Normal, normalize(spotCPos)), 0.0, 1.0);
+    vec4 lambertSpotC = spotCCol * clamp(dot(n4Normal, normalize(spotCPos)), 0.0, 1.0);
 
     //----SPOTLIGHT D + Blinn + Lambert--------------------------------------------
     vec4 spotDPos = spotDPosition - fs_pos;
@@ -168,7 +168,7 @@ void main() {
           clamp((dot(normalize(spotDPos), spotDir) - cos(radians(spotDConeOut)/2.0)) / (cos(radians(spotDConeIn)/2.0) - cos(radians(spotDConeOut)/2.0)), 0.0, 1.0));
     vec4 specularToSpotD = compSpecular(spotDPos, spotDCol, n4Normal,eyePos);
 
-    vec4 lambertSpotD =  vec4(spotDCol, 1.0) * clamp(dot(n4Normal, normalize(spotDPos)), 0.0, 1.0);
+    vec4 lambertSpotD =  spotDCol * clamp(dot(n4Normal, normalize(spotDPos)), 0.0, 1.0);
 
     //----POINTLIGHT + Oren-Nayar-----------------------------------------------------
     vec4 pointDir   = pointPosition - fs_pos;
