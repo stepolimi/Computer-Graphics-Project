@@ -830,8 +830,7 @@ function setupLights(){
     var BConeIn = 15.0;
 
     if(darkModeToggle.checked == true){
-        BConeOut = 0.0;
-        BConeIn = 0.0;
+        BSpotColor = [0.0, 0.0, 0.0];
     }
 
     
@@ -856,8 +855,7 @@ function setupLights(){
     var CConeIn = 13.0;
 
     if(darkModeToggle.checked == true){
-        CConeOut = 0.0;
-        CConeIn = 0.0;
+        CSpotColor = [0.0, 0.0, 0.0];
     }
 
     
@@ -882,8 +880,7 @@ function setupLights(){
     var DConeIn = 15.0;
 
     if(darkModeToggle.checked == true){
-        DConeOut = 0.0;
-        DConeIn = 0.0;
+        DSpotColor = [0.0, 0.0, 0.0];
     }
     
     gl.uniform1f(spotDConeOutHandle, DConeOut);
