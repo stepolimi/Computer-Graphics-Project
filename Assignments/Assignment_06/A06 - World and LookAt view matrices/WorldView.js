@@ -1,5 +1,5 @@
 function worldViewProjection(carx, cary, carz, cardir, camx, camy, camz) {
-// Computes the world, view and projection matrices for the game.
+// Computes the world and view matrices for the game.
 
 // carx, cary and carz encodes the position of the car.
 // Since the game is basically in 2D, camdir contains the rotation about the y-axis to orient the car

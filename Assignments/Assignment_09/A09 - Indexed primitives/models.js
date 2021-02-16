@@ -32,7 +32,7 @@ function buildGeometry() {
 
 
 
-	// Draws a Cylinder -- To do for the assignment.
+	// Draws a Cylinder using triangle lists -- To do for the assignment.
 	var vert2 = [[0.0, 1.0, 0.0]];
 	for(i = 0; i < 36; i++) {
 		vert2[i+1] = [Math.sin(i*10.0/180.0*Math.PI), 1.0, Math.cos(i*10.0/180.0*Math.PI)];
@@ -138,7 +138,7 @@ function buildGeometry() {
 	
 	
 	
-	// Draws a Torus -- To do for the assignment
+	// Draws a Torus using triangle lists-- To do for the assignment
 	var vert4 = [];
 	///// Creates vertices
 	k = 0;

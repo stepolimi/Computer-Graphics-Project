@@ -6,7 +6,9 @@ function perspective(w, h, fov) {
 	var threeFour = (2*100*0.1)/(0.1-100);
 
 
-	// Build a perspective projection matrix, for a viewport whose size is determined by parameters w (width) and h (height), and whose fov-y is passed in parameter fov. Near plane is n=0.1, and far plane f=100.
+	/* Build a perspective projection matrix, for a viewport whose size is determined by parameters w (width) and h (height) 
+		and whose fov-y is passed in parameter fov. Near plane is n=0.1, and far plane f=100.
+	*/
 	//To solve this part of assignment 5 we used the projection matrix
 	var out = 	 [oneOne,	0.0,		0.0,		0.0,
 			   0.0,		twoTwo,		0.0,		0.0,

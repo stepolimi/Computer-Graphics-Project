@@ -1,4 +1,15 @@
 function anim() {
+	/*
+		The animation is defined as a set of animation segment. Each segment is defined by 5 parameters:
+			• The duration in seconds: time required to travel the path.
+			• The starting point
+			• The control point for the start
+			• The control point for the end
+			• The ending point
+		Each point is defined by two information:
+			• A three component vector representing the position of the starship
+			• A quaternion representing its orientation
+	*/
 	return [
 			[2, [0,0,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(-20)),
 				[3,0,1],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(0)),
@@ -30,6 +41,5 @@ function anim() {
 				[0,0,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(-10)),
 				[0,0,0],   Quaternion.fromAxisAngle([0,0,1],utils.degToRad(-180))]
 			
-
 	];
 }

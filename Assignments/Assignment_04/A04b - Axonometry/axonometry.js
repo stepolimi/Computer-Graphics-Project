@@ -7,6 +7,10 @@ var projection = {
 		3) Rx(α) represents the rotation around x-axis
 
 	  It can be used for all axonomtry, what changes are just the angles values.
+
+	  For Isometric projections: rotation around y = +-45°, rotation around x = +-35.26°
+	  For Dimetric projections: rotation around y = +-45°, rotation around x = arbitrary
+	  For Trimetric projections: rotation around y = arbitrary, rotation around x = arbitrary
 	*/
 	
 	axonometry: function(x, y){
@@ -34,6 +38,9 @@ var projection = {
 		2) Hz(hx,hy) is the shear matrix with hx = -pcos(a) and hz= -psin(a)
 
 	  It can be used for both cavalier and cabinet projections , what changes are just the angle and p.
+
+	  For Cavalier projections: rotation around z = arbitrary, reduction factor p = 1
+	  For Cabinet projections: rotation around z = arbitrary, reduction factor p = 0.5
 	*/
 	oblique: function(z, p){
 		var a = 16/9;
@@ -53,6 +60,7 @@ var projection = {
 function axonometry() {
 	
 	// Make an isometric view, w = 50, a = 16/9, n = 1, f = 101.
+
 	var A1 = projection.axonometry(35.26, 45);
 	
 
