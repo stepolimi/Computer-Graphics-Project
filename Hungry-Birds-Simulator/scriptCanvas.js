@@ -118,25 +118,21 @@ void main() {
     vec3 nNormal = normalize(fsNormal);
     vec4 n4Normal = normalize(vec4(fsNormal, 1.0));
     
-    //computing ambient color
+    //-------Ambient color-------------------
     vec3 ambient = ambientLightCol;
     
 
-   
-
-    //Eye position in camera space
+    //--------Eye position in camera space------------
     //vec3 posReflection = normalize(vec3(lightDiffusePosition));
     vec4 eyePos = -1.0 * fs_pos;
     
 
-    //----Lambert on directionalA-----------------------------------------
+    //----Directional A + Phong + Lambert-----------------------------------------
     vec3 nLightDirectionA = normalize(lightDirectionA);
     vec3 diffA = lightColorA * clamp(dot(nNormal, nLightDirectionA), 0.0, 1.0);
     diffA = diffColor * diffA;
 
-    //----Phong on directionalA-------------------------------------------
     vec4 dirAPhong =  pow(clamp(dot(eyePos, -reflect(vec4(nLightDirectionA, 1.0), n4Normal)),0.0,1.0), phongShininess) * vec4(lightColorA, 1.0) * vec4(specColor, 1.0);
-
 
     //----SPOTLIGHT A + Blinn + Lambert--------------------------------------------
     vec4 spotAPos = lightDiffusePosition - fs_pos;
@@ -174,10 +170,11 @@ void main() {
     vec4 pointDir   = pointPosition - fs_pos;
     vec4 pointCol = vec4(pointColor, 1.0) * pow((pointTarget/length(pointDir)), pointDecay);
 
+    //----Blinn total effect----------------------------------------------
     vec4 blinnTot = (specularToSpotA + specularToSpotB + specularToSpotC + specularToSpotD);
+
+
     outColor = vec4(clamp(vec3(spotCol + spotBCol + spotCCol + spotDCol + blinnTot + dirAPhong + pointCol + lambertSpotA + lambertSpotB + lambertSpotC + lambertSpotD ) + ambient + diffA,0.0,1.0).rgb, 1.0) *  texture(in_texture, fsUV);
-    //outColor = vec4(clamp(vec3(pointOren),0.0,1.0).rgb, 1.0)*  texture(in_texture, fsUV);
-    //outColor = vec4(fsUV, 0.0, 1.0);
 }
 `;
 
